@@ -1,0 +1,52 @@
+{% verbatim %}
+<div class="page" ng-controller="foroPersonalInitiatives">
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong class="strong-heading"><span class="glyphicon glyphicon-th"></span> <span i18n="id00076_app:foro:long:initiatives">Iniciativa</span></strong>
+			<span class="ui-select">
+				<select ng-model="filterState"
+						ng-options="state as i18n(label) for (state,label) in states">
+				</select>
+			</span>
+		</div>
+		<div class="panel-body">
+
+
+			<div class="table-responsive table-bordered">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th class="col-sm-2" i18n="id00093_app:state">Estado</th>
+							<th class="col-sm-7" i18n="id00090_app:foro:description">Descripción proceso</th>
+							<th class="col-sm-1" i18n="id00110_app:foro:item:adhesions">Adhesiones</th>
+							<th class="col-sm-2" i18n="id00091_app:foro:date">Fecha</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-if="items.emptyForo() || (filterState != '0' && items.emptyByState(filterState))">
+							<td></td>
+							<td><a i18n="id00092_app:no-data">No hay datos disponibles.</a></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr ng-repeat="item in items.initiatives" ng-show="filterState == 0 || item.state == filterState">
+							<td><span i18n="{{tags[item.state]}}"></span></td>
+							<td><h4><a ng-click="loadItem(item)" ng-bind-html="item.title"></a></h4>
+								<p ng-bind-html="item.description | nl2br" ></p>
+							</td>
+							<td>{{item.numAdhesions}}</td>
+							<td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+					</tbody>
+				</table>  
+			</div>
+
+
+		</div>
+	</section>
+
+
+</div>
+
+
+{% endverbatim %}

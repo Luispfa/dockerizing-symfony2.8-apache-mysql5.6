@@ -1,0 +1,42 @@
+{% verbatim %}
+    <header class="clearfix header-inicio" data-ng-controller="HeaderCtrl">
+
+
+
+        <div class="header-criteria">
+            <div class="container contenedor-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="logo">
+                            <a href="#/">
+                                <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
+                                <span>{{ brand()}}</span>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="top-nav-lang">
+
+                            <ul class="list-langs list-inline" role="menu">
+
+                                <li lang-element="es" data-ng-show="lang !== 'Espanol' ">
+                                    <a href="javascript:;" data-ng-click="setLang('Espanol')"> Español </a></li>
+                                <li lang-element="ca" data-ng-show="lang !== 'Catalan' ">
+                                    <a href="javascript:;" data-ng-click="setLang('Catalan')"> Català</a></li>
+                                <li lang-element="gl" data-ng-show="lang !== 'Gallego' ">
+                                    <a href="javascript:;" data-ng-click="setLang('Gallego')"> Galego</a></li>
+                                <li lang-element="en" data-ng-show="lang !== 'English' ">
+                                    <a href="javascript:;" data-ng-click="setLang('English')"> English</a></li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+
+{% endverbatim %}

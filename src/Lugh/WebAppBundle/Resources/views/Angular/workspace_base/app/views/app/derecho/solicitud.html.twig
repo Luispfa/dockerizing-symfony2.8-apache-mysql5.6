@@ -1,0 +1,84 @@
+{% verbatim %}
+    <div class="page" ng-controller="threadCtrl">
+
+        <section class="panel panel-default">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00151_app:derecho:thread">Solicitud</span></strong></div>
+            <div class="panel-body">
+
+
+                <form class="form-horizontal" role="form">
+
+
+                    <fieldset class="titulo-item">
+                        <legend ng-bind-html="thread.subject"></legend>
+
+
+
+                        <div class="table-responsive table-bordered">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2" i18n="id00167_app:derecho:autor">Autor</th>
+                                        <th class="col-sm-7" i18n="id00166_app:derecho:content">Mensaje</th>
+                                        <th class="col-sm-2" i18n="id00168_app:derecho:fecha">Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{thread.autor.name}}
+                                        </td>
+                                        <td>
+                                            <span ng-bind-html="thread.body | nl2br"></span>
+                                        </td>
+                                        <td>{{thread.date_time | date: "dd-MM-yyyy&nbsp;HH:mm"}}</td>
+                                    </tr>
+                                    <tr ng-repeat="message in thread.messages">
+                                        <td>
+                                            {{message.autor.isAdmin ? i18n("id00174_app:admin") : message.autor.name}}
+                                        </td>
+                                        <td>
+                                            <span ng-bind-html="message.body | nl2br"></span>
+                                            <ul class="list-docs list-docs-message list-unstyled" ng-repeat="document in message.documents">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-download-alt"></span>
+                                                    <a ng-click="downloadDocument(document.id)">{{document.nombre_externo}}</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>{{message.date_time | date: "dd-MM-yyyy&nbsp;HH:mm"}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </fieldset>
+
+                    <fieldset ng-if="thread.locked != 1 && (thread.state == 3 || thread.state == 2)">
+                        <legend i18n="id00152_app:derecho:thread:reply">Respuesta</legend>
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-2">
+                                <textarea class="form-control"
+                                          rows = "15"
+                                          entities-decode 
+                                          ng-model = "thread.message">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-2">
+                                <div class="btn btn-success" ng-disabled="thread.message == ''" ng-click="sendMessage(thread.message)" i18n="id00150_app:derecho:new-thread:confirm">Enviar mensaje</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form> 
+
+            </div>
+        </section>
+
+
+    </div>
+
+
+{% endverbatim %}

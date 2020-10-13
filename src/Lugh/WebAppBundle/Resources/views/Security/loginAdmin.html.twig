@@ -1,0 +1,24 @@
+{% extends "LughWebAppBundle:Security:layoutAdmin.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans }}</div>
+{% endif %}
+
+<form class="register" action="{{ path("admin_check") }}" method="post">
+    <h2>Acceso</h2>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <input class="text-field" placeholder="Nombre usuario" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    <input class="text-field" placeholder="Contraseña" type="password" id="password" name="_password" required="required" />
+
+    <!--<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>-->
+    
+    <input class="button" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    {#<input type="button" class="button_secondary" OnClick="window.location.href='{{ path('fos_user_resetting_request')}}'" value="Recordar contraseña"/>#}
+</form>
+    
+{% endblock fos_user_content %}

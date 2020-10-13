@@ -1,0 +1,28 @@
+{% verbatim %}
+<div>
+    <h1><span class="titulo-menu voteDelegationTitle" i18n="id00305_app:voto:vote-or-delegation">Voto o delegación</span></h1>
+    <div>
+        <div class="panel panel-default voteDelegationContent">
+            <div class="panel-heading">
+                <h3 class="panel-title" i18n="id00305_app:voto:vote-or-delegation">Voto o delegación</h3>
+            </div>
+            <div class="panel-body">
+                <span i18n="id00306_app:voto:vd:body"></span>
+                <hr />
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-8 col-md-offset-4">
+                            <label class="ui-radio"><input name="radio1" type="radio" value="vote" data-ng-model="data.choiceVoteDelegation" ng-change="onChoiceVoteDelegation()"><span i18n="id00307_app:voto:vd:vote">Votar</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-md-offset-4">
+                            <label class="ui-radio"><input name="radio1" type="radio" value="delegation" data-ng-model="data.choiceVoteDelegation" ng-change="onChoiceVoteDelegation()"><span i18n="id00308_app:voto:vd:dele">Delegar</span></label>
+                        </div>
+                    </div>
+                </form>  
+            </div>
+        </div> 
+    </div>
+</div>
+{% endverbatim %}

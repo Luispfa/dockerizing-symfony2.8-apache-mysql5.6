@@ -1,0 +1,28 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>key</th>
+            <th>Read</th>
+            <th>Write</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class ="gradeA">
+            {% set file_read = 'file_read_' ~ parameter_file.id %}
+            {% set file_write = 'file_write_' ~ parameter_file.id %}
+            <input type="hidden" name="id[file][]" value="{{ parameter_file.id }}" />
+            <td>
+                {{ parameter_file.clase }}
+            </td>
+            <td>
+                {{ form_widget(attribute(parameter_file.read,file_read)) }}
+            </td>
+            <td>
+                {{ form_widget(attribute(parameter_file.write,file_write)) }}
+            </td>
+        </tr>
+    </tbody>
+
+</table>

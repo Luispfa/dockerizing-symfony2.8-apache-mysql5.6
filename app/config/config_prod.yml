@@ -1,11 +1,14 @@
 imports:
+    - { resource: parameters.yml }
     - { resource: config.yml }
 
-#framework:
-#    validation:
-#        cache: validator.mapping.cache.doctrine.apc
-#    serializer:
-#        cache: serializer.mapping.cache.apc
+framework:
+    session:
+        cookie_secure: true #activar en producción
+        handler_id:  ~
+        cookie_lifetime: 14400
+        gc_maxlifetime: 1800
+        cookie_httponly: true
 
 #doctrine:
 #    orm:
@@ -16,12 +19,18 @@ imports:
 monolog:
     handlers:
         main:
-            type: fingers_crossed
+            type:         fingers_crossed
             action_level: error
-            handler: nested
+            handler:      nested
         nested:
-            type: stream
-            path: '%kernel.logs_dir%/%kernel.environment%.log'
-            level: debug
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            formatter: monolog.formatter.session_request
+            level: error
         console:
-            type: console
+            type:  console
+
+
+doctrine:
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"

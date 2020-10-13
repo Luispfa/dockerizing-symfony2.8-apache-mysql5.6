@@ -1,0 +1,7 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form class="register">
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <input type="button" class="button" OnClick="window.location.href='{{ path('_index')}}'" value="Acceder a la aplicación"/>
+</form>

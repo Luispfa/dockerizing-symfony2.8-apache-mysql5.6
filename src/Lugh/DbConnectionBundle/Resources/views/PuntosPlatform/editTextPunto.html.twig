@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span12" id="left_div">
+
+            <div class="widget widget-table" id="left_top_div">
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Traducciones
+
+                    </h3>
+                    <div class="widget-actions">
+
+                    </div>
+                </div>
+
+                <div class="widget-content">
+                    <form id="form_edit_puntos">
+                        <table id="crontab_file" class="table table-striped table-bordered responsive">
+                            <thead>
+                                <tr>
+                                    <th>Lang</th>
+                                    <th>Texto</th>
+                            </thead>
+
+                            <tbody>
+                                {% for punto_text in puntos_text %}
+                                    {% set point_text = punto_text.lang %}
+                                    <tr class ="gradeA">
+                                        <td>
+                                            {{ punto_text.lang }}
+                                        </td> 
+                                        <td>
+                                            {{ form_widget(attribute(punto_text.text, point_text), { 'attr': {'class': 'textarea-large'}}) }}
+                                        </td> 
+                                    </tr>
+                                {% endfor%}
+                            </tbody>
+
+                        </table>
+                    </form>
+                </div> <!-- /.widget-content -->
+            </div>
+            <div class="widget widget-table">
+
+                <div class="widget-header">	      				
+                    <h3 style="text-rendering: auto;">
+                        <i class="icon-pencil"></i>
+                        Guardar Puntos	      					
+                    </h3>	
+                </div> <!-- /widget-header -->
+
+                <div class="widget-content">
+
+                    <table  class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <button type="button" class="btn btn-primary btn-large" onclick="SetPoints('{{ path('_puntosplatform_edit_punto', {'entity' : entity, 'platform_id' : platform.id, 'punto_id' : punto_id} ) }}', $('#form_edit_puntos :input'));
+                                            return false;">Save changes</button>
+                                    <button class="btn btn-large">Cancel</button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div> <!-- /widget-content -->
+
+            </div>
+        </div>
+    </div>
+</div>

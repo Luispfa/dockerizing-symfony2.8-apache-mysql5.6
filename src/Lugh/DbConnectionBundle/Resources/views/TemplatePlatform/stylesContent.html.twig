@@ -1,0 +1,66 @@
+<script src="{{ asset('bundles/lughdbconnection/js/configPlatforms.js') }} "></script>
+
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+
+    <thead>
+        <tr>
+            <th>Styles</th>
+            <th>Template</th>
+            <th>i18n</th>
+            <th>Mails</th>
+            <th>Plantilla Mails</th>
+            <th>Preview</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for template in templates %}
+            <tr class ="gradeA">
+                <td>
+                    <div class="input">
+                        {{ template.name }}
+                    </div>
+                </td>
+                <td>
+                    <button class="btn" type="button"
+                            onclick="LoadContent('{{ path( '_templatesplatform_templates', {'template_id' : template.id}) }}', 'content');
+                            return false;">
+                        Template
+                    </button>
+                </td>
+                <td>
+                    <button class="btn" type="button"
+                            onclick="LoadContent('{{ path( '_translationstemplate_translations', {'template_id' : template.id}) }}','content');
+                            return false;">
+                        Traducciones
+                    </button>
+
+                </td>
+                <td>
+                    <button class="btn" type="button"
+                            onclick="LoadContent('{{ path( '_mailstemplate_mails', {'template_id' : template.id}) }}','content');
+                            return false;">
+                        Mails
+                    </button>
+                </td>
+                <td>
+                    <button class="btn" type="button"
+                            onclick=" LoadContent('{{ path( '_mailsplantilla', {'template_id' : template.id}) }}','content');
+                            return false; ">
+                        Plantilla Mails
+                    </button>
+                </td>
+                <td>
+                    <button class="btn" type="button"
+                            onclick="{ LoadContentinNewTab('{{ path( '_templatesplatform_preview', {'template_id' : template.id}) }}','content');
+                            return false; }">
+                        Vista Previa
+                    </button>
+                </td>
+
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

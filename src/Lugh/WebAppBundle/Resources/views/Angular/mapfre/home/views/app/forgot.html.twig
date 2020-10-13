@@ -1,0 +1,52 @@
+{% verbatim %}
+    <div class="page-signin" ng-controller="forgotCtrl">
+
+        <!--<div class="signin-header">
+            <div class="container text-center">
+                <section class="logo">
+                    <a href="#/">{{main.brand}}</a>
+                </section>
+            </div>
+        </div>-->
+        <div class="signin-body">
+            <div class="info text-center">
+                <h2 i18n="id00207_app:home:forgot:title">Restaurar contraseña</h2>
+                <p class="text-small" i18n="id00208_app:home:forgot:description">Enter your email address that you used to register. We'll send you an email with your username and a link to reset your password.</p>
+            </div>
+
+            <div class="form-container">
+
+                <form class="form-horizontal" name="forgotPasswordForm">
+                    <div class="form-group">
+                        <input type="email"
+                               class="form-control input-lg"
+                               placeholder="Email"
+                               ng-model="mail">
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-lg btn-block btn-primary" i18n="id00209_app:home:forgot:send" ng-click="submit()">Send</a>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <footer class="footer-container container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <ul class="menu-horizontal">
+                            <li><a href="#/app/inicio" data-i18n="id00068_home:footer:home">Inicio</a></li>
+                            <li><a href="#/app/contactar" data-i18n="id00069_home:footer:contact">Contactar</a></li>
+                            <li><a href="#/app/requisitos" data-i18n="id00070_home:footer:requirements">Requisitos</a></li>
+                            <li><a href="https://www.mapfre.es/seguros/privacidad/privacidad.jsp" data-i18n="id00071_home:footer:legal-warn">Aviso legal</a></li>
+                        </ul>
+                        <p data-i18n="id00416_home:footer:title">Plataformas Electrónicas</p>
+                    </div>
+                </div>
+            </footer>
+
+
+        </div>
+    </div>
+
+{% endverbatim %}

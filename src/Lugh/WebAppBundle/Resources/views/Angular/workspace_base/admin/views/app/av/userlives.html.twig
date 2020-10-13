@@ -1,0 +1,68 @@
+{% verbatim %}
+<div class="page" ng-controller="accionistaLivesCtrl">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Lives  </strong></div>
+
+            <form class="form-horizontal" role="form">
+
+                <fieldset class="titulo-item">
+                    <legend ng-bind-html="type[action.discr]">Acción</legend>
+                    
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Nombre</label>
+                                <div class="col-sm-6">
+                                    <strong><span>{{accionista.name}}</span></strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Número de acciones</label>
+                                <div class="col-sm-6">
+                                    <strong><span>{{accionista.shares_num | formattedNumber}}</span></strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <button class="btn btn-success" ng-click="loadAccionista(accionista.id)">Ver perfil</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <th class="th">Event ID</th>
+                            <th class="th">Session ID</th>
+                            <th class="th">Session Name</th>
+                            <th class="th">Live Status</th>
+                            <th class="th">Od Status</th>
+                            <th class="th">Start Date</th>
+                            <th class="th">End Date</th>
+                            <th class="th">Platform Enabled</th>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="live in lives.lives" >
+                                <td>{{ live.event_id }}</td>
+                                <td>{{ live.session_id }}</td>
+                                <td>{{ live.session_name }}</td>
+                                <td>{{ live.session_live_status }}</td>
+                                <td>{{ live.session_od_status }}</td>
+                                <td>{{ live.session_start_datetime }}</td>
+                                <td>{{ live.session_finish_datetime }}</td>
+                                <td>{{ live.enabled }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>  
+
+            </form>
+
+        </div>
+    </section>
+
+</div>
+{% endverbatim %}

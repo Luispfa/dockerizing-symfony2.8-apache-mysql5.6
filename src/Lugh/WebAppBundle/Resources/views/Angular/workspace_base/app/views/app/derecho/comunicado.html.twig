@@ -1,0 +1,46 @@
+{% verbatim %} 
+<div class="page" ng-controller="communiqueCtrl">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00134_app:derecho:communique">Comunicado</span></strong></div>
+        <div class="panel-body">
+
+
+            <form class="form-horizontal" role="form">
+
+
+                <fieldset class="titulo-item">
+                    <legend i18n="id00134_app:derecho:communique">Comunicado</legend>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" i18n="id00103_app:foro:item:title">Título</label>
+                        <div class="col-sm-5">
+                            <p ng-bind-html="communique.subject"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" i18n="id00104_app:foro:item:body">Cuerpo</label>
+                        <div class="col-sm-5">
+                            <p ng-bind-html="communique.body | entitiesDecode"></p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="communique.documents.length > 0">
+                        <label class="col-sm-3 control-label" i18n="id00173_app:item:document-list"></label>
+                            <ul class="list-docs">
+                                <li ng-repeat="documento in communique.documents">
+                                    <span class="glyphicon glyphicon-download-alt"></span>
+                                    <a ng-click="downloadDocument(documento.id)">{{documento.nombre_externo}}</a>
+                                </li>
+                            </ul>
+                    </div>
+                </fieldset>
+            </form> 
+
+        </div>
+    </section>
+
+
+</div>
+{% endverbatim %} 
+
+

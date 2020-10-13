@@ -1,0 +1,41 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>Clase</th>
+            <th>Action</th>
+            <th>From</th>
+            <th>To</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for parameter_time in parameters_time %}
+            {% set clase_choice = 'clase_' ~ parameter_time.id %}
+            {% set action_choice = 'action_' ~ parameter_time.id %}
+            {% set from_datetime = 'from_' ~ parameter_time.id %}
+            {% set from_activate_checkbox = 'fromactivate_' ~ parameter_time.id %}
+            {% set to_datetime = 'to_' ~ parameter_time.id %}
+            {% set to_activate_checkbox = 'toactivate_' ~ parameter_time.id %}
+            <input type="hidden" name="id[time][]" value="{{ parameter_time.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ form_widget(attribute(parameter_time.clase,clase_choice)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_time.action,action_choice)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_time.from,from_datetime)) }}
+                    Activate
+                    {{ form_widget(attribute(parameter_time.from_activate,from_activate_checkbox)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_time.to,to_datetime)) }}
+                    Activate
+                    {{ form_widget(attribute(parameter_time.to_activate,to_activate_checkbox)) }}
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

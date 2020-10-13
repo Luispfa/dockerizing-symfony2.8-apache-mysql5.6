@@ -1,0 +1,11 @@
+.trad-elipse{
+	height: 3em;
+}
+.trad-elipse p{
+	height: 2em;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.statistics{
+	text-align: center;
+}

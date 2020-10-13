@@ -1,0 +1,70 @@
+
+
+<div class="widget-header">
+
+    <h3>
+        <i class="icon-bar-chart"></i>
+        Logo Style (vista)
+
+    </h3>
+
+</div>
+
+<div class="widget-content">
+
+    <div id="upload_logo" class="dropzone"></div>
+
+		<script>
+
+
+		    new Dropzone("div#upload_logo",{
+		        url: "{{ path( '_styleLogo_save', {'platform_id' : platform }) }}",
+		        paramName: "logo",
+		        maxFilesize: 25,//MB
+		        uploadMultiple: false,//(type.indexOf('logo') != -1)? false : true,
+		        acceptedFiles:"image/jpeg,image/png,image/gif",
+		        addRemoveLinks: true,
+		        dictDefaultMessage: '',
+		        dictRemoveFile: 'X',
+		        dictCancelUploadConfirmation: 'X',
+		        dictCancelUpload: 'X',
+		        removedfile: function(file) {
+		            $.get("{{ path( '_styleLogo_remove', {'platform_id' : platform }) }}",
+		                    {filename: file.name},
+		                    function(data){
+		                        var _ref;
+		                        return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+		                    });
+		        },
+		        init: function(){
+		            var thisDropzone = this;
+		            $.get("{{ path( '_styleLogo_load', {'platform_id' : platform }) }}",
+		                    {},
+		                    function(data){
+		                        $.each(JSON.parse(data), function(key,value){
+		                            var mockFile = {name: value.name, size: value.size };
+		                            thisDropzone.options.addedfile.call(thisDropzone, mockFile);
+
+
+		                            if(value.name.indexOf(".png") != -1 || value.name.indexOf(".jpg") != -1)
+		                            {
+		                                thisDropzone.options.thumbnail.call(thisDropzone, mockFile, "../../bundles/lughwebapp/css/{{ logoPath }}/img/"+value.name);
+		                            }
+
+		                            $('.dz-details').on("click", function (e) {
+		                                e.preventDefault();
+		                                e.stopPropagation();
+		                                var filename = e.target.querySelector('.dz-filename span').innerHTML;
+		                                window.open("../../bundles/lughwebapp/css/{{ logoPath }}/img/"+value.name,'_blank');
+		                            });
+
+
+		                        });
+		                    });
+
+
+		        }
+		    });
+		</script>
+
+</div> <!-- /.widget-content -->

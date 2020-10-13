@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parametro
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_configplatform_add_parameter', {'platform_id' : platform.id} ) }}',$('#form_parameters_config :input'), 'config','{{ path( '_configplatform_edit_parameters_config', {'platform_id' : platform.id}) }}','content'); return false;">
+                            <i class="icon-plus"></i> Add Parameter
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_parameters_config" class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="form_clase">Clase</label>
+                                <div class="controls">
+                                    {{ form_widget(form_config.clase.clase, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Key formato:{String}.{String}</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="form_config">Valor</label>
+                                <div class="controls">
+                                   {{ form_widget(form_config.config.config, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Valor del parametro</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parameters Config
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Config</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for parameters_config in parameters_config %}
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ parameters_config.clase }}
+                                    </td>
+                                    <td>
+                                        {{ parameters_config.config }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeParameter('{{parameters_config.param_id}}','{{ path( '_configplatform_remove_parameter') }}','{{ path( '_configplatform_edit_parameters_config', {'platform_id' : platform.id}) }}','content');return false;">Delete</button>
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div>

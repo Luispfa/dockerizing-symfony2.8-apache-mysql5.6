@@ -1,0 +1,17 @@
+<div class="widget-header">
+
+    <h3>
+        <i class="icon-bar-chart"></i>
+        Grupo Opciones de voto
+
+    </h3>
+    <div class="widget-actions">
+            <a class="btn btn-small accordion-toggle" data-toggle="collapse" href="#" onclick="LoadContent('{{ path( '_puntosplatform_edit_grupoopcionesvoto', {'platform_id' : platform_id}) }}','content');return false;"><i class="icon-pencil"></i>Edit</a>
+    </div>
+</div>
+
+<div class="widget-content">
+
+    {% render(controller('LughDbConnectionBundle:PuntosPlatform:grupoOpcionesVotoTableContent', {'platform_id' : platform_id}))  %}
+
+</div> <!-- /.widget-content -->

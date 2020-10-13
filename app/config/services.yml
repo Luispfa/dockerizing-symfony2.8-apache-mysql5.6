@@ -1,9 +1,207 @@
-# Learn more about services, parameters and containers at
-# https://symfony.com/doc/current/service_container.html
-parameters:
-    #parameter_name: value
-
-services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+#services:
+#    lugh_locale.locale_listener:
+#        class: Lugh\WebAppBundle\Event\LocaleListener
+#        arguments: ["%kernel.default_locale%"]
+#        tags:
+#            - { name: kernel.event_subscriber }
+#
+#    Permission_annotation_driver:
+#        class: Lugh\WebAppBundle\Annotations\Driver\AnnotationDriver
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+#        arguments:
+#            - "@annotation_reader"
+#
+#    lugh.user_manager.db_connection:
+#        class: Lugh\DbConnectionBundle\Service\UserManager
+#        public: true
+#        arguments:
+#          - "@security.encoder_factory"
+#          - "@fos_user.util.username_canonicalizer"
+#          - "@fos_user.util.email_canonicalizer"
+#          - "@doctrine"
+#          - db_connection
+#          - %fos_user.model.user.class%
+#          - %db_connection_user_class%
+#
+#    lugh.form_registration.db_connection:
+#        class: Lugh\DbConnectionBundle\Service\RegistrationFormType
+#        tags:
+#             - { name: form.type, alias: lugh_user_registration }
+#        arguments:
+#          - %fos_user.model.user.class%
+#          - %db_connection_user_class%
+#
+#    lugh.tagmanager.db_connection:
+#        class: Lugh\DbConnectionBundle\Service\TagManager
+#        arguments:
+#          - "@service_container"
+#
+#    lugh.langs.db_connection:
+#        class: Lugh\DbConnectionBundle\Service\Langs
+#        arguments:
+#          - "@service_container"
+#    lugh.image.db_connection:
+#        class: Lugh\DbConnectionBundle\Service\ImageManager
+#
+#    lugh.parameters:
+#        class: Lugh\WebAppBundle\DomainLayer\Parameters
+#        arguments:
+#          - "@service_container"
+#
+#    lugh.mails:
+#        class: Lugh\WebAppBundle\DomainLayer\Mails
+#        arguments:
+#          - "@service_container"
+#
+#    lugh.Time:
+#        class: Lugh\WebAppBundle\DomainLayer\LughTime
+#        arguments:
+#          - "@service_container"
+#
+#    lugh.mail.transport:
+#        class: Lugh\WebAppBundle\DomainLayer\Mail\Transport
+#        arguments:
+#          - "@service_container"
+#
+#    lugh.mailer:
+#        class: Lugh\WebAppBundle\DomainLayer\Mail\Mailer
+#        arguments:
+#          - "@=service('lugh.mail.transport').getMailerMethod()"
+#          - "@=service('lugh.mail.transport').getMailerFrom()"
+#          - "@=service('lugh.mail.transport').getMailerBcc()"
+#
+#    lughDirector_factory:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorFactory
+#        arguments:
+#          - "@service_container"
+#
+#    domain.builder:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorBuilder
+#        factory_service: lughDirector_factory
+#        factory_method: getBuidler
+#        arguments:
+#          - "@service_container"
+#    state.builder:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorState
+#        factory_service: lughDirector_factory
+#        factory_method: getState
+#        arguments:
+#          - "@service_container"
+#    stateTest.builder:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorState
+#        factory_service: lughDirector_factory
+#        factory_method: getStateTest
+#        arguments:
+#          - "@service_container"
+#    lugh.Storage:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorStorage
+#        factory_service: lughDirector_factory
+#        factory_method: getStorage
+#        arguments:
+#          - "@service_container"
+#    lugh.StorageTest:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorStorage
+#        factory_service: lughDirector_factory
+#        factory_method: getStorageTest
+#        arguments:
+#          - "@service_container"
+#    behavior.builder:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorBehavior
+#        factory_service: lughDirector_factory
+#        factory_method: getBehavior
+#        arguments:
+#          - "@service_container"
+#    behaviorTest.builder:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorBehavior
+#        factory_service: lughDirector_factory
+#        factory_method: getBehaviorTest
+#        arguments:
+#          - "@service_container"
+#    mailer.builder:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorMailer
+#        factory_service: lughDirector_factory
+#        factory_method: getMailer
+#        arguments:
+#          - "@service_container"
+#    cipher.builder:
+#        class: Lugh\WebAppBundle\DomainLayer\Director\LughDirectorCipher
+#        factory_service: lughDirector_factory
+#        factory_method: getCipher
+#        arguments:
+#          - "@service_container"
+#    lugh.movimientosFile:
+#        class: Lugh\WebAppBundle\DomainLayer\MovimientosFileService
+#        arguments:
+#          - "@service_container"
+#    lugh.avFile:
+#        class: Lugh\WebAppBundle\DomainLayer\AvFileService
+#        arguments:
+#          - "@service_container"
+#          
+#
+#    lugh.server:
+#        class: Lugh\WebAppBundle\DomainLayer\DomainServer
+#        arguments:
+#          - "@service_container"
+#          - "@domain.builder"
+#          - "@lugh.Storage"
+#          - "@lugh.StorageTest"
+#          - "@state.builder"
+#          - "@stateTest.builder"
+#          - "@behavior.builder"
+#          - "@behaviorTest.builder"
+#          - "@mailer.builder"
+#          - "@cipher.builder"
+#
+#    webAppBundle.listener:
+#        class: Lugh\WebAppBundle\Event\KernelSubscriber
+#        tags:
+#            - { name: kernel.event_subscriber }
+#
+#    authentication_handler:
+#        class: Lugh\WebAppBundle\Services\AuthenticationLogoutHandler
+#
+#    resseting.lugh.mailer:
+#        class: Lugh\WebAppBundle\DomainLayer\Mail\ResetMailer
+#        arguments:
+#            0: "@router"
+#            1: "@templating"
+#            2:
+#              confirmation.template: %fos_user.registration.confirmation.template%
+#              resetting.template: %fos_user.resetting.email.template%
+#
+#    lugh.translate.register:
+#        class: Lugh\WebAppBundle\DomainLayer\TranslateRegister
+#        arguments:
+#            - "@service_container"
+#
+#    lugh.route.template:
+#        class: Lugh\WebAppBundle\DomainLayer\RouteTemplateService
+#        arguments:
+#          - "@service_container"
+#
+#    lugh.mode:
+#        class: Lugh\WebAppBundle\DomainLayer\ModeService
+#        arguments:
+#          - "@service_container"
+#
+#    lugh.monolog.handler:
+#        class: Lugh\WebAppBundle\Audit\LughHandler
+#        calls:
+#            - [ setContainer, [@service_container, @security.context] ]
+#
+#    monolog.formatter.session_request:
+#        class: Monolog\Formatter\LineFormatter
+#        arguments:
+#            - "[%%datetime%%] [%%extra.host%%]%%channel%%: %%message%%\n"
+#
+#    monolog.processor.session_request:
+#        class: Lugh\WebAppBundle\Audit\SessionRequestProcessor
+#        tags:
+#            - { name: monolog.processor, method: processRecord }
+#
+#    validate.file:
+#      class: Lugh\WebAppBundle\DomainLayer\ValidateFile
+#      arguments:
+#        - "@service_container"

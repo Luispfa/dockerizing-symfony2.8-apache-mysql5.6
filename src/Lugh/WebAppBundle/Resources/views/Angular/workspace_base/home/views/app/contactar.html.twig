@@ -1,0 +1,141 @@
+{% verbatim %}
+    <div class="page-signin" ng-controller="contactCtrl">
+
+        <div class="signin-body">
+
+            <div class="container">
+
+                <div class="form-container">
+
+                    <section class="row text-center">
+                        <h2 data-i18n="id00063_app:contact:contact">Contactar</h2>
+                    </section>
+
+
+                    <section  ng-hide="isAppEnabled()" class="row text-center">
+                        <p data-i18n="id00381_home:title:information">La plataforma estará operativa desde el día de la convocatoria hasta el mismo día de su celebración.</p>
+                    </section>
+
+                    <section  ng-hide="!isAppEnabled()" class="row text-center">
+                        <form class="form-horizontal" name="contact_form">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-envelope"></span>
+                                        </span>
+                                        <input type="email"
+                                               class="form-control"
+                                               placeholder="id00065_app:contact:email"
+                                               ng-model="mail.from"
+                                               data-i18n="i18n-placeholder"
+                                               required
+                                               name="contact_email"
+                                               >
+                                    </div>
+                                    <span ng-show="contact_form.contact_email.$error.required" data-i18n="id00484_app:contact:obligatorio">Campo obligatorio</span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-envelope"></span>
+                                        </span>
+                                        <input type="email"
+                                               class="form-control"
+                                               placeholder="id00483_app:contact:repetir-email"
+                                               ng-model="mail2.from"
+                                               data-i18n="i18n-placeholder"
+                                               required
+                                               no-paste
+                                               name="contact_email2"
+                                               validate-equals="mail.from"
+                                               >
+                                    </div>
+                                    <span ng-show="contact_form.contact_email2.$error.required" data-i18n="id00484_app:contact:obligatorio">Campo obligatorio</span>
+                                    <span ng-show="contact_form.contact_email2.$dirty && contact_form.contact_email2.$invalid" data-i18n="id00485_app:contact:emailc">Los campos de email no coinciden o son incorrectos</span>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-user"></span>
+                                        </span>
+                                        <input type="text"
+                                               class="form-control"
+                                               name="contact_name"
+                                               placeholder="id00064_app:contact:name"
+                                               ng-model="mail.name"
+                                               data-i18n="i18n-placeholder"
+                                               required
+                                               >
+                                         
+                                    </div>
+                                    <span ng-show="contact_form.contact_name.$error.required" data-i18n="id00484_app:contact:obligatorio">Campo obligatorio</span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-asterisk"></span>
+                                        </span>
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="id00066_app:contact:subject"
+                                               ng-model="mail.subject"
+                                               data-i18n="i18n-placeholder"
+                                               >
+                                    </div>
+                                </div>
+                                <div class="form-group" style="text-align:left;">
+                                    <!-- Editor -->
+                                    <section class="panel panel-default">
+                                        <div class="panel-body">
+                                            <!--div text-angular ng-model="mail.body" class="ui-editor"></div-->
+                                            <textarea name="contact_body" text-angular ng-model="mail.body" class="form-control" rows="14" required></textarea>
+                                        </div>
+                                        <span ng-show="contact_form.contact_body.$error.required" data-i18n="id00484_app:contact:obligatorio">Campo obligatorio</span>
+                                    </section>
+                                    <!-- end Editor -->
+                                </div>
+
+                               <div class="form-group">
+                                    <div
+                                         vc-recaptcha
+                                         key="model.key"
+                                         data-ng-model="mail.recaptcha"
+                                         handle-error="reCaptcha"
+                                         lang ="es"
+                                         ></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <a class="btn btn-primary btn-lg btn-block" ng-disabled="loading || contact_form.$invalid" ng-click="submit(mail)" data-i18n="id00067_app:contact:send">Enviar</a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </section>
+                </div>
+
+                <footer class="footer-container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <ul class="menu-horizontal">
+                                <li><a href="#/app/inicio" data-i18n="id00068_home:footer:home">Inicio</a></li>
+                                <li><a href="#/app/contactar" data-i18n="id00069_home:footer:contact">Contactar</a></li>
+                                <li><a href="#/app/requisitos" data-i18n="id00070_home:footer:requirements">Requisitos</a></li>
+                                <li data-i18n="id00419_home:document:rules"></li>
+                            </ul>
+                            <p data-i18n="id00416_home:footer:title">Plataformas Electrónicas</p>
+                        </div>
+                    </div>
+                </footer> 
+
+            </div><!-- /container -->
+
+        </div>
+
+    </div>
+
+{%endverbatim%}

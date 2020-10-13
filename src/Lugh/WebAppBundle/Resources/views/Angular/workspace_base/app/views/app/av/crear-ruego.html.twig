@@ -1,0 +1,74 @@
+{% verbatim %}
+<div class="page" ng-controller="newAvCtrl">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00433_app:av:create-question">Crear pregunta</span></strong></div>
+        <div class="panel-body">
+
+
+            <form class="form-horizontal" role="form">
+
+
+                <fieldset>
+                    <legend i18n="id00434_app:av:new-question">Nueva Pregunta</legend>
+
+                    <div class="form-group">
+                        <label for="subject" class="col-sm-3 control-label" i18n="id00435_app:av:new-question:subject">Asunto</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="subject" placeholder="Asunto" entities-decode ng-model="question.subject">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="correoc" class="col-sm-3 control-label" i18n="id00436_app:av:new-question:body">Texto de la solicitud</label>
+                        <div class="col-sm-5">
+                            <textarea name="" id="texto-cuerpo" class="form-control" rows="4" maxlength="7500" entities-decode ng-model="question.body"></textarea>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend i18n="id00516_app:av:new-question:documents">Documentos</legend>
+                    <div class="form-group">
+                        <upload-document
+                            description  ="id00517_app:av:new-question:documents-description"
+                            instructions =""
+                            title        ="attached-file"
+                            uploaderID   = "{{uploaderID}}"
+                            isolatedtoken
+                        />
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset>
+                    <!--<legend i18n="id00437_app:av:privacy-policy">Política de privacidad</legend>-->
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ng-model="acceptTerms"><span i18n="id00438_app:av:privacy-policy:admin">Acepto que mis datos de contacto sean enviados al administrador.</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-success" ng-disabled="!isValid()" ng-click="confirm(question)" i18n="id00439_app:av:new-question:confirm">Guardar</button> <button type="submit" class="btn btn-success" ng-click="clear()" i18n="id00439_app:av:item:clean-data">Limpiar datos</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </form> 
+
+        </div>
+    </section>
+
+
+</div>
+
+
+{% endverbatim %}

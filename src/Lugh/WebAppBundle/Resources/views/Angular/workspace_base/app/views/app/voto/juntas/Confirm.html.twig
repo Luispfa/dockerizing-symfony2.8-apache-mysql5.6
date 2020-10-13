@@ -1,0 +1,74 @@
+{% verbatim %}
+<div>
+    <!-- paso -->
+    <h1><span class="titulo-menu confirmTitle" i18n="id00330_app:voto:confirm"></span></h1>
+    <div>
+        <div class="panel panel-profile confirmContent">
+            <div class="panel panel-default ">
+                <div class="panel-heading">
+                    <h3 class="panel-title" i18n="id00330_app:voto:confirm">Confirmación</h3>
+                </div>
+                <div class="panel-body">
+                    <span i18n="id00331_app:voto:confirm:body"></span>
+                    <p ng-if="data.choiceDelegation !== undefined && data.choiceVoteDelegation !== 'vote'">
+                        <span i18n="id00332_app:voto:confirm:delegation">Usted ha delegado en: </span>
+                        <strong ng-if="data.choiceDelegation === 'person'">{{data.person.nombre}}</strong>
+                        <strong ng-if="data.choiceDelegation=='chairman'"><span i18n="id00312_app:voto:delegation:chairman">El presidente del consejo</span></strong>
+                        <strong ng-if="data.choiceDelegation=='secretary'"><span i18n="id00422_app:voto:delegation:secretary">El Secretario del consejo</span></strong>
+                        <strong ng-if="data.choiceDelegation==='list'">{{data.conseller.nombre}}</strong>
+                        <span ng-if="data.choiceInstructions != undefined">
+                            <span ng-if="data.choiceInstructions == 'yes'" i18n="id00333_app:voto:confirm:instructions">con instrucciones de voto.</span>
+                            <span ng-if="data.choiceInstructions == 'no'"  i18n="id00334_app:voto:confirm:not_instructions">sin instrucciones de voto.</span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        
+            <div ng-repeat="tipo in confirmAbsAdicional">
+                <div ng-repeat="abs_adicional in tipo">
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><h3 class="panel-title"></h3></div>
+                        <div class="panel-body">
+                            <span>{{abs_adicional.text}}</span>
+                            <hr/>
+                            <div class="form-group">
+                                <label class="ui-radio">
+                                    <span>{{abs_adicional.option}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="tipo in confirmPuntos" ng-hide="data.choiceVoteDelegation == 'delegation' && (data.choiceInstructions == undefined || data.choiceInstructions == 'no')">
+                <div class="panel panel-default" ng-if="tipo.length > 0">
+                    <div class="panel-heading"><h3 class="panel-title" i18n="{{tipos[$index].title}}"></h3></div>
+                    <div class="panel-body">
+                        <div ng-repeat="step in tipo">
+                            <div recursive-wizard-construct="{{$index}}" tipo="{{$parent.$index}}" index="{{$index}}" panel-default confirm></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 i18n="id00336_app:voto:finish:title">Finalizando</h3>
+                </div>
+                <div class="modal-body">
+                    <div >
+                        <span i18n="id00337_app:voto:finish:body"></span>
+                    </div>
+                    <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </script>
+        </div>
+    
+    </div>
+    <!-- / paso -->
+</div>
+{% endverbatim %}

@@ -1,0 +1,67 @@
+{% verbatim %}
+
+<div>
+    <h1><span id="wizard-title" class="titulo-menu" i18n="id00324_app:voto:voto">Votación</span></h1>
+    <div>
+        <div id="wizard-container" ng-controller="voteAvStepCtrl">
+            
+            <div class="panel panel-info" ng-repeat="abs_adicional in abs_adicionals" ng-if="type.id == abs_adicional.tipo_voto.id && (abs_adicional.vote_proxy == 0 || abs_adicional.vote_proxy == 1 && data.data.choiceVoteDelegation == 'vote') || (abs_adicional.vote_proxy == 2 && data.data.choiceVoteDelegation == 'delegation')">
+                <div class="panel-heading"><h3 class="panel-title"></h3></div>
+                <div class="panel-body">
+                    <span>{{abs_adicional.text}}</span>
+                    <hr/>
+                    <div class="form-group" ng-if="abs_adicional.grupos_o_v.opciones_voto.length > 1">
+                        <label class="ui-radio" ng-repeat="opcion in abs_adicional.grupos_o_v.opciones_voto">
+                            <input type="radio" ng-value="'{{opcion.id}}'" ng-model="abs_adicional.value" />
+                            <span>{{opcion.nombre}}</span>
+                        </label>
+                    </div>
+                    <div class="form-group" ng-if="abs_adicional.grupos_o_v.opciones_voto.length == 1">
+                        <label class="ui-checkbox" ng-repeat="opcion in abs_adicional.grupos_o_v.opciones_voto">
+                            <input type="checkbox" ng-true-value="{{opcion.id}}" ng-false-value="" ng-model="abs_adicional.value" />
+                            <span>{{opcion.nombre}}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel panel-default hidden" id="votoPanel">
+                <div class="panel-heading">
+                    <h3 class="panel-title" i18n="id00326_app:voto:all">Votar en todos los puntos</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-8" adaptive-row adapt-on-event="ngRepeatFinished[globalOptions-{{type.id}}]">
+                            <div ng-repeat="opcion in type.opcionesVoto" ng-repeat-event="globalOptions-{{type.id}}">
+                                <label class="ui-radio"><input name="radio1" type="radio" value="{{opcion.id}}" ng-model="$parent.$parent.globalPoint" ng-change="globalPointUpdate()"><span>{{opcion.nombre}}</span></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-primary btn-w-xs" ng-click="globalPointClear()"><span class="glyphicon glyphicon-arrow-down"></span> <span i18n="id00327_app:voto:clear">Borrar todas las votaciones</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aqui Votación ¿? -->
+            <section class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00324_app:voto:voto">Votación</span></strong></div>
+                <div class="panel-body">
+
+                    <!-- WIZARD interno -->
+                    <div id="sm-wizard-container" class="swMain">
+                        <h3 i18n="id00328_app:voto:loading">Cargando...</h3>
+                    </div> 
+                    <!-- /wizard -->
+
+
+                </div>
+            </section>
+
+        </div>
+        <!-- / Aqui votación -->
+    </div>
+</div>
+
+{% endverbatim %}
+

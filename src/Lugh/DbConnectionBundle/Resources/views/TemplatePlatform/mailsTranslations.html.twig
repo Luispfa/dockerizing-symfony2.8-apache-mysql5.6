@@ -1,0 +1,191 @@
+<script src="{{ asset('bundles/lughdbconnection/js/plugins/datatables/jquery.dataTables.js') }} "></script>
+<script src="{{ asset('bundles/lughdbconnection/js/plugins/datatables/DT_bootstrap.js') }} "></script>
+
+
+
+<div class="row">
+
+    <div class="span12">
+
+        <div class="widget widget-table">
+
+            <div class="widget-header">
+
+                <h3>
+                    <i class="icon-th-list"></i>
+                    Tags Data List
+                </h3>
+
+                <div class="widget-actions">
+
+                    <button class="btn btn-small btn-success tag-new-template-mail">
+                        <i class="icon-plus "> New Tag</i>
+                    </button>
+
+                </div>
+
+            </div>
+            <input type="hidden" name="trad_platform" value="{{ template_id }}" />
+            <div class="widget-tabs">
+
+                <ul class="nav nav-tabs">
+                    <li class="">
+                        <a href="#tab-1">Template Mails</a>
+                    </li>
+                    {% for key,tag in tags_stack %}
+                        {% if loop.first %}
+                            <li class="active">
+                        {% else %}
+                            <li class="">
+                        {% endif %}
+                        <a href="#tab-{{ loop.index + 1 }}">{{ key }}</a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+            </div> <!-- /.widget-tabs -->
+
+            <div class="widget-content">
+                <div class="tab-content">
+                    <div class="tab-pane" id="tab-1">
+                        <table class="table table-striped table-bordered table-highlight traduccionesform" id='trad_form_host' aria-describedby = 'example_info'>
+                            <thead>
+                            <tr role='row'>
+
+                                <th>Id</th>
+                                {% for lang,tags in tags_stack %}
+                                    <th>{{ lang }}</th>
+                                {% endfor %}
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+
+                            {% for tagid,tags in tags_template %}
+                                <tr id="{{ tagid }}">
+                                    <td>{{ tagid }}</td>
+                                    {% for lang,tag in tags %}
+                                        <td class="trad-elipse"><p> {{ tag }} </p></td>
+                                    {% endfor %}
+                                    <td>
+                                        <button class="tag-remove-template-mail btn btn-small btn-danger">
+                                            Remove
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="tag-edit-template-mail btn btn-small btn-default">
+                                            Edit
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+
+                    {% for lang,tags in tags_stack %}
+                    {% if loop.first %} <div class="tab-pane active" id="tab-{{ loop.index + 1 }}">
+                    {% else %}          <div class="tab-pane"            id="tab-{{ loop.index + 1 }}">
+                    {% endif %}
+                        <table class="table table-striped table-bordered table-highlight traduccionesform" lang='{{ lang }}' id='trad_form_{{ lang }}' aria-describedby = 'example_info'>
+
+                            <thead>
+                                <tr role='row'>
+
+                                    <th>Id</th>
+                                    <th>Tag</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+
+                                {% for id,tag in tags %}
+                                    <tr id="{{ id }}_{{ lang }}">
+                                        <td lang="{{ lang }}">{{ id }}</td>
+                                        <td class="trad-elipse">{{ tag }}</td>
+                                        <td>
+                                            <button class="tag-edit-template-mail btn btn-small btn-default" value="{{ id }}_{{ lang }}">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div> <!-- /tab1 -->
+                    {% endfor %}
+                </div>
+            </div><!-- /widget-content -->
+
+        </div>
+
+    </div> <!-- /span12 -->
+
+</div> <!-- /row -->
+
+<script type="text/javascript">
+    window.tradTable = {};
+    var data;
+    var lang;
+    $('.traduccionesform').each(function(i,node){
+        lang = $(node).attr('lang');
+        data = $(node).dataTable({
+            sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+            sPaginationType: "bootstrap",
+            oLanguage: {"sLengthMenu": "_MENU_ records per page"}
+        });
+
+        window.tradTable[lang] = data;
+
+    });
+
+</script>
+
+<form id="editTag" class="modal hide fade cmxform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <fieldset>
+       <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+           <h3 id="translations-myModalLabel">Edit Tag</h3>
+       </div>
+       <div class="widget-tabs">
+           <ul class="nav nav-tabs" id="modal-head">
+               <li class="active"><a href="#es">Castellano</a></li>
+               <li><a href="#ca">Català</a></li>
+               <li><a href="#en">English</a></li>
+               <li><a href="#gl">Galego</a></li>
+           </ul>
+       </div>
+       <div class="modal-body">
+           <div class="controls">
+               <input id="tag" name="tag" type="text" value=''>
+           </div>
+
+           <div class="tab-content">
+               <div class="tab-pane active" id="es_es">
+                   <div class="tab-content">
+                       <p id="tag-text-es_es">
+                        <textarea id="form-tag-es_es" name="form-tag-es_es" class="textarea-large">
+                            Alta de Usuario - Envío contraseña
+                        </textarea>
+                       </p>
+                   </div>
+               </div>
+
+           </div>
+       </div>
+
+       <div class="modal-footer"></div>
+   </fieldset>
+</form>

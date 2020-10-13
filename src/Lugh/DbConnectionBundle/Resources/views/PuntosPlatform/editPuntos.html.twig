@@ -1,0 +1,206 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Punto
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_puntosplatform_add_punto', {'platform_id' : platform.id} ) }}', $('#form_puntos :input'), 'punto', '{{ path( '_puntosplatform_edit_puntos', {'platform_id' : platform.id}) }}', 'content');
+                                return false;">
+                            <i class="icon-plus"></i> Add Punto
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_puntos" class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="numpunto">NumPunto</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.numPunto.numpunto, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Título del punto</p>
+                                </div>
+                            </div>
+                            {% for key,lang in langs %}
+                                {% set text_lang = 'text_' ~ key %}
+                                <div class="control-group">
+                                    <label class="control-label" for="text_{{ key }}">Texto</label>
+                                    <div class="controls">
+                                        {{ form_widget(attribute(attribute(form_puntos,text_lang),text_lang), { 'attr': {'class': 'input-small', 'readonly' : 'true'}}) }}
+                                        <a href="#myModal-{{ key }}" class="btn" data-toggle="modal" type="button">Edit</a>
+                                        <p class="help-block">{{ lang.name }}</p>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+                            <div class="control-group">
+                                <label class="control-label" for="parent">Parent</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.parent.parent, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Punto padre (si lo tiene)</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="orden">Orden</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.orden.orden, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="tipovoto">Tipo Voto</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.tipoVoto.tipovoto, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="opcionesvoto">Opciones Voto</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.opcionesVoto.opcionesvoto, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Opciones de Voto permitidas para este punto</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="informativo">informativo</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.informativo.informativo, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="retirado">Retirado</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.retirado.retirado, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="extra">Extra</label>
+                                <div class="controls">
+                                    {{ form_widget(form_puntos.extra.extra, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Cada número extra se distinguirá de un color distinto</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Puntos
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Num Punto</th>
+                                <th>Texto</th>
+                                <th>Parent</th>
+                                <th>Orden</th>
+                                <th>Tipo Voto</th>
+                                <th>optiones de Voto</th>
+                                <th>Informativo</th>
+                                <th>Retirado</th>
+                                <th>Extra</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for punto_line in puntos_line %}
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ punto_line.numPunto }}
+                                    </td>
+                                    <td>
+                                        {{ punto_line.text|length > 10 ? punto_line.text[:10] ~ '...' : punto_line.text}}
+                                    </td>
+                                    <td>
+                                        {{ punto_line.parent }}
+                                    </td>
+                                    <td>
+                                        {{ punto_line.orden }}
+                                    </td>
+                                    <td>
+                                        {{ punto_line.tipoVoto }}
+                                    </td>
+                                    <td>
+                                        {{ punto_line.opcionesVoto }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(punto_line.informativo.informativo, { 'attr': {'readonly' : 'true', 'disabled' : 'disabled' }}) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(punto_line.retirado.retirado, { 'attr': {'readonly' : 'true', 'disabled' : 'disabled' }}) }}
+                                    </td>
+                                    <td>
+                                        {{ punto_line.extra }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeParameter('{{punto_line.id}}', '{{ path( '_puntosplatform_remove_punto', {'table':'PuntoDia'}) }}', '{{ path( '_puntosplatform_edit_puntos', {'platform_id' : platform.id}) }}', 'content');
+                                                return false;">Delete</button>
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div>
+
+
+
+{% for key,lang in langs %}
+    {% set text_lang = 'text_' ~ key %}
+
+    <div class="modal fade hide modal-lg" id="myModal-{{ key }}">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3>Texto {{ lang.name }}</h3>
+        </div>
+        <div class="modal-body">
+            <p>Por favor introduzca el texto del punto.</p>
+
+            <textarea id="form-{{ key }}" name="form-{{ key }}" class="textarea-large"></textarea>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="$('#form_text_{{ key }}').val($('#form-{{ key }}').val());">Save changes</button>
+        </div>
+    </div>
+
+{% endfor %}

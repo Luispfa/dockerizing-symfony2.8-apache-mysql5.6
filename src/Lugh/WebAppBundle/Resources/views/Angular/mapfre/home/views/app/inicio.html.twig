@@ -1,0 +1,128 @@
+{% verbatim %}
+
+    <div class="page-signin" ng-controller="MainEnabled">
+
+        <div class="signin-body">
+            <div class="container">
+                <div class="form-container">
+
+
+                    <section class="row text-center">
+                        <h2 data-i18n="id00382_home:title:title"></h2>
+                        <p data-i18n="id00381_home:title:information">La plataforma estará operativa desde el día de la convocatoria hasta el mismo día de su celebración.</p>
+                    </section>
+
+                    <section ng-hide="!isAppEnabled()">
+                        <section class="row text-center" ng-hide="!isCertEnabled()">
+                            <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <h4><span data-i18n="id00389_home:get1:certificate">Obtener </span><a href="/home/images/CertificadosSoportados.pdf" data-i18n="id00390_home:get2:certificate">certificado valido</a></h4>
+                                    <p data-i18n="id00383_home:body:certificate">Si es la primera vez que accede al sistema, será dirigido a un formulario de alta de usuario donde deberá introducir los datos necesarios para poder ejercitar su derecho de participación en  "La plataforma electrónica".</p>
+                                </div>
+                                <div class="form-group" ng-controller="CertificateLoginCtrl">
+                                    <script type="text/ng-template" id="myModalContent.html">
+                                        <div class="modal-header">
+                                        <h3 data-i18n="id00384_home:comprobado:certificate"></h3>
+                                        </div>
+                                        <div class="modal-body">
+                                        <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                        </div>
+                                    </script>
+                                    <a href="javascript:;" ng-click="cerlogin()" class="btn btn-primary btn-lg btn-block" data-i18n="id00385_home:button:certificate">Acceso con certificado válido</a>
+                                </div>
+                            </form>   
+                        </section>
+
+                        <section class="row text-center" ng-hide="!isuserpassEnabled()">
+                            <p data-i18n="id00386_home:button:userpass">Acceso mediante usuario y contraseña</p>
+                            <form ng-submit="submit()" ng-controller="FormSubCtrl" class="form-horizontal" autocomplete="off">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                            </span>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   placeholder="id00003_home:app:inicio:username"
+                                                   ng-model="username"
+                                                   name = "username"
+                                                   data-i18n="i18n-placeholder"
+                                                   >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-asterisk"></span>
+                                            </span>
+                                            <input type="password"
+                                                   class="form-control"
+                                                   ng-model="password"
+                                                   class="form-control"
+                                                   placeholder="id00002_home:app:inicio:password"
+                                                   data-i18n="i18n-placeholder"
+                                                   >
+                                        </div>
+                                    </div>
+                                    <!-- RECAPTCHA -->
+                                    <div class="form-group g-recaptcha">
+                                        <div
+                                             vc-recaptcha
+                                             key="model.key"
+                                             ng-model="reCaptcha"
+                                             handle-error="reCaptcha"
+                                             lang ="es"
+                                             theme ="light"
+                                             ></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <input type="submit" 
+                                               id="submit" 
+                                               class="btn btn-primary btn-lg btn-block" 
+                                               value="id00001_home:app:inicio:acceder" 
+                                               data-i18n="i18n-value"
+                                               translate-values ="{'var1' : 'value1', 'var2' : 'value2'}"/>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </section>
+
+                        <section ng-hide="!isuserpassEnabled()">
+                            <p class="text-center"><a href="#/app/forgot" data-i18n="id00387_home:forgot:userpass">¿Ha olvidado su contraseña?</a></p>
+                        </section>
+
+                        <section class="row text-center" ng-hide="!isuserpassEnabled()">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <a href="#/app/registro" class="btn btn-primary btn-small" data-i18n="id00388_home:register:userpass">Obtener usuario y contraseña</a>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </section>
+                    </section>
+                </div>
+                <footer class="footer-container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <ul class="menu-horizontal">
+                                <li><a href="#/app/inicio" data-i18n="id00068_home:footer:home">Inicio</a></li>
+                                <li><a href="#/app/contactar" data-i18n="id00069_home:footer:contact">Contactar</a></li>
+                                <li><a href="#/app/requisitos" data-i18n="id00070_home:footer:requirements">Requisitos</a></li>
+                                <li><a href="https://www.mapfre.es/seguros/privacidad/privacidad.jsp" data-i18n="id00071_home:footer:legal-warn">Aviso legal</a></li>
+                            </ul>
+                            <p data-i18n="id00416_home:footer:title">Plataformas Electrónicas</p>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+{% endverbatim %}

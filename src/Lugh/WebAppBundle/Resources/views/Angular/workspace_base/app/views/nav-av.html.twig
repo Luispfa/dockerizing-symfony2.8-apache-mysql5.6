@@ -1,0 +1,49 @@
+{% verbatim %}               
+<div id="nav-wrapper" data-ng-controller="NavCtrl">
+    <ul ng-init="lives.length = -1"
+        id="nav"
+        data-ng-controller="NavAvCtrl"
+        data-slim-scroll
+        data-collapse-nav
+        data-highlight-active>
+
+        <!--<li ng-if="lives.length > 1" style="display: list-item;">
+            <a href="javascript:;" ><i class="fa fa-laptop"></i><span data-i18n="id00429_app:av:nav:asistencia-virtual">Asistencia Virtual</span></a>
+            <ul style="display: block;" >
+                <li ng-repeat="live in lives">
+                    <a href="javascript:;" live-button="{{live.id}}" 
+                    ng-init="isDisabled = !live.enabled" ng-disabled="isDisabled">
+                        <i class="fa fa-caret-right"></i>
+                        <span class="ng-isolate-scope">{{live.session_name}}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li ng-if="lives.length <= 1">
+            <a href="javascript:;" live-button="{{lives[0].id}}" ng-init="isDisabled = !live.enabled" ng-disabled="isDisabled"><i class="fa fa-laptop"></i><span data-i18n="id00429_app:av:nav:asistencia-virtual">Asistencia Virtual</span></a>
+        </li>-->
+        
+        <li>
+            <a href="javascript:;" live-button="live-0" ng-disabled="isDisabled" onclick><i class="fa fa-laptop"></i><span data-i18n="id00429_app:av:nav:asistencia-virtual">Asistencia Virtual</span></a>
+        </li>
+
+        <li ng-if="isQuestion">
+            <a href="#/app/av/ruegos-propios"><i class="fa fa-users"></i><span data-i18n="id00430_app:av:nav:ruegos-propios">Ruegos y preguntas Propios</span></a>
+        </li>  
+
+        <li ng-if="isQuestion">
+            <a href="#/app/av/crear-ruego" questions-button ng-disabled="isDisabled"><i class="fa fa-pencil-square-o"></i><span data-i18n="id00431_app:av:nav:crear-ruegos">Ruegos y Preguntas</span></a>
+        </li>
+        
+        <li>
+            <a href="#/app/av/voto" voto-button ng-disabled="isDisabled"><i class="fa fa-check-square-o"></i><span data-i18n="id00442_app:av:nav:voto">Votación</span></a>
+        </li>
+        
+        <li ng-if="isDesertion">
+            <a href="#/app/av/abandonar" desertion-button ng-disabled="isDisabled"><i class="fa fa-check-square-o"></i><span data-i18n="id00496_app:av:nav:abandonar">Abandonar</span></a>
+        </li>
+
+    </ul>
+</div>
+{% endverbatim %}

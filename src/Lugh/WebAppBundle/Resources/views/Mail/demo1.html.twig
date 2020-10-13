@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Email Header</title>
+        <style>
+            a:hover {
+                text-decoration: underline;
+            }
+            td.promocell p { 
+                color:#FFFFFF;
+                font-size:16px;
+                line-height:26px;
+                font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+                margin-top:0;
+                margin-bottom:0;
+                padding-top:0;
+                padding-bottom:14px;
+                font-weight:normal;
+            }
+            td.contentblock h4 {
+                color:#444444 !important;
+                font-size:16px;
+                line-height:24px;
+                font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+                margin-top:0;
+                margin-bottom:10px;
+                padding-top:0;
+                padding-bottom:0;
+                font-weight:normal;
+            }
+            td.contentblock h4 a {
+                color:#444444;
+                text-decoration:none;
+            }
+            td.contentblock p { 
+                color:#888888;
+                font-size:13px;
+                line-height:19px;
+                font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+                margin-top:0;
+                margin-bottom:12px;
+                padding-top:0;
+                padding-bottom:0;
+                font-weight:normal;
+            }
+            td.contentblock p a { 
+                color:#3ca7dd;
+                text-decoration:none;
+            }
+            @media only screen and (max-device-width: 480px) {
+                div[class="header"] {
+                    font-size: 16px !important;
+                }
+                table[class="table"], td[class="cell"] {
+                    width: 300px !important;
+                }
+                table[class="promotable"], td[class="promocell"] {
+                    width: 325px !important;
+                }
+                td[class="footershow"] {
+                    width: 300px !important;
+                }
+                table[class="hide"], img[class="hide"], td[class="hide"] {
+                    display: none !important;
+                }
+                img[class="divider"] {
+                    height: 1px !important;
+                }
+                td[class="logocell"] {
+                    padding-top: 15px !important; 
+                    padding-left: 15px !important;
+                    width: 300px !important;
+                }
+                img[id="screenshot"] {
+                    width: 325px !important;
+                    height: 127px !important;
+                }
+                img[class="galleryimage"] {
+                    width: 53px !important;
+                    height: 53px !important;
+                }
+                p[class="reminder"] {
+                    font-size: 11px !important;
+                }
+                h4[class="secondary"] {
+                    line-height: 22px !important;
+                    margin-bottom: 15px !important;
+                    font-size: 18px !important;
+                }
+            }
+        </style>
+    </head>
+    <body bgcolor="#EEEEEE" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" style="-webkit-font-smoothing: antialiased;width:100% !important;background:#e4e4e4;-webkit-text-size-adjust:none;">
+        <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#e4e4e4">
+            <tbody>
+                <tr>
+                    <td bgcolor="#EEEEEE" width="100%">
+                        <table class="table" border="0" width="600" cellspacing="0" cellpadding="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td class="cell" width="600">
+                                        <table class="table" border="0" width="600" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="logocell" bgcolor="#ffffff" width="250"><img style="display: block; -ms-interpolation-mode: bicubic;" src="{{ app.request.getSchemeAndHttpHost() }}/{{ app.request.getBasePath() }}/bundles/lugh/workspace_base/logo.png" alt="Plantilla email"></td>
+                                                    <td class="hide" style="color: #a6a6a6; font-size: 14px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;" align="center" valign="middle" bgcolor="#ffffff" width="350"><br> <strong>Plataformas Electr&oacute;nicas</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td nowrap="nowrap" bgcolor="#2a404d" width="5">&nbsp;</td>
+                                                    <td bgcolor="#ffffff" width="100%">
+                                                        <table border="0" width="100%" cellspacing="0" cellpadding="20">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="contentblock" bgcolor="#ffffff">
+                                                                        <h4 class="secondary"><strong> {{ subject }} </strong></h4>
+                                                                        <div>{{ translate | raw }}</div>
+                                                                        {% block fos_user_content %} {% endblock fos_user_content %}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#f2f2f2">
+                            <tbody>
+                                <tr>
+                                    <td><br>
+                                        <table class="table" border="0" width="600" cellspacing="0" cellpadding="0" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cell" nowrap="nowrap" bgcolor="#f2f2f2" width="600">
+                                                        <table class="table" border="0" width="600" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="footershow" valign="top" width="380">
+                                                                        <table style="font-size: 10px; color: #777;" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="padding: 15px 0px 15px 0px; color: #a6a6a6; font-size: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;">Si recibe este correo electr&oacute;nico por error, por favor, tenga en cuenta que puede contener informaci&oacute;n confidencial, por lo tanto, el uso de esta informaci&oacute;n est&aacute; estrictamente prohibida. S&iacute;rvanse informar al remitente del error y elimine la informaci&oacute;n recibida. Gracias por su colaboraci&oacute;n.</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="padding: 15px 0px 15px 0px; color: #a6a6a6; font-size: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;">Si rep aquest correu electr&ograve;nic per error, si us plau, tingui en compte que pot contenir informaci&oacute; confidencial, per tant, l'&uacute;s d'aquesta informaci&oacute; est&agrave; estrictament prohibida. Si us plau, informi al remitent de l'error i elimini l'informaci&oacute; rebuda. Gr&agrave;cies per la seva col&middot;laboraci&oacute;.</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="padding: 15px 0px 15px 0px; color: #a6a6a6; font-size: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;">If you receive this e-mail by error, please note that it may contain confidential information,therefore, the use of this information is strictly forbidden. Please inform the sender of the error and delete the information received. Thank you for your collaboration.</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="cell" nowrap="nowrap" bgcolor="#f2f2f2" width="600">
+                                                        <table class="table" border="0" width="600" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="footershow" valign="top" width="380"><br>
+                                                                        <ul style="color: #333333; font-size: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; list-style: none; margin: 0px; padding: 0px;">
+                                                                            <li>Barcelona | Madrid</li>
+                                                                            <li>(+34) 902 360 586</li>
+                                                                            <li>(+34) 933 199 991</li>
+                                                                            <li><a style="text-decoration: none; color: #06f;" href="mailto:info@header.net">info@header.net</a></li>
+                                                                            <li><a style="text-decoration: none; color: #06f;" href="www.header.net">www.header.net</a></li>
+                                                                        </ul>
+                                                                    </td>
+                                                                    <td class="hide" style="color: #a6a6a6; font-size: 12px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;" align="right" valign="top" width="220"><br>
+                                                                        <p>Demo 1 Test 2016</p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

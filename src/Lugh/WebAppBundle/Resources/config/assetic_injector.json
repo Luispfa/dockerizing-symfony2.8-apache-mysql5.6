@@ -1,0 +1,46 @@
+{
+    "require_all":
+    {
+        "javascripts":
+        {
+            "angular":
+                    [
+                        "@LughWebAppBundle/Resources/js/workspace_base/app.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/shared/main.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/shared/directives.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/shared/localize.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/UI/UICtrl.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/UI/UIDirective.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/UI/UIService.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Form/FormDirective.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Form/FormCtrl.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Form/FormValidation.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Table/TableCtrl.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Map/Map.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Task/Task.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Chart/ChartCtrl.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Chart/ChartDirective.js",
+                        "@LughWebAppBundle/Resources/js/workspace_base/Bootstrap/Page/PageCtrl.js"
+                    ],
+            "angular_workspace_base":
+                    [
+                    ],
+            "angular_test.foroelectronico.es":
+                    [
+                    ]
+        },
+        "stylesheets":
+        {
+            "angular": [
+                "bundles/lughwebapp/css/workspace_base/main.css",
+                "bundles/lughwebapp/css/workspace_base/header.css"
+            ],
+            "angular_workspace_base":
+                    [
+                    ],
+            "angular_test.foroelectronico.es":
+                    [
+                    ]
+        }
+    }
+}

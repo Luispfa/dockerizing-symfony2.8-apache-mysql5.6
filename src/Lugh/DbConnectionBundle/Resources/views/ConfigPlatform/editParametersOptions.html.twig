@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parametro
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_configplatform_add_parameter', {'platform_id' : platform.id} ) }}',$('#form_parameters_options :input'), 'options','{{ path( '_configplatform_edit_parameters_options', {'platform_id' : platform.id}) }}','content'); return false;">
+                            <i class="icon-plus"></i> Add Parameter
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_parameters_options" class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="form_clase">Opcion</label>
+                                <div class="controls">
+                                    {{ form_widget(form_options.options.options, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Opción</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="form_config">Valor</label>
+                                <div class="controls">
+                                   {{ form_widget(form_options.values.valueoption, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Valor del parametro</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parameters Options
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Config</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for parameters_options in parameters_options %}
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ parameters_options.clase }}
+                                    </td>
+                                    <td>
+                                        {{ parameters_options.value }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeParameter('{{parameters_options.param_id}}','{{ path( '_configplatform_remove_parameter') }}','{{ path( '_configplatform_edit_parameters_options', {'platform_id' : platform.id}) }}','content');return false;">Delete</button>
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div>
+                        
+{% block javascripts %}
+    <script>                        
+        function addOption(div,url, value)
+        {
+            jQuery("#" + div).load(url + '/' + value, function() {});
+        }
+
+        $("#form_options").bind("change", function (event) {
+            addOption('form_valueoption', '{{ path( '_configplatform_options_value') }}',  event.srcElement.value)
+          });
+  </script>
+{% endblock %}

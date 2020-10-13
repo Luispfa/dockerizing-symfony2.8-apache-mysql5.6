@@ -1,0 +1,49 @@
+{% verbatim %}
+
+    <section class="panel panel-default mail-container" data-ng-controller="MailSingleCtrl">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> View Mail</strong></div>
+        <div class="panel-body">
+            <div class="mail-header row">
+                <div class="col-md-8">
+                    <h3>{{mail.subject}}</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="pull-right">
+                        <!--<a href="#/app/header/mail/compose" class="btn btn-sm btn-primary">Reply <i class="fa fa-mail-reply"></i></a>-->
+                        <!--<a href="javascript:;" class="btn btn-sm btn-default"><i class="fa fa-print"></i></a>-->
+                        <!--<a href="javascript:;" class="btn btn-sm btn-default"><i class="fa fa-trash-o"></i></a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="mail-info">
+                <div class="row">
+                    <div class="col-md-8">
+                        from: {{mail.mailfrom}} <br/>
+                        to: {{mail.mailto}}
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pull-right">
+                            {{mail.date_time | date: "dd/MM/yyyy&nbsp;HH:mm:ss"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mail-content">
+                <div ng-bind-html="to_trusted(mail.body)"></div>
+                
+            </div>
+            <!--<div class="mail-attachments">
+                <p><i class="fa fa-paperclip"></i> 2 attachements | <a href="javascript:;">Save all attachements</a></p>
+                <ul class="list-unstyled list-inline list-attachs">
+                    <li><a href="javascript:;"><img src="/lugh/logic/web/bundles/lugh/workspace_base/img/assets/600_400-1.jpg" alt=""></a></li>
+                    <li><a href="javascript:;"><img src="/lugh/logic/web/bundles/lugh/workspace_base/img/assets/600_400-2.jpg" alt=""></a></li>
+                </ul>
+            </div>-->
+            <div class="mail-actions">
+                <!--<a href="#/app/header/mail/compose" class="btn btn-sm btn-primary">Reply <i class="fa fa-mail-reply"></i></a>
+                <a href="#/app/header/mail/compose" class="btn btn-sm btn-default">Forward <i class="fa fa-mail-forward"></i></a>-->
+            </div>
+        </div>
+    </section>
+
+{% endverbatim %}

@@ -1,0 +1,32 @@
+{% verbatim %}
+
+    <section class="panel panel-default mail-container" data-ng-controller="MailsOutCtrl">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Inbox</strong></div>
+        <div class="mail-options">
+            <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>Marcar todo</span></label>
+        </div>
+
+
+        <table class="responsive table table-hover">
+            <tr class="mail-unread" ng-repeat="mail in mails_out" ng-click="loadMail(mail.id)">
+                <td><label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span></span></label></td>
+                <td>To: {{mail.usertoname}}</td>
+                <td>{{mail.subject}}</td>
+                <td> </td>
+                <td>{{mail.date_time | date: "dd/MM/yyyy&nbsp;HH:mm:ss"}}</td>
+                <td><i class="fa fa-star"></i></td>
+            </tr>
+            <!--<tr class="mail-hightlight">
+                <td><label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span></span></label></td>
+                <td>Administrador <i class="fa fa-circle color-danger"></i></td>
+                <td>Notificación</td>
+                <td> </td>
+                <td>2/15/14 5:00 AM</td>
+                <td><i class="fa fa-star active"></i></td>
+            </tr>-->
+        </table>
+
+
+    </section>
+
+{% endverbatim %}

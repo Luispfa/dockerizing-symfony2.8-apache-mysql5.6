@@ -1,0 +1,147 @@
+{% verbatim %}
+<div class="page" ng-controller="iniciativaPersonalCtrl">
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span><span i18n="id00082_app:foro:singular:long:initiative">Iniciativa</span></strong></div>
+		<div class="panel-body">
+
+
+			<form class="form-horizontal" role="form">
+				<fieldset class="titulo-item">
+					<legend i18n="id00082_app:foro:singular:long:initiative">Iniciativa</legend>
+
+					<div class="form-group">
+						<label for="item.title" class="col-sm-3 control-label" i18n="id00103_app:foro:item:title">Título</label>
+						<div class="col-sm-9" ng-if="item.state != 3">
+							<h4 ng-bind-html="item.title"></h4>
+						</div>
+						<div class="col-sm-9" ng-if="item.state == 3">
+							<input type="text"
+								   class="form-control"
+								   entities-decode
+								   ng-model = "item.title">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="correoc" class="col-sm-3 control-label" i18n="id00104_app:foro:item:body">Cuerpo</label>
+						<div class="col-sm-9" ng-if="item.state != 3">
+							<p ng-bind-html="item.description | nl2br" ></p>
+						</div>
+						<div class="col-sm-9" ng-if="item.state == 3">
+							<textarea class="form-control"
+									  rows = "15"
+									  entities-decode
+									  ng-model = "item.description" />
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend i18n="id00105_app:foro:comments-rev">Revisión de comentarios</legend>
+					<div class="form-group">
+						<label for="correoc" class="col-sm-3 control-label" i18n="id00106_app:foro:comments">Comentarios</label>
+						<div class="col-sm-9">
+
+							<div class="table-responsive">
+								<table class="responsive table table-striped">
+									<thead>
+										<tr>
+											<th class="col-sm-2" i18n="id00107_app:foro:author">Autor</th>
+											<th class="col-sm-8" i18n="id00106_app:foro:comments">Cometarios</th>
+											<th class="col-sm-2" i18n="id00091_app:foro:date">Fecha</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-if="item.messages.length === 0">
+											<td></td>
+											<td i18n="id00092_app:no-data">No hay datos disponibles</td>
+											<td></td>
+										</tr>
+										<tr ng-repeat="message in item.messages">
+											<td>
+												{{message.autor.isAdmin ? i18n("id00174_app:admin") : message.autor.name}}
+											</td>
+											<td ng-bind-html="message.body | nl2br">
+											</td>
+											<td class="cell-middle">{{message.date_time | date: "dd-MM-yyyy&nbsp;HH:mm"}}</td>
+										</tr>
+									</tbody>
+								</table> 
+							</div>
+
+
+
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset ng-if="item.state == 3">
+					<legend i18n="id00108_app:foro:comment-for-admin">Comentario para el administrador</legend>
+					<div class="form-group">
+						<label for="correoc" class="col-sm-3 control-label" i18n="id00109_app:foro:comment">Cometario</label>
+						<div class="col-sm-9">
+							<textarea name="" id="texto-cuerpo" class="form-control" rows="4" entities-decode ng-model="item.message"></textarea>
+						</div>
+					</div>
+				</fieldset>
+
+
+				<fieldset>
+					<legend i18n="id00110_app:foro:item:adhesions">Adhesiones</legend>
+					<div class="form-group">
+						<label for="correoc" class="col-sm-3 control-label" i18n="id00110_app:foro:item:adhesions">Adhesiones</label>
+						<div class="col-sm-9">
+
+							<div class="table-responsive table-bordered">
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th i18n="id00111_app:foro:adhesion:acc-name" >Nombre del accionista</th>
+											<th i18n="id00115_app:foro:adhesion:email"    >Email</th>
+											<th i18n="id00113_app:foro:adhesion:telephone">Teléfono</th>
+											<th i18n="id00228_app:adhesion:date"          >Fecha</th>
+											<th i18n="id00303_app:foro:adhesion:state"    >Estado</th>
+											<th i18n="id00114_app:foro:adhesion:shares"   >Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-if="adhesions.length === 0">
+											<td i18n="id00092_app:no-data">No hay datos disponibles</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr ng-repeat="adhesion in adhesions" ng-click="goToAdhesion(adhesion)">
+											<td ng-bind-html="adhesion.accionista.name"></td>
+											<td ng-bind-html="adhesion.accionista.user.email"></td>
+											<td ng-bind-html="adhesion.accionista.telephone"></td>
+											<td>{{adhesion.date_time | date: "dd-MM-yyyy&nbsp;HH:mm"}}</td>
+											<td>{{i18n(states[adhesion.state])}}</td>
+											<td>{{adhesion.accionista.shares_num | formattedNumber}}</td>
+										</tr>
+										<tr ng-if="adhesions.length !== 0">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td><b i18n="id00372_app:foro:item:total">Total</b></td>
+											<td>{{total_shares | formattedNumber}}</td>
+										</tr>
+									</tbody>
+								</table> 
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9" item-button="item.state" disable="noclick"></div>
+					</div>
+				</fieldset>
+			</form> 
+
+		</div>
+	</section>
+
+</div>
+{% endverbatim %}

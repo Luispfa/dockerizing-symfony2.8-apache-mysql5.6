@@ -1,0 +1,117 @@
+<!doctype html>
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+        <title>{{ title }}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link href="{{ path( 'admin_images_file', {file: 'favicon.ico'}) }}"  rel="shortcut icon" type="image/x-icon">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+        <!-- needs images, font... therefore can not be part of ui.css -->
+        <link href="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/weather-icons/css/weather-icons.min.css')}}" rel="stylesheet">
+        <!-- end needs images -->
+        
+        <link href="{{ asset('bundles/lughwebapp/css/workspace_base/main.css')}}" rel="stylesheet">
+        <link href="{{ asset('bundles/lughwebapp/css/workspace_base/header.css')}}" rel="stylesheet">
+        <link href="{{ path( 'admin_css_file', {file: 'style.css'}) }}" rel="stylesheet">
+
+    </head>
+    <body data-ng-app="app" id="app" data-custom-background data-off-canvas-nav>
+        <!--[if lt IE 9]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div data-ng-controller="AppCtrl">
+            <div data-ng-hide="isSpecificPage()"
+                 data-ng-cloak
+                 class="no-print">
+                <section data-ng-include=" '{{ path( 'admin_views_file', {file: 'header.html'}) }}'"
+                         id="header" class="top-header"></section>
+
+                <aside data-ng-hide="isNoNavPage()"
+                    data-ng-include=" '{{ path( 'admin_views_file', {file: 'nav.html'}) }}'"
+                       id="nav-container"></aside>
+            </div>
+
+            <div class="view-container">
+                <section data-ng-view id="content" class="animate-fade-up"></section>
+            </div>
+        </div>
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script type="text/javascript" src="{{ path('admin_main_app_js') }}" ></script>
+        
+        <!--<script src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
+        <!-- build:js scripts/vendor.js -->
+        
+        <script src="{{ asset('js/ae8b528.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/angular-file-upload-master/angular-file-upload.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/vendors/html_entity_decode.js') }}"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/app.js workspace_base-->
+        
+        {#
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/UI/UICtrl.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/UI/UIDirective.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/UI/UIService.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Form/FormDirective.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Form/FormCtrl.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Form/FormValidation.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Table/TableCtrl.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Map/Map.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Task/Task.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Chart/ChartCtrl.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Chart/ChartDirective.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Page/PageCtrl.js') }}"></script>
+        #}
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/app.js') }}"></script>
+        
+        {#
+        <script src="jsapp/app.js"></script>
+
+        <script src="sharedjs/main.js"></script>
+        <script src="sharedjs/localize.js"></script>
+        <script src="sharedjs/controllers.js"></script>
+        <script src="sharedjs/directives.js"></script>
+        <script src="sharedjs/services.js"></script>
+        
+        <script src="models/accionistasManager.js"></script>
+        <script src="models/itemsManager.js"></script>
+        <script src="models/notificationsManager.js"></script>
+        <script src="models/mailsManager.js"></script>
+        <script src="models/adhesionsManager.js"></script>
+        
+        <script src="jsapp/controllers/controllers.js"></script>
+        <script src="jsapp/controllers/parametersCtrl.js"></script>
+        <script src="jsapp/controllers/profileCtrl.js"></script>        
+        <script src="jsapp/controllers/usersTableCtrl.js"></script>
+        <script src="jsapp/controllers/translationCtrl.js"></script>
+        <script src="jsapp/controllers/foroCtrl.js"></script>
+        <script src="jsapp/controllers/itemCtrl.js"></script>
+        <script src="jsapp/controllers/adhesionsCtrl.js"></script>
+        <script src="jsapp/controllers/derechoCtrl.js"></script>
+        <script src="jsapp/controllers/messageCtrl.js"></script>
+        <script src="jsapp/controllers/pendingCtrl.js"></script>
+        <script src="jsapp/directives/directives.js"></script>
+        #}
+        <script src="{{ path( 'admin_app_js') }}"></script>   
+        <script src="{{ asset('bundles/lughwebapp/js/src/vendors/localPiwik.js') }}"></script>
+        
+        {#
+        {% javascripts injector="angular" %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% javascripts injector="angular_workspace_base" %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        #}
+        <!-- endbuild -->
+    </body>
+</html>
+
+

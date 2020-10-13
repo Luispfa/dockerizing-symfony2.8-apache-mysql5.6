@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>Lugh Electronic Platforms</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <!-- needs images, font... therefore can not be part of ui.css -->
+    <link href="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/weather-icons/css/weather-icons.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/lughwebapp/js/src/plugins/smartwizard/smart_wizard.modified.css')}}" rel="stylesheet">
+    <!-- end needs images -->
+
+    <link href="{{ asset('bundles/lughwebapp/css/workspace_base/main.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/lughwebapp/css/workspace_base/header.css')}}" rel="stylesheet">
+    <link href="{{ path( 'home_css_file', {file: 'style.css'}) }}" rel="stylesheet">
+
+</head>
+<body  id="app" class="body-special">
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</body>
+</html>
+

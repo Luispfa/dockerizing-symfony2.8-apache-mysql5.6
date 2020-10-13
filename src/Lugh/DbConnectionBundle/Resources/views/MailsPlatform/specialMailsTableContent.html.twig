@@ -1,0 +1,35 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>Clase</th>
+            <th>Action</th>
+            <th>To</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for parameter_mail in parameters_mails %}
+            {% set clase = 'clase_' ~ parameter_mail.id %}
+            {% set action = 'action_' ~ parameter_mail.id %}
+            {% set to = 'to_' ~ parameter_mail.id %}
+            <input type="hidden" name="id[parameter][]" value="{{ parameter_mail.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ form_widget(attribute(parameter_mail.clase,clase)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_mail.action,action)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_mail.to,to), { 'attr': {'readonly' : 'true' }}) }}
+                </td>
+                <td>
+                    <button class="btn" type="button" onclick="LoadContent('{{ path( '_mailplatform_editmail', {'platform_id' : platform.id, 'id': parameter_mail.ide}) }}', 'content');
+                            return false;">Edit</button>
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

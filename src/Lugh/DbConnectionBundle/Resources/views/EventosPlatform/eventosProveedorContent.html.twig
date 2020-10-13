@@ -1,0 +1,84 @@
+<div class="widget widget-table">
+					
+	<div class="widget-header">
+		<h3>Eventos Asistencia Virtual : Proveedor</h3>	
+		<div class="widget-actions">						
+			<button class="btn btn-small btn-success" onclick="(function(){
+        		refreshProvider(
+					'{{ path( '_eventos_proveedor',{'platform_id': platform_id}) }}',
+					'ev_proveedor'
+        		);
+        		return false;
+        	})()">
+                Refrescar
+            </button>
+		</div>				
+	</div> <!-- /.widget-header -->
+					
+	<div class="widget-content">
+		{% if not provider_E %}
+			<div class="span12" style="margin: 10px;">No hay eventos registrados en el proveedor</div>
+		{% endif %}
+
+   		{% for event in provider_E %}
+		{% if event.sessions %}
+        
+        <div class="widget-header">
+            <h3> Evento {{event.id}} : {{event.name}} </h3>
+
+      	</div>
+      	<div class="widget-content"> 
+			<table class="table table-bordered table-striped responsive">
+			    <thead>
+			        <tr>
+			            <th>ID Evento</th>
+			            <th>ID Sesión </th>
+			            <th>Nombre Sesión</th>
+			            <th>Fecha Inicio</th>
+			            <th>Fecha Fin</th>
+			            <th>Estado Live</th>
+			            <th>Estado Od</th>
+			            <th>URL</th>
+			            <th>Accion </th>
+			        </tr>
+			    </thead>
+
+			    <tbody>
+			    {% for session in event.sessions %}
+			        <tr class ="gradeA">
+			        	<td>{{ event.id }}</td>
+			            <td>{{ session.id }}</td>
+			            <td>{{ session.name }}</td>
+			            <td>{{ session.starginDate }}</td>
+			            <td>{{ session.finishingDate }}</td>
+			            <th>{{ session.liveStatus }}</th>
+			            <th>{{ session.odStatus[0].status }}</th>
+			            <th style="max-width:250px;overflow:hidden;overflow-x:scroll;
+						  white-space: nowrap;">{{ session.access[0].url[0].url }}</th>
+			            <td> 
+			            	<button class="btn btn-mini btn-secondary" onclick="(function(){
+			            		var parsedJSON = {
+			            			event_id:{{event.id}}, 
+			            			session_id:{{session.id}} 
+			            		};
+			            		importEvent(
+									'{{ path('_eventos_proveedor_import') }}',
+									parsedJSON,
+									'{{ path( '_eventos_plataforma',{'platform_id': platform_id}) }}',
+									'ev_plataforma'
+			            		);
+			            		return false;
+			            	})()">
+			                    Importar
+			                </button>
+			            </td>
+			        </tr>
+		        {% endfor %}
+			    </tbody>
+			</table>       	
+        </div>
+        {% endif %}
+        {% endfor %}
+  	</div>
+
+</div> <!-- /.widget-content -->

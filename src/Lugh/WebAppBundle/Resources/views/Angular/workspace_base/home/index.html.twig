@@ -1,0 +1,142 @@
+<!doctype html>
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+        <!--[if lt IE 9]>
+        <title>Navegador sin actualizar</title>
+        <![endif]-->
+        <title>{{ title }}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- needs images, font... therefore can not be part of ui.css -->
+        <link href="{{ path( 'home_images_file', {file: 'favicon.ico'}) }}"  rel="shortcut icon" type="image/x-icon">
+        <link href="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/weather-icons/css/weather-icons.min.css')}}" rel="stylesheet">
+        <!-- end needs images -->
+
+        <link href="{{ asset('bundles/lughwebapp/css/workspace_base/main.css')}}" rel="stylesheet">
+        <link href="{{ asset('bundles/lughwebapp/css/workspace_base/header.css')}}" rel="stylesheet">
+        <link href="{{ path( 'home_css_file', {file: 'style.css'}) }}" rel="stylesheet">
+
+        <!--[if lt IE 9]>
+            <style type="text/css">
+            #msg-ie {
+                    font-family: Lato, 'Helvetica Neue', Arial, sans-serif;
+                    font-size: 14px;
+                    color: 767676;
+                    width: 100%;
+                    max-width: 570px;
+                    margin: auto;
+                    margin-top: 10%;
+                    text-align:center;
+                    border: 1px solid #ddd;
+                    padding: 20px;
+            }
+            </style>
+        <![endif]-->
+
+    </head>
+    <body data-ng-app="home" id="home" class="cookies-view" data-custom-background data-off-canvas-nav>
+        <!--[if lt IE 9]>
+            <div id="msg-ie">
+                <p>
+                    Los requerimientos mínimos para esta aplicación, son los siguientes:
+                </p>
+                <p>
+                    Internet Explorer 9 o superior
+                </p>
+                <p>
+                    Motzilla Firefox 3 o superior
+                </p>
+                <p>
+                    Google Chrome 10 o superior
+                </p>
+                <p>
+                    El uso de otros productos o versiones de exploradores anteriores, no garantiza el funcionamiento idóneo de la aplicación.
+                </p>
+                <p>
+                    Si utiliza el DNI electrónico, es necesario que tenga bien configurado el lector, disponga del PIN y haya instalado el programa facilitado por el Ministerio del Interior, desde su página del DNI electrónico.
+                </p>
+            </div>
+        <![endif]-->
+
+        <div data-ng-controller="AppCtrl">
+            <div data-ng-hide="isSpecificPage()"
+                 data-ng-cloak
+                 class="no-print">
+
+                <div class="cookies" ng-controller="cookiesCtrl">
+                    <div class="container" ng-if="showCookiesMessage()">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div id="cookiesdirective" class="cookiesdirective" style="top: 0px;">
+                                    <span data-i18n="id00421_home:layout:cookies">
+                                    </span>
+                                    <input type="submit" name="impliedsubmit" id="impliedsubmit" value="X" ng-click="accept()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.cookies -->
+
+
+                <section data-ng-include="'{{ path( 'home_views_file', {file: 'header-login.html'}) }}'"
+                         id="header" class="top-header">
+                </section>
+            </div>
+            <div class="view-container">
+                <section data-ng-view id="content" class="animate-fade-up">
+                </section>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="{{ path('default_main_app_js') }}" ></script>
+
+        <script src="{{ asset('js/ae8b528.js') }}"></script>
+
+        <script src="{{ asset('bundles/lughwebapp/js/src/lib/bower_components/angular-file-upload-master/angular-file-upload.js') }}"></script>
+        <!-- endbuild -->
+
+        <!-- Include the JS ReCaptcha API -->
+        <script type="text/javascript" src="{{ asset('bundles/lughwebapp/js/src/vendors/recaptcha_ajax.js') }}"></script>
+
+        <!-- Include the ngReCaptcha directive -->
+        <script src="{{ asset('bundles/lughwebapp/js/src/vendors/angular-recaptcha.js') }}"></script>
+
+        <script src="{{ asset('bundles/lughwebapp/js/src/vendors/angular-upload.min.js') }}"></script>
+
+        <!-- build:js({.tmp,app}) scripts/app.js workspace_base-->
+
+        <!--
+        <script src="home/jsapp/app.js"></script>
+        
+        <script src="home/jsapp/controllers/controllers.js"></script>
+        <script src="home/jsapp/controllers/profileCtrl.js"></script>
+        <script src="home/jsapp/directives/directives.js"></script>
+        <script src="home/jsapp/services/services.js"></script>
+        <script src="home/models/accionistasManager.js"></script>
+        <script src="home/sharedjs/directives.js"></script>
+        <script src="home/sharedjs/controllers.js"></script>
+        <script src="home/sharedjs/services.js"></script>
+        
+        <script src="home/sharedjs/localize.js"></script>
+        <script src="home/sharedjs/main.js"></script>
+        <script src="home/sharedjs/directives.js"></script>
+        -->
+
+        <script src="{{ path( 'home_app_js') }}"></script>
+
+        {#
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/UI/UIService.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Form/FormDirective.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/Page/PageCtrl.js') }}"></script>
+        #}
+        <script src="{{ asset('bundles/lughwebapp/js/src/Bootstrap/home.js') }}"></script>
+        <script src="{{ asset('bundles/lughwebapp/js/src/vendors/localPiwik.js') }}"></script>
+
+        <!-- endbuild -->
+    </body>
+</html>

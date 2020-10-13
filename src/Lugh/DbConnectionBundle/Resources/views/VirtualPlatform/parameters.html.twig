@@ -1,0 +1,47 @@
+<form id="form_parameters" class="form-horizontal">
+    <fieldset>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:VirtualPlatform:parametersConfig.html.twig'  with {'platform_id' : platform_id} %}
+        </div>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:VirtualPlatform:parametersLive.html.twig'  with {'platform_id' : platform_id} %}
+        </div>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:VirtualPlatform:parametersStates.html.twig'  with {'platform_id' : platform_id} %}
+        </div>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:VirtualPlatform:parametersJunta.html.twig'  with {'platform_id' : platform_id} %}
+        </div>
+    </fieldset>
+</form>
+<div class="widget widget-table">
+
+    <div class="widget-header">
+        <h3 style="text-rendering: auto;">
+            <i class="icon-pencil"></i>
+            Guardar Parametros
+        </h3>
+    </div> <!-- /widget-header -->
+
+    <div class="widget-content">
+
+        <table  class="table table-striped table-bordered responsive">
+            <thead>
+                <tr>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>
+                        <button type="button" class="btn btn-primary btn-large" onclick="SetParams('{{ path('_virtualplatform_save_parameters', {'platform_id' : platform_id} ) }}',$('#form_parameters :input'), '{{ path( '_virtualplatform_parameters', {'platform_id' : platform_id}) }}', 'content'); return false;">Save changes</button>
+                        <button class="btn btn-large">Cancel</button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+    </div> <!-- /widget-content -->
+
+</div>

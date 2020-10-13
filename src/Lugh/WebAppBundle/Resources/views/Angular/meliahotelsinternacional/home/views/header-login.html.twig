@@ -1,0 +1,59 @@
+{% verbatim %}
+    <header class="clearfix header-inicio" data-ng-controller="HeaderCtrl">
+
+        <div class="container-header">
+
+
+            <div id="header-top">
+
+                <div class="row">
+
+                    <div class="col-xs-6">
+                        <a href="http://www.melia.com" target="_self">Reserva tu hotel en melia.com</a>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <ul class="list-inline" role="menu" data-ng-controller="LangCtrl">
+                            <li lang-element="es" data-ng-show="lang !== 'Espanol' ">
+                                <a href="javascript:;" data-ng-click="setLang('Espanol')"> Español</a></li>
+                            <li lang-element="ca" data-ng-show="lang !== 'Catalan' ">
+                                <a href="javascript:;" data-ng-click="setLang('Catalan')"> Català</a></li>
+                            <li lang-element="gl" data-ng-show="lang !== 'Gallego' ">
+                                <a href="javascript:;" data-ng-click="setLang('Gallego')"> Galego</a></li>
+                            <li lang-element="en" data-ng-show="lang !== 'English' ">
+                                <a href="javascript:;" data-ng-click="setLang('English')"> English</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="header-logo" class="clearfix">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="#/">
+                        <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
+                        <span>{{ brand()}}</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="region region-navigation">
+                <div class="block block-nice-menus">
+                    <div class="content">
+                        <ul class="nice-menu list-inline clearfix" id="nice-menu-1">
+                            <li class=" first"> <a href="#/app/inicio"><span data-i18n="Inicio">Inicio</span></a> </li>
+                            <li> <a href="#/app/contactar"><span data-i18n="Contactar">Contactar</span></a> </li>
+                            <li> <a href="#/app/requisitos"><span data-i18n="Requisitos">Requisitos</span></a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!--/.containe-header -->
+
+    </header>
+{% endverbatim %}

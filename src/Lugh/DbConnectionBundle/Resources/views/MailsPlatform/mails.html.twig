@@ -1,0 +1,63 @@
+<form id="form_parameters" class="form-horizontal">
+    <fieldset>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:MailsPlatform:parametersTable.html.twig'  with {'platform_id' : platform_id} %}
+        </div>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:MailsPlatform:specialMailsTable.html.twig'  with {'platform_id' : platform_id} %}
+        </div>
+        <div class="widget widget-table">
+           {# {% include 'LughDbConnectionBundle:ConfigPlatform:parametersOptions.html.twig'  with {'platform_id' : platform_id} %} #}
+        </div>
+        <div class="widget widget-table">
+           {# {% include 'LughDbConnectionBundle:ConfigPlatform:parametersConfig.html.twig'  with {'platform_id' : platform_id} %} #}
+        </div>
+        <div class="widget widget-table">
+           {# {% include 'LughDbConnectionBundle:ConfigPlatform:parametersFile.html.twig'  with {'platform_id' : platform_id} %} #}
+        </div>
+    </fieldset>
+</form>
+<div class="widget widget-table">
+
+    <div class="widget-header">
+        <h3 style="text-rendering: auto;">
+            <i class="icon-pencil"></i>
+            Guardar Mails
+        </h3>
+    </div> <!-- /widget-header -->
+
+    <div class="widget-content">
+
+        <table  class="table table-striped table-bordered responsive">
+            <thead>
+                <tr>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>
+                        <button type="button" class="btn btn-primary btn-large" onclick="SetParams('{{ path('_configplatform_save_parameters', {'platform_id' : platform_id} ) }}',$('#form_parameters :input')); return false;">Save changes</button>
+                        <button class="btn btn-large">Cancel</button>
+                        <button class="btn btn-large"
+                        onclick="$.post('{{ path('_clear_cache', {'platform_id' : platform_id} ) }}',{},function(data){if (data.success === '1'){
+                            msgCorrect('Clear Cache','complete','success');
+                            fun(urlcontent, div);
+                        }else{
+                            msgCorrect('Clear Cache','Ha ocurrido un error','error');
+                        }},'json').fail(function(data) {
+                            if (data.status == 401)
+                            {
+                                window.location.href = Routing.generate('_home', true);
+                            }
+                        });">Clear Cache</button>
+
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+    </div> <!-- /widget-content -->
+
+</div>

@@ -1,0 +1,3540 @@
+/* Gamesa */
+// 
+// Variables
+// --------------------------------------------------
+
+
+
+@header_height: 70px;       // top header
+@cookies_height: 70px;
+
+@nav_height: 50px;
+
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   lighten(#000, 33.5%); // #555
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
+
+@brand-primary:         #7a7878;
+@brand-success:         #b6bc1d;  
+@brand-info:            darken(@brand-primary, 10);
+@brand-info-alt:        darken(@brand-primary, 20);
+@brand-warning:         #D3222A;
+@brand-danger:          #D3222A;
+
+@color-orange:          #EF8200;
+@color-violet:          @brand-info-alt;
+
+
+@bg-foro: @brand-primary;
+@bg-voto: @brand-primary;
+@bg-derecho: @brand-primary; 
+@bg-av: @brand-primary;
+
+
+
+// @skin-darker:           #
+// @skin-dark:             #;
+@skin:                  @brand-primary;
+@skin-light:            lighten(@skin, 50);
+// @skin-lighter:          #
+// @skin-bright:           #
+@dark:                  darken(@brand-primary, 50);
+@bright:                lighten(@brand-primary, 80);
+@reverse:               #fff;
+@bg-top:                #292929;
+
+@state-default-bg:              #f6f6f6; // also: pagination bg
+@state-default-border:          darken(spin(@state-default-bg, -10), 5%); 
+@state-default-border-light:    #f3f3f3; 
+
+
+//== Scaffolding
+//
+// ## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+@body-bg:               #ffffff;
+//** Global text color on `<body>`.
+@text-color:            #555555;
+
+//** Global textual link color.
+@link-color:           #303030;
+//** Link hover color set via `darken()` function.
+@link-hover-color:      @brand-success;
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-family-sans-serif:  'klavika_rgregular', Arial, Verdana, Helvetica, sans-serif;
+@font-family-serif:       'klavika_rgregular', Arial, Verdana, Helvetica, sans-serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          12px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+//** By default, this inherits from the `<body>`.
+@headings-font-family:    inherit;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+//-- Iconography
+//
+//## Specify custom locations of the include Glyphicons icon font. Useful for those including Bootstrap via Bower.
+
+@icon-font-path:          "../../fonts/";
+@icon-font-name:          "glyphicons-halflings-regular";
+@icon-font-svg-id:        "glyphicons_halflingsregular";
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+
+@padding-large-vertical:    10px;
+@padding-large-horizontal:  16px;
+
+@padding-small-vertical:    5px;
+@padding-small-horizontal:  10px;
+
+@padding-xs-vertical:       1px;
+@padding-xs-horizontal:     5px;
+
+@line-height-large:         1.33;
+@line-height-small:         1.5;
+
+@border-radius-base:        0;
+@border-radius-large:       0;
+@border-radius-small:       0;
+
+//** Global color for active items (e.g., navs or dropdowns).
+@component-active-color:    #fff;
+//** Global background color for active items (e.g., navs or dropdowns).
+@component-active-bg:       @brand-primary;
+
+//** Width of the `border` for generating carets that indicator dropdowns.
+@caret-width-base:          4px;
+//** Carets increase slightly in size for larger components.
+@caret-width-large:         5px;
+
+
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+
+//** Padding for `<th>`s and `<td>`s.
+@table-cell-padding:            10px;
+//** Padding for cells in `.table-condensed`.
+@table-condensed-cell-padding:  5px;
+
+//** Default background color used for all tables.
+@table-bg:                      transparent;
+//** Background color used for `.table-striped`.
+@table-bg-accent:               #f9f9f9;
+//** Background color used for `.table-hover`.
+@table-bg-hover:                #f5f5f5;
+@table-bg-active:               @table-bg-hover;
+
+//** Border color for table and cell borders.
+@table-border-color:            #ddd;
+
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+@btn-font-weight:                normal;
+
+@btn-default-color:              @text-color;
+@btn-default-bg:                 @bright;
+@btn-default-border:             darken(@btn-default-bg, 5%);
+
+@btn-primary-color:              #303030;
+@btn-primary-bg:                 #efefef;
+@btn-primary-border:             darken(#efefef, 5%);
+
+@btn-success-color:              #fff;
+@btn-success-bg:                 @brand-success;
+@btn-success-border:             darken(@btn-success-bg, 5%);
+
+@btn-info-color:                 #fff;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                darken(@btn-info-bg, 5%);
+
+@btn-warning-color:              #fff;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
+
+@btn-danger-color:               #fff;
+@btn-danger-bg:                  @brand-danger;
+@btn-danger-border:              darken(@btn-danger-bg, 5%);
+
+@btn-info-alt-color:              #fff;
+@btn-info-alt-bg:                 @brand-info-alt;
+@btn-info-alt-border:             darken(@btn-info-alt-bg, 5%);
+
+@btn-dark-color:                 #fff;
+@btn-dark-bg:                    @dark;
+@btn-dark-border:                darken(@btn-dark-bg, 5%);
+
+@btn-link-disabled-color:        @gray-light;
+
+
+//== Forms
+//
+//##
+
+//** `<input>` background color
+@input-bg:                       #fff;
+//** `<input disabled>` background color
+@input-bg-disabled:              @gray-lighter;
+
+//** Text color for `<input>`s
+@input-color:                    @text-color;
+//** `<input>` border color
+@input-border:                   #9D9D9D;
+//** `<input>` border radius
+@input-border-radius:            @border-radius-base;
+//** Border color for inputs on focus
+@input-border-focus:             #66afe9;
+
+//** Placeholder text color
+@input-color-placeholder:        @gray-light;
+
+//** Default `.form-control` height
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+//** Large `.form-control` height
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+//** Small `.form-control` height
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+@legend-color:                   @gray-dark;
+@legend-border-color:            #C0C0C0;
+
+//** Background color for textual input addons
+@input-group-addon-bg:           @gray-lighter;
+//** Border color for textual input addons
+@input-group-addon-border-color: @input-border;
+
+
+//== Dropdowns
+//
+//## Dropdown menu container and contents.
+
+//** Background for the dropdown menu.
+@dropdown-bg:                    #fff;
+//** Dropdown menu `border-color`.
+@dropdown-border:                rgba(0,0,0,.15);
+//** Dropdown menu `border-color` **for IE8**.
+@dropdown-fallback-border:       #ccc;
+//** Divider color for between dropdown items.
+@dropdown-divider-bg:            #e5e5e5;
+
+//** Dropdown link text color.
+@dropdown-link-color:            @gray-dark;
+//** Hover color for dropdown links.
+@dropdown-link-hover-color:      #fff;
+//** Hover background for dropdown links.
+@dropdown-link-hover-bg:         @brand-primary;
+
+//** Active dropdown menu item text color.
+@dropdown-link-active-color:     @component-active-color;
+//** Active dropdown menu item background color.
+@dropdown-link-active-bg:        @component-active-bg;
+
+//** Disabled dropdown menu item background color.
+@dropdown-link-disabled-color:   @gray-light;
+
+//** Text color for headers within dropdown menus.
+@dropdown-header-color:          @gray-light;
+
+// Note: Deprecated @dropdown-caret-color as of v3.1.0
+@dropdown-caret-color:           #000;
+
+
+//-- Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+//
+// Note: These variables are not generated into the Customizer.
+
+@zindex-navbar:            1000;
+@zindex-dropdown:          1000;
+@zindex-popover:           1010;
+@zindex-tooltip:           1030;
+@zindex-navbar-fixed:      1030;
+@zindex-modal-background:  1040;
+@zindex-modal:             1050;
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs:                  480px;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+@grid-columns:              12;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width:         30px;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+@grid-float-breakpoint:     @screen-sm-min;
+//** Point at which the navbar begins collapsing.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+@container-tablet:             ((720px + @grid-gutter-width));
+//** For `@screen-sm-min` and up.
+@container-sm:                 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:            ((940px + @grid-gutter-width));
+//** For `@screen-md-min` and up.
+@container-md:                 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:      ((1140px + @grid-gutter-width));
+//** For `@screen-lg-min` and up.
+@container-lg:                 @container-large-desktop;
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-height:                    @nav_height;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             @border-radius-base;
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       340px;
+
+@navbar-default-color:             #777;
+@navbar-default-bg:                #f8f8f8;
+@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+
+// Navbar links
+@navbar-default-link-color:                #777;
+@navbar-default-link-hover-color:          #333;
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         #555;
+@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color:       #ccc;
+@navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-default-brand-color:               @navbar-default-link-color;
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           #ddd;
+@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-border-color:       #ddd;
+
+
+// Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color:                      @gray-light;
+@navbar-inverse-bg:                         #222;
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 @gray-light;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        #333;
+
+
+//== Navs
+//
+//##
+
+//=== Shared nav styles
+@nav-link-padding:                          10px 15px;
+@nav-link-hover-bg:                         @gray-lighter;
+
+@nav-disabled-link-color:                   @gray-light;
+@nav-disabled-link-hover-color:             @gray-light;
+
+@nav-open-link-hover-color:                 #fff;
+
+//== Tabs
+@nav-tabs-border-color:                     #ddd;
+
+@nav-tabs-link-hover-border-color:          @gray-lighter;
+
+@nav-tabs-active-link-hover-bg:             @body-bg;
+@nav-tabs-active-link-hover-color:          @gray;
+@nav-tabs-active-link-hover-border-color:   #ddd;
+
+@nav-tabs-justified-link-border-color:            #ddd;
+@nav-tabs-justified-active-link-border-color:     @body-bg;
+
+//== Pills
+@nav-pills-border-radius:                   @border-radius-base;
+@nav-pills-active-link-hover-bg:            @component-active-bg;
+@nav-pills-active-link-hover-color:         @component-active-color;
+
+
+//== Pagination
+//
+//##
+
+@pagination-color:                     @link-color;
+@pagination-bg:                        @state-default-bg;
+@pagination-border:                    @state-default-bg;
+
+@pagination-hover-color:               @reverse;
+@pagination-hover-bg:                  @brand-primary;
+@pagination-hover-border:              @brand-primary;
+
+@pagination-active-color:              #fff;
+@pagination-active-bg:                 @brand-primary;
+@pagination-active-border:             @brand-primary;
+
+@pagination-disabled-color:            @gray-light;
+@pagination-disabled-bg:               @state-default-bg;
+@pagination-disabled-border:           @state-default-bg;
+
+
+//== Pager
+//
+//##
+
+@pager-bg:                             @pagination-bg;
+@pager-border:                         @pagination-border;
+@pager-border-radius:                  15px;
+
+@pager-hover-bg:                       @pagination-hover-bg;
+
+@pager-active-bg:                      @pagination-active-bg;
+@pager-active-color:                   @pagination-active-color;
+
+@pager-disabled-color:                 @pagination-disabled-color;
+
+
+//== Jumbotron
+//
+//##
+
+@jumbotron-padding:              30px;
+@jumbotron-color:                inherit;
+@jumbotron-bg:                   @gray-lighter;
+@jumbotron-heading-color:        inherit;
+@jumbotron-font-size:            ceil((@font-size-base * 1.5));
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+@state-success-text:             #4C9C77;
+@state-success-bg:               #EEFFF6;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #538DA7;
+@state-info-bg:                  #EFF6FF;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #BFA34C;
+@state-warning-bg:               #FFFBEF;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #CA674C;
+@state-danger-bg:                #FFF1ED;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+
+
+//== Tooltips
+//
+//##
+
+//** Tooltip max width
+@tooltip-max-width:           200px;
+//** Tooltip text color
+@tooltip-color:               #fff;
+//** Tooltip background color
+@tooltip-bg:                  #000;
+@tooltip-opacity:             .9;
+
+//** Tooltip arrow width
+@tooltip-arrow-width:         5px;
+//** Tooltip arrow color
+@tooltip-arrow-color:         @tooltip-bg;
+
+
+//== Popovers
+//
+//##
+
+//** Popover body background color
+@popover-bg:                          #fff;
+//** Popover maximum width
+@popover-max-width:                   276px;
+//** Popover border color
+@popover-border-color:                rgba(0,0,0,.2);
+//** Popover fallback border color
+@popover-fallback-border-color:       #ccc;
+
+//** Popover title background color
+@popover-title-bg:                    darken(@popover-bg, 3%);
+
+//** Popover arrow width
+@popover-arrow-width:                 10px;
+//** Popover arrow color
+@popover-arrow-color:                 #fff;
+
+//** Popover outer arrow width
+@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+//** Popover outer arrow color
+@popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
+//** Popover outer arrow fallback color
+@popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
+
+
+//== Labels
+//
+//##
+
+//** Default label background color
+@label-default-bg:            @gray-light;
+//** Primary label background color
+@label-primary-bg:            @brand-primary;
+//** Success label background color
+@label-success-bg:            @brand-success;
+//** Info label background color
+@label-info-bg:               @brand-info;
+//** Warning label background color
+@label-warning-bg:            @brand-warning;
+//** Danger label background color
+@label-danger-bg:             @brand-danger;
+
+//** Default label text color
+@label-color:                 #fff;
+//** Default text color of a linked label
+@label-link-hover-color:      #fff;
+
+
+//== Modals
+//
+//##
+
+//** Padding applied to the modal body
+@modal-inner-padding:         20px;
+
+//** Padding applied to the modal title
+@modal-title-padding:         15px;
+//** Modal title line-height
+@modal-title-line-height:     @line-height-base;
+
+//** Background color of modal content area
+@modal-content-bg:                             #fff;
+//** Modal content border color
+@modal-content-border-color:                   rgba(0,0,0,.2);
+//** Modal content border color **for IE8**
+@modal-content-fallback-border-color:          #999;
+
+//** Modal backdrop background color
+@modal-backdrop-bg:           #000;
+//** Modal backdrop opacity
+@modal-backdrop-opacity:      .5;
+//** Modal header border color
+@modal-header-border-color:   #e5e5e5;
+//** Modal footer border color
+@modal-footer-border-color:   @modal-header-border-color;
+
+@modal-lg:                    900px;
+@modal-md:                    600px;
+@modal-sm:                    300px;
+
+
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
+@alert-success-bg:            @state-success-bg;
+@alert-success-text:          @state-success-text;
+@alert-success-border:        @state-success-border;
+
+@alert-info-bg:               @state-info-bg;
+@alert-info-text:             @state-info-text;
+@alert-info-border:           @state-info-border;
+
+@alert-warning-bg:            @state-warning-bg;
+@alert-warning-text:          @state-warning-text;
+@alert-warning-border:        @state-warning-border;
+
+@alert-danger-bg:             @state-danger-bg;
+@alert-danger-text:           @state-danger-text;
+@alert-danger-border:         @state-danger-border;
+
+
+//== Progress bars
+//
+//##
+
+//** Background color of the whole progress component
+@progress-bg:                 #f5f5f5;
+//** Progress bar text color
+@progress-bar-color:          #fff;
+
+//** Default progress bar color
+@progress-bar-bg:             @brand-primary;
+//** Success progress bar color
+@progress-bar-success-bg:     @brand-success;
+//** Warning progress bar color
+@progress-bar-warning-bg:     @brand-warning;
+//** Danger progress bar color
+@progress-bar-danger-bg:      @brand-danger;
+//** Info progress bar color
+@progress-bar-info-bg:        @brand-info;
+
+
+//== List group
+//
+//##
+
+//** Background color on `.list-group-item`
+@list-group-bg:                 #fff;
+//** `.list-group-item` border color
+@list-group-border:             #ddd;
+//** List group border radius
+@list-group-border-radius:      @border-radius-base;
+
+//** Background color of single list elements on hover
+@list-group-hover-bg:           #f5f5f5;
+//** Text color of active list elements
+@list-group-active-color:       @component-active-color;
+//** Background color of active list elements
+@list-group-active-bg:          @component-active-bg;
+//** Border color of active list elements
+@list-group-active-border:      @list-group-active-bg;
+@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
+
+@list-group-link-color:         #555;
+@list-group-link-heading-color: #333;
+
+
+//== Panels
+//
+//##
+
+@panel-bg:                    #fff;
+@panel-body-padding:          15px;
+@panel-border-radius:         @border-radius-base;
+
+//** Border color for elements within panels
+@panel-inner-border:          @state-default-border;
+@panel-footer-bg:             #fafafa;
+
+@panel-default-text:          @text-color;
+@panel-default-border:        @state-default-border;
+@panel-default-heading-bg:    @state-default-bg;
+
+@panel-primary-text:          #fff;
+@panel-primary-border:        @brand-primary;
+@panel-primary-heading-bg:    @brand-primary;
+
+@panel-success-text:          @state-success-text;
+@panel-success-border:        @state-success-border;
+@panel-success-heading-bg:    @state-success-bg;
+
+@panel-info-text:             @state-info-text;
+@panel-info-border:           @state-info-border;
+@panel-info-heading-bg:       @state-info-bg;
+
+@panel-warning-text:          @state-warning-text;
+@panel-warning-border:        @state-warning-border;
+@panel-warning-heading-bg:    @state-warning-bg;
+
+@panel-danger-text:           @state-danger-text;
+@panel-danger-border:         @state-danger-border;
+@panel-danger-heading-bg:     @state-danger-bg;
+
+
+//== Thumbnails
+//
+//##
+
+//** Padding around the thumbnail image
+@thumbnail-padding:           4px;
+//** Thumbnail background color
+@thumbnail-bg:                @body-bg;
+//** Thumbnail border color
+@thumbnail-border:            #ddd;
+//** Thumbnail border radius
+@thumbnail-border-radius:     @border-radius-base;
+
+//** Custom text color for thumbnail captions
+@thumbnail-caption-color:     @text-color;
+//** Padding around the thumbnail caption
+@thumbnail-caption-padding:   9px;
+
+
+//== Wells
+//
+//##
+
+@well-bg:                     #f5f5f5;
+@well-border:                 darken(@well-bg, 7%);
+
+
+//== Badges
+//
+//##
+
+@badge-color:                 #fff;
+//** Linked badge text color on hover
+@badge-link-hover-color:      #fff;
+@badge-bg:                    @gray-light;
+
+//** Badge text color in active nav link
+@badge-active-color:          @link-color;
+//** Badge background color in active nav link
+@badge-active-bg:             #fff;
+
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;
+
+
+//== Breadcrumbs
+//
+//##
+
+@breadcrumb-padding-vertical:   8px;
+@breadcrumb-padding-horizontal: 15px;
+//** Breadcrumb background color
+@breadcrumb-bg:                 @state-default-bg;
+//** Breadcrumb text color
+@breadcrumb-color:              @state-default-border;
+//** Text color of current page in the breadcrumb
+@breadcrumb-active-color:       @gray-light;
+//** Textual separator for between breadcrumb elements
+@breadcrumb-separator:          "/";
+
+
+//== Carousel
+//
+//##
+
+@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
+
+@carousel-control-color:                      #fff;
+@carousel-control-width:                      15%;
+@carousel-control-opacity:                    .5;
+@carousel-control-font-size:                  20px;
+
+@carousel-indicator-active-bg:                #fff;
+@carousel-indicator-border-color:             #fff;
+
+@carousel-caption-color:                      #fff;
+
+
+//== Close
+//
+//##
+
+@close-font-weight:           bold;
+@close-color:                 #000;
+@close-text-shadow:           0 1px 0 #fff;
+
+
+//== Code
+//
+//##
+
+@code-color:                  #c7254e;
+@code-bg:                     #f9f2f4;
+
+@kbd-color:                   #fff;
+@kbd-bg:                      #333;
+
+@pre-bg:                      #f5f5f5;
+@pre-color:                   @gray-dark;
+@pre-border-color:            #ccc;
+@pre-scrollable-max-height:   340px;
+
+
+//== Type
+//
+//##
+
+//** Text muted color
+@text-muted:                  @gray-light;
+//** Abbreviations and acronyms border color
+@abbr-border-color:           @gray-light;
+//** Headings small color
+@headings-small-color:        @gray-light;
+//** Blockquote small color
+@blockquote-small-color:      @gray-light;
+//** Blockquote font size
+@blockquote-font-size:        (@font-size-base * 1.25);
+//** Blockquote border color
+@blockquote-border-color:     @brand-primary;
+//** Page header border color
+@page-header-border-color:    @gray-lighter;
+
+
+//== Miscellaneous
+//
+//##
+
+//** Horizontal line color.
+@hr-border:                   @gray-lighter;
+
+//** Horizontal offset for forms and lists.
+@component-offset-horizontal: 180px;
+
+
+
+// Config supported browsers for your project
+@webkit: true;
+@moz: true;
+@opera: true;
+@ms: true;
+@w3c: true;
+
+
+.border-radius(...) {
+
+    @webkit_local: true;
+    @moz_local: true;
+    @w3c_local: true;
+
+    @process: ~`(function(value){value=value||"0";var numRegex=/\d/gi,numWithoutValue=/(?:\s|^)(\.?\d+\.?\d*)(?![^(]*\)|\w|%|\.)/gi;return/^[^, ]*,/.test(value)&&(value=value.replace(/(?:,)(?![^(]*\))/g,"")),numRegex.test(value)&&(value=value.replace(numWithoutValue,function(match){return 0==match&&match||match+"px"})),value})((function(){var args="@{arguments}";return args=args.replace(/^\[|\]$/g,"")})())`;
+
+    .result (@arguments, @signal, @boolean, @local_boolean) when (@boolean = true) and (@local_boolean = true) {
+        .inception (@signal, @arguments) when (@signal = 1) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { -webkit-border-radius: @process; -webkit-background-clip: padding-box;  }
+        .inception (@signal, @arguments) when (@signal = 1) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+        .inception (@signal, @arguments) when (@signal = 2) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { -moz-border-radius: @process; -moz-background-clip: padding;  }
+        .inception (@signal, @arguments) when (@signal = 2) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+        .inception (@signal, @arguments) when (@signal = 3) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { border-radius: @process; background-clip: padding-box;  }
+        .inception (@signal, @arguments) when (@signal = 3) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+        .inception(@signal, @arguments);
+    }
+    .result (@arguments, @signal, @boolean, @local_boolean) when not (@boolean = true), not (@local_boolean = true) {}
+
+    .result(@arguments, 1, @webkit, @webkit_local);
+    .result(@arguments, 2, @moz, @moz_local);
+    .result(@arguments, 3, @w3c, @w3c_local);
+
+}
+
+
+
+.box-shadow(...) {
+
+    @webkit_local: true;
+    @moz_local: true;
+    @w3c_local: true;
+
+    @process: ~`(function(value){value=value||"0";var numRegex=/\d/gi,numWithoutValue=/(?:\s|^)(\.?\d+\.?\d*)(?![^(]*\)|\w|%|\.)/gi;return/^[^, ]*,/.test(value)&&(value=value.replace(/(?:,)(?![^(]*\))/g,"")),numRegex.test(value)&&(value=value.replace(numWithoutValue,function(match){return 0==match&&match||match+"px"})),value})((function(){var args="@{arguments}";return args=args.replace(/^\[|\]$/g,"")})())`;
+
+    .result (@arguments, @signal, @boolean, @local_boolean) when (@boolean = true) and (@local_boolean = true) {
+        .inception (@signal, @arguments) when (@signal = 1) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { -webkit-box-shadow: @process; }
+        .inception (@signal, @arguments) when (@signal = 1) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+        .inception (@signal, @arguments) when (@signal = 2) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { -moz-box-shadow: @process; }
+        .inception (@signal, @arguments) when (@signal = 2) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+        .inception (@signal, @arguments) when (@signal = 3) and (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) { box-shadow: @process; }
+        .inception (@signal, @arguments) when (@signal = 3) and not (isstring(@process)) and not (iscolor(@process)) and not (isnumber(@process)) and not (iskeyword(@process)) and not (isurl(@process)) and not (ispixel(@process)) and not (ispercentage(@process)) and not (isem(@process)) {} 
+        .inception(@signal, @arguments);
+    }
+    .result (@arguments, @signal, @boolean, @local_boolean) when not (@boolean = true), not (@local_boolean = true) {}
+
+    .result(@arguments, 1, @webkit, @webkit_local);
+    .result(@arguments, 2, @moz, @moz_local);
+    .result(@arguments, 3, @w3c, @w3c_local);
+
+}
+
+// Drop shadows
+//
+// Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
+//   supported browsers that have box shadow capabilities now support the
+//   standard `box-shadow` property.
+.box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+    box-shadow: @shadow;
+}
+
+// Transitions
+.transition(@transition) {
+    -webkit-transition: @transition;
+    transition: @transition;
+}
+.transition-property(@transition-property) {
+    -webkit-transition-property: @transition-property;
+    transition-property: @transition-property;
+}
+.transition-delay(@transition-delay) {
+    -webkit-transition-delay: @transition-delay;
+    transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+    -webkit-transition-duration: @transition-duration;
+    transition-duration: @transition-duration;
+}
+.transition-transform(@transition) {
+    -webkit-transition: -webkit-transform @transition;
+    -moz-transition: -moz-transform @transition;
+    -o-transition: -o-transform @transition;
+    transition: transform @transition;
+}
+
+
+
+//
+//  / Variables
+// --------------------------------------------------
+
+
+
+
+/**/
+
+body {
+    background-color: @body-bg;
+    font-family:  @font-family-base;
+    font-size: @font-size-base;
+
+}
+
+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: @font-family-sans-serif;
+    color: @brand-primary;
+}
+
+
+
+a {
+    color: @link-color;    
+}
+
+a:hover {
+    color: @link-hover-color;    
+
+}
+
+/**/
+
+
+.bg-foro {
+    background-color: @bg-foro;
+    color: @reverse;  
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: @reverse;   
+    }
+
+
+}
+
+.bg-voto {
+    background-color: @bg-voto;
+    color: @reverse;    
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: @reverse;    
+    }
+}
+
+.bg-derecho {
+    background-color: @bg-derecho;
+    color: @reverse;  
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: @reverse;   
+    }
+}
+
+.bg-av {
+    background-color: @bg-av;
+    color: #ffffff;  
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: #ffffff;  
+    }
+}
+
+
+a.bg-foro {
+    background-color: @bg-foro;
+        color: @reverse;  
+    &:hover {
+         background-color: @brand-success;
+         opacity: 1;
+        
+    }
+
+
+}
+
+a.bg-voto {
+    background-color: @bg-voto;
+    color: @reverse;    
+    &:hover {
+         background-color: @brand-success;
+         opacity: 1;
+        
+    }
+}
+
+a.bg-derecho {
+    background-color: @bg-derecho;
+    color: @reverse;  
+    &:hover {
+         background-color: @brand-success;
+         opacity: 1;
+        
+    }
+}
+
+
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: inherit;
+    color: #666666;
+    border: 0;
+    border-bottom: 1px dashed #e5e5e5;
+}
+
+
+
+//@import "components/scaffolding.less";
+
+
+.bg-style (@background, @color) {
+    background-color: @background;
+    color: @color;
+}
+
+.bg-variant-alt (@color) {
+    background-color: @color;
+    color: @reverse;
+    &:hover {
+        background-color: @color;
+        color: @reverse;
+    }
+}
+
+
+::selection {
+    background: @brand-primary;
+    color: @reverse;
+}
+::-moz-selection {
+    background: @brand-primary;
+    color: @reverse;
+}
+
+// background
+// -----------------
+// overrides Bootstrap
+a.bg-primary { .bg-variant-alt (@brand-primary); }
+a.bg-success { .bg-variant-alt (@brand-success); }
+a.bg-info { .bg-variant-alt (@brand-info); }
+a.bg-warning { .bg-variant-alt (@brand-warning); }
+a.bg-danger { .bg-variant-alt (@brand-danger); }
+a.bg-orange { .bg-variant-alt (@color-orange); }
+
+// normal
+.bg-primary { .bg-style(@brand-primary, @reverse) };
+.bg-primary-light { .bg-style(@skin-light, @reverse) };
+.bg-success { .bg-style(@brand-success, @reverse) };
+.bg-info { .bg-style(@brand-info, @reverse) };
+.bg-warning { .bg-style(@brand-warning, @reverse) };
+
+.bg-danger { .bg-style(@brand-danger, @reverse) };
+.bg-orange { .bg-style(@color-orange, @reverse) };
+.bg-violet { .bg-style(@color-violet, @reverse) };
+.bg-dark { .bg-style(@dark, @reverse) };
+.bg-bright { .bg-style(@bright, @text-color) };
+.bg-reverse { .bg-style(@reverse, @text-color) };
+
+.bg-facebook { .bg-style(#335397, @reverse) };
+.bg-twitter { .bg-style(#00c7f7, @reverse) };
+.bg-google-plus { .bg-style(#df4a32, @reverse) };
+
+
+/*CSS */
+
+//@import "components/type.less";
+
+// Including: Gradient text, Blockquote, Dropcap, Highlight, List, divider/space, background
+
+
+// Gradient text
+.gradient-text {
+    color: @brand-primary; // fallback
+}
+
+.text-normal { font-size: @font-size-base; }
+.text-huge { font-size: 72px; }
+.text-large { font-size: 50px; }
+.size-h1 { font-size: @font-size-h1; }
+.size-h2 { font-size: @font-size-h2; }
+.size-h3 { font-size: @font-size-h3; }
+.size-h4 { font-size: @font-size-h4; }
+.text-thin { font-weight: 300; }
+.text-ultralight { font-weight: 100; }
+
+// color
+.color-primary { color: @brand-primary; }
+.color-success { color: @brand-success; }
+.color-info { color: @brand-info; }
+.color-info-alt { color: @brand-info-alt; }
+.color-warning { color: @brand-warning; }
+.color-danger { color: @brand-danger; }
+.color-dark { color: @dark; }
+.color-reverse { color: @reverse; }
+.color-gray-darker { color: @gray-darker; }
+.color-gray-dark { color: @gray-dark; }
+.color-gray { color: @gray; }
+.color-gray-light { color: @gray-light; }
+.color-gray-lighter { color: @gray-lighter; }
+
+
+// Dropcap
+.dropcap-square,
+.dropcap-circle {
+    background-color: #444;
+    color: @reverse;
+}
+
+.dropcap-square {
+    border-radius: @border-radius-base;        
+}
+
+.dropcap.colored {
+    color: @brand-primary;
+}
+
+.dropcap-square.colored,
+.dropcap-circle.colored {
+    background-color: @brand-primary;
+}
+
+
+// Hightlight
+.highlight {
+    background-color: @brand-primary;
+    color: @reverse;
+    border-radius: @border-radius-base;        
+}
+
+//@import "components/tables.less";
+
+.table-dynamic {
+    // filters
+    // table
+    .table-bordered {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+
+        thead th {
+
+            .glyphicon-chevron-up,
+            .glyphicon-chevron-down {
+                color: #999;
+
+                &:hover {
+                    color: @skin;
+                }
+                &.active {
+                    color: @skin;
+                }                
+            }                      
+        }
+    }
+}
+
+
+//@import "components/tables-responsive.less";
+
+// Radio
+.ui-radio {
+
+    input[type="radio"] + span:before {
+        border: 1px solid #ccc;         
+    }
+
+    input[type="radio"]:disabled + span:before {
+        opacity: .65;
+        border: 1px solid #ccc;
+    }
+
+    input[type="radio"]:checked + span:after {
+        background-color: @brand-primary;
+    }
+
+    input[type="radio"]:disabled:checked + span:after {
+        background-color: #ccc;
+    }
+}
+
+// Checkbox
+.ui-checkbox {
+
+    input[type="checkbox"] + span:before {
+        border-radius: @border-radius-small;         
+    }
+
+    input[type="checkbox"]:disabled + span:before {
+        border: 1px solid #ccc;
+    }
+
+    input[type="checkbox"]:checked + span:before {
+        background-color: @brand-primary;
+        border: 1px solid @brand-primary;         
+    }
+    input[type="checkbox"]:checked + span:after {
+        background: url("img/checkmark.png") no-repeat center center;
+    }
+
+    input[type="checkbox"]:disabled:checked + span:before {
+        opacity: .65;
+        background-color: #ccc;
+        border: 1px solid #ccc;         
+    }
+    input[type="checkbox"]:disabled:checked + span:after {
+        background: url("img/checkmark.png") no-repeat center center;
+    }
+}
+
+
+//@import "components/form-editor.less";
+
+.ui-editor {
+    .btn-toolbar {
+        .btn-default {
+            background-color: #fff;
+            color: @text-color;
+        }
+    }
+}
+
+
+//@import "components/form-elements.less";
+
+// dependency: http://angular-ui.github.io/bootstrap/ 
+
+
+
+// Rating
+.ui-rating {
+
+    // when active
+    .fa.fa-star {
+        color: @skin-light;
+    }
+    &.ui-rating-success {
+        .fa.fa-star {
+            color: @brand-success;
+        }        
+    }
+    &.ui-rating-info {
+        .fa.fa-star {
+            color: @brand-info;
+        }        
+    }
+    &.ui-rating-warning {
+        .fa.fa-star {
+            color: @brand-warning;
+        }        
+    }
+    &.ui-rating-danger {
+        .fa.fa-star {
+            color: @brand-danger;
+        }        
+    }
+}
+
+
+//@import "components/form-input.less";
+
+
+
+.form-control {
+    border-width: 1px;
+}
+
+.form-control:focus {
+    border-color: @gray-light;
+
+}
+
+
+input.input-primary {
+    border-color: @gray-light;
+    &:focus {
+        border-color: @gray-light;
+    }
+}
+input.input-info {
+    border-color: @brand-info;
+    &:focus {
+        border-color: @brand-info;
+    }
+}
+input.input-success {
+    border-color: @brand-success;
+    &:focus {
+        border-color: @brand-success;
+    }
+}
+input.input-warning {
+    border-color: @brand-warning;
+    &:focus {
+        border-color: @brand-warning;
+    }
+}
+input.input-danger {
+    border-color: @brand-danger;
+    &:focus {
+        border-color: @brand-danger;
+    }
+}
+
+// Drag and drop
+.drop-box {
+    background: #F8F8F8;
+    border: 2px dashed #DDD;
+    border-radius: @border-radius-base;
+}
+
+
+//@import "components/form-select.less";
+
+.ui-select {
+    > select {
+        border: 1px solid #cbd5dd;
+        border-radius: @border-radius-base;
+    }
+
+    &:after {
+        color: @input-border;
+    }
+}
+
+
+//@import "components/buttons.less";
+
+
+
+// mixin
+.button-line-variant(@color, @background, @border) {
+    color: @text-color;
+    background-color: transparent; 
+    border-color: @border;
+
+    &:hover,
+        &:focus,
+        &:active,
+        &.active {
+        color: @color;
+        background-color: @background;
+    }
+    .open & {
+        &.dropdown-toggle {
+            color: @color;
+            background-color: @background;
+        }
+    }
+}
+
+.button-icon-variant(@size) {
+    height: @size;
+    width: @size;
+    line-height: @size;    
+}
+
+.social-button-variant(@background, @border) {
+    color: @reverse;
+    background-color: @background;
+    border-color: @border;
+    &:hover {
+        color: @reverse;
+        background-color: darken(@background, 8%);
+        border-color: darken(@border, 12%)        
+    }    
+}
+
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.button-variant(@color; @background; @border) {
+    color: @color;
+    background-color: @background;
+    border-color: @border;
+
+    &:hover,
+        &:focus,
+        &:active,
+        &.active,
+        .open .dropdown-toggle& {
+        color: @reverse;
+        background-color: @brand-success;
+        border-color: darken(@border, 12%);
+    }
+    &:active,
+        &.active,
+        .open .dropdown-toggle& {
+        background-image: none;
+    }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+            &:focus,
+            &:active,
+            &.active {
+            background-color: @brand-success;
+            border-color: @border;
+        }
+    }
+
+    .badge {
+        color: @background;
+        background-color: @color;
+    }
+}
+
+.btn {
+    .border-radius(0,0,0,0);   
+}
+
+.btn-default {
+    .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+    .border-radius(0,0,0,0);   
+}
+.btn-primary {
+    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+    .border-radius(0,0,0,0);   
+}
+// Success appears as green
+.btn-success {
+    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+    .border-radius(0,0,0,0);   
+}
+// Info appears as blue-green
+.btn-info {
+    .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+    .border-radius(0,0,0,0);     
+}
+// Warning appears as orange
+.btn-warning {
+    .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+    .border-radius(0,0,0,0);   
+}
+// Danger and error appear as red
+.btn-danger {
+    .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+    .border-radius(0,0,0,0);   
+}
+
+
+
+
+// add to default button
+.btn-info-alt {
+    // .button-variant(@btn-info-alt-color, @btn-info-alt-bg, @btn-info-alt-border);
+}
+.btn-dark {
+    //.button-variant(@btn-dark-color, @btn-dark-bg, @btn-dark-border);
+}
+
+// lined version
+.btn-line-default {
+    .button-line-variant(@btn-default-color, @btn-default-bg, @btn-default-border);
+}
+.btn-line-primary {
+    .button-line-variant(@btn-primary-color, @btn-primary-bg, @btn-primary-border);
+}
+.btn-line-success {
+    .button-line-variant(@btn-success-color, @btn-success-bg, @btn-success-border);
+}
+.btn-line-info {
+    .button-line-variant(@btn-info-color, @btn-info-bg, @btn-info-border);
+}
+.btn-line-warning {
+    .button-line-variant(@btn-warning-color, @btn-warning-bg, @btn-warning-border);
+}
+.btn-line-danger {
+    .button-line-variant(@btn-danger-color, @btn-danger-bg, @btn-danger-border);
+}
+.btn-line-dark {
+    .button-line-variant(@btn-dark-color, @btn-dark-bg, @btn-dark-border);
+}
+
+// 
+
+.btn-left {
+    &:before {
+        border-right: 10px solid @btn-default-bg;
+    }
+    &:hover {
+        &:before {
+            border-right: 10px solid darken(@btn-default-bg, 8%);
+        }
+    }
+
+    // Color
+    &.btn-primary {
+        &:before {
+            border-right: 10px solid @btn-primary-bg;
+        }
+        &:hover {
+            &:before {
+                border-right: 10px solid darken(@btn-primary-bg, 8%);
+            }
+        }
+    }
+    &.btn-success {
+        &:before {
+            border-right: 10px solid @btn-success-bg;
+        }
+        &:hover {
+            &:before {
+                border-right: 10px solid darken(@btn-success-bg, 8%);
+            }
+        }
+    }
+    &.btn-info {
+        &:before {
+            border-right: 10px solid @btn-info-bg;
+        }
+        &:hover {
+            &:before {
+                border-right: 10px solid darken(@btn-info-bg, 8%);
+            }
+        }
+    }
+    &.btn-warning {
+        &:before {
+            border-right: 10px solid @btn-warning-bg;
+        }
+        &:hover {
+            &:before {
+                border-right: 10px solid darken(@btn-warning-bg, 8%);
+            }
+        }
+    }
+    &.btn-danger {
+        &:before {
+            border-right: 10px solid @btn-danger-bg;
+        }
+        &:hover {
+            &:before {
+                border-right: 10px solid darken(@btn-danger-bg, 8%);
+            }
+        }
+    }
+}
+.btn-right {
+    &:before {
+        border-left: 10px solid @btn-default-bg;
+    }
+    &:hover {
+        &:before {
+            border-left: 10px solid darken(@btn-default-bg, 8%);
+        }
+    }
+
+    // Color
+    &.btn-primary {
+        &:before {
+            border-left: 10px solid @btn-primary-bg;
+        }
+        &:hover {
+            &:before {
+                border-left: 10px solid darken(@btn-primary-bg, 8%);
+            }
+        }
+    }
+    &.btn-success {
+        &:before {
+            border-left: 10px solid @btn-success-bg;
+        }
+        &:hover {
+            &:before {
+                border-left: 10px solid darken(@btn-success-bg, 8%);
+            }
+        }
+    }
+    &.btn-info {
+        &:before {
+            border-left: 10px solid @btn-info-bg;
+        }
+        &:hover {
+            &:before {
+                border-left: 10px solid darken(@btn-info-bg, 8%);
+            }
+        }
+    }
+    &.btn-warning {
+        &:before {
+            border-left: 10px solid @btn-warning-bg;
+        }
+        &:hover {
+            &:before {
+                border-left: 10px solid darken(@btn-warning-bg, 8%);
+            }
+        }
+    }
+    &.btn-danger {
+        &:before {
+            border-left: 10px solid @btn-danger-bg;
+        }
+        &:hover {
+            &:before {
+                border-left: 10px solid darken(@btn-danger-bg, 8%);
+            }
+        }
+    }
+}
+
+@btn_arrow_width:     8px;
+.btn-up {
+    &:before {
+        margin-left: -@btn_arrow_width;
+        border: @btn_arrow_width solid transparent;
+        border-bottom: @btn_arrow_width solid @btn-default-bg;
+    }
+    &:hover {
+        &:before {
+            border-bottom: @btn_arrow_width solid darken(@btn-default-bg, 8%);
+        }
+    }  
+
+    // Color
+    &.btn-primary {
+        &:before {
+            border-bottom: @btn_arrow_width solid @btn-primary-bg;
+        }
+        &:hover {
+            &:before {
+                border-bottom: @btn_arrow_width solid darken(@btn-primary-bg, 8%);
+            }
+        }
+    }
+    &.btn-success {
+        &:before {
+            border-bottom: @btn_arrow_width solid @btn-success-bg;
+        }
+        &:hover {
+            &:before {
+                border-bottom: @btn_arrow_width solid darken(@btn-success-bg, 8%);
+            }
+        }
+    }
+    &.btn-info {
+        &:before {
+            border-bottom: @btn_arrow_width solid @btn-info-bg;
+        }
+        &:hover {
+            &:before {
+                border-bottom: @btn_arrow_width solid darken(@btn-info-bg, 8%);
+            }
+        }
+    }
+    &.btn-warning {
+        &:before {
+            border-bottom: @btn_arrow_width solid @btn-warning-bg;
+        }
+        &:hover {
+            &:before {
+                border-bottom: @btn_arrow_width solid darken(@btn-warning-bg, 8%);
+            }
+        }
+    }
+    &.btn-danger {
+        &:before {
+            border-bottom: @btn_arrow_width solid @btn-danger-bg;
+        }
+        &:hover {
+            &:before {
+                border-bottom: @btn_arrow_width solid darken(@btn-danger-bg, 8%);
+            }
+        }
+    }  
+}
+.btn-down {
+    &:before {
+        margin-left: -@btn_arrow_width;
+        border: @btn_arrow_width solid transparent;
+        border-top: @btn_arrow_width solid @btn-default-bg;
+    }
+    &:hover {
+        &:before {
+            border-top: @btn_arrow_width solid darken(@btn-default-bg, 8%);
+        }
+    }  
+
+    // Color
+    &.btn-primary {
+        &:before {
+            border-top: @btn_arrow_width solid @btn-primary-bg;
+        }
+        &:hover {
+            &:before {
+                border-top: @btn_arrow_width solid darken(@btn-primary-bg, 8%);
+            }
+        }
+    }
+    &.btn-success {
+        &:before {
+            border-top: @btn_arrow_width solid @btn-success-bg;
+        }
+        &:hover {
+            &:before {
+                border-top: @btn_arrow_width solid darken(@btn-success-bg, 8%);
+            }
+        }
+    }
+    &.btn-info {
+        &:before {
+            border-top: @btn_arrow_width solid @btn-info-bg;
+        }
+        &:hover {
+            &:before {
+                border-top: @btn_arrow_width solid darken(@btn-info-bg, 8%);
+            }
+        }
+    }
+    &.btn-warning {
+        &:before {
+            border-top: @btn_arrow_width solid @btn-warning-bg;
+        }
+        &:hover {
+            &:before {
+                border-top: @btn_arrow_width solid darken(@btn-warning-bg, 8%);
+            }
+        }
+    }
+    &.btn-danger {
+        &:before {
+            border-top: @btn_arrow_width solid @btn-danger-bg;
+        }
+        &:hover {
+            &:before {
+                border-top: @btn_arrow_width solid darken(@btn-danger-bg, 8%);
+            }
+        }
+    }  
+}
+
+
+.btn-icon {
+    border-radius: @border-radius-base;
+    &:hover {
+        color: @reverse;
+    }
+}
+.btn-icon-round {
+    border-radius: 50%;
+}
+.btn-icon-sm {
+    .button-icon-variant(30px);
+}
+.btn-icon-md {
+    .button-icon-variant(45px);
+}
+
+
+// social buttons
+.btn-twitter { .social-button-variant(#00c7f7, #00c7f7); }
+.btn-facebook { .social-button-variant(#335397, #335397); }
+.btn-gplus,
+.btn-google-plus { .social-button-variant(#dd4a38, #dd4a38); }
+.btn-instagram { .social-button-variant(#82685A, #82685A); }
+.btn-vimeo { .social-button-variant(#63879C, #63879C); }
+.btn-flickr { .social-button-variant(#0061DB, #0061DB); }
+.btn-github { .social-button-variant(#3B3B3B, #3B3B3B); }
+.btn-pinterest { .social-button-variant(#D73532, #D73532); }
+.btn-tumblr { .social-button-variant(#586980, #586980); }
+.btn-linkedin { .social-button-variant(#018FAF, #018FAF); }
+.btn-dribbble { .social-button-variant(#EA73A0, #EA73A0); }
+.btn-stumbleupon { .social-button-variant(#EA4B24, #EA4B24); }
+.btn-lastfm { .social-button-variant(#B80638, #B80638); }
+.btn-evernote { .social-button-variant(#3BAB27, #3BAB27); }
+.btn-skype { .social-button-variant(#00B0F6, #00B0F6); }
+.btn-soundcloud { .social-button-variant(#0066FF, #0066FF); }
+.btn-behance { .social-button-variant(#B80638, #B80638); }
+.btn-rss { .social-button-variant(#F79638, #F79638); }
+.btn-youtube { .social-button-variant(#CC181E, #CC181E); }
+
+
+
+//@import "components/badges.less";
+
+.badge {
+    //display: inline-block;
+    min-width: 15px;
+    padding: 2px 2px;
+    font-size: 12px;
+    /*
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #999999;
+    border-radius: 10px;
+    */
+}
+
+.badge-primary {
+    background-color: @brand-primary;
+}
+
+.badge-success {
+    background-color: @brand-success;   
+}
+
+.badge-info {
+    background-color: @brand-info;   
+}
+
+.badge-warning {
+    background-color: @brand-warning;   
+}
+
+.badge-danger {
+    background-color: @brand-danger;   
+}
+
+//@import "components/breadcrumbs.less";
+
+.breadcrumb {
+    a {
+        color: @text-color;
+    }
+}
+
+.breadcrumb-alt {
+
+    > li {
+
+        > a {
+            background-color: @gray-lighter;
+            color: @text-color;
+            &:before {
+                border-color: @gray-lighter @gray-lighter @gray-lighter rgba(0,0,0,0);
+            }
+            &:after {
+                border-left: 1em solid @gray-lighter;
+            }
+            &:hover,
+                &.active {
+                background-color: @brand-primary;
+                color: #fff;
+                &:before{
+                    border-color: @brand-primary @brand-primary @brand-primary rgba(0,0,0,0);
+                }
+                &:after {
+                    border-left: 1em solid @brand-primary;
+                }
+            }
+        }
+    }
+}
+
+
+//@import "components/callout.less";
+
+
+.callout-success {
+    background-color: lighten(@brand-primary, 60);  
+    border-color: @brand-success;
+
+    h4 {
+        color: @brand-success;
+    }   
+}
+
+.callout-info {
+    background-color: #f4f8fa;
+    border-color: @brand-info;
+
+    h4 {
+        color: @brand-info;
+    }
+}
+
+.callout-warning {
+    background-color: #fcf8f2;
+    border-color: @brand-warning;
+
+    h4 {
+        color: @brand-warning;
+    }
+}
+
+.callout-danger {
+    background-color: #fdf7f7;
+    border-color: @brand-danger;
+
+    h4 {
+        color: @brand-danger;
+    }
+}
+
+//@import "components/labels.less";
+
+.label-info-alt {
+    background: @brand-info-alt;
+}
+
+//@import "components/list-group.less";
+.list-group-item {
+    border: 1px solid @state-default-border-light;
+}
+
+.list-info {
+    li {
+        .icon { 
+            color: @brand-primary;
+        }
+
+    }
+}
+
+//@import "components/mail.less";
+
+@border_color: #f1f1f1;
+
+.mail-categories {
+    .list-group {
+        .list-group-item {
+            &.active {
+                > a {
+                    border-left: 3px solid @brand-primary;
+                    color: @brand-primary;
+                    background-color: #fafafa;                    
+                }
+            }
+
+            > a {
+                &:hover {
+                    border-left: 3px solid @brand-primary;
+                    color: @brand-primary;
+                    background-color: #fafafa;
+                }
+
+                > i {
+                    &.fa-circle {
+                        font-size: @font-size-base;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.mail-container {
+    .table {
+        border-top: 1px solid @table-border-color;
+        tr {
+
+            > td {
+
+                > .fa-star {
+                    color: #ccc;
+
+                    &.active {
+                        color: @brand-danger;
+                    }
+                }
+            }
+        }
+
+
+        .mail-unread {
+            color: @gray-dark;
+        }
+        .mail-hightlight {
+            td {
+                background-color: @state-warning-bg;
+            }
+        }
+    }
+
+
+    .mail-info {
+        border-top: 1px solid @border_color;
+        border-bottom: 1px solid @border_color;
+
+    }
+    .mail-content {
+        border-bottom: 1px solid @border_color;
+    }
+    .mail-attachments {
+        border-bottom: 1px solid @border_color;
+    }
+}
+
+//@import "components/panels.less";
+
+// overrides Bootstrap
+
+.panel-dark {
+    .panel-variant(@dark, #fff, @dark, @dark); 
+}
+
+// panel box
+.panel-box {
+
+    .panel-left {
+        .border-left-radius (@border-radius-base);
+    }
+    .panel-right {
+        .border-right-radius (@border-radius-base);
+    }
+
+    .panel-top {
+        .border-top-radius (@border-radius-base);
+    }
+    .panel-bottom {
+        .border-bottom-radius (@border-radius-base);
+    }
+
+}
+
+// mini box
+.mini-box {
+
+    .box-icon {
+
+        &.rounded {
+            border-radius: @border-radius-base;
+        }
+    }
+
+}
+
+// 
+.panel-profile {
+
+    .profile {
+        border-radius: 50%;
+        .box-shadow(0 0 0 5px lighten(@skin, 10%), 0 0 10px 0 rgba(0,0,0,.2));
+    }
+
+    .list-group > li > i {
+        color: @gray-light;
+    }
+}
+
+
+//@import "components/accordion.less";
+
+.ui-accordion {
+
+    .panel-group {
+        .panel-heading + .panel-collapse .panel-body {
+            border-top: 1px solid @state-default-border;
+        }
+    }
+
+    .panel {
+        border: 1px solid @state-default-border;
+    }
+
+    .panel-heading {
+        background-color: @state-default-bg;
+    }
+}
+
+.ui-accordion-success {
+    .panel {
+        border: 1px solid @brand-success;
+    }
+    .panel-heading {
+        background-color: @brand-success;
+        color: @reverse;
+    }
+}
+.ui-accordion-info {
+    .panel {
+        border: 1px solid @brand-info;
+    }
+    .panel-heading {
+        background-color: @brand-info;
+        color: @reverse;
+    }
+}
+.ui-accordion-warning {
+    .panel {
+        border: 1px solid @brand-warning;
+    }
+    .panel-heading {
+        background-color: @brand-warning;
+        color: @reverse;
+    }
+}
+.ui-accordion-danger {
+    .panel {
+        border: 1px solid @brand-danger;
+    }
+    .panel-heading {
+        background-color: @brand-danger;
+        color: @reverse;
+    }
+}
+.ui-accordion-dark {
+    .panel {
+        border: 1px solid @dark;
+    }
+    .panel-heading {
+        background-color: @dark;
+        color: @reverse;
+    }
+}
+
+
+
+//
+
+//
+// Pagination (multiple pages)
+// --------------------------------------------------
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: @line-height-computed 0;
+    border-radius: @border-radius-base;
+
+    > li {
+        display: inline; // Remove list-style and block-level defaults
+        > a,
+        > span {
+            position: relative;
+            float: left; // Collapse white-space
+            padding: @padding-base-vertical @padding-base-horizontal;
+            line-height: @line-height-base;
+            text-decoration: none;
+            color: @pagination-color;
+            background-color: @pagination-bg;
+            border: 1px solid @pagination-border;
+            margin-left: -1px;
+        }
+        &:first-child {
+            > a,
+            > span {
+                margin-left: 0;
+                .border-left-radius(@border-radius-base);
+            }
+        }
+        &:last-child {
+            > a,
+            > span {
+                .border-right-radius(@border-radius-base);
+            }
+        }
+    }
+
+    > li > a,
+    > li > span {
+        &:hover,
+            &:focus {
+            color: @pagination-hover-color;
+            background-color: @pagination-hover-bg;
+            border-color: @pagination-hover-border;
+        }
+    }
+
+    > .active > a,
+    > .active > span {
+        &,
+        &:hover,
+            &:focus {
+            z-index: 2;
+            color: @pagination-active-color;
+            background-color: @pagination-active-bg;
+            border-color: @pagination-active-border;
+            cursor: default;
+        }
+    }
+
+    > .disabled {
+        > span,
+        > span:hover,
+            > span:focus,
+            > a,
+            > a:hover,
+            > a:focus {
+            color: @pagination-disabled-color;
+            background-color: @pagination-disabled-bg;
+            border-color: @pagination-disabled-border;
+            cursor: not-allowed;
+        }
+    }
+}
+
+
+
+
+
+//@import "progress-bars.less";
+
+
+//
+// Progress bars
+// --------------------------------------------------
+
+// Bar itself
+// -------------------------
+
+// Outer container
+.progress {
+    overflow: hidden;
+    height: @line-height-computed;
+    margin-bottom: @line-height-computed;
+    background-color: @progress-bg;
+    border-radius: @border-radius-base;
+    .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+}
+
+// Bar of progress
+.progress-bar {
+    float: left;
+    width: 0%;
+    height: 100%;
+    font-size: @font-size-small;
+    line-height: @line-height-computed;
+    color: @progress-bar-color;
+    text-align: center;
+    background-color: @progress-bar-bg;
+    .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+    .transition(width .6s ease);
+}
+
+//@import "components/tab.less";
+
+// Dependency: Angular UI Bootstrap
+
+.ui-tab-container {
+    border: 1px solid @panel-default-border;
+    border-radius: @border-radius-base;
+
+    .ui-tab .nav-tabs {
+        margin-bottom: 0;
+    }
+
+    .nav-tabs {
+        background-color: @panel-default-heading-bg;
+        border-bottom: 1px solid @panel-default-border;
+        > li {
+            &.active {
+                > a {
+                    background-color: @reverse;
+                    border: 1px solid transparent;
+                    &:hover {
+                        border: 1px solid transparent;
+                    }
+                }
+            }
+            > a {
+                &:hover {
+                    background-color: darken(@panel-default-heading-bg, 2%);
+                    border: 1px solid darken(@panel-default-heading-bg, 2%);
+                }
+            }
+        }
+    }
+
+    // Color 
+    &.ui-tab-success {
+        border: 1px solid @panel-success-border;
+        .nav-tabs {
+            background-color: @panel-success-heading-bg;
+            border-bottom: 1px solid @panel-success-border;        
+        }
+    }
+    &.ui-tab-info {
+        border: 1px solid @panel-info-border;
+        .nav-tabs {
+            background-color: @panel-info-heading-bg;
+            border-bottom: 1px solid @panel-info-border;        
+        }
+    }
+    &.ui-tab-warning {
+        border: 1px solid @panel-warning-border;
+        .nav-tabs {
+            background-color: @panel-warning-heading-bg;
+            border-bottom: 1px solid @panel-warning-border;        
+        }
+    }
+    &.ui-tab-danger {
+        border: 1px solid @panel-danger-border;
+        .nav-tabs {
+            background-color: @panel-danger-heading-bg;
+            border-bottom: 1px solid @panel-danger-border;        
+        }
+    }
+}
+
+.ui-tab {
+    .nav-tabs {
+
+        > li {
+            &.active {
+                > a {
+                    background-color: @reverse;
+                }
+            }
+        }
+    }
+}
+
+
+@nav_bg:                @gray-lighter;
+@nav_border:            darken(@nav_bg, 10%);
+@sub_nav_bg:            @nav_bg;
+@link_color:            @text-color;
+@link_active_bg:        @brand-primary;
+
+#nav-container {
+    z-index: 11; // should be highter than top header
+    position: absolute;
+    top: @header_height;
+    bottom: 0;
+    left: -220px;
+    width: 220px;
+    padding: 0;
+    background-color: @nav_bg;
+    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: -blackberry-touch;
+    // .transition(all .3s ease-in-out);
+    @media (min-width:@screen-sm) {
+        left: 0;
+    }
+
+    ul {
+        padding-left: 0;
+        list-style: none;
+    }
+}
+
+
+.on-canvas #nav-container {
+    left: 0;
+    top: @header_height + @nav_height;
+}
+@media (min-width: 768px) {
+    .on-canvas #nav-container {
+        top: @header_height;
+    }
+}
+
+#nav-wrapper {
+    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: -blackberry-touch;
+    width: 100%;
+    height: 100%;
+}
+
+#nav {
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: -blackberry-touch;
+
+    >li>a>i,
+    >li>a>.nav-icon {
+        display: inline-block;
+        margin-right: 10px;
+        width: 20px;
+        line-height: 1;
+        text-align: center;
+        font-size: 16px;
+        .transition(all .2s ease-in-out);
+    }
+
+    a {
+        font-size: 13px;
+        color: @link_color;
+        .transition(all .2s ease-in-out);
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    >li {
+        position: relative;
+        margin: 0;
+        text-align: left;
+        font-weight: bold;
+        .transition( all .2s ease-in-out);
+        &.open,
+        &:hover {
+            > a {
+                background-color: @link_active_bg;
+                color: @bright;
+            }
+            > .fa { color: @bright; }
+        }
+        &.active {
+            > a {
+                background-color: @link_active_bg;
+                color: @bright;
+            }
+            > .fa { color: @bright; }
+        }
+
+        &:first-child > a {
+            border-top: 0;
+        }
+        >a {
+            position: relative;
+            display: block;
+            // height: 50px;
+            padding: 15px 15px;
+            // border-bottom: 1px solid @nav_border;
+            .transition( all .2s ease-in-out);
+
+            > .badge {
+                position: absolute;
+                top: 16px;
+                right: 5px;
+            }
+        }
+
+
+        > .icon-has-ul {
+            position: absolute;
+            top: 18px;
+            right: 15px;
+        }
+    }
+
+    // sub menu
+    ul {
+        background-color: @sub_nav_bg;
+        display: none;
+
+        a {
+            font-size: 13px;
+        }
+
+        li {
+            position: relative;
+            padding: 0;
+            &:hover,
+                &.active {
+                a {
+                    color: @brand-primary;
+                }
+            }
+            &:last-child > a {
+                border-bottom: 0;
+            }
+
+            > a {
+                position: relative;
+                display: block;
+                padding: 13px 0 13px 25px;
+                // border-bottom: 1px solid darken(@sub_nav_bg, 5%);
+                .transition( all .2s ease-in-out);
+                &:first-child {
+                    border-top: none;
+                }
+
+                i.fa-caret-right {
+                    margin-right: 25px;
+                }
+
+                > .badge {
+                    position: absolute;
+                    right: 5px;
+                    top: 12px;
+                }
+            }
+        }
+    }
+}
+
+//@import "sections/header.less";
+
+.top-header {
+    z-index: 80;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height:( @header_height + @nav_height);
+    background-color: @reverse;
+    .box-shadow(0 1px 2px rgba(0,0,0,.1));
+    @media (min-width:@screen-sm) {
+        height: @header_height;
+    }
+
+    // shared
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .hidden-mobile {
+        display: none;
+        @media (min-width: @screen-xs) {
+            display: inline;
+        }
+    }
+
+    //
+    .logo {
+        position: absolute;
+        width: 100%;
+        height: @header_height;
+        background-color: darken(@dark, 5%);
+        color: @bright;
+        line-height: @header_height;
+        text-align: center;
+        @media (min-width: @screen-sm) {
+            display: inline-block;
+            width: 220px;
+            background-color: @reverse;
+            color: @text-color;
+            border-right: 1px solid @state-default-border;
+        }
+
+        > a {
+            font-size: 24px;
+            vertical-align: middle;
+            color: @bright;
+            @media (min-width: @screen-sm) {
+                color: @text-color;
+            }
+
+            .logo-icon {
+                color: lighten(@brand-primary, 20%);
+                margin-right: 12px;
+            }
+        }
+    }
+
+    // 
+
+    .menu-button {
+        display: block;
+        position: absolute;
+        background: @brand-primary;
+        top:  ( @header_height/2 - 17);
+        right: 20px;
+        width: 46px;
+        padding: 10px 12px;
+        border-radius: 4px;
+        &:hover {
+            cursor: pointer;
+            background-color: darken(@dark, 10%);
+        }
+
+        .icon-bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            border-radius: 1px;
+            background-color: #fff;
+        }
+        .icon-bar + .icon-bar {
+            margin-top: 4px;
+        }
+
+        @media (min-width: @screen-sm) {
+            display: none;
+        }
+    }
+
+    // 
+    .dropdown-menu.panel {
+        padding: 0;
+        white-space: nowrap;
+
+        .panel-heading,
+        .panel-footer {
+            padding: 10px 15px;
+        }
+
+        .list-group-item {
+            padding: 10px 15px;
+            > a {
+                display: block;
+            }
+        }
+
+        .media {
+            .media-body {
+                padding-right: 75px;
+            }
+        }
+    }
+
+
+    // 
+    .top-nav {
+        width: 100%;
+        padding: @header_height 0 0;
+        @media (min-width: @screen-sm) {
+            padding: 0 0 0 220px;
+        }
+
+        // 
+        .nav-left,
+        .nav-right {
+            font-size: 18px;
+            line-height: (@nav_height/2);
+            @media (min-width:@screen-sm) {
+                line-height: (@header_height/2);
+            }
+
+            > li {
+                float: left;
+                &.nav-profile {
+                    > a {
+                        padding: 14px 15px;
+                    }
+                    .hidden-xs {
+                        padding-right: 8px;
+                    }
+                    i {
+                        width: 18px;
+                        font-size: 16px;
+                        margin-right: 5px;
+                    } 
+                }
+
+                > .toggle-min {
+                    display: none;
+                    @media (min-width:@screen-sm) {
+                        display: block;
+                    }
+                }
+
+                a {
+                    &:hover,
+                        &:focus {
+                        text-decoration: none;
+                    }
+                }
+
+                > .btn-group > a,
+                > a {
+                    position: relative;
+                    display: block;
+
+                    height: @nav_height;
+                    padding: 14px 7px;
+                    @media (min-width:@screen-sm) {
+                        height: @header_height;
+                        padding: 14px 15px;
+                    }
+
+                    .badge {
+                        position: absolute;
+                        top: 6px;
+                        right: 3px;
+                    }
+                }
+
+                ul.dropdown-menu {
+                    a:hover {
+                        background-color: @skin;
+                        color: #fff;
+                    }
+
+                    .glyphicon {
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            // color switch
+            // .color-switch {
+            //     > li {
+            //         margin-bottom: 8px;
+            //         &:last-child {
+            //             margin-bottom: 0;
+            //         }
+            //     }
+            // }
+            // .color-option {
+            //     display: block;
+            //     padding: 10px;
+            //     &.color-some_color {
+            //         background-color: #482647;
+            //         &:hover {
+            //             background-color: lighten(#482647, 10%);
+            //         }
+            //     }
+            // }
+        }
+
+        // 
+        .nav-left {
+            float: left;
+            padding: 0;
+            > li {
+                border-right: 1px solid @state-default-border;
+            }
+        }
+
+        // 
+        .nav-right {
+            padding: 0;
+            > li {
+                > a {
+                    width: auto;
+                    text-align: center;
+                }
+            }
+
+            .badge-info {
+                background-color: transparent;
+            }
+        }
+    }
+
+    // 
+    .langs {
+        .active-flag {
+            .flag {
+                margin-top: -5px;
+            }
+        }
+
+        .list-langs {
+            a {
+                position: relative;
+                padding: 10px;
+
+                .flag {
+                    position: absolute;
+                    top: 2px;
+                    left: 15px;
+                }
+            }
+        }
+    }
+
+
+}
+
+
+
+
+//@import "sections/form.less";
+
+
+// form validation
+.form-validation{
+    .ng-pristine {} // When it is first initialized
+    .ng-dirty {} // When the view changes
+    .ng-valid.ng-dirty {
+        border-color: @gray;
+    }
+    .ng-invalid.ng-dirty {
+        border-color: @brand-danger;
+    }
+}
+
+
+
+
+//@import "progress-bars.less";
+
+
+//
+// Progress bars
+// --------------------------------------------------
+
+// Bar itself
+// -------------------------
+
+// Outer container
+.progress {
+    overflow: hidden;
+    height: @line-height-computed;
+    margin-bottom: @line-height-computed;
+    background-color: @progress-bg;
+    border-radius: @border-radius-base;
+    .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+}
+
+// Bar of progress
+.progress-bar {
+    float: left;
+    width: 0%;
+    height: 100%;
+    font-size: @font-size-small;
+    line-height: @line-height-computed;
+    color: @progress-bar-color;
+    text-align: center;
+    background-color: @progress-bar-bg;
+    .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+    .transition(width .6s ease);
+}
+
+
+// Contextual variations
+.panel-default {
+    .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+}
+.panel-primary {
+    .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+}
+.panel-success {
+    .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+}
+.panel-info {
+    .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+}
+.panel-warning {
+    .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+}
+.panel-danger {
+    .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
+
+
+
+
+
+//
+//Mixins
+//
+
+// Panels
+// -------------------------
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+    border-color: @border;
+
+    & > .panel-heading {
+        color: @heading-text-color;
+        background-color: @heading-bg-color;
+        border-color: @heading-border;
+
+        + .panel-collapse .panel-body {
+            border-top-color: @border;
+        }
+    }
+    & > .panel-footer {
+        + .panel-collapse .panel-body {
+            border-bottom-color: @border;
+        }
+    }
+}
+
+
+// Single side border-radius
+.border-top-radius(@radius) {
+    border-top-right-radius: @radius;
+    border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+    border-bottom-right-radius: @radius;
+    border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+    border-bottom-right-radius: @radius;
+    border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+    border-bottom-left-radius: @radius;
+    border-top-left-radius: @radius;
+}
+
+
+
+
+
+.panel-default > .panel-heading {
+    font-weight: bold;
+    color: @brand-primary;
+}
+
+
+
+
+
+/**/
+
+
+.page-err .err-container {
+    width: 100%;
+    height: 75%;
+    background-color: @brand-primary;
+    border-bottom: 1px solid @gray;
+    padding: 45px 0 0;
+    color: @reverse;
+}
+
+.page-err .err-message {
+    background-color: @brand-primary;
+    padding: 24px;
+    text-transform: uppercase;
+}
+
+.page-err .btn-goback:hover, .page-err .btn-goback:focus, .page-err .btn-goback:active, .page-err .btn-goback.active {
+    color: @brand-primary;
+    background-color: #ffffff;
+}
+
+
+
+.bg-foro h1, .bg-foro h2, .bg-foro h3, .bg-foro h4, .bg-foro h5, .bg-foro h6, .bg-foro .h1, .bg-foro .h2, .bg-foro .h3, .bg-foro .h4, .bg-foro .h5, .bg-foro .h6 {
+    color: @reverse;
+}
+
+
+.bg-primary h1, .bg-primary h2, .bg-primary h3, .bg-primary h4, .bg-primary h5, .bg-primary h6, .bg-primary .h1, .bg-primary .h2, .bg-primary .h3, .bg-primary .h4, .bg-primary .h5, .bg-primary .h6 {
+    color: @reverse;
+}
+
+
+.top-header .dropdown-menu.panel .list-group-item > a {
+    color: @brand-primary;
+}
+
+.top-header .dropdown-menu.panel .list-group-item > a:hover {
+    color: #555555; 
+}
+
+
+
+
+// https://github.com/rstaib/jquery-steps
+
+.wizard,
+.tabcontrol
+{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wizard a,
+.tabcontrol a
+{
+    outline: 0;
+}
+
+.wizard ul,
+.tabcontrol ul
+{
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+.wizard ul > li,
+.tabcontrol ul > li
+{
+    display: block;
+    padding: 0;
+}
+
+/* Accessibility */
+.wizard > .steps .current-info,
+.tabcontrol > .steps .current-info
+{
+    position: absolute;
+    left: -999em;
+}
+
+.wizard > .content > .title,
+.tabcontrol > .content > .title
+{
+    position: absolute;
+    left: -999em;
+}
+
+
+
+/*
+    Wizard
+*/
+
+
+.wizard.vertical  {
+    > .steps {
+        background-color: #242633;
+
+    }
+
+}
+
+
+.wizard > .steps a,
+.wizard > .steps a:hover,
+.wizard > .steps a:active
+{
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    background: transparent;
+}
+
+.wizard > .steps .disabled a,
+.wizard > .steps .disabled a:hover,
+.wizard > .steps .disabled a:active
+{
+    /*background: #eee;*/
+    color: #767676;
+    cursor: default;
+}
+
+.wizard > .steps .current a,
+.wizard > .steps .current a:hover,
+.wizard > .steps .current a:active
+{
+    background: @brand-primary;
+    color: #fff;
+    cursor: default;
+}
+
+.wizard > .steps .done a,
+.wizard > .steps .done a:hover,
+.wizard > .steps .done a:active
+{
+    background: @brand-primary;
+    color: #fff;
+    opacity: .6;
+}
+
+.wizard > .steps .error a,
+.wizard > .steps .error a:hover,
+.wizard > .steps .error a:active
+{
+    background: @brand-danger;
+    color: #fff;
+}
+
+.wizard > .content
+{
+    /*background-color: #eee;*/
+    -webkit-border-radius: @border-radius-base;
+    -moz-border-radius: @border-radius-base;
+    border-radius: @border-radius-base;
+}
+
+
+
+.wizard > .content > .body input
+{
+    //display: block;
+    //border: 1px solid #ccc;
+}
+
+.wizard > .content > .body input[type="checkbox"]
+{
+    /*display: inline-block;*/
+}
+
+.wizard > .content > .body input.error
+{
+    background: rgb(251, 227, 228);
+    border: 1px solid #fbc2c4;
+    color: #8a1f11;
+}
+
+.wizard > .content > .body label
+{
+    display: inline-block;
+    margin-bottom: 0.5em;
+}
+
+.wizard > .content > .body label.error
+{
+    color: #8a1f11;
+    display: inline-block;
+    margin-left: 1.5em;
+}
+
+
+
+.wizard > .actions a,
+.wizard > .actions a:hover,
+.wizard > .actions a:active
+{
+    background: @brand-primary;
+    color: #fff;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+
+    -webkit-border-radius: @border-radius-base;
+    -moz-border-radius: @border-radius-base;
+    border-radius: @border-radius-base;
+}
+
+.wizard > .actions .disabled a,
+.wizard > .actions .disabled a:hover,
+.wizard > .actions .disabled a:active
+{
+    background: #eee;
+    color: #aaa;
+}
+
+
+
+
+/*
+    Tabcontrol
+*/
+
+
+
+.tabcontrol > .steps > ul > li
+{
+
+    -webkit-border-top-left-radius: @border-radius-base;
+    -webkit-border-top-right-radius: @border-radius-base;
+    -moz-border-radius-topleft: @border-radius-base;
+    -moz-border-radius-topright: @border-radius-base;
+    border-top-left-radius: @border-radius-base;
+    border-top-right-radius: @border-radius-base;
+}
+
+.tabcontrol > .steps > ul > li:hover
+{
+    background: #edecec;
+    border: 1px solid #bbb;
+    padding: 0;
+}
+
+.tabcontrol > .steps > ul > li.current
+{
+    background: #fff;
+    border: 1px solid #bbb;
+    border-bottom: 0 none;
+    padding: 0 0 1px 0;
+    margin-top: 0;
+}
+
+.tabcontrol > .steps > ul > li > a
+{
+    color: #5f5f5f;
+    text-decoration: none;
+}
+
+.tabcontrol > .steps > ul > li > a:hover
+{
+    text-decoration: none;
+}
+
+.tabcontrol > .steps > ul > li.current > a
+{
+    padding: 15px 30px 10px 30px;
+}
+
+.tabcontrol > .content
+{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 35em;
+    overflow: hidden;
+    border-top: 1px solid #bbb;
+    padding-top: 20px;
+}
+
+
+/**/
+
+
+.wizard-steps a.done .wizard-step-number,
+.wizard-steps a.done .wizard-step-bar {
+    color: #FFF;
+    background-color: @brand-primary; 
+
+}
+
+.wizard-steps a.selected .wizard-step-number,
+.wizard-steps a.selected .wizard-step-bar {
+    color: #FFF;
+    background: lighten(@brand-primary, 20); 
+
+}
+
+
+div.img30_30 {
+    display: inline-block;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    vertical-align: middle;
+}
+
+
+.ui-radio input[type="radio"]:checked + span:after {
+    top: 6px;
+    left: -15px;
+}
+
+.ui-checkbox input[type="checkbox"]:checked + span:after {
+    top: 6px;
+    left: -15px;
+}
+
+textarea.form-control {
+    margin-bottom: 5px;
+}
+
+/*Parche*/
+/**/
+
+@media (max-width: 767px) {
+    .hidden-xs {
+        display: none !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .hidden-sm {
+        display: none !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hidden-md {
+        display: none !important;
+    }
+}
+@media (min-width: 1200px) {
+    .hidden-lg {
+        display: none !important;
+    }
+}
+
+
+/* Cookies*/
+
+
+.cookies {
+    background:#edeef0; 
+    visibility:hidden;
+    height: (@cookies_height*2);
+}
+
+
+@media (min-width: @screen-sm) { 
+    .cookies {
+        background:#edeef0; 
+        visibility:hidden;
+        height: @cookies_height;
+    }
+}
+
+.cookies-view .cookies {
+    visibility:visible;
+}
+
+.cookiesdirective {
+    font-size: 90%;
+    min-height:38px !important;
+    height:auto !important;
+    height:38px;
+    text-indent:0;
+    //width:95%;
+    padding:12px 2.5%;
+    background:#edeef0;
+    line-height:1.4em;
+    color:#4a4949;
+}
+
+.cookiesdirective div:first-child {
+    padding:0 45px 0 0;
+    position:relative;
+}
+
+.cookiesdirective a {
+    color: @brand-primary;
+    text-transform:lowercase;
+    text-decoration: none;
+}
+
+.cookiesdirective a:hover {
+    color: @brand-primary;
+    text-decoration: underline;
+}
+
+
+.cookiesdirective input[type="submit"],.cookiesdirective input[type="button"] {
+    position:absolute;
+    right:5px;
+    top:3px;
+    background:none;
+    color:#fff;
+    font-weight:bold;
+    min-width:1px;
+    padding:2px 6px;
+    background:#4E4E4E;
+    font:bold 1.2em Arial;
+    text-transform:uppercase;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    -o-border-radius:3px;
+    -ms-border-radius:3px;
+    border-radius:3px;
+    border:0;
+    cursor:pointer;
+}
+
+#a_destacados, .adjuntamenu{
+    top:145px;
+}
+
+
+/**/
+
+.cookies-view #content {
+    z-index: 2;
+    top: (@header_height*2 + @cookies_height*2);
+    left: 0px;
+}
+
+.cookies-view .top-header { 
+    top: (@cookies_height*2);
+}
+
+
+@media (min-width: @screen-sm) {
+    .cookies-view #content {
+        top: (@header_height + @cookies_height);
+    }
+
+    .cookies-view .top-header { 
+        top: @cookies_height;
+    }
+
+}
+
+
+/**/
+
+.top-header .logo {
+    float: none;
+    margin: 0px 0px 0px 0px;
+    display: block;
+    width: 100%;
+    height: @header_height;
+    background: url("img/logo.png") no-repeat center center;
+    border-bottom: 1px solid @state-default-border;
+
+    @media (min-width: @screen-sm) {
+        width: 220px;  
+        border-bottom: none;
+    }
+
+    > a {
+        display: block;
+        width: 100%;
+        height: @header_height;
+
+        @media (min-width: @screen-sm) {
+            width: 220px;  
+        }
+
+        span {
+            display: none;
+        }
+
+
+    }
+
+}
+
+
+
+/**/
+
+#content {
+    position: absolute;
+    top: (@header_height + @nav_height);
+    @media (min-width:@screen-sm) {
+        top: @header_height;
+        width: auto;
+        left: 220px;
+    }
+}
+
+
+.body-nonav #content {
+    z-index: 2;
+    top: (@header_height + @nav_height);
+    left: 0px;
+}
+
+
+@media (min-width: @screen-sm) {
+    .body-nonav #content {
+        z-index: 2;
+        top: @header_height;
+        left: 0px;
+    }
+}
+
+/**/
+
+.cookies-view #content {
+    z-index: 2;
+    top: (@header_height + @nav_height + @cookies_height*2);
+    left: 0px;
+}
+
+.cookies-view .top-header { 
+    top: (@cookies_height*2);
+}
+
+
+@media (min-width: @screen-sm) {
+    .cookies-view #content {
+        top: (@header_height + @cookies_height);
+    }
+
+    .cookies-view .top-header { 
+        top: @cookies_height;
+    }
+
+}
+
+
+/* Generales */
+
+.ui-select > select {
+	margin: 0px 0;
+}
+
+
+.wizard.vertical > .content {
+    top: (@header_height/2);
+    
+    @media (min-width: @screen-sm) {
+        top: @header_height;
+    }
+    
+}
+
+
+
+/**/
+
+.page-signin .line-thru:after,
+.page-signup .line-thru:after {
+  width: 100%;
+  border-bottom: none;
+}
+
+
+/*Fonts */
+
+
+
+@font-face {
+    font-family: 'klavika_rgregular';
+    src: url('font/klavika-regular-webfont.eot');
+    }
+
+@font-face {
+    font-family: 'klavika_rgregular';
+    src: url(data:application/x-font-woff;charset=utf-8;base64,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) format('woff'),
+         url('font/klavika-regular-webfont.ttf') format('truetype'),
+         url('font/klavika-regular-webfont.svg#klavika_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

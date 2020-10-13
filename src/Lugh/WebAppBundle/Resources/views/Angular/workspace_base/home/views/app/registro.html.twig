@@ -1,0 +1,358 @@
+{% verbatim %}
+
+    <div class="page-inicio" ng-controller="registroFormCtrl" id="topForm">
+        <div class="full-width contenido">
+            <div class="contenido-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 data-i18n="id00397_home:app:registro:form">Formulario de Registro</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="panel panel-default">
+                                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span data-i18n="id00040_home:app:registro:form">Formulario</span></strong></div>
+                                <div class="panel-body">
+                                    <!-- INICIO DEL FORMULARIO -->
+                                    <form class="form-horizontal form-validation" name="form" role="accionista" ng-submit="submit()" novalidate>
+                                        <!-- ALERTAS DE VALIDACIÓN -->
+                                        <alert ng-if="showAlertsTop" ng-repeat="alert in errors" type="alert.type" close="closeAlert($index)" class="well-sm">{{alert.msg}}</alert>
+
+                                        <!-- INFORMACIÓN DE LA CUENTA -->
+                                        <fieldset>
+                                            <legend data-i18n="id00006_home:app:registro:account-info">Información de la cuenta</legend>
+
+                                            <!-- USERNAME -->
+                                            <div class="form-group" hide-by-config="username">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="username" data-i18n="id00003_home:app:inicio:username">Nombre de usuario</label>
+                                                    <span required-label="username"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="text" 
+                                                           class="form-control"
+                                                           id="username"
+                                                           placeholder="id00003_home:app:inicio:username"
+                                                           data-ng-model="newAccionista.user.username"
+                                                           data-i18n="i18n-placeholder"
+                                                           required-input="username"
+                                                           />
+                                                    <alert ng-if="showAlertsField && validation.username != undefined" class="well-sm" type="'danger'">{{validation.username}}</alert>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="small" data-i18n="id00007_home:app:registro:username-helper">Este dato será el que deberá introducir (junto con la clave secreta) en los futuros accesos a la plataforma. Por favor, utilice un "usuario" que pueda recordar en el futuro.</p>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- EMAIL -->
+                                            <div class="form-group" hide-by-config="email">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="email" data-i18n="id00004_home:app:registro:email">Correo Electrónico</label>
+                                                    <span required-label="email"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="email" 
+                                                           class="form-control" 
+                                                           id="email"
+                                                           placeholder="id00004_home:app:registro:email"
+                                                           data-ng-trim='false'
+                                                           required-input="email"
+                                                           data-ng-model="newAccionista.user.email"
+                                                           data-i18n="i18n-placeholder"
+                                                           />
+                                                    <alert ng-if="showAlertsField && validation.email != undefined" class="well-sm" type="'danger'">{{validation.email}}</alert>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="small" data-i18n="id00008_home:app:registro:email-helper">Por favor, introduzca correctamente la dirección de correo electrónico donde desee recibir todos los mensajes generados por la plataforma. Le informamos que esta dirección no es pública.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- REPETIR EMAIL -->
+                                            <div class="form-group" hide-by-config="emailc">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="emailc" data-i18n="id00005_home:app:registro:emailc">Repita correo electrónico</label>
+                                                    <span required-label="emailc"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="text"
+                                                           no-paste
+                                                           class="form-control" 
+                                                           id="emailc"
+                                                           placeholder="id00005_home:app:registro:emailc"
+                                                           data-ng-trim='false'
+                                                           data-i18n ="i18n-placeholder"
+                                                           required-input="emailc"
+                                                           data-ng-model="emailc"
+                                                           validate-equals="newAccionista.user.email"
+                                                           />
+                                                    <alert ng-if="showAlertsField && validation.emailc != undefined" class="well-sm" type="'danger'">{{validation.emailc}}</alert>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="small" data-i18n="id00009_home:app:registro:emailc-helper">Repita la dirección de correo electrónico para su verificación.</p>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+
+                                        <!-- DATOS DE CONTACTO -->
+                                        <fieldset>
+                                            <legend data-i18n="id00010_home:app:registro:contact">Datos de contacto</legend>
+
+                                            <!-- TIPO DE PERSONA -->
+                                            <div class="form-group" hide-by-config="tipo-persona">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="tipo-persona" data-i18n="id00011_home:app:registro:person-kind">Tipo</label>
+                                                    <span required-label="tipo-persona"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <span class="ui-select">
+                                                        <select name="tipo" id="tipo" required-input="tipo-persona" data-ng-model="newAccionista.accionista.personaType">
+                                                            <option value="pf" i18n="id00036_home:app:registro:pf">PF</option>
+                                                            <option value="pj" i18n="id00037_home:app:registro:pj">PJ</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="small" data-i18n="id00017_home:app:registro:person-kind-helper">Indique si se trata de una persona física o jurídica</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- REPRESENTANTE -->
+                                            <div class="form-group" hide-by-config="representative" ng-if="newAccionista.accionista.personaType == 'pj'">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="representative" data-i18n="id00038_home:app:registro:represented-by">Representado por</label>
+                                                    <span required-label="representative"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="text" 
+                                                           class="form-control" 
+                                                           id="representative" 
+                                                           placeholder="Representado por"
+                                                           data-ng-model="newAccionista.accionista.representedBy"
+                                                           ng-required="newAccionista.accionista.personaType == 'pj'"
+                                                           >
+                                                    <alert ng-if="showAlertsField && validation.representedBy != undefined" class="well-sm" type="'danger'">{{validation.representedBy}}</alert>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="small" data-i18n="id00039_home:app:registro:represented-by-helper"></p>
+                                                </div>
+                                            </div>
+
+                                            <!-- NOMBRE -->
+                                            <div class="form-group" hide-by-config="name">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="name" data-i18n="id00012_home:app:registro:name">Nombre</label>
+                                                    <span required-label="name"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="text" 
+                                                           class="form-control" 
+                                                           id="name" 
+                                                           placeholder="id00012_home:app:registro:name"
+                                                           data-i18n="i18n-placeholder"
+                                                           data-ng-model="newAccionista.accionista.name"
+                                                           required-input="name">
+                                                    <alert ng-if="showAlertsField && validation.name != undefined" class="well-sm" type="'danger'">{{validation.name}}</alert>
+                                                </div>
+                                                <div class="col-sm-4">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- TELÉFONO -->
+                                            <div class="form-group" hide-by-config="telephone">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="telephone" data-i18n="id00279_home:app:registro:telephone">Teléfono</label>
+                                                    <span required-label="telephone"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="tel" 
+                                                           class="form-control" 
+                                                           id="telephone" 
+                                                           placeholder="id00279_home:app:registro:telephone"
+                                                           data-i18n="i18n-placeholder"
+                                                           data-ng-model="newAccionista.accionista.telephone"
+                                                           required-input="telephone">
+                                                    <alert ng-if="showAlertsField && validation.telephone != undefined" class="well-sm" type="'danger'">{{validation.telephone}}</alert>
+                                                </div>
+                                                <div class="col-sm-4">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- TIPO DE DOCUMENTO -->
+                                            <div class="form-group" hide-by-config="tipo-doc">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="tipo-doc" data-i18n="id00013_home:app:registro:doc-kind">Tipo de Documento</label>
+                                                    <span required-label="tipo-doc"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <span class="ui-select">
+                                                        <select name="tipo-doc" id="tipo-doc" required-input="tipo-doc" data-ng-model="newAccionista.accionista.documentType"
+                                                                ng-options="typevalue as i18n(typelabel) for (typevalue, typelabel) in docTypes">
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-4">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- NÚMERO DE IDENTIFICACIÓN -->
+                                            <div class="form-group" hide-by-config="numero-doc">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="numero-doc" data-i18n="id00014_home:app:registro:doc-num">Número de Documento</label>
+                                                    <span required-label="numero-doc"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="text" 
+                                                           class="form-control" 
+                                                           id="numero-doc" 
+                                                           placeholder="id00014_home:app:registro:doc-num"
+                                                           data-i18n="i18n-placeholder"
+                                                           ng-model="newAccionista.accionista.documentNum"
+                                                           numero-doc="newAccionista.accionista.documentNum"
+                                                           tipo-doc="newAccionista.accionista.documentType"
+                                                           validate-doc
+                                                           required-input="numero-doc">
+                                                    <alert ng-if="showAlertsField && validation.documentNum != undefined" class="well-sm" type="'danger'">{{validation.documentNum}}</alert>
+                                                </div>
+                                                <div class="col-sm-4">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- NÚMERO DE ACCIONES -->
+                                            <div class="form-group" hide-by-config="num-shares">
+                                                <div class="col-sm-3 control-label">
+                                                    <label for="num-shares" data-i18n="id00015_home:app:registro:shares-num">Número de Acciones</label>
+                                                    <span required-label="num-shares"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <div class="input-group">
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               id="num-shares"
+                                                               data-ng-model="newAccionista.accionista.sharesNum"
+                                                               required-input="num-shares"
+                                                               dotted-number
+                                                               dotted-min="{{accionesMin}}">
+                                                        <alert ng-if="showAlertsField && validation.num_shares != undefined" class="well-sm" type="'danger'">{{validation.num_shares}}</alert>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="small" data-i18n="id00016_home:app:registro:shares-num-helper">Debe indicar el número de acciones que usted acredite como propias.Este dato será contrastado con la documentación que nos haya facilitado o con el fichero de Iberclear, si se dispone del mismo</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- SUBIR DOCUMENTO -->
+                                            <div class="form-group" ng-file-drop hide-by-config="doca">
+                                                <upload-document
+                                                    description  ="id00018_home:app:registro:documentacion-file"
+                                                    instructions ="id00019_home:app:registro:documentacion-file-helper"
+                                                    title        ="documentacion-file"
+                                                    uploaderID   ="documentacionAUploader"
+                                                    ispublic     ="true"
+                                                    label        ="['doca', 'doca-user']"
+                                                    />
+                                            </div>
+                                            <alert ng-if="showAlertsField && validation.DocumentA != undefined" class="well-sm" type="'danger'">{{validation.DocumentA}}</alert>
+
+                                            <!-- SUBIR DOCUMENTO B -->
+                                            <div class="form-group" ng-file-drop hide-by-config="docb">
+                                                <upload-document
+                                                    description  ="id00410_home:app:registro:documentacion-acciones-file"
+                                                    instructions ="id00411_home:app:registro:documentacion-acciones-file-helper"
+                                                    title        ="titularidad-file"
+                                                    uploaderID   ="documentacionBUploader"
+                                                    ispublic     ="true"
+                                                    label        ="['docb', 'docb-user']"
+                                                    />
+                                            </div>
+                                            <alert ng-if="showAlertsField && validation.DocumentB != undefined" class="well-sm" type="'danger'">{{validation.DocumentB}}</alert>
+
+                                        </fieldset>
+
+                                        <!-- RECAPTCHA -->
+                                        <fieldset>
+                                            <legend data-i18n="id00030_home:app:registro:security">Seguridad</legend>
+                                            <div class="form-group">
+                                                <div
+                                                     vc-recaptcha
+                                                     key="model.key"
+                                                     data-ng-model="newAccionista.reCaptcha"
+                                                     handle-error="reCaptcha"
+                                                     lang ="es"
+                                                     ></div>
+                                            </div>
+                                        </fieldset>
+
+                                        <!-- LOPD + CONFIRMAR -->
+                                        <fieldset>
+                                            <div hide-by-config="LOPD">
+                                                <legend data-i18n="id00032_home:app:registro:lopd">LOPD</legend>
+                                                <alert ng-if="showAlertsField && validation.LOPD != undefined" class="well-sm" type="'danger'">{{validation.LOPD}}</alert>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-3">
+
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="small" data-i18n="id00033_home:app:registro:lopd-helper">De acuerdo con lo dispuesto en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, los datos que los accionistas faciliten a la Sociedad, serán incorporados en un fichero, responsabilidad de Header Active Services, con la finalidad de gestionar el desarrollo, cumplimiento y control de la relación accionarial existente.Los accionistas podrán ejercitar su derecho de acceso, rectificación, cancelación y oposición mediante comunicación escrita dirigida a Header Active Services.</p>
+                                                    <label class="ui-checkbox">
+                                                        <input name="checkbox1" 
+                                                               type="checkbox" 
+                                                               name="LOPD" 
+                                                               id="LOPD" 
+                                                               data-ng-model="newAccionista.LOPD" 
+                                                               required-input="LOPD"
+                                                               >
+                                                        <span data-i18n="id00034_home:app:registro:agree">Los datos introducidos son correctos</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                    <button type="submit" class="btn btn-success" data-i18n="id00035_home:app:registro:confirm" anchor>Confirmar</button>
+                                                </div>
+                                                <script type="text/ng-template" id="myModalContent.html">
+                                                    <div class="modal-header">
+                                                    <h3 i18n="id00277_app:registro:registering">Registrando</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                    </div>
+                                                </script>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                    <!-- FIN DEL FORMULARIO -->
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer-container container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <ul class="menu-horizontal">
+                                <li><a href="#/app/inicio" data-i18n="id00068_home:footer:home">Inicio</a></li>
+                                <li><a href="#/app/contactar" data-i18n="id00069_home:footer:contact">Contactar</a></li>
+                                <li><a href="#/app/requisitos" data-i18n="id00070_home:footer:requirements">Requisitos</a></li>
+                                <li data-i18n="id00419_home:document:rules"></li>
+                            </ul>
+                            <p data-i18n="id00416_home:footer:title">Plataformas Electrónicas</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+{% endverbatim %}

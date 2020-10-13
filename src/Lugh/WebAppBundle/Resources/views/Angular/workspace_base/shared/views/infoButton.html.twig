@@ -1,0 +1,18 @@
+{% verbatim %}
+    <div>
+        <a href="javascript:;" ng-click="openModal()"><span class="glyphicon glyphicon-info-sign"></span></a>
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 data-i18n="Help" ng-if="title === undefined"></h3>
+                <h3                  ng-if="title !== undefined">{{title}}</h3>
+
+            </div>
+            <div class="modal-body">
+                {{ body }}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok()">OK</button>
+            </div>
+        </script>
+    </div>
+{%endverbatim%}

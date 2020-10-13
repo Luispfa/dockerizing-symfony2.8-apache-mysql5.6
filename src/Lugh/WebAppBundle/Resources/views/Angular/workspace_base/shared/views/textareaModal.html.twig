@@ -1,0 +1,21 @@
+{% verbatim %}
+<div>
+    <div class="modal-header">
+        <h3 data-i18n="Help" ng-if="title === undefined"></h3>
+        <h3                  ng-if="title !== undefined">{{title}}</h3>
+
+    </div>
+    <div class="modal-body">
+        {{ body }}
+        <textarea class="form-control"
+                  rows = "5"
+                  entities-decode
+                  data-ng-model = "$parent.message" ></textarea>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
+{%endverbatim%}

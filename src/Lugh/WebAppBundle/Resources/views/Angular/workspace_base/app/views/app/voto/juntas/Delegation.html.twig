@@ -1,0 +1,126 @@
+{% verbatim %}
+
+<div>
+	<h1><span class="titulo-menu delegationTitle" i18n="id00309_app:voto:delegation">Delegación</span></h1>
+	<div>
+		<div class="delegationContent">
+			<div class="panel panel-default" ng-if="showSubstitution">
+				<div class="panel-heading">
+					<h3 class="panel-title" i18n="id00310_app:voto:sustitution">Sustitución</h3>
+				</div>
+				<div class="panel-body">
+					<span i18n="id00261_app:vote:sustitucion:body"></span>
+					<label class="ui-checkbox"><input name="sustitucion" type="checkbox" ng-model="data.sustitucion" ng-true-value="false" ng-false-value="true"><span>No</span></label>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title" i18n="id00309_app:voto:delegation">Delegación</h3>
+				</div>
+				<div class="panel-body">
+					<span i18n="id00311_app:voto:delegation:body"></span>
+					<hr />
+					<form class="form-horizontal" role="form">
+						<div class="form-group" ng-if="showChairman">
+							<div class="col-sm-8 col-md-offset-4">
+								<label class="ui-radio"><input name="choiceDelegation" type="radio" ng-model="data.choiceDelegation" value="chairman" ng-change="onChoiceDelegation()"><span i18n="id00312_app:voto:delegation:chairman">El presidente del consejo</span></label>
+							</div>
+						</div>
+                                            <div class="form-group" ng-if="showSecretary">
+							<div class="col-sm-8 col-md-offset-4">
+								<label class="ui-radio"><input name="choiceSecretary" type="radio" ng-model="data.choiceDelegation" value="secretary" ng-change="onChoiceDelegation()"><span i18n="id00422_app:voto:delegation:secretary">El Secretario del consejo</span></label>
+							</div>
+						</div>
+						<div class="form-group" ng-if="showListado">
+							<div class="col-sm-8 col-md-offset-4">
+								<label class="ui-radio"><input name="choiceDelegation" type="radio" ng-model="data.choiceDelegation" value="list" ng-change="onChoiceDelegation()"><span i18n="id00313_app:voto:delegation:list">Listado de consejeros</span></label>
+							</div>
+						</div>
+						<div class="form-group" ng-if="showPersona">
+							<div class="col-sm-8 col-md-offset-4">
+								<label class="ui-radio"><input name="choiceDelegation" type="radio" ng-model="data.choiceDelegation" value="person"  ng-change="onChoiceDelegation()"><span i18n="id00314_app:voto:delegation:person">En otra persona</span></label>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<div class="panel panel-default" ng-show="data.choiceDelegation === 'list'">
+				<div>
+					<div class="panel-heading">
+						<h3 class="panel-title" i18n="id00315_app:voto:delegation:delegate">Delegar en</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group" ng-repeat="conseller in consellers" ng-if="!conseller.is_director && !conseller.is_secretary">
+								<div class="col-sm-8 col-md-offset-4">
+									<label class="ui-radio" ><input name="choiceConseller" type="radio" ng-model="data.conseller" ng-value="conseller"><span>{{conseller.nombre}}</span></label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default" ng-show="data.choiceDelegation === 'person'">
+				<div>
+					<div class="panel-heading">
+						<h3 class="panel-title" i18n="id00315_app:voto:delegation:delegate">Delegar en</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group" ng-if="showName">
+								<div class="col-sm-9 col-md-offset-3">
+									<label class="col-sm-2 control-label" for="" i18n="id00316_app:voto:delegation:delegate:name">Nombre</label>
+									<div class="col-sm-10">
+										<input type="text" placeholder="Nombre" ng-model="data.person.nombre" class="form-control" />
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group" ng-if="showTypeDoc">
+								<div class="col-sm-9 col-md-offset-3">
+									<label class="col-sm-2 control-label" for="" i18n="id00317_app:voto:delegation:delegate:type-doc">Tipo de documento</label>
+									<div class="col-sm-10">
+										<select name="tipo-doc" id="tipo-doc" required-input="tipo-doc" data-ng-model="data.person.documentType"
+												ng-options="typevalue as i18n(typelabel) for (typevalue, typelabel) in docTypes" class="form-control">
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group" ng-if="showNumDoc">
+								<div class="col-sm-9 col-md-offset-3">
+									<label class="col-sm-2 control-label" for="" i18n="id00318_app:voto:delegation:delegate:num-doc">Documentación</label>
+									<div class="col-sm-10">
+										<input type="text" placeholder="Documentación" ng-model="data.person.documentNum" class="form-control"/>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default" ng-if="showComments">
+				<div>
+					<div class="panel-heading">
+						<h3 class="panel-title" i18n="id00319_app:voto:delegation:comments">Comentarios</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<div class="col-sm-9 col-md-offset-3">
+									<div class="col-sm-10">
+										<textarea ng-model="data.observaciones" rows="10" cols="50" class="form-control">
+										</textarea>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+</div>
+
+{% endverbatim %}

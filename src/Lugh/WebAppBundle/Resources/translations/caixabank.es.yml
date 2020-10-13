@@ -1,0 +1,43 @@
+footerMail                                          : "<p>Puede acceder a la plataforma a través del siguiente enlace:</p><p> %baseuri% </p>"
+adminFooter                                         : "</p><p>Atentamente, </p><p>El Moderador</p>"
+
+#Tags Vote
+sentidoTag                                          : "<p><span style=\"text-decoration: underline;\">Sentido del voto</span> </p><p>En aquellos puntos del orden del día en que usted no haya indicado instrucciones de voto, se entenderá que vota a favor de las propuestas del Consejo de Administración.</p><p>El accionista que emita su voto a distancia será considerado como presente a los efectos de la constitución de la Junta General.</p>"
+sentidoDelegacionTag                                : "<p><span style=\"text-decoration: underline;\">Sentido del voto</span> </p><p>En el supuesto de delegación de la representación en el Presidente del Consejo de Administración, si usted no ha indicado instrucciones expresas de voto, le informamos que éste votará a favor de las propuestas de acuerdos formuladas por el Consejo de Administración.</p>"
+delegacionRepresentacion                            : "<p><span style=\"text-decoration: underline;\">Delegación de la representación </span> </p><p>La validez de esta delegación está sujeta a la verificación de su condición de accionista de CaixaBank, S.A. con derecho de asistencia a la Junta de Accionistas (la titularidad de sus acciones está inscrita en el correspondiente registro de anotaciones en cuenta con, al menos, cinco días de antelación a aquél en que haya de celebrarse la Junta).</p><p>El número de acciones que Usted ha informado se contrastará con la información de que dispone la Sociedad. En caso de existir divergencia entre ambos números, se considerará válido el menor de ellos. </p> "
+anulacionTag                                        : "<p><span style=\"text-decoration: underline;\">Anulación del voto</span> </p><p>Usted puede anular su voto en cualquier momento, hasta 24 horas antes del momento previsto para la primera convocatoria de la Junta General, a través de la Plataforma de Voto y Delegación Electrónica.</p>"
+distanciaTag                                        : "<p><span style=\"text-decoration: underline;\">Sentido del voto </span> </p><p>En aquellos puntos del orden del día en que usted no haya indicado instrucciones de voto, se entenderá que vota a favor de las propuestas del Consejo de Administración.</p><p>El accionista que emita su voto a distancia será considerado como presente a los efectos de la constitución de la Junta General. </p>"
+representante                                       : "<p>Recuerde que el representante que ha designado deberá identificarse mediante su Documento Nacional de Identidad o cualquier otro documento oficial generalmente aceptado a estos efectos.</p>"
+
+#Tags Delegation
+userDelegationVoteTag                               : "<p>Estas son las instrucciones de voto que se han registrado:</p><p>%votohtml%</p> %sentidoDelegacionTag%"
+adminDelegationVoteTag                              : "<p>Estas son las instrucciones de voto que se han registrado:</p><p>%votohtml%</p>"
+
+
+#Voto.mail.create
+subject-user-voto-create                            : "Votación realizada"
+user-voto-create                                    : "<p>Sr/Sra. Accionista,</p><p>Este correo electrónico es para confirmarle que su \"Votación\" ha quedado registrada en el sistema en fecha y hora %date_time%.</p><p>Estas son las acciones que usted ha registrado:</p><p>%votohtml% </p> %footerMail% %adminFooter% %sentidoTag% %distanciaTag% %anulacionTag%"
+subjetct-admin-voto-create                          : "Votación realizada" 
+admin-voto-create                                   : "<p>En fecha y hora %date_time% se ha registrado un nueva votación por parte del accionista %accionista_name%, con los siguientes datos:</p><p>%votohtml%</p> %footerMail%"
+
+#Delegacion.mail.publica
+subject-user-delegacion-publica                     : "Confirmación de la Delegación Electrónica"
+user-delegacion-publica                             : "<p>Sr/Sra. Accionista,</p><p>Este correo electrónico es para confirmarle que su \"Delegación Electrónica\" ha quedado registrada en el sistema en fecha y hora %date_time%.</p><p>Usted ha delegado sus acciones en %delegado_nombre% </p>  %footerMail% %adminFooter% %delegacionRepresentacion% %anulacionTag%"
+subject-admin-delegacion-publica                    : "Confirmación de la Delegación Electrónica"
+admin-delegacion-publica                            : "<p>El accionista %accionista_name% en fecha y hora %date_time% ha delegado sus acciones en %delegado_nombre% </p>  %footerMail%"
+
+#Delegacion.mail.pendiente
+accionistaDelegacionPendiente                       : "Delegación en %delegado_nombre% Pendiente<br/>%votohtml%"
+delegadoDelegacionPendiente                         : "<p>Se ha realizado una delegación en su nombre</p><p>%votohtml% </p><p>Si Desea Aceptarla o Rechazarla siga el siguiente enlace:</p><p> %baseuri%public/delegation/%id%/%delegado_token% </p>"
+adminDelegacionPendiente                            : "<p>Delegación en %delegado_nombre% Realizada por %accionista_name%</p><p>%votohtml%</p><p> En espera de confirmación</p>"
+
+
+#Delegacion.mail.rechaza
+accionistaDelegacionRechaza                         : "Delegación en %delegado_nombre% Rechazada<br/>%votohtml%"
+adminDelegacionRechaza                              : "</p><p>Delegación en %delegado_nombre% Rechazada por %accionista_name% </p><p> %votohtml% </p>"
+
+#Anulacion.mail.create
+subject-user-anulacion-create                       : "Anulación acción Voto/Delegación Electrónica"
+user-anulacion-create                               : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% ha anulado su Voto/Delegación Electrónica que había registrado en una sesión anterior. </p> %footerMail% %adminFooter%"
+subject-admin-anulacion-create                      : "Anulación acción anterior"
+admin-anulacion-create                              : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha anulado el Voto/Delegación Electrónica del accionista %accionista_name%. </p> %footerMail%"

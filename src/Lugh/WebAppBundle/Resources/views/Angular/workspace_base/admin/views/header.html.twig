@@ -1,0 +1,133 @@
+{% verbatim %} 
+<header class="clearfix" data-ng-controller="HeaderCtrl">
+
+    <!-- Logo -->
+    <div class="logo">
+        <a href="#/">
+        <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
+            <span>{{ brand() }}</span>
+        </a>
+    </div>
+
+    <!-- needs to be put after logo to make it working-->
+    <div class="menu-button" toggle-off-canvas>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+
+    <div class="top-nav">
+        <ul class="nav-left list-unstyled">
+            <li>
+                <a href="#/" data-toggle-min-nav class="toggle-min"><i class="fa fa-bars"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-columns"></i></a>
+                <ul class="dropdown-menu dropdown-dark with-arrow">
+                    <!--<li> <a href="#/app/translateManager"><span data-i18n="Translate Manager">Translate Manager</span></a> </li>-->
+                    <li>
+                        <a href="#/app/registroAdmin">
+                            <span data-i18n="id00423_admin:header:registro-admin">Añadir Accionista</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/app/statistics">
+                            <span data-i18n="id00451_admin:header:estadisticas-de-uso">Estadísticas de uso</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown text-normal nav-profile">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    <div class="img-login img-circle img30_30"></div>
+                    <span id="texto-usuario-header" data-i18n="Admin" class="hidden-xs">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-dark with-arrow">
+                    <li>
+                        <a href="javascript:;" data-ng-click="doLogout()">
+                        <i class="fa fa-sign-out"></i>
+                        <span data-i18n="Log Out">Log Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown langs text-normal" data-ng-controller="LangCtrl">
+                <a href="javascript:;" class="dropdown-toggle active-flag" data-toggle="dropdown">
+                    <span>{{ getFlag()}}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-dark with-arrow list-langs" role="menu">
+                    <li lang-element="es" data-ng-show="lang !== 'Espanol'">
+                        <a href="javascript:;" data-ng-click="setLang('Espanol')"> Español </a>
+                    </li>
+                    <li lang-element="ca" data-ng-show="lang !== 'Catalan'">
+                        <a href="javascript:;" data-ng-click="setLang('Catalan')"> Català </a>
+                    </li>
+                    <li lang-element="gl" data-ng-show="lang !== 'Gallego'">
+                        <a href="javascript:;" data-ng-click="setLang('Gallego')"> Galego </a>
+                    </li>
+                    <li lang-element="en" data-ng-show="lang !== 'English'">
+                        <a href="javascript:;" data-ng-click="setLang('English')"> English </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <ul class="nav-right pull-right list-unstyled">
+            <li class="dropdown" data-ng-controller="NotificationsCtrl">
+                <a href="javascript:;" class="dropdown-toggle bg-primary" data-toggle="dropdown">
+                    <i class="fa fa-comment-o"></i>
+                    <span class="badge badge-info" data-ng-hide="notNotifications()">{{numNotifications.length}}</span>
+                </a>
+                <div class="dropdown-menu pull-right with-arrow panel panel-default">
+                    <div class="panel-heading" i18n="id00160_app:header:notifications">Notificaciones</div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="notification in numNotifications | limitTo:3">
+                        <a href="#/app/header/notificaciones" class="media">
+                            <span class="pull-left media-icon">
+                                <span class="square-icon sm bg-primary"><i class="fa fa-comment-o"></i></span>
+                            </span>
+                            <div class="media-body">
+                                <span class="block" ng-bind-html="notification.subject"></span>
+                                <span class="text-muted">{{notification.date_time | date: "dd/MM/yyyy&nbsp;HH:mm:ss"}}</span>
+                            </div>
+                        </a>
+                        </li>
+                    </ul>
+                    <div class="panel-footer">
+                        <a href="#/app/header/notificaciones" i18n="id00077_app:header:notifications:show-all">Mostrar todas las notificaciones</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="dropdown" data-ng-controller="MailsCtrl">
+                <a href="javascript:;" class="dropdown-toggle bg-primary" data-toggle="dropdown">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge badge-info" data-ng-hide="notMails()">{{mails_in.length}}</span>
+                </a>
+                <div class="dropdown-menu pull-right with-arrow panel panel-default">
+                    <div class="panel-heading" data-i18n="id00161_app:header:mails">Mails</div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="mail in mails_in | limitTo:3">
+                            <a href="javascript:;" ng-click="loadSingleMail(mail.id)" class="media">
+                                <span class="pull-left media-icon">
+                                    <span class="square-icon sm bg-primary"><i class="fa fa-envelope-o"></i></span>
+                                </span>
+                                <div class="media-body">
+                                    <span class="block" ng-bind-html="mail.subject"></span>
+                                    <span class="text-muted block">{{mail.date_time | date: "dd/MM/yyyy&nbsp;HH:mm:ss"}}</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="panel-footer">
+                        <a href="#/app/header/mail/mail" data-i18n="id00162_app:header:mails:show-all">Mostrar todos los emails.</a>
+                        <a href="#/app/header/mail/mail?contact=1" data-i18n="id00417_app:voto:contactar">Contactar</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</header>
+{% endverbatim %} 

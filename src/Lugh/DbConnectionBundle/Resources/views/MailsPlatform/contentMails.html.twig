@@ -1,0 +1,38 @@
+<div class="container">
+		
+        <div class="row">
+
+            {#    <div class="span4" id="left_div">
+
+                        <div class="widget" id="left_top_div">
+
+                           {% include 'LughDbConnectionBundle:Default:globalPosition.html.twig' only %} 
+
+                        </div> <!-- /.widget -->
+
+                        <div class="widget" id="left_down_div">
+
+                            {% include 'LughDbConnectionBundle:Default:systemsPosition.html.twig' only %} 
+
+                        </div> <!-- /.widget -->				
+                </div> <!-- /.span4 -->
+            #}
+                <div class="span12" id="main_div">
+
+                        {#
+                        <div class="widget" id="main_top_div">
+
+                            {% include 'LughDbConnectionBundle:Default:platforms.html.twig' only %} 
+
+                        </div> <!-- /.widget -->				
+
+                        #}
+                        {% include 'LughDbConnectionBundle:MailsPlatform:mails.html.twig' with {'platform_id' : platform_id} %} 
+
+
+                </div> <!-- /.span8 -->
+
+        </div> <!-- /.row -->
+
+
+</div> <!-- /.container -->

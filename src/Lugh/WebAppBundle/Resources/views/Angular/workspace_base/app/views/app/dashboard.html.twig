@@ -1,0 +1,69 @@
+{% verbatim %}
+<div class="page page-dashboard" data-ng-controller="DashboardCtrl">
+
+     <div class="full-width">
+         <div class="contenido-container">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-xsm-12">
+
+
+                         <div class="panel panel-default">
+                             <div class="panel-body">
+                                 <p data-i18n="id00072_app:dashboard:welcome-message">
+                                 </p>
+                             </div>
+                         </div>
+
+
+                         <!-- stats -->
+                         <div class="row" adaptive-dash-row adapt-sizes="lg xsm" max-cols="lg-5 xsm-2">
+                             <div app-dash-element="foro">
+
+                                 <a href="#app/foro/dashboard-foro" class="btn btn-dashboard bg-foro">
+                                     <i class="fa fa-users"></i> <br /><label data-i18n="id00048_app:foro">Foro</label>
+                                 </a>
+
+                             </div>
+
+                             <div app-dash-element="voto">
+
+                                 <a href="#/app/voto/voto" class="btn btn-dashboard bg-voto">
+                                     <i class="fa fa-check-square-o"></i><br /><label data-i18n="id00049_app:voto">Voto</label>
+                                 </a>
+
+                             </div>
+
+
+                             <div app-dash-element="derecho">
+
+                                 <a href="#/app/derecho/dashboard-derecho" class="btn btn-dashboard bg-derecho">
+                                     <i class="fa fa-info"></i> <br /><label data-i18n="id00050_app:derecho">Derecho</label>
+                                 </a>
+
+
+                             </div>
+                             
+                             <div app-dash-element="av">
+
+                                 <a href="#/app/av/dashboard-av" class="btn btn-dashboard bg-av">
+                                     <i class="fa fa-laptop"></i> <br /><label data-i18n="id00428_app:av">Asistencia Virtual</label>
+                                 </a>
+
+
+                             </div>
+                         </div>
+                         <!-- end stats -->
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+
+
+</div>
+
+{% endverbatim %}

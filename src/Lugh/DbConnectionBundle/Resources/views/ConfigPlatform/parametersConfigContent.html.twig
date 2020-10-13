@@ -1,0 +1,25 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>key</th>
+            <th>Config</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for parameter_config in parameters_config %}
+            {% set config = 'config_' ~ parameter_config.id %}
+            <input type="hidden" name="id[config][]" value="{{ parameter_config.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ parameter_config.clase }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_config.config,config)) }}
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

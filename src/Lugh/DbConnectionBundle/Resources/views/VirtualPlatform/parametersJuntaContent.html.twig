@@ -1,0 +1,54 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <colgroup span="2"></colgroup>
+    <colgroup span="6"></colgroup>
+    <thead>
+        <tr>
+            <th colspan="2"> Nuevo </th>
+            <th colspan="6"> Actual </th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Estado</th>
+            <th>Estado</th>
+            <th>Acreditacion</th>
+            <th>Votacion</th>
+            <th>Preguntas</th>
+            <th>Live</th>
+            <th>Abandono</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for parameter_junta in parameters_junta %}
+            {% set state = 'state_' ~ parameter_junta.id %}
+            <input type="hidden" name="id[junta][]" value="{{ parameter_junta.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    Seleccione estado:
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_junta.state,state)) }}
+                </td>
+                <td>
+                    {{ parameter_junta.actual }}
+                </td>
+                <td>
+                    {{ parameter_junta.acreditacion }}
+                </td>
+                <td>
+                    {{ parameter_junta.votacion }}
+                </td>
+                <td>
+                    {{ parameter_junta.preguntas }}
+                </td>
+                <td>
+                    {{ parameter_junta.live }}
+                </td>
+                <td>
+                    {{ parameter_junta.abandono }}
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

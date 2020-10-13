@@ -1,0 +1,105 @@
+<div class="widget widget-table">
+					
+	<div class="widget-header">
+		<h3>Eventos Asistencia Virtual : Plataforma</h3>					
+	</div> <!-- /.widget-header -->
+					
+	<div class="widget-content">
+		{% if not platform_E %}
+			<div class="span12" style="margin: 10px;">No hay eventos registrados localmente</div>
+		{% endif %}
+
+       	{% set eid = '' %}
+   		{% for event in platform_E %}
+   		{% if eid != event.eventId %}
+   		{% set eid = event.eventId %}
+      	<div class="widget-header">
+            <h3>Evento {{event.eventId}}</h3>
+      	</div>
+
+      	<div class="widget-content">                   
+			<table class="table table-bordered table-striped responsive">
+			    <thead>
+			        <tr>
+			            <th>ID Evento</th>
+			            <th>ID Sesión </th>
+			            <th>Nombre Sesión</th>
+			            <th>Fecha Inicio</th>
+			            <th>Fecha Fin</th>
+			            <th>Estado Live</th>
+			            <th>Estado Od</th>
+			            <th>URL</th>
+			            <th>Activo</th>
+			            <th>Accion </th>
+			        </tr>
+			    </thead>
+
+			    <tbody>
+			    	{% for event in platform_E %}
+			    	{% if event.eventId == eid %}
+			        <tr class ="gradeA">
+			        	<td>{{ event.eventId }}</td>
+			            <td>{{ event.sessionId }}</td>
+			            <td>{{ event.sessionName }}</td>
+			            <td>{{ event.sessionStartDatetime |date("d/m/Y H:s")}}</td>
+			            <td>{{ event.sessionFinishDatetime |date("d/m/Y H:s")}}</td>
+			            <th>{{ event.sessionLiveStatus }}</th>
+			            <th>{{ event.sessionOdStatus }}</th>
+			            <th style="max-width:175px;overflow:hidden;overflow-x:scroll;
+			  white-space: nowrap;">{{ event.url }}</th>
+			            <td> 
+			            	<div class="onoffswitch">
+		                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch_{{ event.eventId }}{{ event.sessionId }}_active"
+		                               onclick = "(function(){
+			                               	var parsedJSON = {
+						            			event_id:{{event.eventId}}, 
+						            			session_id:{{event.sessionId}} 
+						            		};
+						            		toggleActive(
+												'{{ path('_eventos_proveedor_toggle') }}',
+												parsedJSON,
+												'{{ path( '_eventos_plataforma',{'platform_id': platform_id}) }}',
+												'ev_plataforma'
+						            		);
+		                               		//console.log('click!');
+		                               })()" 
+		                        {% if event.enabled %}   
+		                               checked
+		                        {% endif %}
+		                        >
+		                        <label class="onoffswitch-label" for="myonoffswitch_{{ event.eventId }}{{ event.sessionId }}_active">
+		                            <div class="onoffswitch-inner"></div>
+		                            <div class="onoffswitch-switch"></div>
+		                        </label>
+		                    </div>
+			            </td>
+			            <td>
+			            	<button class="btn btn-small btn-danger" onclick="(function(){
+			            		var parsedJSON = {
+			            			event_id:{{event.eventId}}, 
+		            				session_id:{{event.sessionId}}  
+			            		};
+			            		removeEvent(
+									'{{ path('_eventos_proveedor_remove') }}',
+									parsedJSON,
+									'{{ path( '_eventos_plataforma',{'platform_id': platform_id}) }}',
+									'ev_plataforma'
+			            		);
+			            		return false;
+			            	})()">
+			                    Eliminar
+			                </button> 
+			            </td>
+			        </tr>
+			        {% endif %}
+			        {% endfor %}
+			    </tbody>
+			</table>	
+        </div>
+        
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div> <!-- /.widget-content -->
+					

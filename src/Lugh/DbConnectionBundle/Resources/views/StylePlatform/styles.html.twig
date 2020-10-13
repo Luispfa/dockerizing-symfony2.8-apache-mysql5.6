@@ -1,0 +1,64 @@
+
+<div class="container" id="view-container">
+    <div class="row" id="main_row">
+
+        <div class="span12" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget widget-table">
+                    {% include 'LughDbConnectionBundle:StylePlatform:colorsTable.html.twig' %}
+                </div>
+                <div class="widget widget-table">
+                    {% include 'LughDbConnectionBundle:StylePlatform:logoTable.html.twig' %}
+                </div>
+
+
+                <div class="widget-content">
+                    
+                    
+
+                    
+                    <div class="widget widget-table">
+
+                        <div class="widget-header">                     
+                            <h3 style="text-rendering: auto;">
+                                <i class="icon-pencil"></i>
+                                Guardar Estilo                           
+                            </h3>   
+                        </div> <!-- /widget-header -->
+                        
+                        <div class="widget-content">
+
+                            <table  class="table table-striped table-bordered responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <button type="button" class="btn btn-primary btn-large" onclick="saveStyle2('{{ path('_styleplatform_colors_save') }}',$('#crontab_file tbody :input'),'{{ path( '_styleplatform_colors_content',{'platform_id': platform}) }}','view-container'); return false;">Save changes</button>
+                                            <button class="btn btn-large">Cancel</button>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div> <!-- /widget-content -->
+
+                    </div>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+
+</div>
+

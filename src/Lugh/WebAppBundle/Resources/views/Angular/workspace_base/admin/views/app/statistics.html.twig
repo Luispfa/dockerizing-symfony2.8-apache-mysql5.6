@@ -1,0 +1,420 @@
+{% verbatim %}
+<div class="page page-table" data-ng-controller="estadisticasCtrl">
+    <section class="panel panel-default">
+
+        <div class="panel-heading">
+
+            <h4>
+            <span class="glyphicon glyphicon-stats"></span>
+            <span data-i18n="id00451_admin:header:estadisticas-de-uso">ERROR!</span>
+            </h4>
+
+        </div><!-- end panel-heading -->
+
+
+        <div class="panel-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <section class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <strong>
+                                <span data-i18n="id00452_admin:header:estadisticas-de-uso:propuestas">ERROR!</span>
+                            </strong>
+                        </div><!-- end panel-heading -->
+
+
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-8"><strong data-i18n="id00460_admin:header:estadisticas-de-uso:publicado">ERROR!</strong></div>
+                                <div class="col-md-4 text-right" data-ng-bind="propuestas.publicado">ERROR!</div>
+                            </div>
+
+                        </div><!-- end panel-body -->
+
+
+                    </section>
+
+                </div> <!-- end Propuestas -->
+
+                <div class="col-md-6">
+
+                    <section class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <strong>
+                                <span data-i18n="id00453_admin:header:estadisticas-de-uso:iniciativas">ERROR!</span>
+                            </strong>
+                        </div><!-- end panel-heading -->
+
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8"><strong data-i18n="id00460_admin:header:estadisticas-de-uso:publicado">ERROR!</strong></div>
+                                <div class="col-md-4 text-right" data-ng-bind="iniciativas.publicado">ERROR!</div>
+                            </div>
+                        </div><!-- end panel-body -->
+
+
+                    </section>
+
+                </div> <!-- end Iniciativas -->
+
+
+            </div><!-- end row 1 -->
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <section class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <strong>
+                                <span data-i18n="id00454_admin:header:estadisticas-de-uso:oferta-representacion">ERROR!</span>
+                            </strong>
+                        </div><!-- end panel-heading -->
+
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8"><strong data-i18n="id00460_admin:header:estadisticas-de-uso:publicado">ERROR!</strong></div>
+                                <div class="col-md-4 text-right" data-ng-bind="ofertasDeRepresentacion.publicado">ERROR!</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8"><strong data-i18n="id00461_admin:header:estadisticas-de-uso:descartado">ERROR!</strong></div>
+                                <div class="col-md-4 text-right" data-ng-bind="ofertasDeRepresentacion.descartado">ERROR!</div>
+                            </div>
+
+                        </div><!-- end panel-body -->
+
+
+                    </section>
+
+                </div> <!-- end Ofertas de Representación -->
+
+                <div class="col-md-6">
+
+                    <section class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <strong>
+                                <span data-i18n="id00455_admin:header:estadisticas-de-uso:propuesta-representacion">ERROR!</span>
+                            </strong>
+                        </div><!-- end panel-heading -->
+
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8"><strong data-i18n="id00460_admin:header:estadisticas-de-uso:publicado">ERROR!</strong></div>
+                                <div class="col-md-4 text-right" data-ng-bind="propuestasDeRepresentacion.publicado">ERROR!</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8"><strong data-i18n="id00462_admin:header:estadisticas-de-uso:pendiente-de-aprobacion">ERROR!</strong></div>
+                                <div class="col-md-4 text-right" data-ng-bind="propuestasDeRepresentacion.pendiente">ERROR!</div>
+                            </div>
+
+
+                        </div><!-- end panel-body -->
+
+
+                    </section>
+
+                </div> <!-- end Propuestas de Representación -->
+
+
+            </div><!-- end row 2 -->
+
+            <section class="panel panel-default">
+
+                <div class="panel-heading">
+                    <strong>
+                        <span data-i18n="id00456_admin:header:estadisticas-de-uso:usuariosaccionistas">ERROR!</span>
+                    </strong>
+                </div><!-- end panel-heading -->
+
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8"><strong data-i18n="id00460_admin:header:estadisticas-de-uso:publicado">ERROR!</strong></div>
+                        <div class="col-md-4 text-right" data-ng-bind="usuariosNaccionistas.publicado">ERROR!</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8"><strong data-i18n="id00462_admin:header:estadisticas-de-uso:pendiente-de-aprobacion">ERROR!</strong></div>
+                        <div class="col-md-4 text-right" data-ng-bind="usuariosNaccionistas.pendienteDeAprobacion">ERROR!</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8"><strong data-i18n="id00463_admin:header:estadisticas-de-uso:pendiente-de-revision">ERROR!</strong></div>
+                        <div class="col-md-4 text-right" data-ng-bind="usuariosNaccionistas.pendienteDeRevision">ERROR!</div>
+                    </div>
+                </div><!-- end panel-body -->
+
+
+            </section><!-- end Usuarios / Accionistas Registrados -->
+
+            <section class="panel panel-default" ng-if="accionistas.length > 0">
+
+                <div class="panel-heading">
+                    <strong>
+                        <span data-i18n="id00470_admin:header:estadisticas-de-uso:lista:accionista">ERROR!</span>
+                    </strong>
+                </div><!-- end panel-heading -->
+
+
+                <div class="panel-body">
+
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <td><strong><span>#</span></strong></td>
+                            <td><strong><span data-i18n="id00467_admin:header:estadisticas-de-uso:lista:tipo">ERROR!</span></strong></td>
+                            <td><strong><span data-i18n="id00469_admin:header:estadisticas-de-uso:lista:name">ERROR!</span></strong></td>
+                            <td><strong><span data-i18n="id00468_admin:header:estadisticas-de-uso:lista:acciones">ERROR!</span></strong></td>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in accionistas">
+                                <td>{{ $index + 1 }}      </td>
+                                <td data-i18n="{{ item['tipo'] }}"></td>
+                                <td>{{ item['nombre'] }}  </td>
+                                <td>{{ item['acciones'] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div><!-- end panel-body -->
+
+
+            </section><!-- end Listado Accionistas-->
+
+            <section class="panel panel-default" ng-if="foro.length > 0">
+
+                <div class="panel-heading">
+                    <strong>
+                        <span data-i18n="id00465_admin:header:estadisticas-de-uso:foro">ERROR!</span>
+                    </strong>
+                </div><!-- end panel-heading -->
+
+
+                <div class="panel-body">
+
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <td><strong><span>#</span></strong></td>
+                        <td><strong><span data-i18n="id00467_admin:header:estadisticas-de-uso:lista:tipo">ERROR!</span></strong></td>
+                        <td><strong><span data-i18n="id00471_admin:header:estadisticas-de-uso:lista:autor">ERROR!</span></strong></td>
+                        <td><strong><span data-i18n="id00472_admin:header:estadisticas-de-uso:lista:titulo">ERROR!</span></strong></td>
+                        <td><strong><span data-i18n="id00473_admin:header:estadisticas-de-uso:lista:adhesiones">ERROR!</span></strong></td>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in foro">
+                            <td>{{ $index + 1 }}</td>
+                            <td data-i18n="{{ item['tipo'] }}"></td>
+                            <td>{{ item['autor'] }}     </td>
+                            <td>{{ item['titulo'] }}    </td>
+                            <td>{{ item['adhesiones'] }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div><!-- end panel-body -->
+
+
+            </section><!-- end Listado Foro-->
+
+            <section class="panel panel-default" ng-if="derecho.length > 0">
+
+                <div class="panel-heading">
+                    <strong>
+                        <span data-i18n="id00466_admin:header:estadisticas-de-uso:derecho">ERROR!</span>
+                    </strong>
+                </div><!-- end panel-heading -->
+
+
+                <div class="panel-body">
+
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <td><strong><span>#</span></strong></td>
+                        <td><strong><span data-i18n="id00471_admin:header:estadisticas-de-uso:lista:autor">ERROR!</span></strong></td>
+                        <td><strong><span data-i18n="id00472_admin:header:estadisticas-de-uso:lista:titulo">ERROR!</span></strong></td>
+                        <td><strong><span data-i18n="id00474_admin:header:estadisticas-de-uso:lista:message">ERROR!</span></strong></td>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in derecho">
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ item['autor'] }}</td>
+                            <td>{{ item['titulo'] }}    </td>
+                            <td>{{ item['mensajes'] }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div><!-- end panel-body -->
+
+
+            </section><!-- end Listado Derecho-->
+
+            <section class="panel panel-default" ng-if="voto.length > 0">
+
+                <div class="panel-heading">
+                    <strong>
+                        <span data-i18n="id00464_admin:header:estadisticas-de-uso:voto">ERROR!</span>
+                    </strong>
+                </div><!-- end panel-heading -->
+
+
+                <div class="panel-body">
+
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <td><strong><span>#</span></strong></td>
+                        <td><strong><span data-i18n="id00467_admin:header:estadisticas-de-uso:lista:tipo">ERROR!</span></strong></td>
+                        <td><strong><span data-i18n="id00471_admin:header:estadisticas-de-uso:lista:autor">ERROR!</span></strong></td>
+                        <td><strong><span data-i18n="id00468_admin:header:estadisticas-de-uso:lista:acciones">ERROR!</span></strong></td>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in voto">
+                            <td>{{ $index + 1 }}</td>
+                            <td data-i18n="{{ item['tipo'] }}"></td>
+                            <td>{{ item['autor'] }}     </td>
+                            <td>{{ item['acciones'] }}  </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div><!-- end panel-body -->
+
+
+            </section><!-- end Listado Voto-->
+
+            <section class="panel panel-default">
+
+                <div class="panel-heading">
+                    <strong>
+                        <span data-i18n="id00457_admin:header:estadisticas-de-uso:visitas2m">ERROR!</span>
+                    </strong>
+                </div><!-- end panel-heading -->
+
+
+                <div class="panel-body statistics">
+                    <img  src="{{ visitas.bimensual }}" alt="visitas bimensual" height="100%" width="auto">
+                </div><!-- end panel-body -->
+
+
+            </section><!-- end Visitas 2Meses -->
+
+            <div class=" row ">
+
+                <div class="col-md-6">
+                    <section class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <strong>
+                                <span data-i18n="id00458_admin:header:estadisticas-de-uso:visitashoy">ERROR!</span>
+                            </strong>
+                        </div><!-- end panel-heading -->
+
+
+                        <div class="panel-body statistics">
+                            <img  src="{{ visitas.hoy }}" alt="visitas hoy" height="100%" width="auto">
+                        </div><!-- end panel-body -->
+
+
+                    </section><!-- end Visitas Hoy -->
+                </div>
+                <div class="col-md-6">
+                    <section class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <strong>
+                                <span data-i18n="id00459_admin:header:estadisticas-de-uso:visitasporhora">ERROR!</span>
+                            </strong>
+                        </div><!-- end panel-heading -->
+
+
+                        <div class=" panel-body statistics">
+                            <img  src="{{ visitas.porhoras }}" alt="visitas por hora" height="100%" width="auto">
+                        </div><!-- end panel-body -->
+
+
+                    </section><!-- end Visitas Por Hora -->
+                </div>
+
+            </div><!-- end row 6-->
+
+            <div class="panel-body ng-scope" ng-init="isCollapsed = true">
+                <button class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">Visitas en detalle...</button>
+                <hr>
+                <div collapse="isCollapsed" class="collapse" style="height: auto;">
+                    <div ng-repeat="visita in lastVisitoractions">
+
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ 'IP: '+visita.visitIp+' - '+visita.customVariables['1'].customVariableValue1 }}</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table">
+                                            <thead>
+                                            <td><strong><span >IP Visitante(Visitas)</span></strong></td>
+                                            <td><strong><span >Duracion</span></strong></td>
+                                            <td><strong><span >Tipo</span></strong></td>
+                                            <td><strong><span >Pais</span></strong></td>
+                                            <td><strong><span >Origen visitante</span></strong></td>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>{{ visita.visitIp }}</td>
+                                                <td>{{ visita.visitDurationPretty }}</td>
+                                                <td>{{ visita.visitorType }}     </td>
+                                                <td>{{ visita.location }}  </td>
+                                                <td>{{ visita.referrerUrl }}  </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table">
+                                            <thead>
+                                            <td><strong><span >Fecha</span></strong></td>
+                                            <td><strong><span >Tipo</span></strong></td>
+                                            <td><strong><span >URL</span></strong></td>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="action in visita.actionDetails">
+
+                                                <td>{{ action.serverTimePretty }}     </td>
+                                                <td ng-if="action.type == 'download'"> Descarga  </td>
+                                                <td ng-if="action.type != 'download'"> Visita  </td>
+                                                <td>{{ action.url }}  </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- end panel-body -->
+
+
+    </section>
+
+
+</div>
+{% endverbatim %}

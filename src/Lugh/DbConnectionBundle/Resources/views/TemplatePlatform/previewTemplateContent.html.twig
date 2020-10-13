@@ -1,0 +1,913 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+        #msg-ie {
+            font-family: Lato, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 14px;
+            color: 767676;
+            width: 100%;
+            max-width: 570px;
+            margin: auto;
+            margin-top: 10%;
+            text-align:center;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+    </style>
+    <![endif]-->
+
+    
+    
+
+
+    
+    <link href="{{path}}/css/workspace_base/main.css" rel="stylesheet">
+    <link href="{{path}}/css/workspace_base/header.css" rel="stylesheet">
+    <link href="{{path}}/js/src/plugins/smartwizard/smart_wizard.modified.css" rel="stylesheet">
+    <link href="{{path}}/js/src/lib/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{path}}/css/workspace_base/style.css" rel="stylesheet">
+    {% if style is defined %}
+        <link href="{{path}}/css/{{style}}/style.css" rel="stylesheet">
+    {%endif%}
+    
+
+    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
+    </style>
+    <style id="holderjs-style" type="text/css"></style>
+    <style>
+        #content {
+            top: 0px;
+            left: 0px;
+        }
+        .ventanas{
+            position:relative;
+        }
+    </style>
+</head>
+<script src='{{path}}/js/src/lib/bower_components/jquery/dist/jquery.min.js'></script>
+{#<script src="{{path}}/js/ae8b528.js"></script>
+<script src="{{path}}/js/lib/bower_components/angular-file-upload-master/angular-file-upload.js"></script>
+<script src='{{path}}/js/Bootstrap/home.js'></script>#}
+{% verbatim %}
+<script>
+    function toggle(str){
+        $('.scontainer').css('display','none');
+        $('.nav .active').removeClass("active");
+        $('.nav '+str+'tab').addClass("active");
+        $(str).toggle();
+    }
+</script>
+<body>
+<ul class="nav nav-tabs" style="padding: 10px 10px 0 10px">
+    <li id='supercontainer1tab'role="presentation" class="active" onclick="toggle('#supercontainer1')"><a href="#">Login</a></li>
+    <li id='supercontainer2tab'role="presentation" onclick="toggle('#supercontainer2')"><a href="#">Voto</a></li>
+    <li id='supercontainer3tab' role="presentation" onclick="toggle('#supercontainer3')"><a href="#">Componentes</a></li>
+
+</ul>
+<div class=''>
+    <div class='ventanas'>
+
+        <div class='scontainer' id="supercontainer1" style="height:calc(100% - 52px);">
+
+            <!-- Log-IN -------------------------------------------------------------------------------------------------------------------------------------------- -->
+            <section data-ng-include="'/lugh/logic/web/app_dev.php/home/views/header-login.html'" id="header" class="top-header ng-scope" style="  margin-top: -50px;">
+                <header class="clearfix header-inicio ng-scope" data-ng-controller="HeaderCtrl" >
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="#/">
+                            <span class="ng-binding">Platforms</span>
+                        </a>
+                    </div>
+
+
+                    <div class="top-nav">
+                        <ul class="nav-left list-unstyled">
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-columns"></i></a>
+                                <ul class="dropdown-menu dropdown-dark with-arrow">
+                                    <li> <a href="#/app/inicio"><span data-i18n="Inicio" class="ng-isolate-scope">Inicio</span></a> </li>
+                                    <li> <a href="#/app/contactar"><span data-i18n="Contactar" class="ng-isolate-scope">Contactar</span></a> </li>
+                                    <li> <a href="#/app/requisitos"><span data-i18n="Requisitos" class="ng-isolate-scope">Requisitos</span></a> </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown langs text-normal ng-scope" data-ng-controller="LangCtrl">
+                                <a href="javascript:;" class="dropdown-toggle active-flag" data-toggle="dropdown">
+                                    <span class="ng-binding"> Espa&ntilde;ol</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-dark with-arrow list-langs" role="menu">
+                                    <li lang-element="es" data-ng-show="lang !== 'Espanol' " class="ng-hide" style="display: list-item;">
+                                        <a href="javascript:;" data-ng-click="setLang('Espanol')"> Espa&ntilde;ol</a></li>
+                                    <li lang-element="ca" data-ng-show="lang !== 'Catalan' " class="" style="display: list-item;">
+                                        <a href="javascript:;" data-ng-click="setLang('Catalan')"> Catal�</a></li>
+
+                                    <li lang-element="en" data-ng-show="lang !== 'English' " class="" style="display: list-item;">
+                                        <a href="javascript:;" data-ng-click="setLang('English')"> English</a></li>
+                                </ul>
+                            </li>
+                            <!--             <li class="dropdown">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                                <span class="fa fa-magic nav-icon"></span>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right color-switch" data-ui-color-switch>
+                                                <li><a href="javascript:;" class="color-option color-some_color" data-style="some_color"></a></li>
+                                            </ul>
+                                        </li> -->
+
+                        </ul>
+
+                    </div>
+
+                </header>
+
+            </section>
+            <div class='view-container'>
+                <section class="animate-Fade-up ng-scope" style='margin-top:50px;'>
+                    <div class="page-signin" ng-controller="MainEnabled">
+
+                        <div class="signin-body">
+                            <div class="container">
+                                <div class="form-container">
+
+
+                                    <section class="row text-center">
+                                        <h2 data-i18n="id00382_home:title:title">Plataformas Electr&oacute;nicas</h2>
+                                        <p data-i18n="id00381_home:title:information">La plataforma estar&aacute; operativa desde el d&iacute;a de la convocatoria hasta el mismo d&iacute;a de su celebraci&oacute;n.</p>
+                                    </section>
+
+                                    <section ng-hide="!isAppEnabled()">
+                                        <section class="row text-center" ng-hide="!isCertEnabled()">
+                                            <form role="form" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <h4><span data-i18n="id00389_home:get1:certificate"> </span><a href="/home/images/CertificadosSoportados.pdf" data-i18n="id00390_home:get2:certificate">Obtener certificado valido</a></h4>
+                                                    <p data-i18n="id00383_home:body:certificate">Si es la primera vez que accede al sistema, ser&aacute; dirigido a un formulario de alta de usuario donde deber&aacute; introducir los datos necesarios para poder ejercitar su derecho de participaci&oacute;n en  "La plataforma electr&oacute;nica".</p>
+                                                </div>
+                                                <div class="form-group" ng-controller="CertificateLoginCtrl">
+                                                    <script type="text/ng-template" id="myModalContent.html">
+                                                        <div class="modal-header">
+                                                            <h3 data-i18n="id00384_home:comprobado:certificate"></h3>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                        </div>
+                                                    </script>
+                                                    <a href="javascript:;" ng-click="cerlogin()" class="btn btn-primary btn-lg btn-block" data-i18n="id00385_home:button:certificate">Acceso con certificado v&aacute;lido</a>
+                                                </div>
+                                            </form>
+                                        </section>
+
+                                        <section class="row text-center" ng-hide="!isuserpassEnabled()">
+                                            <span class="line-thru" data-i18n="id00386_home:button:userpass">Acceso mediante usuario y contrase&ntilde;a</span>
+                                            <form ng-submit="submit()" ng-controller="FormSubCtrl" class="form-horizontal" autocomplete="off">
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-lg">
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-user"></span>
+                                                                    </span>
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   placeholder='Usuario'
+                                                                   ng-model="username"
+                                                                   name = "username"
+                                                                   data-i18n="i18n-placeholder"
+                                                                    >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="input-group input-group-lg">
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-asterisk"></span>
+                                                                    </span>
+                                                            <input type="password"
+                                                                   class="form-control"
+                                                                   ng-model="password"
+                                                                   class="form-control"
+                                                                   placeholder="Contrase&ntilde;"
+                                                                   data-i18n="i18n-placeholder"
+                                                                    >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="submit"
+                                                               id="submit"
+                                                               class="btn btn-primary btn-lg btn-block"
+                                                               value="Acceder"
+                                                               data-i18n="i18n-value"
+                                                               translate-values ="{'var1' : 'value1', 'var2' : 'value2'}"/>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </section>
+
+                                        <section ng-hide="!isuserpassEnabled()">
+                                            <p class="text-center"><a href="#/app/forgot" data-i18n="id00387_home:forgot:userpass">&iquest;Ha olvidado su contrase&ntilde;a?</a></p>
+                                        </section>
+
+                                        <section class="row text-center" ng-hide="!isuserpassEnabled()">
+                                            <form class="form-horizontal">
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <a href="#/app/registro" class="btn btn-primary btn-small" data-i18n="id00388_home:register:userpass">Obtener usuario y contrase&ntilde;a</a>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </section>
+                                    </section>
+                                </div>
+                                <footer class="footer-container">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <ul class="menu-horizontal">
+                                                <li><a href="#/app/inicio" data-i18n="id00068_home:footer:home">Inicio</a></li>
+                                                <li><a href="#/app/contactar" data-i18n="id00069_home:footer:contact">Contactar</a></li>
+                                                <li><a href="#/app/requisitos" data-i18n="id00070_home:footer:requirements">Requisitos</a></li>
+                                                <li data-i18n="id00419_home:document:rules"></li>
+                                            </ul>
+                                            <p data-i18n="id00416_home:footer:title">Plataformas Electr&oacute;nicas</p>
+                                        </div>
+                                    </div>
+                                </footer>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        </div>
+
+        <div class='scontainer' id="supercontainer2" style="height:calc(100% - 52px);display:none">
+
+
+            <!-- Voto ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+            <div data-ng-controller="AppCtrl" class="ng-scope">
+                <div data-ng-hide="isSpecificPage()" class="no-print">
+                    <!-- ngInclude: '/lugh/logic/web/app_dev.php/workspace/views/header.html' --><section data-ng-include=" '/lugh/logic/web/app_dev.php/workspace/views/header.html'" id="header" class="top-header ng-scope">
+                        <header class="clearfix ng-scope" data-ng-controller="HeaderCtrl">
+
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="#/">
+                                    <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
+                                    <span class="ng-binding">Platforms</span>
+                                </a>
+                            </div>
+
+                            <!-- needs to be put after logo to make it working-->
+                            <div class="menu-button" toggle-off-canvas="">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </div>
+
+                            <div class="top-nav">
+                                <ul class="nav-left list-unstyled">
+                                    <li>
+                                        <a href="#/" data-toggle-min-nav="" class="toggle-min"><i class="fa fa-bars"></i></a>
+
+                                        <!--             <li class="dropdown">
+                                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-columns"></i></a>
+                                                        <ul class="dropdown-menu dropdown-dark with-arrow">
+
+                                                            <li> <a href="javascript:;"><span data-i18n="Boxed Layout"></span></a> </li>
+                                                            <li> <a href="javascript:;"><span data-i18n="Full Width Layout"></span></a> </li>
+                                                            <li> <a href="javascript:;"><span data-i18n="Collapsed Menu"></span></a> </li>
+                                                            <li> <a href="javascript:;"><span data-i18n="Horizontal Menu"></span></a> </li>
+                                                            <li> <a href="javascript:;"><span data-i18n="Vertical Menu"></span></a> </li>
+                                                        </ul>
+                                                    </li> -->
+
+
+                                    </li><li class="dropdown text-normal nav-profile">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+
+                                            <div class="img-login img-circle img30_30"></div>
+                                            <span id="texto-usuario-header" class="hidden-xs ng-binding">KOSTKA DE MAEZTU RAMIRO </span>
+
+
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-dark with-arrow">
+                                            <li>
+                                                <a href="#/app/profile">
+                                                    <i class="fa fa-user"></i>
+                                                    <span data-i18n="id00088_app:header:profile" class="ng-isolate-scope">Mi Perfil</span>
+                                                </a>
+                                            </li>
+                                            <!-- ngIf: !is_user_cert -->
+                                            <li>
+
+                                                <a href="javascript:;" data-ng-click="doLogout()">
+                                                    <i class="fa fa-sign-out"></i>
+                                                    <span data-i18n="id00089_app:header:log-out" class="ng-isolate-scope">Cerrar Sesi&oacute;n</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown langs text-normal ng-scope" data-ng-controller="LangCtrl">
+                                        <a href="javascript:;" class="dropdown-toggle active-flag" data-toggle="dropdown">
+                                            <span class="ng-binding"> Espa&ntildeol</span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-dark with-arrow list-langs" role="menu">
+                                            <li lang-element="es" data-ng-show="lang !== 'Espanol' " class="ng-hide" style="display: list-item;">
+                                                <a href="javascript:;" data-ng-click="setLang('Espanol')" i18n="language_spanish" class="ng-isolate-scope">Espa&ntildeol</a></li>
+                                            <li lang-element="ca" data-ng-show="lang !== 'Catalan' " class="" style="display: list-item;">
+                                                <a href="javascript:;" data-ng-click="setLang('Catalan')" i18n="language_catalan" class="ng-isolate-scope">Catal�</a></li>
+
+                                            <li lang-element="en" data-ng-show="lang !== 'English' " class="" style="display: list-item;">
+                                                <a href="javascript:;" data-ng-click="setLang('English')" i18n="language_english" class="ng-isolate-scope">English</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                    <li class="dropdown text-normal visible-sm visible-xs hidden-md hidden-lg">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span data-i18n="APP" class="ng-isolate-scope">APP</span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-dark with-arrow">
+                                            <li app-element="foro" style="display: list-item;">
+
+                                                <a href="#/app/foro/dashboard-foro">
+                                                    <i class="fa fa-users"></i>
+                                                    <span data-i18n="id00048_app:foro" class="ng-isolate-scope">Foro</span>
+                                                </a>
+                                            </li>
+                                            <li app-element="voto" style="display: list-item;">
+                                                <a href="#/app/voto/voto">
+                                                    <i class="fa fa-check-square-o"></i>
+                                                    <span data-i18n="id00049_app:voto" class="ng-isolate-scope">Voto</span>
+                                                </a>
+                                            </li>
+                                            <li app-element="derecho" style="display: list-item;">
+
+                                                <a href="#/app/derecho/dashboard-derecho">
+                                                    <i class="fa fa-info"></i>
+                                                    <span data-i18n="id00050_app:derecho" class="ng-isolate-scope">Derecho</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="menu-principal text-normal hidden-sm hidden-xs" app-element="foro" style="display: none;">
+                                        <a href="#/app/foro/dashboard-foro">
+                                            <i class="fa fa-users"></i> <span data-i18n="id00048_app:foro" class="ng-isolate-scope">Foro</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-principal text-normal hidden-sm hidden-xs" app-element="voto" style="display: none;">
+                                        <a href="#/app/voto/voto">
+                                            <i class="fa fa-check-square-o"></i> <span data-i18n="id00049_app:voto" class="ng-isolate-scope">Voto</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-principal text-normal hidden-sm hidden-xs" app-element="derecho" style="display: none;">
+                                        <a href="#/app/derecho/dashboard-derecho">
+                                            <i class="fa fa-info"></i> <span data-i18n="id00050_app:derecho" class="ng-isolate-scope">Derecho</span>
+                                        </a>
+                                    </li>
+
+
+                                    <!--             <li class="dropdown">
+                                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="fa fa-magic nav-icon"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu pull-right color-switch" data-ui-color-switch>
+                                                        <li><a href="javascript:;" class="color-option color-some_color" data-style="some_color"></a></li>
+                                                    </ul>
+                                                </li> -->
+
+                                </ul>
+
+                                <ul class="nav-right pull-right list-unstyled">
+
+                                    <li class="dropdown ng-scope" data-ng-controller="NotificationsCtrl">
+                                        <a href="javascript:;" class="dropdown-toggle bg-orange" data-toggle="dropdown">
+                                            <i class="fa fa-comment-o"></i>
+                                            <span class="badge badge-info ng-binding" data-ng-hide="notNotifications()">15</span>
+                                        </a>
+                                        <div class="dropdown-menu pull-right with-arrow panel panel-default">
+                                            <div class="panel-heading ng-isolate-scope" data-i18n="id00160_app:header:notifications">Notificaciones</div>
+                                            <ul class="list-group">
+                                                <!-- ngRepeat: notification in numNotifications | limitTo:3 --><li class="list-group-item ng-scope" ng-repeat="notification in numNotifications | limitTo:3">
+                                                    <a href="#/app/header/notificaciones" class="media">
+                                <span class="pull-left media-icon">
+                                    <span class="square-icon sm bg-orange"><i class="fa fa-comment-o"></i></span>
+                                </span>
+                                                        <div class="media-body">
+                                                            <span class="block ng-binding" ng-bind-html="notification.subject">Oferta de representaci&oacute;n descartada</span>
+                                                            <span class="text-muted ng-binding">09/07/2015&nbsp;13:44</span>
+                                                        </div>
+                                                    </a>
+                                                </li><!-- end ngRepeat: notification in numNotifications | limitTo:3 --><li class="list-group-item ng-scope" ng-repeat="notification in numNotifications | limitTo:3">
+                                                    <a href="#/app/header/notificaciones" class="media">
+                                <span class="pull-left media-icon">
+                                    <span class="square-icon sm bg-orange"><i class="fa fa-comment-o"></i></span>
+                                </span>
+                                                        <div class="media-body">
+                                                            <span class="block ng-binding" ng-bind-html="notification.subject">Oferta de representaci&oacute;n pendiente de aprobaci&oacute;n</span>
+                                                            <span class="text-muted ng-binding">09/07/2015&nbsp;13:44</span>
+                                                        </div>
+                                                    </a>
+                                                </li><!-- end ngRepeat: notification in numNotifications | limitTo:3 --><li class="list-group-item ng-scope" ng-repeat="notification in numNotifications | limitTo:3">
+                                                    <a href="#/app/header/notificaciones" class="media">
+                                <span class="pull-left media-icon">
+                                    <span class="square-icon sm bg-orange"><i class="fa fa-comment-o"></i></span>
+                                </span>
+                                                        <div class="media-body">
+                                                            <span class="block ng-binding" ng-bind-html="notification.subject">Oferta de representaci&oacute;n descartada</span>
+                                                            <span class="text-muted ng-binding">09/07/2015&nbsp;13:41</span>
+                                                        </div>
+                                                    </a>
+                                                </li><!-- end ngRepeat: notification in numNotifications | limitTo:3 -->
+                                            </ul>
+                                            <div class="panel-footer">
+                                                <a href="#/app/header/notificaciones" data-i18n="id00077_app:header:notifications:show-all" class="ng-isolate-scope">Mostrar todas las notificaciones</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="dropdown ng-scope" data-ng-controller="MailsCtrl">
+                                        <a href="javascript:;" class="dropdown-toggle bg-warning" data-toggle="dropdown">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <span class="badge badge-info ng-binding ng-hide" data-ng-hide="notMails()">0</span>
+                                        </a>
+                                        <div class="dropdown-menu pull-right with-arrow panel panel-default">
+                                            <div class="panel-heading ng-isolate-scope" data-i18n="id00161_app:header:mails">Emails</div>
+                                            <ul class="list-group">
+                                                <!-- ngRepeat: mail in mails_in | limitTo:3 -->
+                                            </ul>
+                                            <div class="panel-footer">
+                                                <a href="#/app/header/mail/mail" data-i18n="id00162_app:header:mails:show-all" class="ng-isolate-scope">Mostrar todos los emails</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </header>
+
+                    </section>
+
+                    <aside data-ng-hide="isNoNavPage()" id="nav-container" class="ng-hide">
+                        <data-custom-nav><div id="nav-wrapper" class="ng-scope">
+                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><ul id="nav" data-ng-controller="NavCtrl" data-slim-scroll="" data-collapse-nav="" data-highlight-active="" class="ng-scope" style="overflow: hidden; width: auto; height: 100%;">
+                                    </ul><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+                            </div></data-custom-nav>
+                    </aside>
+                </div>
+
+                <div class="view-container">
+                    <!-- ngView:  --><section data-ng-view="" id="content" class="animate-fade-up ng-scope"><!-- ngInclude: templateUrl --><div ng-include="templateUrl" class="animate-fade-up ng-scope">
+
+
+                            <div class="page-voto ng-scope">
+                                <div class="voto-body">
+
+                                    <div id="pgr" class="container pgr-container ng-scope" prg-voto="" style="display: none;">
+                                        <div class="row">
+                                            <div class="col-md-4 col-md-offset-4">
+                                                <div class="panel mini-box">
+                                                    <div class="progressbar-sm progress-striped active progress ng-isolate-scope" value="pg()"><div class="progress-bar" ng-class="type &amp;&amp; 'progress-bar-' + type" ng-transclude="" style="width: 111%;"></div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vertical wizard clearfix" data-ui-wizard-form="" role="application" id="steps-uid-0"><div class="steps clearfix" id="nav-container"><ul role="tablist"><li role="tab" class="first done" aria-disabled="false" aria-selected="false"><a id="steps-uid-0-t-0" href="#steps-uid-0-h-0" aria-controls="steps-uid-0-p-0"><span class="number">1.</span> <span class="titulo-menu arbitraryTitle ng-scope ng-isolate-scope" i18n="id00401_app:voto:arbitrarywelcome:title">Bienvenido/da</span></a></li><li role="tab" class="done" aria-disabled="false" aria-selected="false"><a id="steps-uid-0-t-1" href="#steps-uid-0-h-1" aria-controls="steps-uid-0-p-1"><span class="number">2.</span> <span class="titulo-menu sharesTitle ng-scope ng-isolate-scope" i18n="id00302_app:voto:shares:title">Acciones</span></a></li><li role="tab" class="done" aria-disabled="false" aria-selected="false"><a id="steps-uid-0-t-2" href="#steps-uid-0-h-2" aria-controls="steps-uid-0-p-2"><span class="number">3.</span> <span class="titulo-menu voteDelegationTitle ng-scope ng-isolate-scope" i18n="id00305_app:voto:vote-or-delegation">Voto o delegaci&oacute;n</span></a></li><li role="tab" class="done" aria-disabled="false" aria-selected="false"><a id="steps-uid-0-t-3" href="#steps-uid-0-h-3" aria-controls="steps-uid-0-p-3"><span class="number">4.</span> <span id="wizard-title-0" class="titulo-menu ng-scope ng-isolate-scope" i18n="id00324_app:voto:voto">Votaci&oacute;n</span></a></li><li role="tab" class="current" aria-disabled="false" aria-selected="true"><a id="steps-uid-0-t-4" href="#steps-uid-0-h-4" aria-controls="steps-uid-0-p-4"><span class="current-info audible">current step: </span><span class="number">5.</span> <span id="wizard-title-1" class="titulo-menu ng-scope ng-isolate-scope" i18n="id00304_app:foro:adhesion">Adhesi&oacute;n</span></a></li><li role="tab" class="disabled" aria-disabled="true"><a id="steps-uid-0-t-5" href="#steps-uid-0-h-5" aria-controls="steps-uid-0-p-5"><span class="number">6.</span> <span class="titulo-menu confirmTitle ng-scope ng-isolate-scope" i18n="id00330_app:voto:confirm">Confirmaci&oacute;n</span></a></li><li role="tab" class="disabled last" aria-disabled="true"><a id="steps-uid-0-t-6" href="#steps-uid-0-h-6" aria-controls="steps-uid-0-p-6"><span class="number">7.</span> <span class="titulo-menu endTitle ng-scope ng-isolate-scope" i18n="id00335_app:voto:finish">Finalizado</span></a></li></ul></div><div class="content clearfix"><h1 style="display: none;" id="steps-uid-0-h-0" tabindex="-1" class="title"><span class="titulo-menu arbitraryTitle" i18n="id00401_app:voto:arbitrarywelcome:title">Bienvenido/da</span></h1>
+                                            <div style="display: none;" id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body" aria-hidden="true">
+                                                <div class="panel panel-profile arbitraryContent ng-scope" id="arbitraryContent-1">
+                                                    <div class="panel-heading text-center bg-voto">
+                                                        <h2 i18n="id00049_app:voto" class="ng-isolate-scope">Voto</h2>
+                                                        <h1><i class="fa fa-check-square-o"></i></h1>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <h2 data-i18n="id00291_app:voto:welcome:title" class="ng-isolate-scope">Bienvenido/da, </h2>
+                                                        <h3 data-i18n="id00292_app:voto:welcome:subtitle" parameters-i18n="{'empresa' : main.brand}" class="ng-isolate-scope">al Voto/Delegaci&oacute;n Electr&oacute;nica de Platforms</h3>
+                                                        <span data-i18n="id00293_app:voto:welcome:body" class="ng-isolate-scope"><p>Siguiendo las disposiciones de la "Ley de Sociedades de Capital", esta plataforma ha sido dispuesta para que pueda ejercer sus derechos de participaci&oacute;n.</p><p>Desde la misma podr&aacute; Delegar sus acciones o Votar electr&oacute;nicamente, seg&uacute;n se muestran en las opciones del asistente.</p><p>Las opciones que se presentan en el lado izquierdo de la pantalla, corresponden al punto del asistente en el que vd. se encuentra.</p><p>En la parte inferior derecha de la pantalla se muestra los botones de navegaci&oacute;n.</p><p>A trav&eacute;s de este asistente podr&aacute; delegar su representaci&oacute;n o votar en la Junta de Accionistas. En la &uacute;ltima pantalla se le pedir&aacute; que confirme el proceso, el que generar&aacute; el registro en nuestra base de datos y usted recibir&aacute; un correo electr&oacute;nico de confirmaci&oacute;n, donde podr&aacute; ver las acciones que haya registrado.</p><p>Finalmente, ha de tener en cuenta que su asist&eacute;ncia f&iacute;sica a la Junta de Accionistas, o la alienaci&oacute;n de sus acciones que tuviera conocimiento la Sociedad antes de la celebraci&oacute;n de la Junta en primera convocat&oacute;ria, anular&aacute;n el voto o delegaci&oacute;n que haya podido realizar a trav&eacute;s de Internet (o mediante cualquier otro medio de comunicaci&oacute;n a distancia).</p><p>Para iniciar el proceso, haga clic en el bot&oacute;n "Siguiente".</p></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h1 style="display: none;" id="steps-uid-0-h-1" tabindex="-1" class="title"><span class="titulo-menu sharesTitle" i18n="id00302_app:voto:shares:title">Acciones</span></h1>
+                                            <div style="display: none;" id="steps-uid-0-p-1" role="tabpanel" aria-labelledby="steps-uid-0-h-1" class="body" aria-hidden="true">
+                                                <div class="panel panel-default sharesContent ng-scope" id="sharesContent-2">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title ng-isolate-scope" i18n="id00302_app:voto:shares:title">Acciones</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <span i18n="id00300_app:voto:shares:body" class="ng-isolate-scope"><p>Por favor, introduzca el n&uacute;mero de acciones de la Sociedad de las que usted es titular, si &eacute;ste es diferente del que indic&oacute; cuando realiz&oacute; el registro en la Plataforma. Este dato ser&aacute; verificado con posterioridad contrast&aacute;ndolo con el que figure en el "Libro de Accionistas" , siendo &eacute;ste &uacute;ltimo el que ser&aacute; considerado como v&aacute;lido por la Sociedad de conformidad con la normativa vigente.</p></span>
+                                                        <hr>
+                                                        <form class="form-horizontal ng-pristine ng-valid" role="form">
+                                                            <div class="form-group">
+                                                                <label for="numeroAcciones" class="col-sm-6 control-label ng-isolate-scope" i18n="id00015_home:app:registro:shares-num">N&uacute;mero de Acciones</label>
+                                                                <div class="col-sm-3">
+                                                                    <input dotted-number="" type="text" ng-disabled="blockShares" class="form-control ng-pristine ng-valid" id="numeroAcciones" ng-model="data.accionista.shares_num" dotted-min="500" style="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="numeroMinimo" class="col-sm-6 control-label ng-isolate-scope" i18n="id00301_app:voto:shares:num">N&uacute;mero m&iacute;nimo de acciones requeridas para poder votar electr&oacute;nicamente</label>
+                                                                <div class="col-sm-3">
+                                                                    <input dotted-number="" type="text" class="form-control ng-pristine ng-valid" id="numeroMinimo" ng-model="data.accionista.shares_min" disabled="" style="">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h1 style="display: none;" id="steps-uid-0-h-2" tabindex="-1" class="title"><span class="titulo-menu voteDelegationTitle" i18n="id00305_app:voto:vote-or-delegation">Voto o delegaci&oacute;n</span></h1>
+                                            <div style="display: none;" id="steps-uid-0-p-2" role="tabpanel" aria-labelledby="steps-uid-0-h-2" class="body" aria-hidden="true">
+                                                <div class="panel panel-default voteDelegationContent ng-scope" id="voteDelegationContent-3-0">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title ng-isolate-scope" i18n="id00305_app:voto:vote-or-delegation">Voto o delegaci&oacute;n</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <span i18n="id00306_app:voto:vd:body" class="ng-isolate-scope"><p>Indique si desea votar o delegar</p></span>
+                                                        <hr>
+                                                        <form class="form-horizontal ng-pristine ng-valid" role="form">
+                                                            <div class="form-group">
+                                                                <div class="col-sm-8 col-md-offset-4">
+                                                                    <label class="ui-radio"><input name="radio1" type="radio" value="vote" data-ng-model="data.choiceVoteDelegation" ng-change="onChoiceVoteDelegation()" class="ng-pristine ng-valid"><span i18n="id00307_app:voto:vd:vote" class="ng-isolate-scope">Votar</span></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-8 col-md-offset-4">
+                                                                    <label class="ui-radio"><input name="radio1" type="radio" value="delegation" data-ng-model="data.choiceVoteDelegation" ng-change="onChoiceVoteDelegation()" class="ng-pristine ng-valid"><span i18n="id00308_app:voto:vd:dele" class="ng-isolate-scope">Delegar</span></label>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h1 style="display: none;" id="steps-uid-0-h-3" tabindex="-1" class="title"><span id="wizard-title-0" class="titulo-menu" i18n="id00324_app:voto:voto">Votaci&oacute;n</span></h1>
+                                            <div style="display: none;" id="steps-uid-0-p-3" role="tabpanel" aria-labelledby="steps-uid-0-h-3" class="body" aria-hidden="true">
+                                                <div id="sm-0" ng-controller="voteStepCtrl" class="ng-scope">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h3 class="panel-title ng-isolate-scope" i18n="id00324_app:voto:voto">Votaci&oacute;n</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <!-- ngIf: data.data.choiceVoteDelegation == 'vote' --><span ng-if="data.data.choiceVoteDelegation == 'vote'" i18n="id00325_app:voto:body:vote" class="ng-scope ng-isolate-scope"><p>A continuaci&oacute;n indique sus instrucciones de voto.</p><p>Puede hacerlo globalmente desde las opciones que aparecen despu&eacute;s de estos comentarios o individualmente a cada punto.</p><p>En el caso de que usted no indique instrucciones de voto en relaci&oacute;n a uno o varios puntos del Orden del d&iacute;a, se entender&aacute; que, para esos puntos del Orden del d&iacute;a, usted vota a favor de las propuestas formuladas por el Consejo de Administraci&oacute;n.</p><p>En el supuesto de delegaci&oacute;n de la representaci&oacute;n en el Presidente del Consejo de Administraci&oacute;n, as&iacute; como en otros consejeros a los que sea de aplicaci&oacute;n el r&eacute;gimen de solicitudes p&uacute;blicas de representaci&oacute;n, si usted no indica instrucciones expresas de voto, se entender&aacute; que &eacute;ste votar&aacute; a favor de las propuestas de acuerdos formuladas por el Consejo de Administraci&oacute;n.</p></span><!-- end ngIf: data.data.choiceVoteDelegation == 'vote' -->
+                                                            <!-- ngIf: data.data.choiceVoteDelegation == 'delegation' -->
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- ngRepeat: abs_adicional in abs_adicionals -->
+
+                                                    <div class="panel panel-default" id="votoPanel">
+                                                        <div class="panel-heading">
+                                                            <h3 class="panel-title ng-isolate-scope" i18n="id00326_app:voto:all">Votar en todos los puntos</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="form-group">
+                                                                <div class="col-sm-8" adaptive-row="" adapt-on-event="ngRepeatFinished[globalOptions-5dabc5ad-6fe3-11e4-b6b6-60a44ccaea2f]">
+                                                                    <!-- ngRepeat: opcion in type.opcionesVoto --><div ng-repeat="opcion in type.opcionesVoto" ng-repeat-event="globalOptions-5dabc5ad-6fe3-11e4-b6b6-60a44ccaea2f" class="ng-scope col-md-3">
+                                                                        <label class="ui-radio"><input name="radio1" type="radio" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f" ng-model="$parent.$parent.globalPoint" ng-change="globalPointUpdate()" class="ng-pristine ng-valid"><span class="ng-binding">A favor</span></label>
+                                                                    </div><!-- end ngRepeat: opcion in type.opcionesVoto --><div ng-repeat="opcion in type.opcionesVoto" ng-repeat-event="globalOptions-5dabc5ad-6fe3-11e4-b6b6-60a44ccaea2f" class="ng-scope col-md-3">
+                                                                        <label class="ui-radio"><input name="radio1" type="radio" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f" ng-model="$parent.$parent.globalPoint" ng-change="globalPointUpdate()" class="ng-pristine ng-valid"><span class="ng-binding">En contra</span></label>
+                                                                    </div><!-- end ngRepeat: opcion in type.opcionesVoto --><div ng-repeat="opcion in type.opcionesVoto" ng-repeat-event="globalOptions-5dabc5ad-6fe3-11e4-b6b6-60a44ccaea2f" class="ng-scope col-md-3">
+                                                                        <label class="ui-radio"><input name="radio1" type="radio" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f" ng-model="$parent.$parent.globalPoint" ng-change="globalPointUpdate()" class="ng-pristine ng-valid"><span class="ng-binding">Abstenci&oacute;n</span></label>
+                                                                    </div><!-- end ngRepeat: opcion in type.opcionesVoto --><div ng-repeat="opcion in type.opcionesVoto" ng-repeat-event="globalOptions-5dabc5ad-6fe3-11e4-b6b6-60a44ccaea2f" class="ng-scope col-md-3">
+                                                                        <label class="ui-radio"><input name="radio1" type="radio" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f" ng-model="$parent.$parent.globalPoint" ng-change="globalPointUpdate()" class="ng-pristine ng-valid"><span class="ng-binding">En blanco</span></label>
+                                                                    </div><!-- end ngRepeat: opcion in type.opcionesVoto -->
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <button class="btn btn-primary btn-w-xs" ng-click="globalPointClear()"><span class="glyphicon glyphicon-arrow-down"></span> <span i18n="id00327_app:voto:clear" class="ng-isolate-scope">Borrar todas las votaciones</span></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Aqui Votaci&oacute;n �? -->
+                                                    <section class="panel panel-default">
+                                                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00324_app:voto:voto" class="ng-isolate-scope">Votaci&oacute;n</span></strong></div>
+                                                        <div class="panel-body">
+
+                                                            <!-- WIZARD interno -->
+                                                            <div id="sm-wizard-0" class="swMain"><div id="wizard-0" class="swMain">
+                                                                    <ul class="wizard-steps anchor">
+                                                                        <!-- ngRepeat: step in puntos --><li ng-repeat="step in puntos" class="ng-scope">
+                                                                            <a href="#step-1" class="done" isdone="1" rel="1">
+                                                                                <div class="wizard-step-number ng-binding" ng-click="test()">1</div>
+                                                                                <div class="wizard-step-bar"></div>
+                                                                            </a>
+                                                                        </li><!-- end ngRepeat: step in puntos --><li ng-repeat="step in puntos" class="ng-scope">
+                                                                            <a href="#step-2" class="disabled" isdone="1" rel="2">
+                                                                                <div class="wizard-step-number ng-binding" ng-click="test()">2</div>
+                                                                                <div class="wizard-step-bar"></div>
+                                                                            </a>
+                                                                        </li><!-- end ngRepeat: step in puntos --><li ng-repeat="step in puntos" class="ng-scope">
+                                                                            <a href="#step-3" class="disabled" isdone="0" rel="3">
+                                                                                <div class="wizard-step-number ng-binding" ng-click="test()">3</div>
+                                                                                <div class="wizard-step-bar"></div>
+                                                                            </a>
+                                                                        </li><!-- end ngRepeat: step in puntos -->
+                                                                    </ul>
+
+                                                                    <!-- ngRepeat: step in puntos --><!-- end ngRepeat: step in puntos --><!-- end ngRepeat: step in puntos --><!-- end ngRepeat: step in puntos -->
+                                                                    <div class="stepContainer" style="height: 273px;"><div id="step-1" ng-repeat="step in puntos" ng-repeat-event="stepsReady-0" class="ng-scope content" style="display: none;">
+                                                                            <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                            <div recursive-wizard-construct="0" tipo="0" index="0" vote-delegate="vote"><div class="panel panel-primary ng-scope"><div class="panel-heading"><h3 class="panel-title">1 <span i18n="id00415_app:voto:informative" class="ng-isolate-scope">(Informativo)</span></h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra ligula congue, mollis lectus et, ornare augue. Nullam consequat leo et mattis sagittis. Vestibulum eget arcu orci. Phasellus ut est lorem. Vestibulum viverra, enim vel mollis volutpat, erat nulla placerat mi, vitae fermentum orci magna quis nulla. Duis cursus eget odio quis pellentesque. Integer sagittis fringilla sem, eget dignissim justo interdum euismod. Duis in tortor a neque bibendum posuere. Nullam ullamcorper diam nec massa sollicitudin vehicula. Phasellus finibus aliquet nisi, sit amet blandit felis congue sit amet. Quisque porta, dui vitae commodo molestie, purus quam viverra ligula, pharetra finibus tellus felis non lectus. Etiam eu leo condimentum, fringilla augue et, pretium mi. Ut velit dolor, ornare eu pellentesque et, tristique nec magna. Donec tristique felis justo, sodales lacinia risus maximus sit amet.</p><hr></div></div></div>
+                                                                        </div><div id="step-2" ng-repeat="step in puntos" ng-repeat-event="stepsReady-0" class="ng-scope content" style="display: block;">
+                                                                            <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                            <div recursive-wizard-construct="1" tipo="0" index="1" vote-delegate="vote"><div class="panel panel-extra-b ng-scope"><div class="panel-heading"><h3 class="panel-title">2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra ligula congue, mollis lectus et, ornare augue. Nullam consequat leo et mattis sagittis. Vestibulum eget arcu orci. Phasellus ut est lorem. Vestibulum viverra, enim vel mollis volutpat, erat nulla placerat mi, vitae fermentum orci magna quis nulla. Duis cursus eget odio quis pellentesque. Integer sagittis fringilla sem, eget dignissim justo interdum euismod.</p><hr><div class="panel panel-extra-c row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.1</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div><div class="panel panel-extra-d row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div></div></div></div>
+                                                                        </div><div id="step-3" ng-repeat="step in puntos" ng-repeat-event="stepsReady-0" class="ng-scope content" style="display: none;">
+                                                                            <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                            <div recursive-wizard-construct="2" tipo="0" index="2" vote-delegate="vote"><div class="panel panel-primary ng-scope"><div class="panel-heading"><h3 class="panel-title">3</h3></div><div class="panel-body"><p class="ng-binding"></p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-asdf" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.value" ng-change="onVote('2')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-asdf" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.value" ng-change="onVote('2')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-asdf" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.value" ng-change="onVote('2')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-asdf" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.value" ng-change="onVote('2')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div></div>
+                                                                        </div></div><div class="actionBar"><div class="loader">Loading</div><a href="#" class="btn btn-primary btn-direction buttonFinish"><span class="smartWizardButton"><span i18n="id00400_home:voto:button:confirm" class="ng-scope ng-isolate-scope">Fin Votaci&oacute;n</span></span></a><a href="#" class="btn btn-primary btn-direction btn-right buttonNext"><span class="smartWizardButton"><span i18n="id00340_app:voto:button:next" class="ng-scope ng-isolate-scope">Siguiente</span></span></a><a href="#" class="btn btn-primary btn-direction btn-left buttonPrevious"><span class="smartWizardButton"><span i18n="id00350_app:voto:button:previous" class="ng-scope ng-isolate-scope">Anterior</span></span></a></div></div></div>
+                                                            <!-- /wizard -->
+
+
+                                                        </div>
+                                                    </section>
+
+                                                </div>
+                                                <!-- / Aqui votaci&oacute;n -->
+                                            </div><h1 style="display: none;" id="steps-uid-0-h-4" tabindex="-1" class="title current"><span id="wizard-title-1" class="titulo-menu" i18n="id00304_app:foro:adhesion">Votaci&oacute;n</span></h1>
+                                            <div style="" id="steps-uid-0-p-4" role="tabpanel" aria-labelledby="steps-uid-0-h-4" class="body current" aria-hidden="false">
+                                                <div id="sm-1" ng-controller="voteStepCtrl" class="ng-scope">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h3 class="panel-title ng-isolate-scope" i18n="id00324_app:voto:voto">Votaci&oacute;n</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <!-- ngIf: data.data.choiceVoteDelegation == 'vote' --><span ng-if="data.data.choiceVoteDelegation == 'vote'" i18n="id00325_app:voto:body:vote" class="ng-scope ng-isolate-scope"><p>A continuaci&oacute;n indique sus instrucciones de voto.</p><p>Puede hacerlo globalmente desde las opciones que aparecen despu&eacute;s de estos comentarios o individualmente a cada punto.</p><p>En el caso de que usted no indique instrucciones de voto en relaci&oacute;n a uno o varios puntos del Orden del d&iacute;a, se entender&aacute; que, para esos puntos del Orden del d&iacute;a, usted vota a favor de las propuestas formuladas por el Consejo de Administraci&oacute;n.</p><p>En el supuesto de delegaci&oacute;n de la representaci&oacute;n en el Presidente del Consejo de Administraci&oacute;n, as&iacute; como en otros consejeros a los que sea de aplicaci&oacute;n el r&eacute;gimen de solicitudes p&uacute;blicas de representaci&oacute;n, si usted no indica instrucciones expresas de voto, se entender&aacute; que &eacute;ste votar&aacute; a favor de las propuestas de acuerdos formuladas por el Consejo de Administraci&oacute;n.</p></span><!-- end ngIf: data.data.choiceVoteDelegation == 'vote' -->
+                                                            <!-- ngIf: data.data.choiceVoteDelegation == 'delegation' -->
+                                                            <div id="step-2" ng-repeat="step in puntos" ng-repeat-event="stepsReady-0" class="ng-scope content" style="display: none; visibility: hidden;">
+                                                                <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                <div recursive-wizard-construct="1" tipo="0" index="1" vote-delegate="vote"><div class="panel panel-extra-b ng-scope"><div class="panel-heading"><h3 class="panel-title">2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra ligula congue, mollis lectus et, ornare augue. Nullam consequat leo et mattis sagittis. Vestibulum eget arcu orci. Phasellus ut est lorem. Vestibulum viverra, enim vel mollis volutpat, erat nulla placerat mi, vitae fermentum orci magna quis nulla. Duis cursus eget odio quis pellentesque. Integer sagittis fringilla sem, eget dignissim justo interdum euismod.</p><hr><div class="panel panel-extra-c row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.1</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div><div class="panel panel-extra-d row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div></div></div></div>
+                                                            </div></div>
+                                                    </div>
+
+                                                    <!-- ngRepeat: abs_adicional in abs_adicionals -->
+
+                                                    <div class="panel panel-default" id="votoPanel">
+                                                        <div class="panel-heading">
+                                                            <h3 class="panel-title ng-isolate-scope" i18n="id00326_app:voto:all">Votar en todos los puntos</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="form-group">
+                                                                <div class="col-sm-8" adaptive-row="" adapt-on-event="ngRepeatFinished[globalOptions-71bb5db7-6fe3-11e4-b6b6-60a44ccaea2f]">
+                                                                    <!-- ngRepeat: opcion in type.opcionesVoto --><div ng-repeat="opcion in type.opcionesVoto" ng-repeat-event="globalOptions-71bb5db7-6fe3-11e4-b6b6-60a44ccaea2f" class="ng-scope col-md-12">
+                                                                        <label class="ui-radio"><input name="radio1" type="radio" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f" ng-model="$parent.$parent.globalPoint" ng-change="globalPointUpdate()" class="ng-pristine ng-valid"><span class="ng-binding">A favor</span></label>
+                                                                    </div><!-- end ngRepeat: opcion in type.opcionesVoto -->
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <button class="btn btn-primary btn-w-xs" ng-click="globalPointClear()"><span class="glyphicon glyphicon-arrow-down"></span> <span i18n="id00327_app:voto:clear" class="ng-isolate-scope">Borrar todas las votaciones</span></button>
+                                                                </div>
+                                                            </div>
+                                                            <div id="step-2" ng-repeat="step in puntos" ng-repeat-event="stepsReady-0" class="ng-scope content" style="display: none; visibility: hidden;">
+                                                                <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                <div recursive-wizard-construct="1" tipo="0" index="1" vote-delegate="vote"><div class="panel panel-extra-b ng-scope"><div class="panel-heading"><h3 class="panel-title">2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra ligula congue, mollis lectus et, ornare augue. Nullam consequat leo et mattis sagittis. Vestibulum eget arcu orci. Phasellus ut est lorem. Vestibulum viverra, enim vel mollis volutpat, erat nulla placerat mi, vitae fermentum orci magna quis nulla. Duis cursus eget odio quis pellentesque. Integer sagittis fringilla sem, eget dignissim justo interdum euismod.</p><hr><div class="panel panel-extra-c row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.1</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div><div class="panel panel-extra-d row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div></div></div></div>
+                                                            </div></div>
+                                                    </div>
+
+                                                    <!-- Aqui Votaci&oacute;n �? -->
+                                                    <section class="panel panel-default">
+                                                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00324_app:voto:voto" class="ng-isolate-scope">Votaci&oacute;n</span></strong></div>
+                                                        <div class="panel-body">
+
+                                                            <!-- WIZARD interno -->
+                                                            <div id="sm-wizard-1" class="swMain"><div id="wizard-1" class="swMain">
+                                                                    <ul class="wizard-steps anchor">
+                                                                        <!-- ngRepeat: step in puntos --><li ng-repeat="step in puntos" class="ng-scope">
+                                                                            <a href="#step-1" class="done" isdone="1" rel="1">
+                                                                                <div class="wizard-step-number ng-binding" ng-click="test()">1</div>
+                                                                                <div class="wizard-step-bar"></div>
+                                                                            </a>
+                                                                        </li><!-- end ngRepeat: step in puntos --><li ng-repeat="step in puntos" class="ng-scope">
+                                                                            <a href="#step-2" class="selected" isdone="1" rel="2">
+                                                                                <div class="wizard-step-number ng-binding" ng-click="test()">2</div>
+                                                                                <div class="wizard-step-bar"></div>
+                                                                            </a>
+                                                                        </li><!-- end ngRepeat: step in puntos -->
+                                                                    </ul>
+
+                                                                    <!-- ngRepeat: step in puntos --><!-- end ngRepeat: step in puntos --><!-- end ngRepeat: step in puntos -->
+                                                                    <div class="stepContainer" style="height: 793px;"><div id="step-1" ng-repeat="step in puntos" ng-repeat-event="stepsReady-1" class="ng-scope content" style="display: none;">
+                                                                            <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                            <div recursive-wizard-construct="0" tipo="1" index="0" vote-delegate="vote"><div class="panel panel-primary ng-scope"><div class="panel-heading"><h3 class="panel-title">1</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><label class="ui-checkbox"><input type="checkbox" name="step-e5eade2b-6fe4-11e4-b6b6-60a44ccaea2f" ng-true-value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f" ng-model="step.value" ng-change="onVote('0')" class="ng-pristine ng-valid"><span class="ng-binding">A favor</span></label></div> </div><div id="step-2" ng-repeat="step in puntos" ng-repeat-event="stepsReady-0" class="ng-scope content" style="visibility: hidden;">
+                                                                                            <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                                            <div recursive-wizard-construct="1" tipo="0" index="1" vote-delegate="vote"><div class="panel panel-extra-b ng-scope"><div class="panel-heading"><h3 class="panel-title">2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra ligula congue, mollis lectus et, ornare augue. Nullam consequat leo et mattis sagittis. Vestibulum eget arcu orci. Phasellus ut est lorem. Vestibulum viverra, enim vel mollis volutpat, erat nulla placerat mi, vitae fermentum orci magna quis nulla. Duis cursus eget odio quis pellentesque. Integer sagittis fringilla sem, eget dignissim justo interdum euismod.</p><hr><div class="panel panel-extra-c row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.1</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div><div class="panel panel-extra-d row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div></div></div></div>
+                                                                                        </div></div></div></div>
+                                                                        </div><div id="step-2" ng-repeat="step in puntos" ng-repeat-event="stepsReady-1" class="ng-scope content" style="display: block;">
+                                                                            <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                            <div recursive-wizard-construct="1" tipo="1" index="1" vote-delegate="vote"><div class="panel panel-primary ng-scope"><div class="panel-heading"><h3 class="panel-title">2</h3></div><div class="panel-body"><p class="ng-binding">Duplicate Point</p><hr><div class="form-group"> <div class="col-sm-12"><label class="ui-checkbox"><input type="checkbox" name="step-0adbb04c-6fe5-11e4-b6b6-60a44ccaea2f" ng-true-value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f" ng-model="step.value" ng-change="onVote('1')" class="ng-pristine ng-valid"><span class="ng-binding">A favor</span></label></div> </div></div></div></div>
+                                                                        </div></div><div class="actionBar"><div class="loader">Loading</div><a href="#" class="btn btn-primary btn-direction buttonFinish"><span class="smartWizardButton"><span i18n="id00400_home:voto:button:confirm" class="ng-scope ng-isolate-scope">Fin Votaci&oacute;n</span></span></a><a href="#" class="btn btn-primary btn-direction btn-right buttonNext buttonDisabled"><span class="smartWizardButton"><span i18n="id00340_app:voto:button:next" class="ng-scope ng-isolate-scope">Siguiente</span></span></a><a href="#" class="btn btn-primary btn-direction btn-left buttonPrevious"><span class="smartWizardButton"><span i18n="id00350_app:voto:button:previous" class="ng-scope ng-isolate-scope">Anterior</span></span></a></div></div></div>
+                                                            <!-- /wizard -->
+
+
+                                                            <div id="step-2" ng-repeat="step in puntos" ng-repeat-event="stepsReady-0" class="ng-scope content" style="display: none; visibility: hidden;">
+                                                                <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+                                                                <div recursive-wizard-construct="1" tipo="0" index="1" vote-delegate="vote"><div class="panel panel-extra-b ng-scope"><div class="panel-heading"><h3 class="panel-title">2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra ligula congue, mollis lectus et, ornare augue. Nullam consequat leo et mattis sagittis. Vestibulum eget arcu orci. Phasellus ut est lorem. Vestibulum viverra, enim vel mollis volutpat, erat nulla placerat mi, vitae fermentum orci magna quis nulla. Duis cursus eget odio quis pellentesque. Integer sagittis fringilla sem, eget dignissim justo interdum euismod.</p><hr><div class="panel panel-extra-c row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.1</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-8c5dac75-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[0].value" ng-change="onVote('1-0')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div><div class="panel panel-extra-d row" style="margin-left:10px;margin-right:10px;"><div class="panel-heading"><h3 class="panel-title">2.2</h3></div><div class="panel-body"><p class="ng-binding">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><hr><div class="form-group"> <div class="col-sm-12"><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="c1b18ac6-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">A favor</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'db26ff95-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="db26ff95-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En contra</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'16598fcf-6fe4-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="16598fcf-6fe4-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">Abstenci&oacute;n</span></label></div><div class="col-sm-2"><label class="ui-radio"><input type="radio" name="step-9d92721f-6fe4-11e4-b6b6-60a44ccaea2f" ng-value="'f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f'" ng-model="step.subpuntos[1].value" ng-change="onVote('1-1')" class="ng-pristine ng-valid" value="f4fffc5d-6fe3-11e4-b6b6-60a44ccaea2f"><span class="ng-binding">En blanco</span></label></div></div> </div></div></div></div></div></div>
+                                                            </div></div>
+                                                    </section>
+
+                                                </div>
+                                                <!-- / Aqui votaci&oacute;n -->
+                                            </div><!-- paso -->
+                                            <h1 style="display: none;" id="steps-uid-0-h-5" tabindex="-1" class="title"><span class="titulo-menu confirmTitle" i18n="id00330_app:voto:confirm"></span></h1>
+                                            <div style="display: none;" id="steps-uid-0-p-5" role="tabpanel" aria-labelledby="steps-uid-0-h-5" class="body" aria-hidden="true">
+                                                <div class="panel panel-profile confirmContent ng-scope" id="confirmContent-3-ConfirmStep">
+                                                    <div class="panel panel-default ">
+                                                        <div class="panel-heading">
+                                                            <h3 class="panel-title ng-isolate-scope" i18n="id00330_app:voto:confirm">Confirmaci&oacute;n</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <span i18n="id00331_app:voto:confirm:body" class="ng-isolate-scope"><p>Est&aacute; a punto de confirmar su votaci&oacute;n y/o delegaci&oacute;n.</p><p>Revise, por favor, los datos introducidos. Si desea modificar alg&uacute;n punto utilice el bot&oacute;n "Anterior".</p><p>Si presiona "Confirmar" se proceder&aacute; a registrar su votaci&oacute;n y/o delegaci&oacute;n.</p></span>
+                                                            <!-- ngIf: data.choiceDelegation !== undefined && data.choiceVoteDelegation !== 'vote' -->
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- ngRepeat: tipo in confirmAbsAdicional -->
+
+                                                    <!-- ngRepeat: tipo in confirmPuntos -->
+
+                                                    <script type="text/ng-template" id="myModalContent.html">
+                                                        <div class="modal-header">
+                                                            <h3 i18n="id00336_app:voto:finish:title">Finalizando</h3>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div >
+                                                                <span i18n="id00337_app:voto:finish:body"></span>
+                                                            </div>
+                                                            <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                        </div>
+                                                    </script>
+                                                </div>
+
+                                            </div>
+                                            <!-- / paso --><!-- paso -->
+                                            <h1 style="display: none;" id="steps-uid-0-h-6" tabindex="-1" class="title"><span class="titulo-menu endTitle" i18n="id00335_app:voto:finish">Finalizado</span></h1>
+                                            <div style="display: none;" id="steps-uid-0-p-6" role="tabpanel" aria-labelledby="steps-uid-0-h-6" class="body" aria-hidden="true">
+                                                <div class="endContent ng-scope" id="endContent-3-EndStep">
+                                                    <!-- ngIf: readyFinish -->
+                                                </div>
+                                            </div>
+                                            <!-- / paso -->
+                                        </div><div class="actions clearfix"><ul role="menu" aria-label="Pagination"><li class="" aria-disabled="false"><a href="#previous" role="menuitem"><span class="wizardButton wb-previous"><span i18n="id00350_app:voto:button:previous" class="ng-scope ng-isolate-scope">Anterior</span></span></a></li><li aria-hidden="false" aria-disabled="false" class="disabled"><a href="#" role="menuitem"><span class="wizardButton wb-next    "><span i18n="id00340_app:voto:button:next" class="ng-scope ng-isolate-scope">Siguiente</span></span></a></li><li aria-hidden="true" style="display: none;"><a href="#finish" role="menuitem"><span class="wizardButton wb-finish  "><span i18n="id00339_app:voto:button:finish" class="ng-scope ng-isolate-scope">Finalizar</span></span></a></li></ul></div></div>
+                                </div>
+                            </div>
+
+                        </div></section>
+                </div>
+            </div>
+
+
+            <!-- --------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        </div>
+        <div class='scontainer' id="supercontainer3" style="height:calc(100% - 52px);display:none; overflow: scroll;">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Botones </strong></div>
+                            <div class="panel-body text-center">
+                                <p>
+                                    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+                                    <button type="button" class="btn btn-primary">Default button</button>
+                                    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+                                    <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+                                </p>
+
+                                <p>
+                                    <button type="button" class="btn btn-default btn-lg">Large button</button>
+                                    <button type="button" class="btn btn-default">Default button</button>
+                                    <button type="button" class="btn btn-default btn-sm">Small button</button>
+                                    <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+                                </p>
+
+                                <p>
+                                    <button type="button" class="btn btn-success btn-lg">Large button</button>
+                                    <button type="button" class="btn btn-info">Default button</button>
+                                    <button type="button" class="btn btn-warning btn-sm">Small button</button>
+                                    <button type="button" class="btn btn-danger btn-xs">Extra small button</button>
+                                </p>
+                            </div>
+                        </div><!-- paneles parent -->
+
+                        <section class="panel panel-default">
+                            <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Paneles</div>
+                            <div class="panel-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Panel title</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                    <div class="panel-footer">Panel footer</div>
+                                </div>
+                                <div class="panel panel-dark">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Panel title</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Panel title</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Panel title</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Panel title</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Panel title</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                                <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Panel title</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        Panel content
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="panel panel-default">
+                            <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Alerts</div>
+                            <div class="panel-body ng-scope" data-ng-controller="AlertDemoCtrl">
+                                <!-- ngRepeat: alert in alerts --><div class="alert ng-isolate-scope alert-success" ng-class="&quot;alert-&quot; + (type || &quot;warning&quot;)" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                                    <button ng-show="closeable" type="button" class="close" ng-click="close()">�</button>
+                                    <div ng-transclude=""><span class="ng-scope ng-binding">Well done! You successfully read this important alert message.</span></div>
+                                </div><!-- end ngRepeat: alert in alerts --><div class="alert ng-isolate-scope alert-info" ng-class="&quot;alert-&quot; + (type || &quot;warning&quot;)" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                                    <button ng-show="closeable" type="button" class="close" ng-click="close()">�</button>
+                                    <div ng-transclude=""><span class="ng-scope ng-binding">Heads up! This alert needs your attention, but it is not super important.</span></div>
+                                </div><!-- end ngRepeat: alert in alerts --><div class="alert ng-isolate-scope alert-warning" ng-class="&quot;alert-&quot; + (type || &quot;warning&quot;)" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                                    <button ng-show="closeable" type="button" class="close" ng-click="close()">�</button>
+                                    <div ng-transclude=""><span class="ng-scope ng-binding">Warning! Best check yo self, you're not looking too good.</span></div>
+                                </div><!-- end ngRepeat: alert in alerts --><div class="alert ng-isolate-scope alert-danger" ng-class="&quot;alert-&quot; + (type || &quot;warning&quot;)" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                                    <button ng-show="closeable" type="button" class="close" ng-click="close()">�</button>
+                                    <div ng-transclude=""><span class="ng-scope ng-binding">Oh snap! Change a few things up and try submitting again.</span></div>
+                                </div><!-- end ngRepeat: alert in alerts -->
+                                <button class="btn btn-primary" ng-click="addAlert()">Add Alert</button>
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+
+
+</html>
+
+{% endverbatim %}
+

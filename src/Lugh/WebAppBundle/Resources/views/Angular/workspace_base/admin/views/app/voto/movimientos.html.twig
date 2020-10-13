@@ -1,0 +1,33 @@
+{% verbatim %}
+<div class="page" ng-controller="movimientosCtrl">
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Acción</strong></div>
+		<div class="panel-body">
+
+			<div class="btn btn-success" ng-click="getCOBSA()">COBSA</div>
+			<div class="btn btn-success" ng-click="getTotal()">Todo</div>
+			<div class="btn btn-success" ng-click="getByDate()">Por fecha</div>
+
+			<div class="col-sm-3 col-xs-6">
+				<form>
+					<input type="text" 
+                           class="form-control"
+                           datepicker-popup="{{format}}"
+                           ng-model="dt"
+                           is-open="opened"
+                           datepicker-options="dateOptions" 
+                           date-disabled="disabled(date, mode)"
+                           close-text="Cerrar"
+                           current-text="Hoy"
+                           clear-text="Limpiar"
+                           toggle-weeks-text="Semanas"
+                           ng-change="filterDate()">
+				</form>
+			</div>
+
+		</div>
+	</section>
+
+</div>
+{% endverbatim %}

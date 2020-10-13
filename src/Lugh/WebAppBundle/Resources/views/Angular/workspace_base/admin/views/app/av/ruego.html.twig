@@ -1,0 +1,155 @@
+{% verbatim %}
+    <div class="page" ng-controller="questionAdminCtrl">
+
+        <section class="panel panel-default">       
+
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Ruego o Pregunta</strong></div>
+            <div class="panel-body">
+
+
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <legend>Ruego o Pregunta</legend>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2">Autor</th>
+                                        <th class="col-sm-7">Contenido</th>
+                                        <th class="col-sm-2">Fecha</th>
+                                        <th class="col-sm-1 text-center">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{question.autor.name}}</td>
+                                        <td><span ng-bind-html="question.body | nl2br"></span></td>
+                                        <td>{{question.date_time | date: "dd-MM-yyyy&nbsp;hh:mm"}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr ng-repeat="message in question.messages">
+                                        <td>
+                                            {{message.autor.isAdmin ? message.autor.username : message.autor.name}}
+                                        </td>
+                                        <td>
+                                            <span ng-bind-html="message.body | nl2br"></span>
+                                            <ul class="list-docs list-docs-message list-unstyled" ng-repeat="document in message.documents">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-download-alt"></span>
+                                                    <a ng-click="downloadDocument(document.id)">{{document.nombre_externo}}</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>{{message.date_time | date: "dd-MM-yyyy&nbsp;hh:mm"}}</td>
+                                        <td class="text-center">
+                                            <a ng-click="goToMessage(message)"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+
+                        </div>
+
+
+
+                    </fieldset>
+
+                    <fieldset >
+                        <legend i18n="id00173_app:item:document-list">Documentos Adjuntos</legend>
+
+                        <div ng-repeat="documento in question.documents" ng-if="question.documents.length > 0">
+                            <div
+                                class = "col-sm-3"
+                                style = "overflow: hidden;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;"
+                                title = "{{documento.nombre_externo}}"
+                            >
+                                <span class="glyphicon glyphicon-download-alt"></span>
+                                <a ng-click="downloadDocument(documento.id)">{{documento.nombre_externo}}</a>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Mensaje</legend>
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <textarea class="form-control"
+                                          rows = "15"
+                                          ng-model = "message"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="question.state != 2 && question.state != 3">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <label class="ui-checkbox"><input name="retornateQuestion" type="checkbox" data-ng-model="question.retornateQuestion" ng-true-value="1" ng-false-value="0"><span>Comportará cambio de estado a retornado</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <div class="btn btn-success" ng-disabled="message == ''" ng-click="sendMessage(message)">Enviar mensaje</div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <!--<fieldset>
+                        <legend>Documentos</legend>
+                        <div class="form-group" ng-file-drop>
+                            <upload-document
+                                description  ="Adjuntar documentos"
+                                instructions =""
+                                title        ="attached-file"
+                                uploaderID   = "{{uploaderID}}"
+                                isolatedtoken
+                                />
+                        </div>
+                    </fieldset>-->
+
+                    <fieldset>
+                        <legend>Estado</legend>
+
+                        <div class="form-group">
+
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <table>
+                                    <tr>
+                                        <td><label class="ui-radio"><input name="state" type="radio" value="1" data-ng-model="question.state"><span>Privado (Pendiente)</span></label></td>
+                                        <td><info-modal tag='' /></td>
+                                    <tr>
+                                    <tr>
+                                        <td><label class="ui-radio"><input name="state" type="radio" value="3" data-ng-model="question.state"><span>Privado (Retornado)</span></label></td>
+                                        <td><info-modal tag='' /></td>
+                                    <tr>
+                                    <!--<tr>
+                                        <td><label class="ui-radio"><input name="state" type="radio" value="2" data-ng-model="question.state"><span data-i18n="id00055_app:states:public">Publicar</span></label></td>
+                                        <td><info-modal tag='' /></td>
+                                    <tr>-->
+                                    <tr>
+                                        <td><label class="ui-radio"><input name="state" type="radio" value="4" data-ng-model="question.state"><span data-i18n="id00056_app:states:reject">Rechazar</span></label></td>
+                                        <td><info-modal tag='' /></td>
+                                    <tr>
+                                </table>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9" ng-disabled="loading">
+                                <button type="submit" class="btn btn-success" ng-click="setState()">Cambiar estado</button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </form> 
+
+            </div> <!-- /panel-body -->
+
+        </section>
+    </div>
+
+
+{% endverbatim %}

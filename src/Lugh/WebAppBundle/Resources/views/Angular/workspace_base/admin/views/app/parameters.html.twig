@@ -1,0 +1,55 @@
+{%verbatim%}
+<div class="page">
+
+    <section class="panel panel-default" ng-controller="parametersCtrl">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Parámetros</strong></div>
+        <div class="panel-body">
+
+
+            <form class="form-horizontal" role="form">
+
+
+                <fieldset>
+                    <legend>Parámetros</legend>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <textarea name="" id="texto-cuerpo" class="form-control" rows="8" wrap="off" ng-model="parametersList"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-12 text-right">
+                            <button type="submit" class="btn btn-success" ng-click="submitParameters()" ng-disabled="!paramsValid(parametersList)">Guardar</button>
+                        </div>
+                    </div>
+                    
+                    
+                </fieldset>
+
+                <fieldset>
+                    <legend>Reset</legend>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            
+                             <p>Introduzca el siguiente texto:</p>
+                             <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit</strong></p>
+                            <input type="text" class="form-control" id="reset" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 text-right">
+                            <button type="submit" class="btn btn-success">Guardar</button> 
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </form> 
+
+        </div>
+    </section>
+
+
+</div>
+{%endverbatim%}

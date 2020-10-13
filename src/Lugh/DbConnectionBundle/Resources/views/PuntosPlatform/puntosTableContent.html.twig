@@ -1,0 +1,66 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>Num Punto</th>
+            <th>Texto</th>
+            <th>Parent</th>
+            <th>Orden</th>
+            <th>Tipo Voto</th>
+            <th>opciones de Voto</th>
+            <th>Informativo</th>
+            <th>Retirado</th>
+            <th>Extra</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for punto_line in puntos_lines %}
+            {% set numpunto = 'numpunto_' ~ punto_line.id %}
+            {% set text = 'text_' ~ punto_line.id %}
+            {% set parent = 'parent_' ~ punto_line.id %}
+            {% set orden = 'orden_' ~ punto_line.id %}
+            {% set tipoVoto = 'tipovoto_' ~ punto_line.id %}
+            {% set opcionesVoto = 'opcionesvoto_' ~ punto_line.id %}
+            {% set informativo = 'informativo_' ~ punto_line.id %}
+            {% set retirado = 'retirado_' ~ punto_line.id %}
+            {% set extra = 'extra_' ~ punto_line.id %}
+            <input type="hidden" name="id[punto][]" value="{{ punto_line.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ form_widget(attribute(punto_line.numPunto,numpunto), { 'attr': {'class': 'input-mini'}}) }}
+                </td>
+                <td>
+                    <div class="input-append">
+                        {{ form_widget(attribute(punto_line.text,text), { 'attr': {'class': 'input-small', 'readonly' : 'true' }}) }}
+                        <button class="btn" type="button" onclick="LoadContent('{{ path( '_puntosplatform_edittext_punto', {'platform_id' : platform.id, 'id': punto_line.ide, 'entity': 'PuntoDia'}) }}', 'content');
+                            return false;">Edit</button>
+                    </div>
+                    {#{{ punto.text|length > 10 ? punto.text[:10] ~ '...' : punto.text}}#}
+                </td>
+                <td>
+                    {{ form_widget(attribute(punto_line.parent,parent), { 'attr': {'class': 'input-mini'}}) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(punto_line.orden,orden), { 'attr': {'class': 'input-mini'}}) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(punto_line.tipoVoto,tipoVoto), { 'attr': {'class': 'input-small'}}) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(punto_line.opcionesVoto,opcionesVoto), { 'attr': {'class': 'input-small'}}) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(punto_line.informativo,informativo)) }}
+                    {#<input type="checkbox" name="informativo" disabled="disabled" value="informativo" {% if punto.informativo %} checked="checked"{% endif %}>#}
+                </td>
+                <td>
+                    {{ form_widget(attribute(punto_line.retirado,retirado)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(punto_line.extra,extra), { 'attr': {'class': 'input-mini'}}) }}
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

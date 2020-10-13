@@ -1,0 +1,24 @@
+{% verbatim %}               
+<div id="nav-wrapper" data-ng-controller="NavCtrl">
+    <ul ng-init="lives.length = -1"
+        id="nav"
+        data-ng-controller="NavAvCtrl"
+        data-slim-scroll
+        data-collapse-nav
+        data-highlight-active>
+
+        <li>
+            <a href="javascript:;" live-button-racc="live-0" onclick><i class="fa fa-laptop"></i><span data-i18n="id00429_app:av:nav:asistencia-virtual">Asistencia Virtual</span></a>
+        </li>
+
+        <li>
+            <a href="javascript:;" questions-button-racc onclick><i class="fa fa-pencil-square-o"></i><span data-i18n="id00431_app:av:nav:crear-ruegos">Ruegos y Preguntas</span></a>
+        </li>
+        
+        <li>
+            <a href="javascript:;" voto-button-racc onclick><i class="fa fa-check-square-o"></i><span data-i18n="id00442_app:av:nav:voto">Votación</span></a>
+        </li>
+        
+    </ul>
+</div>
+{% endverbatim %}

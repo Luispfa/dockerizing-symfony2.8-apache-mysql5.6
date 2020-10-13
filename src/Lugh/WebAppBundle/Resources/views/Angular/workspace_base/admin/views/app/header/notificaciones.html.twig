@@ -1,0 +1,30 @@
+{% verbatim %}
+    <div class="page page-dashboard">
+        <div class="full-width">
+            <div class="contenido-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xsm-12">
+                            <section class="panel panel-default">
+                                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Notificaciones</strong>
+                                </div>
+                                <div class="panel-body" data-ng-controller="NotificationsCtrl">
+                                    <div ng-init="notificationsArray()">
+                                        <div class="callout callout-success" ng-repeat="notification in notifications">
+                                            <h4>Notificación</h4>
+                                            <p ng-bind-html="notification.notification"></p>
+                                            <p>{{notification.date_time | date: "dd/MM/yyyy&nbsp;HH:mm"}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endverbatim %}
+
+

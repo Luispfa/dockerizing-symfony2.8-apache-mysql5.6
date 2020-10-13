@@ -1,0 +1,64 @@
+<ul class="nav">
+		
+        <li class="nav-icon active">
+                <a href="{{ path('_index') }}">
+                        <i class="icon-home"></i>
+                        <span>Home</span>
+                </a>	    				
+        </li>
+
+        <li class="dropdown">					
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-th"></i>
+                        Consultas
+                        <b class="caret"></b>
+                </a>	
+
+                    <ul class="dropdown-menu">
+                            <li><a href="#" onclick="LoadContent('{{ path( '_platforms_content_default') }}','content');return false;">Plataformas Electronicas</a></li>
+                    </ul>    				
+        </li>
+
+        <li class="dropdown">					
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-th"></i>
+                        Configuración
+                        <b class="caret"></b>
+                </a>	
+
+                    <ul class="dropdown-menu">
+                            <li><a href="#" onclick="LoadContent('{{ path( '_addplatform_content') }}','content');return false;">Provisionar Plataforma</a></li>
+                            <li><a href="#" onclick="LoadContent('{{ path( '_configplatform_content') }}','content');return false;">Configurar Plataforma</a></li>
+                            <li><a href="#" onclick="LoadContent('{{ path( '_temlatesplatform_content') }}','content');return false;">Styles</a></li>
+                    </ul>    				
+        </li>
+
+
+        <!--<li class="dropdown">					
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-external-link"></i>
+                        Other Pages
+                        <b class="caret"></b>
+                </a>	
+
+                <ul class="dropdown-menu">							
+                        <li><a href="./login.html">Login</a></li>
+                        <li><a href="./signup.html">Signup</a></li>
+                        <li><a href="./error.html">Error</a></li>
+                        <li class="dropdown">
+                                <a href="javascript:;">
+                                        Dropdown Menu									
+                                        <i class="icon-chevron-right sub-menu-caret"></i>
+                                </a>
+
+                                <ul class="dropdown-menu sub-menu">
+                <li><a href="javascript:;">Dropdown #1</a></li>
+                <li><a href="javascript:;">Dropdown #2</a></li>
+                <li><a href="javascript:;">Dropdown #3</a></li>
+                <li><a href="javascript:;">Dropdown #4</a></li>
+            </ul>
+                        </li>
+                </ul>    				
+        </li>-->
+
+</ul>

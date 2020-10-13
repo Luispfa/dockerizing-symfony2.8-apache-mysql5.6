@@ -1,0 +1,23 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: lugh_test_cobsa
+    database_user: root
+    database_password: root
+    
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    
+    locale: es
+    secret: ThisTokenIsNotSoSecretChangeIt
+    database_connection_name: lugh_dbconnection
+    db_connection_user_class: Lugh\DbConnectionBundle\Entity\User
+    recaptcha_prKey: 6LeaivUSAAAAADuyfCktTW-4vG5rqrr6FhUJYp7o
+    
+    path_admin: admin-local
+    admin_addr:
+        - %path_admin%.juntadeaccionistas.es

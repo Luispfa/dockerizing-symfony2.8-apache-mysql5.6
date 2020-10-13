@@ -1,0 +1,191 @@
+{% verbatim %}
+    <div class="page-inicio" ng-controller="profileForoCtrl">
+        <div class="contenido container form-container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-primary">
+                            <div alt="" class="img-login img-circle img80_80"></div>
+                            <h3>{{accionista.name}}</h3>                 
+                        </div>
+                    </div>
+
+
+                    <div class="callout callout-success">
+                        <h4 i18n="id00425_app:foro:retornar:title">Completar Datos</h4>
+                        <p i18n="id00298_home:app:retornar:message">Por favor, rellene los campos con la información adecuada respecto a los comentarios que le ha indicado el administrador. <br/>
+                            Puede Responder al administrador mediante el formulario "Añadir Mensaje".</p>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Profile Info</strong></div>
+                        <div class="panel-body">
+                            <div class="media">
+                                <div class="media-body">
+
+                                    <form name="accionista_form" action="" class="form-horizontal form-validation">
+                                        <div class="form-group" ng-if="!accionista.is_user_cert">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00217_app:regrant:username">Username</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input ng-disabled="true" type="text" class="form-control" id="username" required placeholder="User name" ng-model="accionista.user.username">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00218_app:regrant:name">Nombre</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="username" required placeholder="Nombre" ng-model="accionista.name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00219_app:regrant:mail">Email</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="email" class="form-control" id="username" required  placeholder="Email" ng-model="accionista.user.email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00220_app:regrant:tipo">Tipo persona</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <span class="ui-select">
+                                                    <select name="tipo" id="tipo" required data-ng-model="accionista.tipoPersona">
+                                                        <option value="pf" i18n="id00036_home:app:registro:pf">PF</option>
+                                                        <option value="pj" i18n="id00037_home:app:registro:pj">PJ</option>
+                                                    </select>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-if="accionista.tipoPersona == 'pj'">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00221_app:regrant:represented">Representado por</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="username" placeholder="Representado por" ng-model="accionista.represented_by" ng-required="accionista.tipoPersona=='pj'">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-disabled="accionista.is_user_cert">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00222_app:regrant:tipo-doc">Tipo de documento</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <span class="ui-select">
+                                                    <select ng-disabled="accionista.is_user_cert" name="tipoDoc" id="tipo-doc" required data-ng-model="accionista.document_type"
+                                                            ng-options="typevalue as i18n(typelabel) for (typevalue, typelabel) in docTypes">
+                                                    </select>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-disabled="accionista.is_user_cert">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00223_app:regrant:numero-doc">Numero de documento</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input ng-disabled="accionista.is_user_cert" 
+                                                       type="text" 
+                                                       class="form-control" 
+                                                       id="numero-doc" 
+                                                       placeholder="id00014_home:app:registro:doc-num"
+                                                       data-i18n="i18n-placeholder" 
+                                                       ng-model="accionista.document_num" 
+                                                       validate-doc 
+                                                       tipo-doc="accionista.document_type" 
+                                                       numero-doc="accionista.document_num">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00224_app:regrant:num-shares">Numero de acciones</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"
+                                                       id="numero-acciones"
+                                                       data-ng-model="accionista.shares_num"
+                                                       fcsa-number="{min: 0, maxDecimals: 0}"
+                                                       data-min="{{ accionesMin}}" 
+                                                       dotted-number>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00352_home:regrant:documents">Documentos</span></strong></div>
+                        <div class="panel-body">
+                            <div class="form-group" ng-file-drop>
+                                <upload-document
+                                    description  ="Documentación"
+                                    title        ="documentacion-file"
+                                    isolatedtoken
+                                    />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00353_home:regrant:messages">Mensajes</span></strong></div>
+                        <div class="panel-body">
+                            <table class="responsive table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2" i18n="id00354_home:regrant:message:autor">Autor</th>
+                                        <th class="col-sm-8" i18n="id00355_home:regrant:message:body">Mensajes</th>
+                                        <th class="col-sm-2" i18n="id00356_home:regrant:message:date">Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-if="accionista.item_accionista.messages.length === 0">
+                                        <td></td>
+                                        <td><span i18n="id00092_app:no-data"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr ng-repeat="message in accionista.messages | orderBy:'date_time':true">
+                                        <td>{{message.autor.isAdmin ? i18n("id00174_app:admin") : message.autor.name}}</td>
+                                        <td ng-bind-html="message.body | nl2br">
+                                        <td>{{ message.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>  
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00351_home:regrant:message">Añadir mensaje</span></strong></div>
+                        <div class="panel-body">
+                            <textarea class="form-control"
+                                      rows = "10"
+                                      ng-model = "accionista.message" >
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <button type="submit" class="btn btn-success" ng-click="submit()" ng-disabled="!isValid()"><span i18n="id00357_home:regrant:button:save">Guardar</span></button> 
+                            <button type="submit" class="btn btn-success" ng-click="clear()"><span i18n="id00358_home:regrant:button:clear">Descartar cambios</span></button>
+                        </div>
+                        <script type="text/ng-template" id="myModalContent.html">
+                            <div class="modal-header">
+                            <h3 i18n="id00359_home:regrant:loading">Regsitrando</h3>
+                            </div>
+                            <div class="modal-body">
+                            <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </script>
+                    </div>
+
+                </div>
+            </div> <!-- /Row -->
+        </div> <!-- /Full-width -->
+    </div>
+{% endverbatim %}

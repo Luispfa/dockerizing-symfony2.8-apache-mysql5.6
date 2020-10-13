@@ -1,0 +1,34 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>Symbolo</th>
+            <th>Texto</th>
+            <th>Orden</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for opcionvoto_line in opcionesvoto_lines %}
+            {% set symbol = 'symbol_' ~ opcionvoto_line.id %}
+            {% set nombre = 'nombre_' ~ opcionvoto_line.id %}
+            {% set orden = 'orden_' ~ opcionvoto_line.id %}
+            <input type="hidden" name="id[opcionvoto][]" value="{{ opcionvoto_line.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ form_widget(attribute(opcionvoto_line.symbol,symbol), { 'attr': {'class': 'input-mini'}}) }}
+                </td>
+                <td>
+                    <div class="input-append">
+                        {{ form_widget(attribute(opcionvoto_line.nombre,nombre), { 'attr': {'class': 'input-medium', 'readonly' : 'true'}}) }}
+                        <button class="btn" type="button" onclick="LoadContent('{{ path( '_puntosplatform_edittext_punto', {'platform_id' : platform.id, 'id': opcionvoto_line.ide, 'entity': 'OpcionesVoto'}) }}', 'content');
+                                return false;">Edit</button>
+                    </div>
+                </td>
+                <td>
+                    {{ form_widget(attribute(opcionvoto_line.orden,orden), { 'attr': {'class': 'input-mini'}}) }}
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

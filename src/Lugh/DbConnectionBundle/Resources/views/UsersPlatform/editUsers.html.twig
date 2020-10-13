@@ -1,0 +1,140 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Nuevo Usuario Customer
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_configplatform_add_user', {'platform_id' : platform.id} ) }}',$('#form_users :input'), 'config','{{ path( '_configusers_edit_users', {'platform_id' : platform.id}) }}','content'); return false;">
+                            <i class="icon-plus"></i> Añadir nuevo
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_users" class="">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="form_usernmae">Username</label>
+                                <div class="controls">
+                                    {{ form_widget(form_users.username.username, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Nombre de usuario</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="form_config">Password</label>
+                                <div class="controls">
+                                   {{ form_widget(form_users.password.password, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Contraseña de usuario</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="form_email">Email</label>
+                                <div class="controls">
+                                   {{ form_widget(form_users.email.email, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Correo electrónico del usuario</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Listado de Usuarios Customer
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for user_platform in users_platform %} 
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ user_platform.username }}
+                                    </td>
+                                    <td>
+                                        {{ user_platform.email }}
+                                    </td>
+                                    <td>
+                                        {% if user_platform.hasRole('ROLE_SUPER_ADMIN') == false %}
+                                            <button type="button" class="btn btn-danger" onclick="removeParameter('{{user_platform.id}}','{{ path( '_configplatform_remove_user') }}','{{ path( '_configusers_edit_users', {'platform_id' : platform.id}) }}','content');return false;">Delete</button>
+                                            <!--<button type="button" class="btn btn-warning" onclick="">Edit</button>-->
+                                            <a href="#editUser-{{ user_platform.username }}-modal" data-toggle="modal"  type="button" class="btn btn-warning btn-small accordion-toggle">
+                                                Edit
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <div class="modal fade hide modal-xs" id="editUser-{{ user_platform.username}}-modal">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h3>Edit User</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form >
+                                            <div class="control-group" id="editUser-{{ user_platform.username}}-form">
+
+                                                <label class="control-label" for="editUser-modal-name">Username</label>
+                                                <div class="controls">
+                                                    <input type="text" class="input-large" id="editUser-modal-name" name="form[username]" placeholder="{{ user_platform.username }}">
+                                                </div>
+
+                                                <label class="control-label" for="editUser-modal-path">Email</label>
+                                                <div class="controls">
+                                                    <input type="text" class="input-large" id="editUser-modal-path" name="form[email]" placeholder="{{ user_platform.email }}">
+                                                </div>
+
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#" class="btn" data-dismiss="modal">Close</a>
+                                        <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="editParam('{{user_platform.id}}','{{ path('_configplatform_edit_user', {'platform_id' : platform.id} ) }}',$('#editUser-{{ user_platform.username}}-form :input'),'{{ path( '_configusers_edit_users', {'platform_id' : platform.id}) }}','content'); return false;">
+                                            Save changes</button>
+                                    </div>
+                                </div>
+                            {% endfor%} 
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div>

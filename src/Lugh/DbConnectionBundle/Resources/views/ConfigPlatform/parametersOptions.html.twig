@@ -1,0 +1,17 @@
+<div class="widget-header">
+						
+    <h3>
+            <i class="icon-bar-chart"></i>
+            Parameters Options
+
+    </h3>				
+<div class="widget-actions">
+        <a class="btn btn-small accordion-toggle" data-toggle="collapse" href="#" onclick="LoadContent('{{ path( '_configplatform_edit_parameters_options', {'platform_id' : platform_id}) }}','content');return false;"><i class="icon-pencil"></i>Edit</a>
+    </div>
+</div>
+
+<div class="widget-content">
+
+     {% render(controller('LughDbConnectionBundle:ConfigPlatform:parametersOptionsContent', {'platform_id' : platform_id}))  %}
+
+</div> <!-- /.widget-content -->

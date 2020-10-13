@@ -1,0 +1,22 @@
+{% extends "LughWebAppBundle:Resetting:layout.html.twig" %}
+{% block fos_user_content %}
+    <div class="view-container">
+        <!-- ngView:  --><section data-ng-view="" id="content" class="animate-fade-up ng-scope"><div class="page-forgot ng-scope">
+
+                <div class="signin-header">
+                    <div class="container text-center">
+                        <section class="logo">
+                            Reset
+                        </section>
+                    </div>
+                </div>
+
+
+                {% include "LughWebAppBundle:Resetting:reset_content.html.twig" %}
+
+
+            </div>
+        </section>
+    </div>
+{% endblock fos_user_content %}
+

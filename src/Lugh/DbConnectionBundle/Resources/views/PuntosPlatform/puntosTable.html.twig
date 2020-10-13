@@ -1,0 +1,18 @@
+<div class="widget-header">
+
+    <h3>
+        <i class="icon-bar-chart"></i>
+        Puntos
+
+    </h3>
+    <div class="widget-actions">
+            <button type="button" class="btn btn-ternary btn-small" onclick="SetPoints('{{ path('_puntosplatform_save_puntos_table', {'platform_id' : platform_id} ) }}',$('#_form_puntos :input'), '{{ path( '_puntosplatform_puntos', {'platform_id' : platform_id}) }}', 'content'); return false;">Retirar / Incluir</button>
+            <a class="btn btn-small accordion-toggle" data-toggle="collapse" href="#" onclick="LoadContent('{{ path( '_puntosplatform_edit_puntos', {'platform_id' : platform_id}) }}','content');return false;"><i class="icon-pencil"></i>Edit</a>
+    </div>
+</div>
+
+<div class="widget-content">
+
+    {% render(controller('LughDbConnectionBundle:PuntosPlatform:puntosTableContent', {'platform_id' : platform_id}))  %}
+
+</div> <!-- /.widget-content -->

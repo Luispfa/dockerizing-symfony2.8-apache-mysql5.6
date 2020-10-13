@@ -1,0 +1,105 @@
+    <table id="crontab_file" class="table table-striped table-bordered responsive">
+         <thead>
+             <tr>
+                <th>Host</th>
+                <th>DBName</th>
+                <th>Style</th>
+                <th>Voto</th>
+                <th>Foro</th>
+                <th>Derecho</th>
+                <th>Asistencia V.</th>
+                <th>Active</th>
+                <th>Action</th>
+            </tr>
+         </thead>
+
+         <tbody>
+                <tr class ="gradeA">
+                    <td>
+                        <div class="input-append">
+                            <input class="span2" id="appendedInputButton_host" size="16" type="text" >
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-append">
+                            <input class="span2" id="appendedInputButton_dbname" size="16" type="text" >
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-append">
+                            <select id="select_style">
+                                {% for template in templates %} 
+                                    <option value="{{ template.id }}" 
+                                    >
+                                        {{ template.name }}
+                                    </option>
+                                {% endfor%}    
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="onoffswitchdual">
+                            <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_voto">
+                            <label class="onoffswitchdual-label" for="myonoffswitch_voto">
+                                <div class="onoffswitchdual-inner"></div>
+                                <div class="onoffswitchdual-switch"></div>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="onoffswitchdual">
+                            <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_foro">
+                            <label class="onoffswitchdual-label" for="myonoffswitch_foro">
+                                <div class="onoffswitchdual-inner"></div>
+                                <div class="onoffswitchdual-switch"></div>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="onoffswitchdual">
+                            <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_derecho">
+                            <label class="onoffswitchdual-label" for="myonoffswitch_derecho">
+                                <div class="onoffswitchdual-inner"></div>
+                                <div class="onoffswitchdual-switch"></div>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="onoffswitchdual">
+                            <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_av">
+                            <label class="onoffswitchdual-label" for="myonoffswitch_av">
+                                <div class="onoffswitchdual-inner"></div>
+                                <div class="onoffswitchdual-switch"></div>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch_active">
+                            <label class="onoffswitch-label" for="myonoffswitch_active">
+                                <div class="onoffswitch-inner"></div>
+                                <div class="onoffswitch-switch"></div>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn" type="button" onclick="submitForm('{{ path('_addplatform_form') }}',
+                                    {'appendedInputButton_host' : $('#appendedInputButton_host').val(),
+                                     'appendedInputButton_dbname' : $('#appendedInputButton_dbname').val(),
+                                     'select_style' : $('#select_style').val(),
+                                     'myonoffswitch_voto' : $('#myonoffswitch_voto').prop('checked') ? 1 : 0,
+                                     'myonoffswitch_foro' : $('#myonoffswitch_foro').prop('checked') ? 1 : 0,
+                                     'myonoffswitch_derecho' : $('#myonoffswitch_derecho').prop('checked') ? 1 : 0,
+                                     'myonoffswitch_av' : $('#myonoffswitch_av').prop('checked') ? 1 : 0,
+                                     'myonoffswitch_active' : $('#myonoffswitch_active').prop('checked') ? 1 : 0
+                                 }
+                                ); 
+                                return false;">
+                                Save
+                        </button>
+                    </td>
+                </tr>
+         </tbody>
+
+    </table>
+ 

@@ -1,0 +1,193 @@
+{% verbatim %}
+<div class="page page-profile" ng-controller="profileCtrl">
+
+	<div class="row">
+		<div class="col-md-6">
+
+			<div class="panel panel-profile">
+				<div class="panel-heading text-center bg-primary">
+					<div class="img-login img-circle img80_80"></div>
+					<h3>{{accionista.name}}</h3>                 
+				</div>
+				<!--<div class="list-justified-container">
+					<ul class="list-justified text-center">
+						<li>
+							<p class="size-h3">679</p>
+							<p class="text-muted">Tweets</p>
+						</li>
+					</ul>
+				</div>-->
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span data-i18n="id00041_app:profile:profile-info">Profile Info</span></strong></div>
+				<div class="panel-body">
+					<div class="media">
+						<div class="media-body">
+							<ul class="list-unstyled list-info">
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00003_home:app:inicio:username">Username</label>
+									{{accionista.user.username}}
+								</li>
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00012_home:app:registro:name">Nombre</label>
+									<span ng-bind-html="accionista.name"></span>
+								</li>
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00004_home:app:registro:email">Email</label>
+									<span ng-bind-html="accionista.user.email"></span>
+								</li>
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00038_home:app:registro:represented-by">Representado por</label>
+									<span ng-bind-html="accionista.represented_by"></span>
+								</li>
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00014_home:app:registro:doc-num">Numero de documento</label>
+									<span ng-bind-html="accionista.document_num"></span>
+								</li>   
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00013_home:app:registro:doc-kind">Tipo de documento</label>
+									<span ng-bind-html="accionista.document_type"></span>
+								</li>
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00175_app:profile:num-shares">Número de acciones</label>
+									<span ng-bind-html="accionista.shares_num | formattedNumber"></span>
+								</li>
+								<li>
+									<span class="icon glyphicon glyphicon-chevron-right"></span>
+									<label data-i18n="id00042_app:profile:documents-list">Documentos</label>
+									<ul class="list-docs">
+										<li ng-repeat="documento in accionista.documents">
+											<span class="glyphicon glyphicon-download-alt"></span>
+											<a ng-click="downloadDocument(documento.id)">{{documento.nombre_externo}}</a>
+										</li>
+									</ul>
+								</li> 
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			
+			<div class="row" app-element="foro">
+				<div class="col-sm-12">
+					<section class="panel panel-box">
+						<div class="panel-top bg-foro">
+							<div class="divider divider"></div>
+							<h4><i class="fa fa-users size-h1"></i> <span data-i18n="id00048_app:foro">Foro</span></h4>
+							<div class="divider divider"></div>
+						</div>
+						<div class="list-justified-container">
+							<ul class="list-justified text-center">
+								<li>
+									<p class="size-h3">{{foro.propuestas}}</p>
+									<a class="" data-i18n="id00044_app:foro:proposals" ng-click="goToItemList('propuestas')">Propuestas</a>
+								</li>
+								<li>
+									<p class="size-h3">{{foro.iniciativas}}</p>
+									<a class="" data-i18n="id00045_app:foro:initiatives" ng-click="goToItemList('iniciativas')">Iniciativas</a>
+								</li>
+								<li>
+									<p class="size-h3">{{foro.ofertas}}</p>
+									<a class="" data-i18n="id00046_app:foro:offers" ng-click="goToItemList('ofertas')">Ofertas</a>
+								</li>
+								<li>
+									<p class="size-h3">{{foro.peticiones}}</p>
+									<a class="" data-i18n="id00047_app:foro:requests" ng-click="goToItemList('peticiones')">Peticiones</a>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+			</div>
+			
+			<div class="row" adaptive-row>
+				<div class="" app-element="voto">
+					<section class="panel panel-box">
+						<div class="panel-top bg-voto">
+							<div class="divider divider"></div>
+							<h4><i class="fa fa-check-square-o"></i> <span data-i18n="id00049_app:voto">Voto</span></h4>
+							<div class="divider divider"></div>
+						</div>
+						<div class="list-justified-container">
+							<ul class="list-justified text-center">
+								<li>
+									<p class="size-h3">{{voto}}</p>
+									<p class="text-muted" data-i18n="id00051_app:voto:last-act">Ultima actuación</p>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+				
+				<div class="" app-element="derecho">
+					<section class="panel panel-box">
+						<div class="panel-top bg-derecho">
+							<div class="divider divider"></div>
+							<h4><i class="fa fa-info"></i> <span data-i18n="id00050_app:derecho">Derecho</span></h4>
+							<div class="divider divider"></div>
+						</div>
+						<div class="list-justified-container">
+							<ul class="list-justified text-center">
+								<li ng-click="goToThreads()">
+									<p class="size-h3">{{derecho}}</p>
+									<p class="text-muted" data-i18n="id00052_app:derecho:requests">Peticiones</p>
+								</li>
+							</ul>
+						</div>
+					</section>                        
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+
+			<div class="panel panel-default">
+				<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span><span i18n="id00057_app:profile:messages-title">Mensajes de estado</span></strong></div>
+				<div class="panel-body">
+					<table class="responsive table table-striped">
+						<thead>
+							<tr>
+								<th class="col-sm-2" data-i18n="id00058_app:profile:author"  >Autor</th>
+								<th class="col-sm-8" data-i18n="id00059_app:profile:messages">Mensajes</th>
+								<th class="col-sm-2" data-i18n="id00060_app:profile:date"    >Fecha</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-if="accionista.item_accionista.messages.length === 0">
+								<td></td>
+								<td i18n="id00092_app:no-data">No hay datos disponibles.</td>
+								<td></td>
+							</tr>
+							<tr ng-repeat="message in accionista.item_accionista.messages | orderBy:'date_time':true">
+								<td>
+									{{message.autor.isAdmin ? i18n("id00174_app:admin") : message.autor.name}}
+								</td>
+								<td ng-bind-html="message.body | nl2br">
+								</td>
+								<td class="cell-middle">{{message.date_time | date: "dd-MM-yyyy&nbsp;HH:mm"}}</td>
+							</tr>
+						</tbody>
+					</table>  
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+</div>
+
+{% endverbatim %}

@@ -1,0 +1,114 @@
+
+
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+    <tr>
+        <th>File</th>
+        <th>Upload</th>
+
+    </tr>
+    </thead>
+
+
+    <tbody>
+        {% for widget in widgets %}
+            {% set config = 'file_uploads_' ~ widget.id %}
+            <input type="hidden" name="id[uploads][]" value="{{ widget.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ widget.clase }}
+                </td>
+                <td>
+                    {#{ form_widget(attribute(widget.config,config)) }#}
+
+                    <div id="upload_{{ widget.id }}" class="dropzone"></div>
+
+
+
+
+                    <script>
+
+                        var type = "{{ widget.id }}";
+                        new Dropzone("div#upload_{{ widget.id }}",{
+                            url: "{{ path( '_configplatform_save_parameters_files', {'platform_id' : platform }) }}",
+                            paramName: "{{ widget.id }}",
+                            maxFilesize: 25,//MB
+                            uploadMultiple: false,//(type.indexOf('logo') != -1)? false : true,
+                            acceptedFiles:(type.indexOf('Reglamento') != -1 || type.indexOf('Legal') != -1 )?'application/pdf': type.indexOf('Logo')?"image/jpeg,image/png,image/gif":"image/jpeg,image/png,image/gif,application/pdf",
+                            addRemoveLinks: true,
+                            dictDefaultMessage: '',
+                            dictRemoveFile: 'X',
+                            dictCancelUploadConfirmation: 'X',
+                            dictCancelUpload: 'X',
+                            removedfile: function(file) {
+                                $.get("{{ path( '_configplatform_remove_parameters_files', {'platform_id' : platform}) }}",
+                                {filename: file.name},
+                                function(data){
+                                    var _ref;
+                                    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+                                });
+                            },
+                            init: function(){
+                                var thisDropzone = this;
+                                $.get("{{ path( '_configplatform_save_parameters_files', {'platform_id' : platform}) }}",
+                                {widget: '{{ widget.id }}'},
+                                function(data){
+                                    //console.log('{{ widget.id }}');
+                                    $.each(JSON.parse(data), function(key,value){
+                                        var mockFile = {name: value.name, size: value.size };
+                                        //console.log(value.name);
+                                        thisDropzone.options.addedfile.call(thisDropzone, mockFile);
+
+                                        if(value.name.indexOf(".pdf") != -1)
+                                        {
+                                            thisDropzone.options.thumbnail.call(thisDropzone, mockFile, '{{ asset('bundles/lughdbconnection/img/pdf_icon.png') }}');
+                                        }
+                                        else if(value.name.indexOf(".png") != -1 ||value.name.indexOf(".jpg") != -1)
+                                        {
+                                            thisDropzone.options.thumbnail.call(thisDropzone, mockFile, "https://{{host}}/bundles/lugh/workspace_base/"+value.name);
+                                        }
+
+                                        $('.dz-details').on("click", function (e) {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            var filename = e.target.querySelector('.dz-filename span').innerHTML;
+                                            window.open("https://{{host}}/bundles/lugh/workspace_base/" + filename,'_blank');
+                                        });
+
+
+                                    });
+                                });
+
+
+                            },
+                            accept: function(file,done){
+                                type = "{{ widget.id }}";
+                                //console.log(type, file.name );
+                                if( type.indexOf('Reglamento') != -1  && file.name.indexOf('Reglamento_') != -1){
+                                    done();
+                                }else
+                                if(type.indexOf('Legal') != -1 && file.name.indexOf("AvisoLegal_") != -1){
+                                    done();
+                                }else
+                                if( type.indexOf('logo') != -1 && file.name.indexOf("logo") != -1){
+                                    done();
+                                }else
+                                if( type.indexOf('other') != -1 ){
+                                    done();
+                                }
+                                else {
+                                    done("Error al leer el fichero. Tiene el nombre correcto? Lo estas subiendo al lugar indicado?");
+                                }
+
+                            }
+                        });
+                    </script>
+
+
+                </td>
+            </tr>
+
+        {% endfor%}
+    </tbody>
+
+</table>

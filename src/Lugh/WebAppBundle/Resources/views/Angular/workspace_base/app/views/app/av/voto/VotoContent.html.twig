@@ -1,0 +1,18 @@
+{% verbatim %}
+<div id="wizard-{{type.tipo}}" class="swMain">
+    <ul class="wizard-steps">
+        <li ng-repeat="step in puntos">
+            <a href="#step-{{$index+1}}" class="">
+                <div class="wizard-step-number" ng-click="test()">{{$index+1}}</div>
+                <div class="wizard-step-bar"></div>
+            </a>    
+        </li>
+    </ul>
+
+    <div id="step-{{$index+1}}" ng-repeat="step in puntos" ng-repeat-event="stepsReady-{{type.tipo}}">
+        <!--<div ng-if="step['vote_proxy'] == 0 || step['vote_proxy'] == 'undefined' || !((step['vote_proxy'] == 2 && data.data.choiceVoteDelegation == 'vote') || (step['vote_proxy'] == 1 && data.data.choiceVoteDelegation == 'delegation'))"> -->
+
+        <div recursive-wizard-construct="{{$index}}" tipo="{{type.tipo}}" index="{{$index}}" vote-delegate="{{data.data.choiceVoteDelegation}}"></div>
+    </div>
+</div>
+{% endverbatim %}

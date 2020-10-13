@@ -1,0 +1,30 @@
+/*
+
+	Author: Martijn Otter
+	Website: http://martijnotter.nl/
+	Email: martijn@otterweb.nl
+	
+*/
+
+body {
+	background: white;
+	font-family: Helvetica;
+        background-position:center top;
+}
+
+#titulo {
+    text-align: center;
+    display: block;
+    margin: 86px auto;
+}
+
+form {
+	width: 280px;
+	height: 260px;
+	margin: 86px auto;
+	background: white;
+	border-radius: 3px;
+	box-shadow: 0 0 10px rgba(0,0,0, .4); 
+	text-align: center;
+	padding-top: 1px;
+}

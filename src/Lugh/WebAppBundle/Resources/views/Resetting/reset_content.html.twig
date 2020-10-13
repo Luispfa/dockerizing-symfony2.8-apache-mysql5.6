@@ -1,0 +1,14 @@
+<div class="info text-center">
+    <h2>Password Reset</h2>
+    <p class="text-small">Si desea resetear el password haga click.</p>
+</div>
+
+<div class="form-container">
+
+    <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" enctype="multipart/form-data" method="POST" class="form-horizontal ng-pristine ng-valid" name="forgotPasswordForm">
+        <div class="form-group">
+            <input type="hidden" value="true" name="reset" />
+            <input type="submit" value="Resetear Password" class="btn btn-lg btn-block btn-primary" />
+        </div>
+    </form>
+</div>

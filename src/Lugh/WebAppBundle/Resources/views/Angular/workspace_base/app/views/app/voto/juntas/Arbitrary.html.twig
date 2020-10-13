@@ -1,0 +1,25 @@
+{% verbatim %}
+<div>
+    <h1><span class="titulo-menu arbitraryTitle" i18n="id00291_app:voto:welcome:title">Bienvenido/da</span></h1>
+    <div>
+        <div class="panel panel-profile arbitraryContent">
+            <div class="panel-heading text-center bg-voto">
+                <h2 i18n="id00049_app:voto">Voto</h2>
+                <h1><i class="fa fa-check-square-o"></i></h1>              
+            </div>
+            <div class="panel-body">
+                <h2 data-i18n="{{title_body}}"></h2>
+                <h3 data-i18n="{{subtitle_body}}" parameters-i18n="{'empresa' : main.brand}"></h3>
+                <span data-i18n="{{body}}"></span>
+            </div>
+            <div class="panel" ng-if="isVirtualAssistance" ng-controller="newVaCtrl">
+                <div class="panel-body">
+                    <button type="submit" class="btn btn-success" ng-click="streaming()"><span i18n="id00492_app:voto:welcome:assistance:streaming" class="ng-isolate-scope">Retrasmisión</span></button> 
+                    <button type="submit" class="btn btn-success" ng-click="question()"><span i18n="id00491_app:voto:welcome:assistance:question" class="ng-isolate-scope">Preguntas</span></button>
+                    <!--<button type="submit" class="btn btn-success" ng-click="sendMail()"><span i18n="id00490_app:voto:welcome:assistance:desertion" class="ng-isolate-scope">Abandonar</span></button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}

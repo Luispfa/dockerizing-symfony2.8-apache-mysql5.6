@@ -1,0 +1,50 @@
+{% verbatim %}               
+<div id="nav-wrapper">
+    <ul id="nav"
+        data-ng-controller="NavCtrl"
+        data-slim-scroll
+        data-collapse-nav
+        data-highlight-active>
+        
+        <li>
+            <a href="#/app/foro/actividad-publica"><i class="fa fa-users"></i><span data-i18n="id00074_app:foro:nav:public-activity">Ver actividad publica</span></a>
+            <ul>
+                <li><a href="#/app/foro/actividad-publica/propuestas"><i class="fa fa-caret-right"></i><span  data-i18n="id00075_app:foro:long:proposals"  >Propuestas</span></a></li>
+                <li><a href="#/app/foro/actividad-publica/iniciativas"><i class="fa fa-caret-right"></i><span data-i18n="id00076_app:foro:long:initiatives">Iniciativas</span></a></li>
+                <li><a href="#/app/foro/actividad-publica/ofertas"><i class="fa fa-caret-right"></i><span     data-i18n="id00078_app:foro:long:offers"     >Oferta de representación</span></a></li>
+                <li><a href="#/app/foro/actividad-publica/peticiones"><i class="fa fa-caret-right"></i><span  data-i18n="id00079_app:foro:long:requests"   >Petición de representación</span></a></li>
+                <li><a href="#/app/foro/actividad-publica/todo"><i class="fa fa-caret-right"></i><span        data-i18n="id00080_app:foro:nav:all"         >Todo</span></a></li>
+            </ul>
+        </li>
+        
+        
+        <li>
+            <a href="#/app/foro/actividad-personal"><i class="fa fa-user"></i><span data-i18n="id00086_app:foro:nav:personal-activity">Ver actividad personal</span></a>
+            <ul>
+                <li><a href="#/app/foro/actividad-personal/tareas"><i class="fa fa-caret-right"></i><span      data-i18n="id00085_app:foro:nav:pending"     >Tareas pendientes</span>
+                <span class="badge badge-info main-badge" total-foro-count-badge
+                      data-ng-show="totalforoPendientesCount > 0"></span>
+                </a></li>
+                <li><a href="#/app/foro/actividad-personal/adhesiones"><i class="fa fa-caret-right"></i><span  data-i18n="id00130_app:foro:nav:adhesions"   >Adhesiones</span></a></li>
+                <li><a href="#/app/foro/actividad-personal/propuestas"><i class="fa fa-caret-right"></i><span  data-i18n="id00075_app:foro:long:proposals"  >Propuestas</span></a></li>
+                <li><a href="#/app/foro/actividad-personal/iniciativas"><i class="fa fa-caret-right"></i><span data-i18n="id00076_app:foro:long:initiatives">Iniciativas</span></a></li>
+                <li><a href="#/app/foro/actividad-personal/ofertas"><i class="fa fa-caret-right"></i><span     data-i18n="id00078_app:foro:long:offers"     >Ofertas de representación</span></a></li>
+                <li><a href="#/app/foro/actividad-personal/peticiones"><i class="fa fa-caret-right"></i><span  data-i18n="id00079_app:foro:long:requests"   >Peticiónes de representación</span></a></li>
+                <li><a href="#/app/foro/actividad-personal/todo"><i class="fa fa-caret-right"></i><span        data-i18n="id00080_app:foro:nav:all"         >Todo</span></a></li>
+                <!-- Admin <li><a href="#/app/foro/actividad-personal/todo-admin"><i class="fa fa-caret-right"></i><span data-i18n="Todo (Admin)"></span></a></li>-->
+            </ul>
+        </li>
+
+        <li>
+            <a href="#/app/foro/crear-nueva"><i class="fa fa-pencil-square-o"></i><span data-i18n="id00087_app:foro:nav:new">Crear nueva</span></a>
+            <ul>
+                <li><a href="#/app/foro/crear-nueva/propuesta"><i class="fa fa-caret-right"></i><span  data-i18n="id00081_app:foro:singular:long:proposal"  >Propuesta</span></a></li>
+                <li><a href="#/app/foro/crear-nueva/iniciativa"><i class="fa fa-caret-right"></i><span data-i18n="id00082_app:foro:singular:long:initiative">Iniciativa</span></a></li>
+                <li><a href="#/app/foro/crear-nueva/representacion"><i class="fa fa-caret-right"></i><span data-i18n="id00184_app:foro:singular:long:representation">Representación</span></a></li>
+            </ul>
+        </li>
+
+
+    </ul>
+</div>
+{% endverbatim %}

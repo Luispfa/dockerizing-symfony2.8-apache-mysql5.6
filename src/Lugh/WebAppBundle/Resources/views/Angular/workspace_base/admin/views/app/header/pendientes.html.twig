@@ -1,0 +1,98 @@
+{% verbatim %}
+    <div class="page" ng-controller="adminPendingCtrl">
+
+        <section class="panel panel-default">
+            <div class="panel-heading"><strong class="strong-heading"><span class="glyphicon glyphicon-th"></span> <span i18n="id00085_app:foro:nav:pending">Pendientes</span></strong>
+            </div>
+            <div class="panel-body">
+
+
+                <div class="table-responsive table-bordered">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2" i18n="id00163_app:admin:activity">Actividad</th>
+                                <th class="col-sm-8" i18n="id00090_app:foro:description">Descripción proceso</th>
+                                <th class="col-sm-2" i18n="id00091_app:foro:date">Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="items.length === 0 && threads.length === 0 && question.length === 0 && accionistas.length === 0 && adhesions.length === 0">
+                                <td></td>
+                                <td><a i18n="id00092_app:no-data">No hay datos disponibles.</a></td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat="accionista in accionistas">
+                                <td>Accionistas</td>
+                                <td>
+                                    <h4>
+                                        <span class="badge badge-info main-badge ng-binding" data-ng-if="accionista.pendientes > 1">{{accionista.pendientes}}</span>
+                                        <a href="" ng-click="loadAccionista(accionista)" ng-bind-html="accionista.name"></a>
+                                    </h4>
+                                </td>
+                                <td>{{accionista.item_accionista.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                            <tr ng-repeat="item in items" app-element="foro">
+                                <td>Foro - {{i18n(typeTags[item.type])}}</td>
+                                <td><h4>{{item.autor.name}} - <a ng-click="loadItem(item)" ng-bind-html="item.title"></a></h4>
+                                    <p ng-bind-html="item.description"></p>
+                                </td>
+                                <td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                            <tr ng-repeat="item in threads" app-element="derecho">
+                                <td>Derecho - Solicitud</td>
+                                <td><h4>{{item.autor.name}} - <a ng-click="goToThread(item)"  ng-bind-html="item.subject"></a></h4>
+                                    <p ng-bind-html="item.description"></p>
+                                </td>
+                                <td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                            <tr ng-repeat="item in questions" app-element="av">
+                                <td>Asistencia Virtual - Ruego o Pregunta</td>
+                                <td><h4>{{item.autor.name}} - <a ng-click="goToQuestion(item)"  ng-bind-html="item.subject"></a></h4>
+                                    <p ng-bind-html="item.description"></p>
+                                </td>
+                                <td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                            <tr ng-repeat="adhesion in adhesions.adhesionProposals" app-element="foro">
+                                <td>Adhesion a propuesta</td>
+                                <td>
+                                    <h4>{{adhesion.accionista.name}} - <a href="" ng-click="loadAdhesion(adhesion,'proposals')" ng-bind-html="adhesion.proposal.title"></a></h4>
+                                </td>
+                                <td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                            <tr ng-repeat="adhesion in adhesions.adhesionInitiatives" app-element="foro">
+                                <td>Adhesion a iniciativa</td>
+                                <td>
+                                    <h4>{{adhesion.accionista.name}} - <a href="" ng-click="loadAdhesion(adhesion,'initiatives')" ng-bind-html="adhesion.initiative.title"></a></h4>
+                                </td>
+                                <td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                            <tr ng-repeat="adhesion in adhesions.adhesionOffers" app-element="foro">
+                                <td>Adhesion a oferta</td>
+                                <td>
+                                    <h4>{{adhesion.accionista.name}} - <a href="" ng-click="loadAdhesion(adhesion,'offers')" ng-bind-html="adhesion.offer.title"></a></h4>
+                                </td>
+                                <td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                            <tr ng-repeat="adhesion in adhesions.adhesionRequests" app-element="foro">
+                                <td>Adhesion a petición</td>
+                                <td>
+                                    <h4>{{adhesion.accionista.name}} - <a href="" ng-click="loadAdhesion(adhesion,'requests')" ng-bind-html="adhesion.request.title"></a></h4>
+                                </td>
+                                <td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>      
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+
+    </div>
+
+
+{% endverbatim %}

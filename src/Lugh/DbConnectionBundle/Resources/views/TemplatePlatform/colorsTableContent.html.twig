@@ -1,0 +1,109 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Color</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <form id="colors-form">
+        {#% for color in colors %}
+            {% set value = 'value_' ~ color.key %}
+        <input type="hidden" name="id[parameter][]" value="{{ color.key }}" />
+        <tr class ="gradeA">
+            <td>
+                {{ color.key }}
+            </td>
+            <td>
+                <div class="input-append color" data-color="{{ color.value }}" data-color-format="rgb" id="cp-{{ color.key}}">
+                    <input type="text" class="input-large" id="{{ color.key }}" name="form[{{ color.key }}]"  value="{{ color.value}}" >
+                    <span class="add-on"><i style="background-color: {{ color.value}}" id="color-preview-{{ color.key}}"></i></span>
+                </div>
+            </td>
+        </tr>
+        <script>
+            $('#cp-{{ color.key}}').colorpicker({ format: 'hex' });
+            $('#style-color-{{ color.key }}').blur(function(ev){
+                $('#color-preview-{{ color.key}}').css("background-color",ev.target.value);
+            });
+        </script>
+    {% endfor%#}
+
+        {% for param in params %}
+            <input type="hidden" name="id[parameter][]" value="{{ param.key }}" />
+            <tr class ="gradeA">
+                <td>
+                    {% if param.relevant == 1%}
+                        <b>{{ param.key }} *</b>
+                    {% else %}
+                        {{ param.key }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if param.type == 'color' %}
+                        <div class="input-append color" id="color-{{ param.key}}">
+                            <input type="text" class="input-large" id="{{ param.key }}" name="form[{{ param.key }}]"  value="{{ param.value}}" >
+                            <!--<span class="add-on"><i style="background-color: {{ param.alt}}" id="color-preview-{{ param.key}}"></i></span>-->
+                        </div>
+                    {% else %}
+                        <div class="input-append" id="{{param.type}}-{{param.key}}">
+                            <input type="text" class="input-large" id="{{param.key}}" name="form[{{param.key}}]"  value="{{param.value}}" >
+                        </div>
+                    {% endif %}
+
+                </td>
+            </tr>
+            <script>
+                var str = '{{ param.alt }}';
+                $('.color #{{ param.key}}').css({
+                    "border": "1px solid {{ param.alt }}",
+                    "height":"20px",
+                    "border-right":"20px solid {{ param.alt }}"
+                });
+                 $('.color #{{ param.key}}').colpick({
+                    layout:'rgbhex',
+                    submit:1,
+                    color:str.substring(1),
+
+                     onChange:function(hsb,hex,rgb,el,bySetColor) {
+                        $(el).css('border-color','#'+hex);
+                         // Fill the text box just if the color was set using the picker, and not the colpickSetColor function.
+                         if(!bySetColor){
+                             $(el).val('#'+hex);
+                         }
+                     },
+                     onSubmit:function(hsb,hex,rgb,el){
+                         el.defaultValue = el.value = '#'+hex;
+                         $(this).colpickSetColor(el.value);
+                         $(".color #{{ param.key }}").css({
+                             "border":0,
+                             "border": "1px solid " + el.value,
+                             "height":"20px",
+                             "border-right":"20px solid " + el.value
+                         });
+                     }
+                 });
+
+                $('.color #{{ param.key}}').blur(function(ev){
+                    $(".color #{{ param.key }}").css({
+                        "border":0,
+                        "border": "1px solid " + ev.target.defaultValue,
+                        "height":"20px",
+                        "border-right":"20px solid " + ev.target.defaultValue
+                    });
+                    ev.target.value = ev.target.defaultValue;
+                });
+
+                /*
+                $('#color-{{ param.key}}').colorpicker({ format: 'hex' });
+                $('#style-color-{{ param.key }}').blur(function(ev){
+                    $('#color-preview-{{ param.key}}').css("background-color",ev.target.value);
+                });*/
+            </script>
+
+        {% endfor %}
+    </form>
+</tbody>
+
+</table>

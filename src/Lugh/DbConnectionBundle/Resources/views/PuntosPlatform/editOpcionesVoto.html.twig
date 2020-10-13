@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Opciones Voto
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_puntosplatform_add_punto', {'platform_id' : platform.id} ) }}', $('#form_opcionesVoto :input'), 'opcionvoto', '{{ path( '_puntosplatform_edit_opcionesvoto', {'platform_id' : platform.id}) }}', 'content');
+                                return false;">
+                            <i class="icon-plus"></i> Add Opcion Voto
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_opcionesVoto" class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="symbol">Symbol</label>
+                                <div class="controls">
+                                    {{ form_widget(form_opcionesVoto.symbol.symbol, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Simbolo</p>
+                                </div>
+                            </div>
+                            {% for key,lang in langs %}
+                                {% set text_lang = 'text_' ~ key %}
+                                <div class="control-group">
+                                    <label class="control-label" for="text_{{ key }}">Texto</label>
+                                    <div class="controls">
+                                        {{ form_widget(attribute(attribute(form_opcionesVoto,text_lang),text_lang), { 'attr': {'class': 'input-small', 'readonly' : 'true'}}) }}
+                                        <a href="#myModal-{{ key }}" class="btn" data-toggle="modal" type="button">Edit</a>
+                                        <p class="help-block">{{ lang.name }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="control-group">
+                                <label class="control-label" for="orden">Orden</label>
+                                <div class="controls">
+                                    {{ form_widget(form_opcionesVoto.orden.orden, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Opciones de Voto
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Num Punto</th>
+                                <th>Texto</th>
+                                <th>Orden</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for opcionVoto_line in opcionesVoto_line %}
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ opcionVoto_line.symbol }}
+                                    </td>
+                                    <td>
+                                        {{ opcionVoto_line.nombre|length > 10 ? opcionVoto_line.nombre[:10] ~ '...' : opcionVoto_line.nombre}}
+                                    </td>
+                                    <td>
+                                        {{ opcionVoto_line.orden }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeParameter('{{opcionVoto_line.id}}', '{{ path( '_puntosplatform_remove_punto', {'table':'OpcionesVoto'}) }}', '{{ path( '_puntosplatform_edit_opcionesvoto', {'platform_id' : platform.id}) }}', 'content');
+                                                return false;">Delete</button>
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div>
+
+
+{% for key,lang in langs %}
+    {% set text_lang = 'text_' ~ key %}
+
+    <div class="modal fade hide" id="myModal-{{ key }}">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3>Texto {{ lang.name }}</h3>
+        </div>
+        <div class="modal-body">
+            <p>Por favor introduzca el texto de la opción de voto.</p>
+
+            <input type="text" id="form-{{ key }}" name="form-{{ key }}" class="input-large"/>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="$('#form_text_{{ key }}').val($('#form-{{ key }}').val());">Save changes</button>
+        </div>
+    </div>
+
+{% endfor %}
+

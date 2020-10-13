@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Tipo de Voto
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_puntosplatform_add_punto', {'platform_id' : platform.id} ) }}', $('#form_tiposVoto :input'), 'tipovoto', '{{ path( '_puntosplatform_edit_tipovoto', {'platform_id' : platform.id}) }}', 'content');
+                                return false;">
+                            <i class="icon-plus"></i> Add Tipo Voto
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_tiposVoto" class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="tipo">Tipo</label>
+                                <div class="controls">
+                                    {{ form_widget(form_tiposVoto.tipo.tipo, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="name">Name</label>
+                                <div class="controls">
+                                    {{ form_widget(form_tiposVoto.name.name, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="claseDecrypt">Clase Decrypt</label>
+                                <div class="controls">
+                                    {{ form_widget(form_tiposVoto.claseDecrypt.claseDecrypt, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Sólo si está activado el decrypt en las opciones, y ese decrypt tiene modos distintos por tipo</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="maxvotos">Tag de traducción</label>
+                                <div class="controls">
+                                    {{ form_widget(form_tiposVoto.tag.tag, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Tag de traducción para mostrar correctamente el nombre en la vista.</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="maxvotos">Max Votos</label>
+                                <div class="controls">
+                                    {{ form_widget(form_tiposVoto.maxvotos.maxvotos, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Máximo número de votos en este tipo</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="minvotos">Min Votos</label>
+                                <div class="controls">
+                                    {{ form_widget(form_tiposVoto.minvotos.minvotos, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Mínimo número de votos en este tipo</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="isserie">Is Serie</label>
+                                <div class="controls">
+                                    {{ form_widget(form_tiposVoto.isserie.isserie, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Persistencia en serie</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Tipo de Voto
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Name</th>
+                                <th>Clas Decrypt</th>
+                                <th>Tag traducción</th>
+                                <th>Max Votos</th>
+                                <th>Min Votos</th>
+                                <th>Is Serie</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for tipoVoto_line in tiposVoto_line %}
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ tipoVoto_line.tipo }}
+                                    </td>
+                                    <td>
+                                        {{ tipoVoto_line.name }}
+                                    </td>
+                                    <td>
+                                        {{ tipoVoto_line.claseDecrypt }}
+                                    </td>
+                                    <td>
+                                        {{ tipoVoto_line.tag }}
+                                    </td>
+                                    <td>
+                                        {{ tipoVoto_line.maxvotos }}
+                                    </td>
+                                    <td>
+                                        {{ tipoVoto_line.minvotos }}
+                                    </td>
+                                    <td>
+                                         {{ form_widget(tipoVoto_line.isserie.isserie,{ 'attr': {'readonly' : 'true', 'disabled' : 'disabled' }}) }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeParameter('{{tipoVoto_line.id}}', '{{ path( '_puntosplatform_remove_punto', {'table':'TipoVoto'}) }}', '{{ path( '_puntosplatform_edit_tipovoto', {'platform_id' : platform.id}) }}', 'content');
+                                                return false;">Delete</button>
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div> 

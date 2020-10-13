@@ -1,0 +1,94 @@
+{% verbatim %}
+<div class="page" ng-controller="foroPersonalPendientes">
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00085_app:foro:nav:pending">Tareas Pendientes</span></strong>
+		</div>
+		<div class="panel-body">
+
+
+
+			<div class="table-responsive table-bordered">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th class="col-sm-2" i18n="id00094_app:foro:long:type">Tipo proceso</th>
+							<th class="col-sm-8" i18n="id00090_app:foro:description">Descripción proceso</th>
+							<th class="col-sm-2" i18n="id00091_app:foro:date">Fecha</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-if="items.emptyForo() && adhesions.length==0">
+							<td></td>
+							<td><a i18n="id00092_app:no-data">No hay datos disponibles.</a></td>
+							<td></td>
+						</tr>
+						<tr ng-repeat="item in items.proposals">
+							<td><span i18n="id00099_app:foro:singular:short:proposal"></span> (<span i18n="{{tags[item.state]}}"></span>)</td>
+							<td><h4><a ng-click="loadItem(item)" ng-bind-html="item.title"></a></h4>
+								<p ng-bind-html="item.description | nl2br" ></p>
+							</td>
+							<td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+						<tr ng-repeat="item in items.initiatives">
+							<td><span i18n="id00100_app:foro:singular:short:initiative"></span> (<span i18n="{{tags[item.state]}}"></span>)</td>
+							<td><h4><a ng-click="loadItem(item)" ng-bind-html="item.title"></a></h4>
+								<p ng-bind-html="item.description | nl2br" ></p>
+							</td>
+							<td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+						<tr ng-repeat="item in items.offers">
+							<td><span i18n="id00101_app:foro:singular:short:offer"></span> (<span i18n="{{tags[item.state]}}"></span>)</td>
+							<td><h4><a ng-click="loadItem(item)" ng-bind-html="item.title"></a></h4>
+								<p ng-bind-html="item.description | nl2br" ></p>
+							</td>
+							<td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+						<tr ng-repeat="item in items.requests">
+							<td><span i18n="id00102_app:foro:singular:short:request"></span> (<span i18n="{{tags[item.state]}}"></span>)</td>
+							<td><h4><a ng-click="loadItem(item)" ng-bind-html="item.title"></a></h4>
+								<p ng-bind-html="item.description | nl2br" ></p>
+							</td>
+							<td>{{item.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+						<tr ng-repeat="adhesion in adhesions.adhesionInitiatives">
+							<td><span i18n="id00304_app:foro:adhesion"></td>
+							<td><h4>{{adhesion.accionista.name}} -<a ng-click="loadAdhesion(adhesion,'initiative')">&nbsp;<span i18n="id00100_app:foro:singular:short:initiative"></span></a></h4>
+								<a ng-click="loadItem(adhesion.initiative,'initiatives')"><span ng-bind-html="adhesion.initiative.title"></span></a>
+							</td>
+							<td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+						<tr ng-repeat="adhesion in adhesions.adhesionProposals">
+							<td><span i18n="id00304_app:foro:adhesion"></td>
+							<td><h4>{{adhesion.accionista.name}} -<a ng-click="loadAdhesion(adhesion,'proposal')">&nbsp;<span i18n="id00099_app:foro:singular:short:proposal"></span></a></h4>
+								<a ng-click="loadItem(adhesion.proposal,'proposals')"><span ng-bind-html="adhesion.proposal.title"></span></a>
+							</td>
+							<td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+						<tr ng-repeat="adhesion in adhesions.adhesionOffers">
+							<td><span i18n="id00304_app:foro:adhesion"></td>
+							<td><h4>{{adhesion.accionista.name}} -<a ng-click="loadAdhesion(adhesion,'offer')">&nbsp;<span i18n="id00101_app:foro:singular:short:offer"></span></a></h4>
+								<a ng-click="loadItem(adhesion.offer,'offers')"><span ng-bind-html="adhesion.offer.title"></span></a>
+							</td>
+							<td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+						<tr ng-repeat="adhesion in adhesions.adhesionRequests">
+							<td><span i18n="id00304_app:foro:adhesion"></td>
+							<td><h4>{{adhesion.accionista.name}} -<a ng-click="loadAdhesion(adhesion,'request')">&nbsp;<span i18n="id00102_app:foro:singular:short:request"></span></a></h4>
+								<a ng-click="loadItem(adhesion.request,'requests')"><span ng-bind-html="adhesion.request.title"></span></a>
+							</td>
+							<td>{{adhesion.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+						</tr>
+					</tbody>
+				</table>  
+			</div>
+
+
+		</div>
+	</section>
+
+
+</div>
+
+
+{% endverbatim %}

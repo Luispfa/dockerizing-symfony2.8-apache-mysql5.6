@@ -1,0 +1,59 @@
+{% verbatim %}
+    <header class="clearfix header-inicio" data-ng-controller="HeaderCtrl">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="#/">
+                            <!-- <span class="logo-icon glyphicon glyphicon-fire"></span> -->
+                            <span>{{ brand()}}</span>
+                        </a>
+                    </div>
+                    <div class="top-nav">
+                        <ul class="nav-left list-unstyled">
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-columns"></i></a>
+                                <ul class="dropdown-menu dropdown-dark with-arrow">
+                                    <li> <a href="#/app/inicio"><span data-i18n="Inicio">Inicio</span></a> </li>
+                                    <li> <a href="#/app/contactar"><span data-i18n="Contactar">Contactar</span></a> </li>
+                                    <li> <a href="#/app/requisitos"><span data-i18n="Requisitos">Requisitos</span></a> </li>
+                                </ul>
+                            </li> 
+                            <li class="dropdown langs text-normal" data-ng-controller="LangCtrl">
+                                <a href="javascript:;" class="dropdown-toggle active-flag" data-toggle="dropdown">
+                                    <span> {{ getFlag()}}</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-dark with-arrow list-langs" role="menu">
+                                    <li lang-element="es" data-ng-show="lang !== 'Espanol' ">
+                                        <a href="javascript:;" data-ng-click="setLang('Espanol')"> Español</a></li>
+                                    <li lang-element="ca" data-ng-show="lang !== 'Catalan' ">
+                                        <a href="javascript:;" data-ng-click="setLang('Catalan')"> Català</a></li>
+                                    <li lang-element="gl" data-ng-show="lang !== 'Gallego' ">
+                                        <a href="javascript:;" data-ng-click="setLang('Gallego')"> Galego</a></li>
+                                    <li lang-element="en" data-ng-show="lang !== 'English' ">
+                                        <a href="javascript:;" data-ng-click="setLang('English')"> English</a></li>
+                                </ul>
+                            </li>
+                            <!--             <li class="dropdown">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                                <span class="fa fa-magic nav-icon"></span>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right color-switch" data-ui-color-switch>
+                                                <li><a href="javascript:;" class="color-option color-some_color" data-style="some_color"></a></li>
+                                            </ul>
+                                        </li> -->
+
+                        </ul> 
+
+                    </div>
+
+
+                </div>  <!-- /.col-xs-12-->
+            </div>    <!-- /.row-->
+        </div>  <!-- /.container-->
+
+    </header>
+{% endverbatim %}

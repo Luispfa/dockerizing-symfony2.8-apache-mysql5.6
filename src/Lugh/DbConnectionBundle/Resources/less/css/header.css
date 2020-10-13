@@ -1,0 +1,227 @@
+/*CSS personalizados*/
+
+.contenido {
+    margin-top: 50px;
+}
+
+
+.header-inicio .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+
+.header-inicio .dropdown-menu.with-arrow:before {
+    left: auto;
+    right: 12px;
+}
+
+.header-inicio  .dropdown-menu.with-arrow:after {
+    left: auto;
+    right: 12px;
+}
+
+.menu-horizontal {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.menu-horizontal li {
+    display: inline-block;
+    padding: 5px;
+}
+
+fieldset {
+    margin: 0px 0px 20px 0px;
+
+}
+
+
+.table > tbody > tr > td.cell-middle {
+    vertical-align: middle;
+}
+
+.menu-principal .fa {
+    margin-right: 8px;
+
+}
+
+
+/*Voto*/
+
+.voto-body {
+
+
+}
+
+
+/**/
+
+.page-signin .form-container, .page-signup .form-container {
+    max-width: 600px;
+    /* margin: 80px auto; */
+    min-height: 400px;
+}
+
+
+.form-horizontal .form-group {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+/**/
+
+.form-horizontal .form-texto {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 7px;
+}
+
+
+
+/**/
+
+#texto-usuario-header {
+    margin-left: 10px;
+}
+
+
+div.img80_80 {
+    margin: auto;
+    width: 80px;
+    height: 80px;
+    background:  url("../../images/g1.jpg") no-repeat; 
+    background-size: 100%;
+}
+
+div.img30_30 {
+    display: inline-block;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    background:  url("../../images/g1.jpg") no-repeat; 
+    background-size: 100%;
+    vertical-align: middle;
+}
+
+
+/**/
+
+.body-nonav #content {
+    z-index: 2;
+    top: 100px;
+    left: 0px;
+}
+
+
+@media (min-width: 768px) {
+    .body-nonav #content {
+        z-index: 2;
+        top: 50px;
+        left: 0px;
+    }
+}
+
+.body-voto #content {
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+}
+
+
+/**/
+
+.btn-dashboard {
+    position: relative;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 180px;
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.btn-dashboard i {
+    font-size: 48px;
+    line-height: 120px;
+}
+
+
+/**/
+
+
+.bg-foro {
+    background-color: #62a522;
+    color: #ffffff;  
+}
+
+.bg-voto {
+    background-color: #0065a6;
+    color: #ffffff;  
+}
+
+.bg-derecho {
+    background-color: #eec95a;
+    color: #ffffff;  
+}
+
+.bg-av {
+    background-color: #003040;
+    color: #ffffff;  
+}
+
+a.bg-foro:hover, a.bg-foro:focus, a.bg-voto:hover, a.bg-voto:focus, a.bg-derecho:hover, a.bg-derecho:focus, a.bg-av:hover, a.bg-av:focus  {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+
+/**/
+.contailer-full {
+    width: 100%;
+    padding: 15px;
+}
+
+
+
+/**/
+
+.list-docs {
+    list-style: none;
+    margin: 0px;
+    padding: 20px;
+}
+
+.list-docs li {
+    padding: 10px;
+    border-bottom: 1px dashed #eee;
+}
+
+/**/
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+

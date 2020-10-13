@@ -1,0 +1,48 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+    <tr>
+        <th>State</th>
+        <th>Acreditación</th>
+        <th>Votación</th>
+        <th>Preguntas</th>
+        <th>Live</th>
+        <th>Abandono</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+        {% for parameter_states in parameters_states %}
+            {% set clase = 'clase_' ~ parameter_states.id %}
+            {% set acreditacion = 'acreditacion_' ~ parameter_states.id %}
+            {% set votacion = 'votacion_' ~ parameter_states.id %}
+            {% set live = 'live_' ~ parameter_states.id %}
+            {% set preguntas = 'preguntas_' ~ parameter_states.id %}
+            {% set abandono = 'abandono_' ~ parameter_states.id %}
+            
+            <input type="hidden" name="id[states][]" value="{{ parameter_states.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ parameter_states.clase }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_states.acreditacion,acreditacion)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_states.votacion,votacion)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_states.preguntas,preguntas)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_states.live,live)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_states.abandono,abandono)) }}
+                </td>
+            </tr>
+        {% endfor%}
+    
+    </tbody>
+
+</table>

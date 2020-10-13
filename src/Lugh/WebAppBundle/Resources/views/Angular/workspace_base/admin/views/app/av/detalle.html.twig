@@ -1,0 +1,64 @@
+{% verbatim %}
+<div class="page" ng-controller="detalleAvCtrl">
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Historial Accesos</strong></div>
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<fieldset class="titulo-item">					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="item.title" class="col-sm-6 control-label">Nombre</label>
+								<div class="col-sm-6">
+									<strong><span ng-bind-html="accionista.name"></span></strong>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="item.title" class="col-sm-6 control-label">Número de acciones</label>
+								<div class="col-sm-6">
+									<strong><span>{{accionista.shares_num | formattedNumber}}</span></strong>
+								</div>
+							</div>
+						</div>
+                                                <div class="col-sm-6">
+							<div class="form-group">
+								<button class="btn btn-success" ng-click="loadAccionista(accionista.id)">Ver perfil</button>
+							</div>
+							
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend></legend>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th class="col-sm-6">Acción</th>
+											<th class="col-sm-6">Fecha</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="acceso in accesos | filter:filterByTypes" >
+											<td>Acceso</td>
+											<td>{{acceso.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm:ss'}}</td>
+										</tr>
+									</tbody>
+								</table> 
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+	</section>
+
+</div>
+{% endverbatim %}

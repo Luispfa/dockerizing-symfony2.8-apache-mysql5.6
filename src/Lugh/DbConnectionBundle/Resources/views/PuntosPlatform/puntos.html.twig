@@ -1,0 +1,49 @@
+<form id="_form_puntos" class="form-horizontal">
+    <fieldset>
+        <div class="widget widget-table">
+           {% include 'LughDbConnectionBundle:PuntosPlatform:opcionesVotoTable.html.twig'  with {'platform_id' : platform_id} %}
+        </div>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:PuntosPlatform:grupoOpcionesVotoTable.html.twig'  with {'platform_id' : platform_id} %} 
+        </div>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:PuntosPlatform:tipoVotoTable.html.twig'  with {'platform_id' : platform_id} %} 
+        </div>
+        <div class="widget widget-table">
+            {% include 'LughDbConnectionBundle:PuntosPlatform:puntosTable.html.twig'  with {'platform_id' : platform_id} %} 
+        </div>
+    </fieldset>
+</form>
+<div class="widget widget-table">
+
+    <div class="widget-header">	      				
+        <h3 style="text-rendering: auto;">
+            <i class="icon-pencil"></i>
+            Guardar Puntos	      					
+        </h3>	
+    </div> <!-- /widget-header -->
+    
+    <div class="widget-content">
+
+        <table  class="table table-striped table-bordered responsive">
+            <thead>
+                <tr>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>
+                        <button type="button" class="btn btn-primary btn-large" onclick="SetPoints('{{ path('_puntosplatform_save_puntos', {'platform_id' : platform_id} ) }}',$('#_form_puntos :input'), '{{ path( '_puntosplatform_puntos', {'platform_id' : platform_id}) }}', 'content'); return false;">Save changes</button>
+                        <button class="btn btn-large">Cancel</button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+    </div> <!-- /widget-content -->
+
+</div>
+
+

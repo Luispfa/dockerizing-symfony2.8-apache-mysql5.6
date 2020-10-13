@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parametro
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_virtualplatform_add_parameter', {'platform_id' : platform.id} ) }}',$('#form_parameters_time :input'), 'states','{{ path( '_virtualplatform_edit_parameters_states', {'platform_id' : platform.id}) }}','content'); return false;">
+                            <i class="icon-plus"></i> Add Parameter
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_parameters_time" class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="clase">Estado</label>
+                                <div class="controls">
+                                    {{ form_widget(form_states.clase.clase, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Clase de objeto</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="from">Acreditación</label>
+                                <div class="controls">
+                                    <p class="help-block">Activate {{ form_widget(form_states.acreditacion.acreditacion) }}</p>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="to">Votacion</label>
+                                <div class="controls">
+                                    <p class="help-block">Activate {{ form_widget(form_states.votacion.votacion) }}</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="to">Preguntas</label>
+                                <div class="controls">
+                                    <p class="help-block">Activate {{ form_widget(form_states.preguntas.preguntas) }}</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="to">Live</label>
+                                <div class="controls">
+                                    <p class="help-block">Activate {{ form_widget(form_states.live.live) }}</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="to">Abandono</label>
+                                <div class="controls">
+                                    <p class="help-block">Activate {{ form_widget(form_states.abandono.abandono) }}</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parameters States
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>State</th>
+                                <th>Acreditación</th>
+                                <th>Votación</th>
+                                <th>Preguntas</th>
+                                <th>Live</th>
+                                <th>Abandono</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for parameter_states in parameters_states %}
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ parameter_states.clase }}
+                                    </td>
+                                    <td>
+                                        {{ parameter_states.acreditacion}}
+                                    </td>
+                                    <td>
+                                        {{ parameter_states.votacion}}
+                                    </td>
+                                    <td>
+                                        {{ parameter_states.preguntas}}
+                                    </td>
+                                    <td>
+                                        {{ parameter_states.live}}
+                                    </td>
+                                    <td>
+                                        {{ parameter_states.abandono}}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeParameter('{{parameter_states.param_id}}','{{ path( '_virtualplatform_remove_parameter') }}','{{ path( '_virtualplatform_edit_parameters_states', {'platform_id' : platform.id}) }}','content');return false;">Delete</button>
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div>

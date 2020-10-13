@@ -1,0 +1,30 @@
+{% verbatim %}
+
+<div>
+    <h1><span class="titulo-menu instructionsTitle" i18n="id00320_app:voto:instructions">Instrucciones voto/delegación</span></h1>
+    <div>
+        <div class="panel panel-default instructionsContent">
+            <div class="panel-heading">
+                <h3 class="panel-title" i18n="id00320_app:voto:instructions">Instrucciones de voto o delegación</h3>
+            </div>
+            <div class="panel-body">
+                <span i18n="id00321_app:voto:instructions:body"></span>
+                <hr />
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-8 col-md-offset-4">
+                            <label class="ui-radio"><input name="radio1" type="radio" value="yes" ng-model="data.choiceInstructions" ng-change="onChoiceInstructions()"><span i18n="id00322_app:voto:instructions:yes">Sí</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-md-offset-4">
+                            <label class="ui-radio"><input name="radio1" type="radio" value="no" ng-model="data.choiceInstructions" ng-change="onChoiceInstructions()"><span i18n="id00323_app:voto:instructions:no">No</span></label>
+                        </div>
+                    </div>
+                </form>  
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endverbatim %}

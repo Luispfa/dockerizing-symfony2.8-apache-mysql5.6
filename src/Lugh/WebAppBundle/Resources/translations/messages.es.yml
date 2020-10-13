@@ -1,0 +1,405 @@
+############ PLATFORM ############
+
+#Accionista_ROLE_USER_FULL.mail.create
+subject-user-password-accionista                    : "Alta de Usuario - Envío contraseña"
+body-user-password-accionista                       : "<p>Sr/Sra. Accionista,</p><p>Su petición de alta en la plataforma ha sido realizada en fecha y hora %date_time%.</p><p>A continuación le indicamos la contraseña que el sistema le ha asignado y que junto con el código de acceso que usted indicó, le permitirán acceder a la plataforma.</p><p>Nombre de usuario: %autor_user_username% </p><p>Contraseña: %autor_user_pass% </p> %footerMail% %adminFooter%"
+
+#Accionista.mail.pendiente
+subject-user-pdte_aprovacion-accionista             : Alta en la plataforma pendiente de aprobación
+body-user-pdte_aprovacion-accionista                : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, sus datos han quedado almacenados, con el estado \"Pendiente de aprobación\".</p><p>Una vez el moderador haya verificado sus datos, recibirá un email de confirmación.</p> %footerMail% %adminFooter%"
+subject-moderator-pdte_aprovacion-accionista        : Alta de usuario pendiente aprobación
+body-moderator-pdte_aprovacion-accionista           : <p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha registrado en el sistema el accionista %autor_name% con correo electrónico %autor_user_email% y está pendiente de aprobación.</p> %external%  %footerMail%
+
+#Accionista.mail.retorna
+subject-user-pdte_revision-accionista               : Alta usuario pendiente de revisión
+body-user-pdte_revision-accionista                  : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% sus datos de registro han pasado al estado de \"Pendiente de revisión\".</p> %external% <p> Para revisar sus datos puede acceder a la plataforma a través del siguiente enlace, utilizando la clave de acceso que se le envío en el email de confirmación de su registro: </p><p> <a href=\"%baseuri%\">%baseuri%</a> </p> %adminFooter%"
+
+#Accionista.mail.publica
+subject-user-publicacion-accionista                 : Usuario aprobado
+body-user-publicacion-accionista                    : <p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% sus datos para acceder a la plataforma han sido validados por el moderador.</p> %external%  %footerMail% %adminFooter%
+##Publica Customer
+subject-moderator-publicacion-accionista            : Alta de usuario
+body-moderator-publicacion-accionista               : <p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha registrado en el sistema el accionista %autor_name% con correo electrónico %autor_user_email%.</p> %external%  %footerMail%
+
+
+#Accionista.mail.rechaza
+subject-user-descarte-accionista                    : Usuario descartado
+body-user-descarte-accionista                       : "<p>Sr/Sra. Accionista,</p><p>Su registro en el sistema ha sido deshabilitado en fecha y hora %date_time%. </p> %external%  %footerMail% %adminFooter%"
+
+#Regenera Contraseña
+subject-user-password-new_password                  : Restablecer Contraseña
+body-user-password-new_password                     : "<p>Sr/Sra. Accionista,</p><p>Puede ver su nueva contraseña a continuación:</p><p> %pass% </p><p> %footerMail% %adminFooter% </p>"
+subject-user-password-regenerate                    : Restablecer Contraseña
+body-user-password-regenerate                       : "<p>Sr/Sra. Accionista,</p><p>Este correo se le ha enviado en respuesta a su petición de restablecer la contraseña</p><p>Para poder restablecerla, deberá hacer clic en el enlace siguiente, que será válido durante las siguientes 24 horas.</p><p>Haga <a href=\"%confirmationUrl%\">click aquí</a> para restablecer la contraseña</p> %footerMail% %adminFooter%"
+
+
+
+############ TAGS ############
+
+#Tags Mails
+adminComment                                        : "<p>Los comentarios del administrador son los siguientes:</p><p>%comments%</p>"
+userComment                                         : "<p>Los comentarios del Usuario son los siguientes:</p><p>%comments%</p>"
+
+footerMail                                          : "<p>Puede acceder a la plataforma a través del siguiente enlace:</p><p> <a href=\"%baseuri%\">%baseuri%</a> </p>"
+adminFooter                                         : "<p>Atentamente, </p><p>El Moderador</p>"
+
+#Tags Vote
+sentidoTag                                          : "<p><span style=\"text-decoration: underline;\">Sentido del voto</span> </p><p>En aquellos puntos del orden del día en que usted no haya indicado instrucciones de voto, se entenderá que vota a favor de las propuestas del Consejo de Administración.</p><p>El accionista que emita su voto a distancia será considerado como presente a los efectos de la constitución de la Junta General.</p>"
+anulacionTag                                        : "<p><span style=\"text-decoration: underline;\">Anulación del voto</span> </p><p>Usted puede anular su voto en cualquier momento, hasta 24 horas antes del momento previsto para la primera convocatoria de la Junta General, a través de la Plataforma de Voto y Delegación Electrónica.</p>"
+
+#Tags Delegation
+userDelegationVoteTag                               : "<p>Estas son las instrucciones de voto que se han registrado:</p><p>%votohtml%</p>"
+adminDelegationVoteTag                              : "<p>Estas son las instrucciones de voto que se han registrado:</p><p>%votohtml%</p>"
+
+
+
+############ FORO ############
+
+#Offer.mail.create Offer.mail.pendiente
+subject-user-pdte_aprovacion-offer                  : "Oferta de representación pendiente de aprobación"
+body-user-pdte_aprovacion-offer                     : "<p>Sr/Sra. Accionista,</p><p>Su Oferta de representación registrada en fecha y hora %date_time%, se encuentra pendiente de aprobación por el moderador.</p> %footerMail% %adminFooter%"
+subject-moderator-pdte_aprovacion-offer             : "Oferta de representación pendiente de aprobación"
+body-moderator-pdte_aprovacion-offer                : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Oferta de representación que está pendiente de aprobación.</p> %external% %footerMail%"
+
+#Offer.mail.retorna
+subject-user-pdte_revision-offer                    : Oferta de representación pendiente de revisión
+body-user-pdte_revision-offer                       : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, su Oferta de representación registrada en el sistema se ha cambiado al estado de \"Pendiente de revisión\".</p> %external%  %footerMail% %adminFooter%"
+subject-user-pdte_revision-adhered-offer            : Oferta de representación pendiente de revisión
+body-user-pdte_revision-adhered-offer               : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% la Oferta de representación \"%title%\" ha pasado al estado \"Pendiente de Revisión\" y por ello su adhesión a dicha oferta ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#Offer.mail.publica
+subject-user-publicacion-offer                      : Oferta de representación publicada
+body-user-publicacion-offer                         : "<p>Sr/Sra. Accionista,</p><p>Su Oferta de representación, registrada en el sistema, se ha publicado en fecha %date_time%.</p> %external% %footerMail% %adminFooter%"
+##Public Customer
+subject-moderator-publicacion-offer                 : "Oferta de representación presentada"
+body-moderator-publicacion-offer                    : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Oferta de representación.</p> %external% %footerMail%"
+
+
+#Offer.mail.rechaza
+subject-user-descarte-offer                         : Oferta de representación descartada
+body-user-descarte-offer                            : "<p>Sr/Sra. Accionista,</p><p>Su Oferta de representación registrada en el sistema, se ha deshabilitado en fecha y hora %date_time%.</p> %external%  %footerMail% %adminFooter%"
+subject-moderator-descarte-owner-offer              : Anulación Oferta de representación
+body-moderator-descarte-owner-offer                 : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha realizado una eliminación de la Oferta de representación \"%title%\".</p> %external% %footerMail%"
+subject-user-descarte-adhered-offer                 : Anulación Oferta de representación
+body-user-descarte-adhered-offer                    : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha eliminado la Oferta de representación \"%title%\" y por ello su adhesión a dicha oferta ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#Request.mail.create Request.mail.pendiente
+subject-user-pdte_aprovacion-request                : Petición de representación pendiente de aprobación
+body-user-pdte_aprovacion-request                   : "<p>Sr/Sra. Accionista,</p><p>Su Petición de representación registrada en fecha y hora %date_time% se encuentra pendiente de aprobación por el moderador. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-pdte_aprovacion-request           : Petición de representación pendiente de aprobación
+body-moderator-pdte_aprovacion-request              : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Petición de representación que está pendiente de aprobación. </p> %external% %footerMail%"
+
+#Request.mail.retorna
+subject-user-pdte_revision-request                  : Petición de representación pendiente de revisión
+body-user-pdte_revision-request                     : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%,</p><p>Su Petición de representación registrada en el sistema, se ha cambiado al estado de \"Pendiente de revisión\". </p>  %external%  %footerMail% %adminFooter%"
+subject-user-pdte_revision-adhered-request          : Petición de representación pendiente de revisión
+body-user-pdte_revision-adhered-request             : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% la Petición de representación \"%title%\" ha pasado al estado \"Pendiente de Revisión\" y por ello su adhesión a dicha petición ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#Request.mail.publica
+subject-user-publicacion-request                    : Petición de representación publicada
+body-user-publicacion-request                       : "<p>Sr/Sra. Accionista,</p><p>Su Petición de representación, registrada en el sistema, se ha publicado en fecha %date_time%. </p> %external% %footerMail% %adminFooter%"
+##Public customer
+subject-moderator-publicacion-request               : Petición de representación presentada
+body-moderator-publicacion-request                  : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Petición de representación. </p> %external% %footerMail%"
+
+
+#Request.mail.rechaza
+subject-user-descarte-request                       : Petición de representación descartada
+body-user-descarte-request                          : "<p>Sr/Sra. Accionista,</p><p>Su Petición de representación registrada en el sistema, se ha deshabilitado en fecha y hora %date_time%. </p> %external%  %footerMail% %adminFooter%"
+subject-moderator-descarte-owner-request            : Anulación Petición de representación
+body-moderator-descarte-owner-request               : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha realizado una eliminación de la Petición de representación \"%title%\".</p> %external% %footerMail%"
+subject-user-descarte-adhered-request               : Anulación Petición de representación
+body-user-descarte-adhered-request                  : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha eliminado la Petición de representación \"%title%\" y por ello su adhesión a dicha petición ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#Initiative.mail.create Initiative.mail.pendiente
+subject-user-pdte_aprovacion-initiative             : Iniciativa pendiente de aprobación
+body-user-pdte_aprovacion-initiative                : "<p>Sr/Sra. Accionista,</p><p>Su iniciativa, con título \"%title%\" registrada en fecha y hora %date_time% se encuentra pendiente de aprobación por el moderador. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-pdte_aprovacion-initiative        : Iniciativa pendiente de aprobación
+body-moderator-pdte_aprovacion-initiative           : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Iniciativa con título \"%title%\" que está pendiente de aprobación. </p> %external% %footerMail%"
+
+#Initiative.mail.retorna
+subject-user-pdte_revision-initiative               : Iniciativa pendiente de revisión
+body-user-pdte_revision-initiative                  : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, su Iniciativa con título \"%title%\" registrada en el sistema, se ha cambiado al estado de \"Pendiente de revisión\".</p> %external%  %footerMail% %adminFooter%"
+subject-user-pdte_revision-adhered-initiative       : Iniciativa pendiente de revisión
+body-user-pdte_revision-adhered-initiative          : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% la Iniciativa \"%title%\" ha pasado al estado \"Pendiente de Revisión\" y por ello su adhesión a dicha iniciativa ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#Initiative.mail.publica
+subject-user-publicacion-initiative                 : Iniciativa publicada
+body-user-publicacion-initiative                    : "<p>Sr/Sra. Accionista,</p><p>Su Iniciativa con título \"%title%\" registrada en el sistema, se ha publicado en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+##Public customer
+subject-moderator-publicacion-initiative            : Iniciativa presentada
+body-moderator-publicacion-initiative               : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Iniciativa con título \"%title%\". </p> %external% %footerMail%"
+
+
+#Initiative.mail.rechaza
+subject-user-descarte-initiative                    : Iniciativa descartada
+body-user-descarte-initiative                       : "<p>Sr/Sra. Accionista,</p><p>Su Iniciativa con título \"%title%\" registrada en el sistema, se ha deshabilitado en fecha y hora %date_time%. </p> %external%  %footerMail% %adminFooter%"
+subject-moderator-descarte-owner-initiative         : Anulación Iniciativa
+body-moderator-descarte-owner-initiative            : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha realizado una eliminación de la Iniciativa \"%title%\".</p> %external% %footerMail%"
+subject-user-descarte-adhered-initiative            : Anulación Iniciativa
+body-user-descarte-adhered-initiative               : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha eliminado la Iniciativa \"%title%\" y por ello su adhesión a dicha iniciativa ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#Proposal.mail.create Proposal.mail.pendiente
+subject-user-pdte_aprovacion-proposal               : Propuesta pendiente de aprobación
+body-user-pdte_aprovacion-proposal                  : "<p>Sr/Sra. Accionista,</p><p>Su propuesta, con título \"%title%\" registrada en fecha y hora %date_time%, se encuentra pendiente de aprobación por el moderador. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-pdte_aprovacion-proposal          : Propuesta pendiente de aprobación
+body-moderator-pdte_aprovacion-proposal             : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Propuesta con título  \"%title%\", que está pendiente de aprobación. </p> %external% %footerMail%"
+
+#Proposal.mail.retorna
+subject-user-pdte_revision-proposal                 : Propuesta pendiente de revisión
+body-user-pdte_revision-proposal                    : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, su Propuesta con título \"%title%\" registrada en el sistema, se ha cambiado al estado de \"Pendiente de revisión\".</p> %external% %footerMail% %adminFooter%"
+subject-user-pdte_revision-adhered-proposal         : Propuesta pendiente de revisión
+body-user-pdte_revision-adhered-proposal            : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% la Propuesta \"%title%\" ha pasado al estado \"Pendiente de Revisión\" y por ello su adhesión a dicha propuesta ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#Proposal.mail.publica
+subject-user-publicacion-proposal                   : Propuesta publicada
+body-user-publicacion-proposal                      : "<p>Sr/Sra. Accionista,</p><p>Su Propuesta con título \"%title%\" registrada en el sistema, se ha publicado en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+##Public customer
+subject-moderator-publicacion-proposal              : Propuesta presentada
+body-moderator-publicacion-proposal                 : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Propuesta con título  \"%title%\". </p> %external% %footerMail%"
+
+
+#Proposal.mail.rechaza
+subject-user-descarte-proposal                      : Propuesta descartada
+body-user-descarte-proposal                         : "<p>Sr/Sra. Accionista,</p><p>Su Propuesta con título \"%title%\" registrada en el sistema, se ha deshabilitado en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-descarte-owner-proposal           : Anulación Propuesta
+body-moderator-descarte-owner-proposal              : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha realizado una eliminación de la Propuesta \"%title%\".</p> %external% %footerMail%"
+subject-user-descarte-adhered-proposal              : Anulación Propuesta
+body-user-descarte-adhered-proposal                 : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha eliminado la Propuesta \"%title%\" y por ello su adhesión a dicha propuesta ha sido cancelada. </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionOffer.mail.create AdhesionOffer.mail.pendiente
+subject-user-adhesion-offer-adhered                 : Adhesión Oferta de Representación pendiente de confirmación
+body-user-adhesion-offer-adhered                    : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Oferta de representación en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-offer                    : Nueva adhesión en Oferta de representación
+body-moderator-adhesion-offer                       : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %accionista_name% se ha adherido a la Oferta de representación %offer_title%. </p> %external% %footerMail%"
+subject-user-adhesion-offer-owner                   : Adhesión Oferta de Representación pendiente de confirmación
+body-user-adhesion-offer-owner                      : "<p>Sr/Sra. Accionista,</p><p>Se ha producido una adhesión a su Oferta de representación en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionOffer.mail.publica
+subject-user-adhesion-offer-adhered-full-accept     : Adhesión Oferta de Representación Aceptada
+body-user-adhesion-offer-adhered-full-accept        : "<p>Sr/Sra. Accionista,</p><p>Su adhesión a una Oferta de representación ha sido aceptada en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que presentó la Oferta de representación son:</p><p>Nombre: %offer_autor_name% </p><p>Email: %offer_autor_user_email% </p><p>Teléfono: %offer_autor_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-offer-owner-full-accept       : Adhesión Oferta de Representación
+body-user-adhesion-offer-owner-full-accept          : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, se ha aceptado una adhesión a su Oferta de representación.</p><p>Los datos de contacto del accionista adherido a su Oferta de representación son: </p><p>Nombre: %accionista_name% </p><p>Email: %accionista_user_email% </p><p>Teléfono: %accionista_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-offer-adhered-basic-accept    : Adhesión Oferta de Representación
+body-user-adhesion-offer-adhered-basic-accept       : "<p>Sr/Sra. Accionista,</p><p>Su adhesión a una Oferta de representación ha sido aceptada en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que presentó la Oferta de representación son:</p><p>Nombre: %offer_autor_name% </p><p>Email: %offer_autor_user_email% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-offer-owner-basic-accept      : Adhesión Oferta de Representación
+body-user-adhesion-offer-owner-basic-accept         : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, se ha aceptado una adhesión a su Oferta de representación.<br/>  <br/>Los datos de contacto del accionista adherido a su Oferta de representación son: </p><p>Nombre: %accionista_name% </p><p>Email: %accionista_user_email% </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionOffer.mail.retorna
+subject-user-adhesion-offer-pdte_revision-adhered   : Confirmación cancelación adhesión a Oferta de representación
+body-user-adhesion-offer-pdte_revision-adhered      : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la Oferta de representación \"%offer_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-offer-pdte_revision-owner     : Cancelación adhesión a su Oferta de representación
+body-user-adhesion-offer-pdte_revision-owner        : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Oferta de representación \"%offer_title%\".</p> %external% %footerMail% %adminFooter%"
+
+#AdhesionOffer.mail.rechaza
+subject-user-adhesion-offer-delete-adhered          : Confirmación cancelación adhesión a Oferta de representación
+body-user-adhesion-offer-delete-adhered             : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la Oferta de representación \"%offer_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-offer-delete             : Cancelación adhesión en Oferta de representación
+body-moderator-adhesion-offer-delete                : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a la Oferta de representación \"%offer_title%\".</p> %external% %footerMail%"
+subject-user-adhesion-offer-delete-owner            : Cancelación adhesión a su Oferta de representación
+body-user-adhesion-offer-delete-owner               : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Oferta de representación \"%offer_title%\".</p> %external% %footerMail% %adminFooter%"
+
+#AdhesionRequest.mail.create AdhesionRequest.mail.pendiente
+subject-user-adhesion-request-adhered               : Adhesión Petición de Representación pendiente de confirmación
+body-user-adhesion-request-adhered                  : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Petición de representación en fecha %date_time%. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-request                  : Nueva adhesión en Petición de representación
+body-moderator-adhesion-request                     : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %accionista_name% se ha adherido a la Petición de representación \"%request_title%\".</p> %external% %footerMail%"
+subject-user-adhesion-request-owner                 : Adhesión Petición de Representación pendiente de confirmación
+body-user-adhesion-request-owner                    : "<p>Sr/Sra. Accionista,</p><p>Se ha producido una adhesión a su Petición de representación en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionRequest.mail.publica
+subject-user-adhesion-request-adhered-full-accept   : Adhesión Petición de Representación
+body-user-adhesion-request-adhered-full-accept      : "<p>Sr/Sra. Accionista,</p><p>Su adhesión a una Petición de representación ha sido aceptada en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que presentó la Petición de representación son:</p><p>Nombre: %request_autor_name% </p><p>EMail: %request_autor_user_email% </p><p>Teléfono: %request_autor_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-request-owner-full-accept     : Adhesión Petición de Representación
+body-user-adhesion-request-owner-full-accept        : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, se ha aceptado una adhesión a su Petición de representación.</p><p>Los datos de contacto del accionista adherido a su Petición de representación son: </p><p>Nombre: %accionista_name% </p><p>Email: %accionista_user_email% </p><p>Teléfono: %accionista_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-request-adhered-basic-accept  : Adhesión Petición de Representación
+body-user-adhesion-request-adhered-basic-accept     : "<p>Sr/Sra. Accionista,</p><p>Su adhesión a una oferta de representación ha sido aceptada en fecha %date_time%.</p><p>Los datos de contacto del accionista que presentó la Petición de representación son:</p><p>Nombre: %request_autor_name% </p><p>EMail: %request_autor_user_email% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-request-owner-basic-accept    : Adhesión Petición de Representación
+body-user-adhesion-request-owner-basic-accept       : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, se ha aceptado una adhesión a su Petición de representación.</p><p>Los datos de contacto del accionista adherido a su Petición de representación son: </p><p>Nombre: %accionista_name% </p><p>Email: %accionista_user_email% </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionRequest.mail.retorna
+subject-user-adhesion-request-pdte_revision-adhered : Confirmación cancelación adhesión a Petición de representación
+body-user-adhesion-request-pdte_revision-adhered    : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la Petición de representación \"%request_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-request-pdte_revision-owner   : Cancelación adhesión a su Petición de representación
+body-user-adhesion-request-pdte_revision-owner      : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Petición de representación \"%request_title%\".</p> %external% %footerMail% %adminFooter%"
+
+#AdhesionRequest.mail.rechaza
+subject-user-adhesion-request-delete-adhered        : Confirmación cancelación adhesión a Petición de representación
+body-user-adhesion-request-delete-adhered           : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la Petición de representación \"%request_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-request-delete           : Cancelación adhesión en Petición de representación
+body-moderator-adhesion-request-delete              : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a la Petición de representación \"%request_title%\".</p> %external% %footerMail%"
+subject-user-adhesion-request-delete-owner          : Cancelación adhesión a su Petición de representación
+body-user-adhesion-request-delete-owner             : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Petición de representación \"%request_title%\".</p> %external% %footerMail% %adminFooter%"
+
+# * AdhesionInitiative.mail.create AdhesionInitiative.mail.pendiente
+subject-user-adhesion-initiative-adhered            : Adhesión a Iniciativa
+body-user-adhesion-initiative-adhered               : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Iniciativa en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-initiative               : Nueva adhesión a Iniciativa
+body-moderator-adhesion-initiative                  : "<p>Sr. Moderador,</p><p>Se ha registrado una nueva adhesión a la iniciativa \"%initiative_title%\".</p> %external% %footerMail%"
+subject-user-adhesion-initiative-owner              : Adhesión a Iniciativa
+body-user-adhesion-initiative-owner                 : "<p>Sr/Sra. Accionista,</p><p>Se ha producido una adhesión a su Iniciativa en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionInitiative.mail.publica
+subject-user-adhesion-initiative-full-adhered       : Datos de contacto del accionista que presentó la Iniciativa
+body-user-adhesion-initiative-full-adhered          : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Iniciativa en fecha %date_time%.</p><p>Los datos de contacto del accionista que presentó la Iniciativa son:</p><p>Nombre: %initiative_autor_name% </p><p>Email: %initiative_autor_user_email% </p><p>Teléfono: %initiative_autor_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-initiative-full-owner         : Datos de contacto del accionista adherido a su iniciativa
+body-user-adhesion-initiative-full-owner            : "<p>Sr/Sra. Accionista,</p><p>Se ha realizado una adhesión a su Iniciativa en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que adherido a su iniciativa son:</p><p>Nombre: %accionista_name% </p><p>Email: %accionista_user_email% </p><p>Teléfono: %accionista_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-initiative-basic-adhered      : Datos de contacto del accionista que presentó la Iniciativa
+body-user-adhesion-initiative-basic-adhered         : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Iniciativa en fecha %date_time%.</p><p>Los datos de contacto del accionista que presentó la Iniciativa son:</p><p>Nombre: %initiative_autor_name% </p><p>Email: %initiative_autor_user_email% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-initiative-basic-owner        : Datos de contacto del accionista adherido a su iniciativa
+body-user-adhesion-initiative-basic-owner           : "<p>Sr/Sra. Accionista,</p><p>Se ha realizado una adhesión a su Iniciativa en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que adherido a su iniciativa son:</p><p>Nombre: %accionista_name% </p><p>Email: %accionista_user_email% </p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-initiative-basic         : Nueva adhesión a Iniciativa
+body-moderator-adhesion-initiative-basic            : "<p>Sr. Moderador,</p><p>Se ha registrado una nueva adhesión a la iniciativa \"%initiative_title%\".</p>  %footerMail%"
+
+#AdhesionInitiative.mail.retorna
+subject-user-adhesion-initiative-pdte_revision-adhered     : Confirmación cancelación adhesión a Iniciativa
+body-user-adhesion-initiative-pdte_revision-adhered        : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la Iniciativa \"%initiative_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-initiative-pdte_revision-owner       : Cancelación adhesión a su Iniciativa
+body-user-adhesion-initiative-pdte_revision-owner          : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Iniciativa \"%initiative_title%\".</p> %external% %footerMail% %adminFooter%"
+
+#AdhesionInitiative.mail.rechaza
+subject-user-adhesion-initiative-delete-adhered     : Confirmación cancelación adhesión a Iniciativa
+body-user-adhesion-initiative-delete-adhered        : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la Iniciativa \"%initiative_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-initiative-delete        : Cancelación adhesión en Iniciativa
+body-moderator-adhesion-initiative-delete           : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a la propuesta \"%initiative_title%\".</p> %external% %footerMail%"
+subject-user-adhesion-initiative-delete-owner       : Cancelación adhesión a su Iniciativa
+body-user-adhesion-initiative-delete-owner          : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Iniciativa \"%initiative_title%\".</p> %external% %footerMail% %adminFooter%"
+
+# * AdhesionProposal.mail.create AdhesionProposal.mail.pendiente
+subject-user-adhesion-proposal-adhered              : Adhesión a Propuesta
+body-user-adhesion-proposal-adhered                 : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Propuesta en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-proposal                 : Nueva adhesión a Propuesta
+body-moderator-adhesion-proposal                    : "<p>Sr. Moderador,</p><p>Se ha registrado una nueva adhesión a la propuesta \"%proposal_title%\".</p> %external% %footerMail%"
+subject-user-adhesion-proposal-owner                : Adhesión a Propuesta
+body-user-adhesion-proposal-owner                   : "<p>Sr/Sra. Accionista,</p><p>Se ha producido una adhesión a su Propuesta en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionProposal.mail.publica
+subject-user-adhesion-proposal-full-adhered         : Datos de contacto del accionista que presentó la propuesta
+body-user-adhesion-proposal-full-adhered            : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Propuesta en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que presentó la propuesta son:</p><p>Nombre: %proposal_autor_name% </p><p>Email: %proposal_autor_user_email% </p><p>Teléfono: %proposal_autor_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-proposal-full-owner           : Datos de contacto del accionista adherido a su propuesta
+body-user-adhesion-proposal-full-owner              : "<p>Sr/Sra. Accionista,</p><p>Se ha realizado una adhesión a su Propuesta en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que se ha adherido a su propuesta son:</p><p>Nombre: %accionista_name% </p><p>Email: %accionista_user_email% </p><p>Teléfono: %accionista_telephone% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-proposal-basic-adhered        : Datos de contacto accionista que presentó la propuesta
+body-user-adhesion-proposal-basic-adhered           : "<p>Sr/Sra. Accionista,</p><p>Se ha adherido a una Propuesta en fecha %date_time%.</p><p>Los datos de contacto del accionista que presentó la propuesta son:</p><p>Nombre: %proposal_autor_name% </p><p>Email: %proposal_autor_user_email% </p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-proposal-basic-owner          : Datos de contacto del accionista adherido a su propuesta
+body-user-adhesion-proposal-basic-owner             : "<p>Sr/Sra. Accionista,</p><p>Se ha realizado una adhesión a su Propuesta en fecha y hora %date_time%.</p><p>Los datos de contacto del accionista que se ha adherido a su propuesta son:</p><p>Nombre: %accionista_name% </p><p> Email: %accionista_user_email% </p> %external% %footerMail% %adminFooter%"
+
+#AdhesionProposal.mail.retorna
+subject-user-adhesion-proposal-pdte_revision-adhered       : Confirmación cancelación adhesión a Propuesta
+body-user-adhesion-proposal-pdte_revision-adhered          : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la propuesta \"%proposal_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-user-adhesion-proposal-pdte_revision-owner         : Cancelación adhesión a su Propuesta
+body-user-adhesion-proposal-pdte_revision-owner            : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Propuesta \"%proposal_title%\".</p> %external% %footerMail% %adminFooter%"
+
+#AdhesionProposal.mail.rechaza
+subject-user-adhesion-proposal-delete-adhered       : Confirmación cancelación adhesión a Propuesta
+body-user-adhesion-proposal-delete-adhered          : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado su adhesión a la propuesta \"%proposal_title%\".</p> %external% %footerMail% %adminFooter%"
+subject-moderator-adhesion-proposal-delete          : Cancelación adhesión en Propuesta
+body-moderator-adhesion-proposal-delete             : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a la propuesta \"%proposal_title%\".</p> %external% %footerMail%"
+subject-user-adhesion-proposal-delete-owner         : Cancelación adhesión a su Propuesta
+body-user-adhesion-proposal-delete-owner            : "<p>Sr./Sra. Accionista,</p><p>En fecha y hora %date_time% se ha cancelado la adhesión del accionista %accionista_name% a su Propuesta \"%proposal_title%\".</p> %external% %footerMail% %adminFooter%"
+
+
+
+############ VOTO ############
+
+#Voto.mail.create
+subject-user-voto-create                            : "Votación realizada"
+user-voto-create                                    : "<p>Sr/Sra. Accionista,</p><p>Este correo electrónico es para confirmarle que su \"Votación\" ha quedado registrada en el sistema en fecha y hora %date_time%.</p><p>Estas son las acciones que usted ha registrado:</p><p>%votohtml% </p> %footerMail% %adminFooter% %sentidoTag% %anulacionTag%"
+subjetct-admin-voto-create                          : "Votación realizada"
+admin-voto-create                                   : "<p>En fecha y hora %date_time% se ha registrado un nueva votación por parte del accionista %accionista_name%, con los siguientes datos:</p><p>%votohtml%</p> %footerMail%"
+
+#Delegacion.mail.publica
+subject-user-delegacion-publica                     : "Confirmación de la Delegación Electrónica"
+user-delegacion-publica                             : "<p>Sr/Sra. Accionista,</p><p>Este correo electrónico es para confirmarle que su \"Delegación Electrónica\" ha quedado registrada en el sistema en fecha y hora %date_time%.</p><p>Usted ha delegado sus acciones en %delegado_nombre% </p> %external% %footerMail% %adminFooter% %sentidoTag% %anulacionTag%"
+subject-admin-delegacion-publica                    : "Confirmación de la Delegación Electrónica"
+admin-delegacion-publica                            : "<p>El accionista %accionista_name% en fecha y hora %date_time% ha delegado sus acciones en %delegado_nombre% </p> %external% %footerMail%"
+
+#Delegacion.mail.pendiente
+accionistaDelegacionPendiente                       : "Delegación en %delegado_nombre% Pendiente<br/>%votohtml%"
+delegadoDelegacionPendiente                         : "<p>Se ha realizado una delegación en su nombre</p><p>%votohtml% </p><p>Si Desea Aceptarla o Rechazarla siga el siguiente enlace:</p><p> <a href=\"%baseuri%public/delegation/%id%/%delegado_token%\">%baseuri%public/delegation/%id%/%delegado_token%</a> </p>"
+adminDelegacionPendiente                            : "<p>Delegación en %delegado_nombre% Realizada por %accionista_name%</p><p>%votohtml%</p><p> En espera de confirmación</p>"
+
+
+#Delegacion.mail.rechaza
+accionistaDelegacionRechaza                         : "Delegación en %delegado_nombre% Rechazada<br/>%votohtml%"
+adminDelegacionRechaza                              : "<p>Delegación en %delegado_nombre% Rechazada por %accionista_name% </p><p> %votohtml% </p>"
+
+#Anulacion.mail.create
+subject-user-anulacion-create                       : "Anulación acción Voto/Delegación Electrónica"
+user-anulacion-create                               : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time% ha anulado su Voto/Delegación Electrónica. </p> %footerMail% %adminFooter%"
+subject-admin-anulacion-create                      : "Anulación acción anterior"
+admin-anulacion-create                              : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha anulado el Voto/Delegación Electrónica del accionista %accionista_name%. </p> %footerMail%"
+
+
+
+############ DERECHO ############
+
+#Thread.mail.create Thread.mail.pendiente
+subject-user-pdte_aprovacion-thread                 : Solicitud pendiente de respuesta
+body-user-pdte_aprovacion-thread                    : "<p>Sr/Sra. Accionista,</p><p>Su solicitud, con título \"%subject%\" registrada en fecha y hora %date_time%, se encuentra pendiente de respuesta por el moderador. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-pdte_aprovacion-thread            : Solicitud pendiente de respuesta
+body-moderator-pdte_aprovacion-thread               : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% ha presentado una Solicitud con título  \"%subject%\", que está pendiente de respuesta. </p> %external% %footerMail%"
+
+#Thread.mail.retorna
+subject-user-pdte_revision-thread                   : Solicitud resuelta
+body-user-pdte_revision-thread                      : "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, su Solicitud con título \"%subject%\" registrada en el sistema, se ha cambiado al estado de \"Resuelta\".</p> %external% %footerMail% %adminFooter%"
+
+#Thread.mail.publica
+subject-user-publicacion-thread                     : Solicitud publicada
+body-user-publicacion-thread                        : "<p>Sr/Sra. Accionista,</p><p>Su Solicitud con título \"%subject%\" registrada en el sistema, se ha publicado en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+
+#Thread.mail.rechaza
+subject-user-descarte-thread                        : Solicitud descartada
+body-user-descarte-thread                           : "<p>Sr/Sra. Accionista,</p><p>Su Solicitud con título \"%subject%\" registrada en el sistema, se ha deshabilitado en fecha y hora %date_time%. </p> %external% %footerMail% %adminFooter%"
+subject-moderator-descarte-owner-thread             : Anulación Solicitud
+body-moderator-descarte-owner-thread                : "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha realizado una eliminación de la Solicitud \"%subject%\".</p> %external% %footerMail%"
+
+#Message.mail.add
+subject-message-add                                 :  Mensaje del Administrador
+user-message-add                                    : "<p>Sr/Sra. Accionista,</p><p> el Administrador ha añadido el siguiente Mensaje: </p><p> %body% </p> %footerMail%"
+
+subject-message-proposal-add                        :  Mensaje del Administrador a Propuesta
+user-message-proposal-add                           : "<p>Sr/Sra. Accionista,</p><p> el Administrador ha añadido el siguiente mensaje a su propuesta con título %proposal_title% </p><p>Mensaje del Administrador:</p><p> %body% </p> %footerMail%"
+
+subject-message-initiative-add                      :  Mensaje del Administrador a Iniciativa
+user-message-initiative-add                         : "<p>Sr/Sra. Accionista,</p><p> el Administrador ha añadido el siguiente mensaje a su iniciativa con título %initiative_title% </p><p>Mensaje del Administrador:</p><p> %body% </p> %footerMail%"
+
+subject-message-offer-add                           :  Mensaje del Administrador a Oferta de representación
+user-message-offer-add                              : "<p>Sr/Sra. Accionista,</p><p> el Administrador ha añadido el siguiente mensaje a su oferta de representación con título %offer_title% </p><p>Mensaje del Administrador:</p><p> %body% </p> %footerMail%"
+
+subject-message-request-add                         :  Mensaje del Administrador a Petición de representación
+user-message-request-add                            : "<p>Sr/Sra. Accionista,</p><p> el Administrador ha añadido el siguiente mensaje a su petición de representación con título %request_title% </p><p>Mensaje del Administrador:</p><p> %body% </p> %footerMail%"
+
+
+############ Asistencia Virtual ############
+subject-user-av-pendiente 							: "Solicitud pendiente de respuesta"
+user-av-pendiente 									: "<p>Sr/Sra. Accionista,</p><p>Su solicitud de acceso a la plataforma de Asistencia Virtual, registrada en fecha y hora %date_time%, se encuentra pendiente de respuesta por el moderador. </p>%footerMail% %adminFooter%"
+
+subject-moderator-av-pendiente 						: "Solicitud pendiente de respuesta"
+moderator-av-pendiente 								: "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista ha presentado una Solicitud de acceso a la plataforma de Asistencia Virtual, que está pendiente de respuesta. </p> %external% %footerMail%"
+
+subject-user-votoav-create 							: "Votación realizada"
+user-votoav-create 									: "<p>Sr/Sra. Accionista,</p><p>Este correo electrónico es para confirmarle que su \"Votación\"  en la plataforma de la Asistencia Virtual ha quedado registrada en el sistema en fecha y hora %date_time%.</p><p>Estas son las acciones que usted ha registrado:</p><p>%votohtml% </p> %footerMail% %adminFooter% %sentidoTag% %anulacionTag%"
+
+subject-admin-votoav-create 						: "Votación realizada"
+admin-votoav-create 								: "<p>En fecha y hora %date_time% se ha registrado un nueva votación por parte del accionista %accionista_name% en la plataforma de la Asistencia Virtual, con los siguientes datos:</p><p>%votohtml%</p> %footerMail%"
+
+subject-question-create 							: "Nueva Pregunta"
+user-question-create 								: "<p>Sr/Sra. Accionista,</p><p> se ha añadido la siguente pregunta con el titulo \"%subject%\": </p><p> %body% </p><p>El Administrador del sistema ha sido debidamente notificado </p> %footerMail%"
+
+subject-admin-question-create 						: "Nueva Pregunta"
+admin-question-create 								: "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista:</p><ul><li>Nombre: %autor_name%</li><li>Documento: %autor_document_num%</li><li>Mail: %autor_user_email%</li></ul><p> Ha registrado una pregunta nueva en la plataforma de la Asistencia Virtual.</p> <p> %subject% </p> <p> %body% </p> %footerMail%"
+
+subject-desertion-create 							: "Abandono del Accionista"
+user-desertion-create 								: "<p>Sr/Sra. Accionista,</p><p> En fecha y hora %date_time% se ha registrado su salida. </p><p>El Administrador del sistema ha sido debidamente notificado </p> %footerMail%"
+
+subject-admin-desertion-create 						: "Abandono del Accionista"
+admin-desertion-create 								: "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% se ha registrado la salida del accionista:</p><ul><li>Nombre: %autor_name%</li><li>Documento: %autor_document_num%</li><li>Mail: %autor_user_email%</li></ul><p></p> %footerMail%"
+
+
+
+############ Accionista ############
+subject-accionista-acreditado 						: "Mensaje del Administrador"
+user-accionista-acreditado 							: "<p>Sr/Sra. Accionista,</p><p>En fecha y hora %date_time%, el estado de su usuario ha pasado a estar ACREDITADO, el moderador de la plataforma ha sido debidamente informado.</p>%external% %footerMail%"
+
+subject-moderator-accionista-acreditado 			: "Accionista Acreditado"
+moderator-accionista-acreditado 					: "<p>Sr. Moderador,</p><p>En fecha y hora %date_time% el accionista %autor_name% se ha acreditado en la plataforma de la Asistencia Virtual. </p> %external% %footerMail%"

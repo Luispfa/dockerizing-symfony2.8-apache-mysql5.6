@@ -1,0 +1,26 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>Clase</th>
+            <th>Default State</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for parameter_default_state in parameters_default_states %}
+            {% set clase_choice = 'clase_' ~ parameter_default_state.id %}
+            {% set default_state_choice = 'defaultstate_' ~ parameter_default_state.id %}
+            <input type="hidden" name="id[default_state][]" value="{{ parameter_default_state.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ form_widget(attribute(parameter_default_state.clase,clase_choice)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(parameter_default_state.default_state,default_state_choice)) }}
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

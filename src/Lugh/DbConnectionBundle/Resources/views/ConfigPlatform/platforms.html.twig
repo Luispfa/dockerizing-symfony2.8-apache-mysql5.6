@@ -1,0 +1,33 @@
+<div class="widget-header">
+						
+    <h3>
+            <i class="icon-bar-chart"></i>
+            Platforms 
+
+    </h3>				
+</div> <!-- /.widget-header -->
+
+<div class="widget-toolbar clearfix">
+
+        <div class="pull-left">
+
+        </div> <!-- /.pull-left -->
+
+        <div class="pull-right">
+                <!--
+                <div class="btn-group" data-toggle="buttons-radio">
+                  <button class="btn btn-small active">Semana</button>
+                  <button class="btn btn-small">Mes</button>
+                  <button class="btn btn-small">Año</button>
+                </div>
+                -->
+        </div> <!-- /.pull-left -->
+
+
+</div> <!-- /.chart-filters -->
+
+<div class="widget-content">
+
+     {% render controller('LughDbConnectionBundle:ConfigPlatform:platformsContent')  %}
+
+</div> <!-- /.widget-content -->

@@ -1,0 +1,93 @@
+{% verbatim %}
+<div class="page" ng-controller="accionCtrl">
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Acción</strong></div>
+		<div class="panel-body">
+
+			<form class="form-horizontal" role="form">
+
+				<fieldset class="titulo-item">
+					<legend ng-bind-html="type[action.discr]">Acción</legend>
+					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-6 control-label">Nombre</label>
+								<div class="col-sm-6">
+									<strong><span ng-bind-html="action.accionista.name"></span></strong>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">Número de acciones</label>
+								<div class="col-sm-6">
+									<strong><span>{{action.accionista.shares_num | formattedNumber}}</span></strong>
+								</div>
+							</div>
+							<!--<div class="form-group" ng-if="action.discr == 1">
+								<label class="col-sm-6 control-label">Sustitución</label>
+								<div class="col-sm-6">
+									<strong><span>{{action.sustitucion == 1 ? 'Sí' : 'No'}}</span></strong>
+								</div>
+							</div>-->
+							<div class="form-group" ng-if="action.discr == 1">
+								<label for="correoc" class="col-sm-6 control-label">Delegado en</label>
+								<div class="col-sm-6">
+									<p>{{action.delegado.nombre}}</p>
+								</div>
+							</div>
+							<div class="form-group" ng-if="action.observaciones != undefined && action.observaciones != ''">
+								<label for="item.title" class="col-sm-6 control-label">Observaciones</label>
+								<div class="col-sm-6">
+									<span ng-bind-html="action.observaciones"></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<button class="btn btn-success" ng-click="loadAccionista(action.accionista.id)">Ver perfil</button>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-success" ng-click="loadHistorial(action.accionista.id)">Ver historial de acciones</button>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset ng-if="action.votacion.length > 0">
+					<legend>Voto</legend>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th class="col-sm-2">Punto</th>
+											<th class="col-sm-8">Descripción</th>
+											<th class="col-sm-2">Voto</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="abs_ad in action.voto_abs_adicional">
+											<td>Adicional</td>
+											<td ng-bind-html="abs_ad.abs_adicional.text | truncateString:60"></td>
+											<td ng-bind-html="abs_ad.opcion_voto.nombre"></td>
+										</tr>
+										<tr ng-repeat="punto in action.votacion">
+											<td ng-bind-html="punto.punto.num_punto"></td>
+											<td ng-bind-html="punto.punto.text | truncateString:60"></td>
+											<td ng-bind-html="punto.opcion_voto.nombre"></td>
+										</tr>
+									</tbody>
+								</table> 
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+	</section>
+
+</div>
+{% endverbatim %}

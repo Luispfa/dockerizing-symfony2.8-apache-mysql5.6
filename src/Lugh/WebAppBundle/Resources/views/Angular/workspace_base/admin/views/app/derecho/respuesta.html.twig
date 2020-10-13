@@ -1,0 +1,102 @@
+{% verbatim %} 
+<div class="page">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Responder solicitud</strong></div>
+        <div class="panel-body">
+
+
+            <form class="form-horizontal" role="form">
+
+
+                <fieldset class="titulo-item">
+                    <legend>Solicitud</legend>
+
+                    <div class="form-group">
+                        <label for="username" class="col-sm-3 control-label">Asunto</label>
+                        <div class="col-sm-5">
+                            <p class="form-texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="correoc" class="col-sm-3 control-label">Texto de la solicitud</label>
+                        <div class="col-sm-5">
+                            <p class="form-texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, quos, saepe a similique totam excepturi enim natus voluptatum rerum eum veritatis aspernatur minus ipsum accusamus voluptate minima quis suscipit officia</p>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Responder a la solicitud</legend>
+                    <div class="form-group">
+                        <label for="correoc" class="col-sm-3 control-label">Respuesta</label>
+                        <div class="col-sm-5">
+                            <textarea name="" id="texto-cuerpo" class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+
+
+                        <label for="correoc" class="col-sm-3 control-label">Documentos</label>
+                        <div class="col-sm-9">
+                            <input type="file" title="Buscar" data-ui-file-upload class="btn-primary">
+                        </div>
+                    </div>
+                </fieldset>
+
+
+                <fieldset>
+                     <legend>Configuración de la solicitud</legend>
+                    <div class="form-group">
+
+                        <div class="col-sm-offset-3 col-sm-9">
+
+                            <div class="row">
+
+                                <div class="col-sm-6">
+
+                                    <ul class="list-checkbox-radio list-unstyled">
+                                        <li><label class="ui-radio"><input name="radio1" type="radio" value="pendiente"><span>Publicar <small>(Accesible publicamente)</small></span></label></li>
+                                        <li><label class="ui-radio"><input name="radio1" type="radio" value="retornar"><span>Privado <small>(Solo visible por el accionista)</small></span></label></li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <ul class="list-checkbox-radio list-unstyled">
+                                        <li><label class="ui-radio"><input name="radio2" type="radio" value="pendiente"><span>Permitir respuesta <small>(El accionista puede responder)</small></span></label></li>
+                                        <li><label class="ui-radio"><input name="radio2" type="radio" value="retornar"><span>No permitir respuesta <small>(El accionista no puede responder)</small></span></label></li>
+                                    </ul> 
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+                <fieldset>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-success">Guardar</button> <button type="submit" class="btn btn-success">Limpiar datos</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </form> 
+
+        </div>
+    </section>
+
+
+</div>
+{% endverbatim %} 
+
+

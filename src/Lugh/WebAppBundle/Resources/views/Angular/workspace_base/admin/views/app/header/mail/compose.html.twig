@@ -1,0 +1,28 @@
+{% verbatim %}
+
+    <section class="panel panel-default mail-container mail-compose" data-ng-controller="MailComposeToUserCtrl">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Contactar con Usuario</strong></div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="input-group input-group-lg col-sm-12">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="id00066_app:contact:subject"
+                               ng-model="mail.subject"
+                               data-i18n="i18n-placeholder"
+                               >
+                    </div>
+                </div>
+                <!--div text-angular ng-model="mail.body" class="ui-editor"></div-->
+                <textarea text-angular ng-model="mail.body" class="form-control" rows="14"></textarea>
+            </form>
+            <div class="mail-actions">
+                <div class="btn btn-sm btn-primary" ng-click="sendMail()" ng-disabled="!valid()">Enviar</div>
+                <div class="btn btn-sm btn-default" ng-click="borra()">Borrador</div>
+                <div class="btn btn-sm btn-default">Descartar</div>
+            </div>
+        </div>
+    </section>
+
+{% endverbatim %}

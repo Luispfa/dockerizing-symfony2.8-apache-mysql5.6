@@ -1,0 +1,50 @@
+<table id="crontab_file" class="table table-striped table-bordered responsive">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Name</th>
+            <th>Clase decrypt</th>
+            <th>Tag traduccion</th>
+            <th>max Votos</th>
+            <th>min Votos</th>
+            <th>Is Serie (Cypher)</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for tipovoto_line in tipovoto_lines %}
+            {% set tipo = 'tipo_' ~ tipovoto_line.id %}
+            {% set name = 'name_' ~ tipovoto_line.id %}
+            {% set tag  = 'tag_' ~ tipovoto_line.id %}
+            {% set maxvotos = 'maxvotos_' ~ tipovoto_line.id %}
+            {% set minvotos = 'minvotos_' ~ tipovoto_line.id %}
+            {% set isserie = 'isserie_' ~ tipovoto_line.id %}
+            {% set clasedecrypt = 'clasedecrypt_' ~ tipovoto_line.id %}
+            <input type="hidden" name="id[tipovoto][]" value="{{ tipovoto_line.id }}" />
+            <tr class ="gradeA">
+                <td>
+                    {{ form_widget(attribute(tipovoto_line.tipo,tipo), { 'attr': {'class': 'input-mini'}}) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(tipovoto_line.name,name)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(tipovoto_line.clasedecrypt,clasedecrypt)) }} 
+                </td>
+                <td>
+                    {{ form_widget(attribute(tipovoto_line.tag,tag)) }}
+                </td>
+                <td>
+                    {{ form_widget(attribute(tipovoto_line.maxvotos,maxvotos), { 'attr': {'class': 'input-mini'}}) }} 
+                </td>
+                <td>
+                    {{ form_widget(attribute(tipovoto_line.minvotos,minvotos), { 'attr': {'class': 'input-mini'}}) }} 
+                </td>
+                <td>
+                    {{ form_widget(attribute(tipovoto_line.isserie,isserie)) }} 
+                </td>
+            </tr>
+        {% endfor%}
+    </tbody>
+
+</table>

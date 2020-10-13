@@ -1,0 +1,235 @@
+{% verbatim %}
+    
+    <div class="menu-top page-signin">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <ul class="menu-desktop">
+                        <li> <a href="#/app/inicio"><span data-i18n="Inicio">Inicio</span></a> </li>
+                        <li> <a href="#/app/contactar"><span data-i18n="Contactar">Contactar</span></a> </li>
+                        <li> <a href="#/app/requisitos"><span data-i18n="Requisitos">Requisitos</span></a> </li>
+                        <li data-i18n="id00419_home:document:rules"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+    
+    <div class="page-inicio" ng-controller="profileCtrl">
+        
+        
+        <div  class="top-menus">
+            <div class="container">
+
+
+
+                <div class="breadcrumbsimple">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <ul class="lista">
+                                <li class="primero"><a href="http://www.caixabank.com/informacionparaaccionistaseinversores_es.html">Información para accionistas e inversores</a></li>
+                                <li><a href="http://www.caixabank.com/informacionparaaccionistaseinversores/gobiernocorporativo_es.html">Espacio del Accionista</a></li>
+                                <li><a href="http://www.caixabank.com/espaciodelaccionista/juntageneralaccionistas_es.html">Junta General de Accionistas</a></li>
+                                <li><a href="https://www.caixabank.com/informacionparaaccionistaseinversores/gobiernocorporativo/juntageneralaccionistas/2014_es.html">2014</a></li>
+                                <li class="ultimo"><a href="#">Votación / Delegación electrónica</a></li>
+                            </ul>
+                        </div>
+                    </div>   
+                </div>
+
+                <div class="titulo_subcanales">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>
+                                <span class="titulo_secundario">Plataformas Electrónicas</span>
+                            </h1>
+                        </div>
+                    </div> 
+                </div>
+
+            </div>
+        </div>
+        
+        
+        <div class="full-width contenido">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+
+                    <div class="panel panel-profile">
+                        <div class="panel-heading text-center bg-primary">
+                            <div alt="" class="img-login img-circle img80_80"></div>
+                            <h3>{{accionista.name}}</h3>                 
+                        </div>
+                    </div>
+
+
+                    <div class="callout callout-success">
+                        <h4>Retornar accionistas</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Profile Info</strong></div>
+                        <div class="panel-body">
+                            <div class="media">
+                                <div class="media-body">
+
+                                    <form name="accionista_form" action="" class="form-horizontal form-validation">
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00217_app:regrant:username">Username</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input ng-disabled="true" type="text" class="form-control" id="username" required placeholder="User name" ng-model="accionista.user.username">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00218_app:regrant:name">Nombre</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="username" required placeholder="Nombre" ng-model="accionista.name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00219_app:regrant:mail">Email</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="email" class="form-control" id="username" required  placeholder="Email" ng-model="accionista.user.email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00220_app:regrant:tipo">Tipo persona</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <span class="ui-select">
+                                                    <select name="tipo" id="tipo" required data-ng-model="accionista.tipoPersona">
+                                                        <option value="pf" i18n="id00036_home:app:registro:pf">PF</option>
+                                                        <option value="pj" i18n="id00037_home:app:registro:pj">PJ</option>
+                                                    </select>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-if="accionista.tipoPersona == 'pj'">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00221_app:regrant:represented">Representado por</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="username" placeholder="Representado por" ng-model="accionista.represented_by" ng-required="accionista.tipoPersona=='pj'">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00222_app:regrant:tipo-doc">Tipo de documento</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <span class="ui-select">
+                                                    <select name="tipoDoc" id="tipo-doc" required data-ng-model="accionista.document_type"
+                                                            ng-options="typevalue as i18n(typelabel) for (typevalue, typelabel) in docTypes">
+                                                    </select>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00223_app:regrant:numero-doc">Numero de documento</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="username" placeholder="Numero de documento" ng-model="accionista.document_num" validate-doc tipo-doc="accionista.document_type" numero-doc="accionista.document_num">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label i18n="id00224_app:regrant:num-shares">Numero de documento</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"
+                                                       id="numero-acciones"
+                                                       data-ng-model="accionista.shares_num"
+                                                       fcsa-number="{min: 0, maxDecimals: 0}"
+                                                       data-min="{{ accionesMin}}" 
+                                                       dotted-number>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Documentos</strong></div>
+                        <div class="panel-body">
+                            <div class="form-group" ng-file-drop>
+                                <upload-document
+                                    description  ="Documentación personal"
+                                    title        ="documentacion-file"
+                                    isolatedtoken
+                                    />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Mensajes</strong></div>
+                        <div class="panel-body">
+                            <table class="responsive table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2">Autor</th>
+                                        <th class="col-sm-8">Mensajes</th>
+                                        <th class="col-sm-2">Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-if="accionista.item_accionista.messages.length === 0">
+                                        <td></td>
+                                        <td><span i18n="id00092_app:no-data"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr ng-repeat="message in accionista.item_accionista.messages | orderBy:'date_time':true">
+                                        <td>{{ message.autor.username}}</td>
+                                        <td>{{ message.body}}</td>
+                                        <td>{{ message.date_time | date: 'dd/MM/yyyy&nbsp;HH:mm'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>  
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Añadir mensaje</strong></div>
+                        <div class="panel-body">
+                            <textarea class="form-control"
+                                      rows = "10"
+                                      ng-model = "accionista.message" >
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <button type="submit" class="btn btn-success" ng-click="submit()" ng-disabled="!isValid()">Guardar</button> 
+                            <button type="submit" class="btn btn-success" ng-click="clear()">Descartar cambios</button>
+                        </div>
+                        <script type="text/ng-template" id="myModalContent.html">
+                            <div class="modal-header">
+                            <h3>Regsitrando</h3>
+                            </div>
+                            <div class="modal-body">
+                            <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </script>
+                    </div>
+
+                </div>
+            </div> <!-- /Row -->
+        </div> <!-- /Full-width -->
+    </div>
+{% endverbatim %}

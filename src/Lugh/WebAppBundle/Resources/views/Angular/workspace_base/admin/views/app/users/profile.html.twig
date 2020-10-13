@@ -1,0 +1,408 @@
+{% verbatim %}
+    <div class="page page-profile" ng-controller="profileCtrl">
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="panel panel-profile">
+                    <div class="panel-heading text-center bg-primary">
+                        <div class="img-login img-circle img80_80"></div>
+                        <h3>{{accionista.name}}</h3>                 
+                    </div>
+                    <div class="list-justified-container">
+                        <ul class="list-justified text-center">
+                            <li ng-click="contact()">
+                                <p class="size-h3"><span class="glyphicon glyphicon-envelope"></span></p>
+                                <p class="text-muted">Contactar</p>
+                            </li>
+                            <li ng-click="password()" ng-if="!accionista.is_user_cert">
+                                <p class="size-h3"><span class="glyphicon glyphicon-asterisk"></span></p>
+                                <p class="text-muted">Reiniciar contraseña</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span data-i18n="id00041_app:profile:profile-info">Profile Info</span></strong></div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <ul class="list-unstyled list-info">
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00003_home:app:inicio:username">Username</label>
+                                        {{accionista.user.username}}
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00012_home:app:registro:name">Nombre</label>
+                                        <span ng-bind-html="accionista.name"></span>
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00004_home:app:registro:email">Email</label>
+                                        <span ng-bind-html="accionista.user.email"></span>
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00038_home:app:registro:represented-by">Representado por</label>
+                                        <span ng-bind-html="accionista.represented_by"></span>
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00014_home:app:registro:doc-num">Numero de documento</label>
+                                        <span ng-bind-html="accionista.document_num"></span>
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00013_home:app:registro:doc-kind">Tipo de documento</label>
+                                        <span ng-bind-html="accionista.document_type"></span>
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00495_home:app:registro:fecha">Fecha de registro</label>
+                                        <span ng-bind-html="accionista.user.date_time | date:'dd-MM-yyyy&nbsp;HH:mm'"></span>
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00175_app:profile:num-shares">Número de acciones</label>
+                                        <span ng-bind-html="accionista.shares_num | formattedNumber"></span>
+                                    </li>
+                                    <li>
+                                        <span class="icon glyphicon glyphicon-chevron-right"></span>
+                                        <label data-i18n="id00042_app:profile:documents-list">Documentos</label>
+                                        <ul class="list-docs">
+                                            <li ng-repeat="documento in accionista.documents">
+                                                <span class="glyphicon glyphicon-download-alt"></span>
+                                                <a ng-click="downloadDocument(documento.id)" ng-bind-html="documento.nombre_externo"></a>
+                                            </li>
+                                        </ul>
+                                    </li> 
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="col-xs-12" ng-controller="profileAppsCtrl" app-only-element>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Aplicaciones del accionista</strong></div>
+                        <div class="panel-body">
+                            <div app-element-admin="foro">
+                                <label class="ui-checkbox"><input name="apps" type="checkbox" data-ng-model="apps.foro"><span data-i18n="id00048_app:foro">Foro</span></label>
+                            </div>
+                            <div app-element-admin="voto">
+                                <label class="ui-checkbox"><input name="apps" type="checkbox" data-ng-model="apps.voto"><span data-i18n="id00049_app:voto">Voto</span></label>
+                            </div>
+                            <div app-element-admin="derecho">
+                                <label class="ui-checkbox"><input name="apps" type="checkbox" data-ng-model="apps.derecho"><span data-i18n="id00050_app:derecho">Derecho</span></label>
+                            </div>
+                            <div>
+                                <div>
+                                    <button type="submit" class="btn btn-success btn-w-md" ng-click="submit()" data-i18n="id00035_home:app:registro:confirm">Aplicar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+            </div>
+            <div class="col-md-6">
+
+                <div class="row" app-element-admin="foro">
+                    <div class="col-sm-12">
+                        <section class="panel panel-box">
+                            <div class="panel-top bg-foro">
+                                <div class="divider divider"></div>
+                                <h4><i class="fa fa-users size-h1"></i> <span data-i18n="id00048_app:foro">Foro</span></h4>
+                                <div class="divider divider"></div>
+                            </div>
+                            <div class="list-justified-container">
+                                <ul class="list-justified text-center">
+                                    <li>
+                                        <p class="size-h3">{{foro.propuestas}}</p>
+                                        <a class="" data-i18n="id00044_app:foro:proposals" ng-click="goToItemList('user-propuestas')">Propuestas</a>
+                                    </li>
+                                    <li>
+                                        <p class="size-h3">{{foro.iniciativas}}</p>
+                                        <a class="" data-i18n="id00045_app:foro:initiatives" ng-click="goToItemList('user-iniciativas')">Iniciativas</a>
+                                    </li>
+                                    <li>
+                                        <p class="size-h3">{{foro.ofertas}}</p>
+                                        <a class="" data-i18n="id00046_app:foro:offers" ng-click="goToItemList('user-ofertas')">Ofertas</a>
+                                    </li>
+                                    <li>
+                                        <p class="size-h3">{{foro.peticiones}}</p>
+                                        <a class="" data-i18n="id00047_app:foro:requests" ng-click="goToItemList('user-peticiones')">Peticiones</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="row" adaptive-row>
+                    <div class="" app-element-admin="voto">
+                        <section class="panel panel-box">
+                            <div class="panel-top bg-voto">
+                                <div class="divider divider"></div>
+                                <h4><i class="fa fa-check-square-o"></i> <span data-i18n="id00049_app:voto">Voto</span></h4>
+                                <div class="divider divider"></div>
+                            </div>
+                            <div class="list-justified-container">
+                                <ul class="list-justified text-center">
+                                    <li>
+                                        <p class="size-h3" ng-click="goToAccion()">{{voto}}</p>
+                                        <p class="text-muted" data-i18n="id00051_app:voto:last-act">Ultima actuación</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="" app-element-admin="derecho">
+                        <section class="panel panel-box">
+                            <div class="panel-top bg-derecho">
+                                <div class="divider divider"></div>
+                                <h4><i class="fa fa-info"></i> <span data-i18n="id00050_app:derecho">Derecho</span></h4>
+                                <div class="divider divider"></div>
+                            </div>
+                            <div class="list-justified-container">
+                                <ul class="list-justified text-center">
+                                    <li ng-click="goToThreads()">
+                                        <p class="size-h3">{{derecho}}</p>
+                                        <p class="text-muted" data-i18n="id00052_app:derecho:requests" >Peticiones</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>                        
+                    </div>
+                    <div class="" app-element-admin="av">
+                        <section class="panel panel-box">
+                            <div class="panel-top bg-voto">
+                                <div class="divider divider"></div>
+                                <h4><i class="fa fa-check-square-o"></i> <span data-i18n="id00428_app:av">Asistencia Virtual</span></h4>
+                                <div class="divider divider"></div>
+                            </div>
+                            <div class="list-justified-container">
+                                <ul class="list-justified text-center">
+                                    <li>
+                                        <p class="size-h3" ng-click="goToAccion()">{{av}}</p>
+                                        <p class="text-muted" data-i18n="id00051_app:voto:last-act">Ultima actuación</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12"> 
+                        <div class="ui-tab-container clear-fix">
+                            <tabset class="ui-tab">
+                                <tab ng-controller="profileStateCtrl" class="{{state == 1?'profile-pending ':''}}" heading="Estado Accionista">
+                                    <div>
+                                        <div class="panel panel-default">
+                                            <!--<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Estado del accionista</strong></div>-->
+                                            <div class="panel-body">
+                                                <div class="row form-group">
+                                                    <div class="col-xs-12 col-sm-8 col-sm-push-4 col-md-7 col-md-push-5 col-lg-8 col-lg-push-4">
+                                                        <textarea name="" id="texto-cuerpo" class="form-control" rows="6" data-ng-model="message" entities-decode data-ng-disabled="!canSubmit()" placeholder="Mensaje">
+                                                        </textarea>
+                                                        <label class="ui-checkbox">
+                                                            <input name="notify" type="checkbox" data-ng-model="sendMail">
+                                                            <span>Notificar vía e-mail</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4 col-sm-pull-8 col-md-5 col-md-pull-7 col-lg-4 col-lg-pull-8">
+                                                        <ul class="list-checkbox-radio list-unstyled row">
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="state" type="radio" value="1" data-ng-model="state"><span data-i18n="id00053_app:states:pending">Pendiente</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="state" type="radio" value="3" data-ng-model="state"><span data-i18n="id00054_app:states:retornate">Retornar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="state" type="radio" value="2" data-ng-model="state"><span data-i18n="id00055_app:states:public">Publicar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="state" type="radio" value="4" data-ng-model="state"><span data-i18n="id00056_app:states:reject">Rechazar</span></label></li>
+                                                        </ul>
+                                                        <div >
+                                                            <button type="submit" class="btn btn-success btn-w-md" data-ng-disabled="!canSubmit()" ng-click="submit()" data-i18n="id00035_home:app:registro:confirm">Aplicar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab ng-controller="profileVotoCtrl" class="{{state == 1?'profile-pending ':''}}" app-element-admin="voto" heading="Voto">
+                                    <div>
+                                        <div class="panel panel-default">
+                                            <!--<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Estado Aplicación Voto</strong></div>-->
+                                            <div class="panel-body">
+                                                <div class="row form-group">
+                                                    <div class="col-xs-12 col-sm-8 col-sm-push-4 col-md-7 col-md-push-5 col-lg-8 col-lg-push-4">
+                                                        <textarea name="" id="texto-cuerpo" class="form-control" rows="6" data-ng-model="message" entities-decode data-ng-disabled="!canSubmit()" placeholder="Mensaje">
+                                                        </textarea>
+                                                        <label class="ui-checkbox">
+                                                            <input name="notify" type="checkbox" data-ng-model="sendMail">
+                                                            <span>Notificar vía e-mail</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4 col-sm-pull-8 col-md-5 col-md-pull-7 col-lg-4 col-lg-pull-8">
+                                                        <ul class="list-checkbox-radio list-unstyled row">
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appVoto.state" type="radio" value="1" data-ng-model="state"><span data-i18n="id00053_app:states:pending">Pendiente</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appVoto.state" type="radio" value="3" data-ng-model="state"><span data-i18n="id00054_app:states:retornate">Retornar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appVoto.state" type="radio" value="2" data-ng-model="state"><span data-i18n="id00055_app:states:public">Publicar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appVoto.state" type="radio" value="4" data-ng-model="state"><span data-i18n="id00056_app:states:reject">Rechazar</span></label></li>
+                                                        </ul>
+                                                        <div >
+                                                            <button type="submit" class="btn btn-success btn-w-md" data-ng-disabled="!canSubmit()" ng-click="submit()" data-i18n="id00035_home:app:registro:confirm">Aplicar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab ng-controller="profileForoCtrl" class="{{state == 1?'profile-pending ':''}}" app-element-admin="foro" heading="Foro">
+                                    <div>
+                                        <div class="panel panel-default">
+                                            <!--<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Estado Aplicación Foro</strong></div>-->
+                                            <div class="panel-body">
+                                                <div class="row form-group">
+                                                    <div class="col-xs-12 col-sm-8 col-sm-push-4 col-md-7 col-md-push-5 col-lg-8 col-lg-push-4">
+                                                        <textarea name="" id="texto-cuerpo" class="form-control" rows="6" data-ng-model="message" entities-decode data-ng-disabled="!canSubmit()" placeholder="Mensaje">
+                                                        </textarea>
+                                                        <label class="ui-checkbox">
+                                                            <input name="notify" type="checkbox" data-ng-model="sendMail">
+                                                            <span>Notificar vía e-mail</span>
+                                                        </label>
+                                                    </div>                                
+                                                    <div class="col-xs-12 col-sm-4 col-sm-pull-8 col-md-5 col-md-pull-7 col-lg-4 col-lg-pull-8">
+                                                        <ul class="list-checkbox-radio list-unstyled row">
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appForo.state" type="radio" value="1" data-ng-model="state"><span data-i18n="id00053_app:states:pending">Pendiente</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appForo.state" type="radio" value="3" data-ng-model="state"><span data-i18n="id00054_app:states:retornate">Retornar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appForo.state" type="radio" value="2" data-ng-model="state"><span data-i18n="id00055_app:states:public">Publicar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appForo.state" type="radio" value="4" data-ng-model="state"><span data-i18n="id00056_app:states:reject">Rechazar</span></label></li>
+                                                        </ul>
+                                                        <div >
+                                                            <button type="submit" class="btn btn-success btn-w-md" data-ng-disabled="!canSubmit()" ng-click="submit()" data-i18n="id00035_home:app:registro:confirm">Aplicar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab ng-controller="profileDerechoCtrl" class="{{state == 1?'profile-pending ':''}}" app-element-admin="derecho" heading="Derecho">
+                                    <div >
+                                        <div class="panel panel-default">
+                                            <!--<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Estado Aplicación Derecho</strong></div>-->
+                                            <div class="panel-body">
+                                                <div class="row form-group">
+                                                    <div class="col-xs-12 col-sm-8 col-sm-push-4 col-md-7 col-md-push-5 col-lg-8 col-lg-push-4">
+                                                        <textarea name="" id="texto-cuerpo" class="form-control" rows="6" data-ng-model="message" entities-decode data-ng-disabled="!canSubmit()" placeholder="Mensaje">
+                                                        </textarea>
+                                                        <label class="ui-checkbox">
+                                                            <input name="notify" type="checkbox" data-ng-model="sendMail">
+                                                            <span>Notificar vía e-mail</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4 col-sm-pull-8 col-md-5 col-md-pull-7 col-lg-4 col-lg-pull-8">
+                                                        <ul class="list-checkbox-radio list-unstyled row">
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appDerecho.state" type="radio" value="1" data-ng-model="state"><span data-i18n="id00053_app:states:pending">Pendiente</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appDerecho.state" type="radio" value="3" data-ng-model="state"><span data-i18n="id00054_app:states:retornate">Retornar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appDerecho.state" type="radio" value="2" data-ng-model="state"><span data-i18n="id00055_app:states:public">Publicar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appDerecho.state" type="radio" value="4" data-ng-model="state"><span data-i18n="id00056_app:states:reject">Rechazar</span></label></li>
+                                                        </ul>
+                                                        <div >
+                                                            <button type="submit" class="btn btn-success btn-w-md" data-ng-disabled="!canSubmit()" ng-click="submit()" data-i18n="id00035_home:app:registro:confirm">Aplicar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab ng-controller="profileAVCtrl" class="{{state == 1?'profile-pending ':''}}" app-element-admin="av" heading="Asistecia Virtual">
+                                    <div>
+                                        <div class="panel panel-default">
+                                            <!--<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Estado Aplicación Derecho</strong></div>-->
+                                            <div class="panel-body">
+                                                <div class="row form-group">
+                                                    <div class="col-xs-12 col-sm-8 col-sm-push-4 col-md-7 col-md-push-5 col-lg-8 col-lg-push-4">
+                                                        <textarea name="" id="texto-cuerpo" class="form-control" rows="6" data-ng-model="message" entities-decode data-ng-disabled="!canSubmit()" placeholder="Mensaje">
+                                                        </textarea>
+                                                        <label class="ui-checkbox">
+                                                            <input name="notify" type="checkbox" data-ng-model="sendMail">
+                                                            <span>Notificar vía e-mail</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4 col-sm-pull-8 col-md-5 col-md-pull-7 col-lg-4 col-lg-pull-8">
+                                                        <ul class="list-checkbox-radio list-unstyled row">
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appAV.state" type="radio" value="1" data-ng-model="state"><span data-i18n="id00053_app:states:pending">Pendiente</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appAV.state" type="radio" value="3" data-ng-model="state"><span data-i18n="id00054_app:states:retornate">Retornar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appAV.state" type="radio" value="2" data-ng-model="state"><span data-i18n="id00055_app:states:public">Publicar</span></label></li>
+                                                            <li class="col-xs-6 col-sm-12"><label class="ui-radio"><input name="appAV.state" type="radio" value="4" data-ng-model="state"><span data-i18n="id00056_app:states:reject">Rechazar</span></label></li>
+                                                        </ul>
+                                                        <div >
+                                                            <button type="submit" class="btn btn-success btn-w-md" data-ng-disabled="!canSubmit()" ng-click="submit()" data-i18n="id00035_home:app:registro:confirm">Aplicar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                            </tabset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong data-i18n="id00057_app:profile:messages-title"><span class="glyphicon glyphicon-th"></span>Mensajes de estado</strong></div>
+                    <div class="panel-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2" data-i18n="id00058_app:profile:author"  >Autor</th>
+                                        <th class="col-sm-8" data-i18n="id00059_app:profile:messages">Mensajes</th>
+                                        <th class="col-sm-2" data-i18n="id00060_app:profile:date"    >Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-if="accionista.item_accionista.messages.length === 0">
+                                        <td></td>
+                                        <td>No hay datos disponibles.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr ng-repeat="message in accionista.item_accionista.messages | orderBy:'date_time':true">
+                                        <td>
+                                            {{message.autor.isAdmin ? message.autor.username : message.autor.name}}
+                                        </td>
+                                        <td ng-bind-html="message.body | nl2br">
+                                        </td>
+                                        <td class="cell-middle">{{message.date_time | date: "dd-MM-yyyy&nbsp;hh:mm"}}</td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+{% endverbatim %}

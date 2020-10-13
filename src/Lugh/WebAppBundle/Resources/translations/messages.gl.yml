@@ -1,0 +1,38 @@
+adminAccionistaPublica: 'Name: user_username Pasword: %user_pass%'
+adminAccionistaPublicaCert: 'Accionista %name% registrado'
+adminOfferCreate: 'Oferta "%title%" creada por %autor_name%'
+adminOfferPendiente: 'Oferta "%title%" en estado pendiente de admin'
+adminOfferPublica: 'Oferta "%title%" publicada'
+adminOfferRetorna: 'Oferta "%title%" retornada a %autor_name%'
+adminOfferRechaza: 'Oferta "%title%" rechazada'
+adminInitiativeCreate: 'Iniciativa "%title%" creada por %autor_name%'
+adminInitiativePendiente: 'Iniciativa "%title%" en estado pendiente de admin'
+adminInitiativePublica: 'Iniciativa "%title%" publicada'
+adminInitiativeRetorna: 'Iniciativa "%title%" retornada a %autor_name%'
+adminInitiativeRechaza: 'Iniciativa "%title%" rechazada'
+adminProposalCreate: 'Propuesta de representación "%title%" creada por %autor_name%'
+adminProposalPendiente: 'Propuesta de representación "%title%" en estado pendiente de admin'
+adminProposalPublica: 'Propuesta de representación "%title%" publicada'
+adminProposalRetorna: 'Propuesta de representación "%title%" retornada a %autor_name%'
+adminProposalRechaza: 'Propuesta de representación "%title%" rechazada'
+adminRequestCreate: 'Petición de representación "%title%" creada por %autor_name%'
+adminRequestPendiente: 'Petición de representación "%title%" en estado pendiente de admin'
+adminRequestPublica: 'Petición de representación "%title%" publicada'
+adminRequestRetorna: 'Petición de representación "%title%" retornada a %autor_name%'
+adminRequestRechaza: 'Petición de representación "%title%" rechazada'
+adhesionOfferRetorna: 'Oferta de representación "%title%" retornada'
+adhesionInitiativeRetorna: 'Iniciativa "%title%" retornada'
+adhesionProposalRetorna: 'Propuesta "%title%" retornada'
+adhesionRequestRetorna: 'Petición de representación "%title%" retornada'
+accionistaUserResetPassword: 'Su nuevo password es: %pass%'
+accionistaUserForgotPassword: "Para restablecer tu contraseña - por favor visita\n%confirmationUrl%"
+accionistaMessageCreate: 'Mensaje: %body%'
+accionistaVotoCreate: "Votación Realizada\n%votohtml%"
+adminVotoCreate: "Votación Realizada por %accionista_name% \n%votohtml%"
+accionistaDelegacionPublica: "Delegación en %delegado_nombre% Realizada\n%votohtml%"
+adminDelegacionPublica: "Delegación en %delegado_nombre% Realizada por %accionista_name% \n%votohtml%"
+accionistaDelegacionPendiente: "Delegación en %delegado_nombre% Pendiente\n%votohtml%"
+delegadoDelegacionPendiente: "Se ha realizado una delegación en su nombre\n%votohtml% <br/>Si Desea Aceptarla o Rechazarla siga el siguiente enlace:<br/>%baseuri%public/delegation/%id%/%delegado_token%"
+adminDelegacionPendiente: "Delegación en %delegado_nombre% Realizada por %accionista_name%\n%votohtml%\n En espera de confirmación"
+accionistaDelegacionRechaza: "Delegación en %delegado_nombre% Rechazada\n%votohtml%"
+adminDelegacionRechaza: "Delegación en %delegado_nombre% Rechazada por %accionista_name% \n%votohtml%"

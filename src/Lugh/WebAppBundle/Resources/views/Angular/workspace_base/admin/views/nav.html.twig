@@ -1,0 +1,135 @@
+  {% verbatim %}       
+<div id="nav-wrapper">
+    <ul id="nav"
+        data-ng-controller="NavCtrl"
+        data-slim-scroll
+        data-collapse-nav
+        data-highlight-active>
+
+        <li>
+            <a href="#/app/header/pendientes"><i class="glyphicon glyphicon-pushpin"></i> <span>Tareas Pendientes</span>
+                <!--<span class="badge badge-info main-badge"
+                            data-ng-show="totalPendientesCount > 0">{{totalPendientesCount}}</span>-->
+            </a>
+        </li>
+        <li>
+            <a href="#/app/users"><i class="fa fa-user"></i><span data-i18n="Accionistas">Accionistas</span>
+                <span class="badge badge-info main-badge"
+                      data-ng-show="accionistasPendientesCount > 0">{{accionistasPendientesCount}}</span>
+            </a>
+            <ul>
+                <li><a href="#/app/users/certificado"><i class="fa fa-caret-right"></i><span data-i18n="Certificado">Certificado</span></a></li>
+                <li><a href="#/app/users/no-certificado"><i class="fa fa-caret-right"></i><span data-i18n="Sin Certificado">Sin Certificado</span></a></li>
+                <li><a href="#/app/users/todo"><i class="fa fa-caret-right"></i><span data-i18n="Todo">Todo</span></a></li>
+            </ul>
+        </li>
+        
+        <li app-element-admin="foro">
+            <a href="#/app/foro"><i class="fa fa-users"></i><span data-i18n="Foro">Foro</span></a>
+            <ul>
+                <li><a href="#/app/foro/pendientes"><i class="fa fa-caret-right"></i><span data-i18n="Tareas Pendientes">Tareas Pendientes</span>
+                        <span class="badge badge-info main-badge"
+                      data-ng-show="totalforoPendientesCount > 0">{{totalforoPendientesCount}}</span>
+                    </a>
+                </li>
+                <li><a href="#/app/foro/adhesions"><i class="fa fa-caret-right"></i><span data-i18n="Adhesiones">Adhesiones</span>
+                    </a>
+                </li>
+                <li><a href="#/app/foro/all"><i class="fa fa-caret-right"></i><span data-i18n="Todos los ítems">Todos los ítems</span>
+                        <span class="badge badge-info main-badge"
+                      data-ng-show="totalItemsPendientesCount > 0">{{totalItemsPendientesCount}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/app/foro/propuestas"><i class="fa fa-caret-right"></i><span data-i18n="Propuestas">Propuestas</span>
+                        <span class="badge badge-info main-badge"
+                            data-ng-show="propuestasPendientesCount > 0">{{propuestasPendientesCount}}</span>
+                    </a>
+                </li>
+                <li><a href="#/app/foro/iniciativas"><i class="fa fa-caret-right"></i><span data-i18n="Iniciativas">Iniciativas</span>
+                        <span class="badge badge-info main-badge"
+                              data-ng-show="iniciativasPendientesCount > 0">{{iniciativasPendientesCount}}</span>
+                    </a>
+                </li>
+                <li><a href="#/app/foro/ofertas"><i class="fa fa-caret-right"></i><span data-i18n="Oferta de repre.">Oferta de rep.</span>
+                        <span class="badge badge-info main-badge"
+                            data-ng-show="ofertasPendientesCount > 0">{{ofertasPendientesCount}}</span>
+                    </a>
+                </li>
+                <li><a href="#/app/foro/peticiones"><i class="fa fa-caret-right"></i><span data-i18n="Petición de repre.">Petición de rep.</span>
+                        <span class="badge badge-info main-badge"
+                            data-ng-show="peticionesPendientesCount > 0">{{peticionesPendientesCount}}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li app-element-admin="voto">
+            <a href="#/app/voto"><i class="fa fa-check-square-o"></i><span data-i18n="Voto">Voto</span></a>
+            <ul>
+                <li><a href="#/app/voto/delegaciones"><i class="fa fa-caret-right"></i><span data-i18n="Delegaciones">Delegaciones</span></a></li>
+                <li><a href="#/app/voto/votos"><i class="fa fa-caret-right"></i><span data-i18n="Votos">Votos</span></a></li>
+                <li><a href="#/app/voto/anulaciones"><i class="fa fa-caret-right"></i><span data-i18n="Anulaciones">Anulaciones</span></a></li>
+                <li><a href="#/app/voto/todo"><i class="fa fa-caret-right"></i><span data-i18n="Todo">Todo</span></a></li>
+                <li><a href="#/app/voto/movimientos"><i class="fa fa-caret-right"></i><span data-i18n="Movimientos">Movimientos</span></a></li>
+            </ul>
+        </li>
+        
+        
+        <li app-element-admin="derecho">
+            <a href="#/app/derecho"><i class="fa fa-info"></i><span data-i18n="Derecho información">Derecho información</span></a>
+            <ul>
+                <li><a href="#/app/derecho/pendientes"><i class="fa fa-caret-right"></i><span data-i18n="Tareas Pendientes">Tareas Pendientes</span>
+                        <span class="badge badge-info main-badge"
+                            data-ng-show="threadsPendientesCount > 0">{{threadsPendientesCount}}</span>
+                    </a>
+                </li>
+                <li><a href="#/app/derecho/solicitudes"><i class="fa fa-caret-right"></i><span data-i18n="Solicitudes">Solicitudes</span>
+                        <span class="badge badge-info main-badge"
+                            data-ng-show="threadsPendientesCount > 0">{{threadsPendientesCount}}</span>
+                    </a>
+                </li>
+                <li><a href="#/app/derecho/comunicados"><i class="fa fa-caret-right"></i><span data-i18n="Comunicados">Comunicados</span></a></li>
+                <li><a href="#/app/derecho/crear-comunicado"><i class="fa fa-caret-right"></i><span data-i18n="Crear comunicado">Crear comunicado</span></a></li>
+            </ul>
+        </li>
+        
+        <li app-element-admin="av">
+            <a href="#/app/av"><i class="fa fa-desktop"></i><span data-i18n="Asistencia Virtual">Asistencia Virtual</span></a>
+            <ul>
+                <!--<li><a href="#/app/av/pendientes"><i class="fa fa-caret-right"></i><span data-i18n="Tareas Pendientes">Tareas Pendientes</span>
+                        <span class="badge badge-info main-badge"
+                            data-ng-show="questionsPendientesCount > 0">{{questionsPendientesCount}}</span>
+                    </a>
+                </li>-->
+                <li><a href="#/app/av/ruegos"><i class="fa fa-caret-right"></i><span data-i18n="Ruegos y Preguntas">Ruegos y Preguntas</span>
+                        <!--<span class="badge badge-info main-badge"
+                            data-ng-show="questionsPendientesCount > 0">{{questionsPendientesCount}}</span>-->
+                    </a>
+                </li>
+                <!--<li><a href="#/app/av/lives"><i class="fa fa-caret-right"></i><span data-i18n="id00450_app:av:eventos">Eventos</span>
+                    </a>
+                </li>-->
+                <li><a href="#/app/av/votos"><i class="fa fa-caret-right"></i><span data-i18n="Votaciones">Votaciones</span></a>
+                </li>
+                <li><a href="#/app/av/abandonos"><i class="fa fa-caret-right"></i><span data-i18n="Abandonos">Abandonos</span></a>
+                </li>
+                <li><a href="#/app/av/accesos"><i class="fa fa-caret-right"></i><span data-i18n="Accesos">Accesos</span></a>
+                </li>
+            </ul>
+        </li>
+       
+        <!--
+        <li>
+            <a href="#/app/todo"><i class="fa fa-pencil-square-o"></i><span data-i18n="Todo"></span></a>
+        </li>  
+
+        -->
+        
+        
+
+
+
+    </ul>
+</div>
+{% endverbatim %} 

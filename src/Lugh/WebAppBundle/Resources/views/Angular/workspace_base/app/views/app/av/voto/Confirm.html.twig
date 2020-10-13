@@ -1,0 +1,63 @@
+{% verbatim %}
+<div>
+    <!-- paso -->
+    <h1><span class="titulo-menu confirmTitle" i18n="id00512_app:av:confirm"></span></h1>
+    <div>
+        <div class="panel panel-profile confirmContent">
+            <div class="panel panel-default ">
+                <div class="panel-heading">
+                    <h3 class="panel-title" i18n="id00512_app:av:confirm">Confirmación</h3>
+                </div>
+                <div class="panel-body">
+                    <span i18n="id00513_app:av:confirm:body"></span>
+                </div>
+            </div>
+        
+            <div ng-repeat="tipo in confirmAbsAdicional">
+                <div ng-repeat="abs_adicional in tipo">
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><h3 class="panel-title"></h3></div>
+                        <div class="panel-body">
+                            <span>{{abs_adicional.text}}</span>
+                            <hr/>
+                            <div class="form-group">
+                                <label class="ui-radio">
+                                    <span>{{abs_adicional.option}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="tipo in confirmPuntos" ng-hide="data.choiceVoteDelegation == 'delegation' && (data.choiceInstructions == undefined || data.choiceInstructions == 'no')">
+                <div class="panel panel-default" ng-if="tipo.length > 0">
+                    <div class="panel-heading"><h3 class="panel-title" i18n="{{tipos[$index].title}}"></h3></div>
+                    <div class="panel-body">
+                        <div ng-repeat="step in tipo">
+                            <div recursive-wizard-construct="{{$index}}" tipo="{{$parent.$index}}" index="{{$index}}" panel-default confirm></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 i18n="id00336_app:voto:finish:title">Finalizando</h3>
+                </div>
+                <div class="modal-body">
+                    <div >
+                        <span i18n="id00515_app:av:finish:body"></span>
+                    </div>
+                    <progressbar class="progressbar-sm progress-striped active" value="100"></progressbar>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </script>
+        </div>
+    
+    </div>
+    <!-- / paso -->
+</div>
+{% endverbatim %}

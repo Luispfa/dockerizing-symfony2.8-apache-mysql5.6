@@ -1,0 +1,86 @@
+<?php
+namespace Lugh\WebAppBundle\DomainLayer\State;
+use Lugh\WebAppBundle\DomainLayer\State\Restrictions;
+use Symfony\Component\Config\Definition\Exception\Exception;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of Accionista
+ *
+ * @author a.navarro
+ */
+class UnlockedStateClass extends StateClass {
+    
+    public function pendiente($item, $comments = null) {
+        return $item;
+    }
+    public function publica($item, $comments = null) {
+        return $item;
+    }
+    public function retorna($item, $comments = null) {
+        return $item;
+    }
+    public function rechaza($item, $comments = null) {
+        return $item;
+    }
+    
+    public function locked($item, $comments = null) {
+        $this->exceptionUser();
+        return $item->setLocked(self::locked);
+    }
+
+    public function unlocked($item, $comments = null) {
+        $this->exceptionUser();
+        return $item->setLocked(self::unLocked);
+    }
+    
+    public function enable($item, $comments = null) {
+        return $item;
+    }
+
+    public function disable($item, $comments = null) {
+        return $item;
+    }
+    
+    public function asistencia($junta) {
+        return $junta;
+    }
+
+    public function configuracion($junta) {
+        return $junta;
+    }
+
+    public function convocatoria($junta) {
+        return $junta;
+    }
+
+    public function finalizado($junta) {
+        return $junta;
+    }
+
+    public function prejunta($junta) {
+        return $junta;
+    }
+
+    public function quorumcerrado($junta) {
+        return $junta;
+    }
+
+    public function votacion($junta) {
+        return $junta;
+    }
+    
+    private function exceptionUser()
+    {
+        if (!Restrictions::isCustomer())
+        {
+            throw new Exception("User not has permited change state");
+        }
+    }
+}
+
+?>

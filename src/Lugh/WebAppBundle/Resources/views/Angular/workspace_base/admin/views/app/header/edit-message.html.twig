@@ -1,0 +1,49 @@
+{% verbatim %} 
+<div class="page" ng-controller="editMessageCtrl">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Editar mensaje</strong></div>
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel-body">
+
+
+            <form class="form-horizontal" role="form">
+
+
+                <fieldset>
+                    <legend>Editar mensaje</legend>
+                    <div class="form-group">
+                        <label for="correoc" class="col-sm-3 control-label">Cuerpo</label>
+                        <div class="col-sm-5">
+                            <textarea name="" id="texto-cuerpo" class="form-control" rows="4" entities-decode ng-model="message.body"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!--fieldset>
+                    <legend>Documentos</legend>
+                    <div class="form-group" ng-file-drop>
+                        <upload-document
+                            description="Documentos" 
+                            uploaderID="{{uploaderID}}" 
+                            isolatedtoken 
+                        />
+                    </div>
+                </fieldset-->
+
+                <fieldset>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div type="submit" class="btn btn-success" ng-click="submit(message)" ng-disabled="!isValid()">Guardar</div>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </form> 
+
+        </div>
+    </section>
+
+
+</div>
+{% endverbatim %} 

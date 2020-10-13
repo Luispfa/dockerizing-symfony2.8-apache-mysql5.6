@@ -1,0 +1,69 @@
+{% verbatim %}
+<div class="page" ng-controller="adhesionRequestCtrl">
+
+	<section class="panel panel-default">
+		<div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00366_app:adhesion">Adhesion</span></strong></div>
+		<div class="panel-body">
+
+
+			<form class="form-horizontal" role="form">
+
+
+				<fieldset class="titulo-item">
+					<legend i18n="id00102_app:foro:singular:short:request">Petición</legend>
+
+					<div class="form-group">
+						<label for="item.title" class="col-sm-3 control-label" i18n="id00368_app:adhesion:title">Título</label>
+						<div class="col-sm-9">
+							<h4 ng-bind-html="adhesion.request.title"></h4>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="item.title" class="col-sm-3 control-label" i18n="id00369_app:adhesion:user">Usuario</label>
+						<div class="col-sm-9">
+							<h4>{{adhesion.accionista.name}}</h4>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend i18n="id00370_app:adhesion:state">Estado</legend>
+
+					<div class="form-group">
+						<div class="col-sm-9 col-sm-offset-3">
+							<table>
+								<tr>
+									<td><label class="ui-radio"><input name="state" type="radio" value="1" data-ng-model="adhesion.state"><span data-i18n="id00053_app:states:pending">Pendiente</span></label></td>
+									<td><!--<info-modal tag='' />--></td>
+								<tr>
+								<tr>
+									<td><label class="ui-radio"><input name="state" type="radio" value="3" data-ng-model="adhesion.state"><span data-i18n="id00054_app:states:retornate">Retornar</span></label></td>
+									<td><!--<info-modal tag='' />--></td>
+								<tr>
+								<tr>
+									<td><label class="ui-radio"><input name="state" type="radio" value="2" data-ng-model="adhesion.state"><span data-i18n="id00055_app:states:public">Publicar</span></label></td>
+									<td><!--<info-modal tag='' />--></td>
+								<tr>
+								<tr>
+									<td><label class="ui-radio"><input name="state" type="radio" value="4" data-ng-model="adhesion.state"><span data-i18n="id00056_app:states:reject">Rechazar</span></label></td>
+									<td><!--<info-modal tag='' />--></td>
+								<tr>
+							</table>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9" ng-disabled="loading">
+							<button type="submit" class="btn btn-success" ng-click="setState()" i18n="id00371_app:adhesion:button:save">Guardar</button>
+						</div>
+					</div>
+				</fieldset>
+			</form> 
+
+		</div>
+	</section>
+
+
+</div>
+
+
+{% endverbatim %}

@@ -1,0 +1,79 @@
+
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span12" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Styles
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a href="#newstyle-modal" data-toggle="modal"  type="button" class="btn btn-success btn-small accordion-toggle">
+                            <i class="icon-plus"></i> New Style
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div>
+
+                <div class="widget-content">
+
+                     {% render controller('LughDbConnectionBundle:TemplatePlatform:stylesContent')  %}
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+
+</div>
+
+<div class="modal fade hide modal-lg" id="newstyle-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Crear Estilo Nuevo</h3>
+    </div>
+    <div class="modal-body">
+
+        <form id="newstyle-form">
+            <div class="control-group">
+                <label class="control-label" for="select01">Estilo a clonar</label>
+
+                <div class="controls">
+                    <select id="newstyle-modal-select" name="form[newstyle-modal-select]">
+                        {% for template in templates %}
+                            <option value="{{ template.id }}">{{ template.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="newstyle-modal-name">Nombre</label>
+
+                <div class="controls">
+                    <input type="text" class="input-large" id="newstyle-modal-name" name="form[newstyle-modal-name]">
+                </div>
+                <label class="control-label" for="newstyle-modal-path">Ruta</label>
+
+                <div class="controls">
+                    <input type="text" class="input-large" id="newstyle-modal-path" name="form[newstyle-modal-path]">
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <button type="button" data-dismiss="modal" class="btn btn-primary"
+                onclick="addStyle( '{{ path('_templatesplatform_add_style') }}', $('#newstyle-form :input'),  '{{ path( '_temlatesplatform_content') }}', 'content' );return false;">
+            Save changes</button>
+    </div>
+</div>

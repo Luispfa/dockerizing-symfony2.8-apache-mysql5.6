@@ -1,3 +1,257 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+lugh_db_connection:
+    resource: "@LughDbConnectionBundle/Controller/"
+    type:     annotation
+    host:     %path_admin%.juntadeaccionistas.es
+    prefix:   /
+
+lugh_db_connection_login_check:
+    pattern:  /user/login_check
+    host:     %path_admin%.juntadeaccionistas.es
+    
+lugh_web_app:
+    resource: "@LughWebAppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    options:
+        expose: true
+        
+homepage:
+    path:      /{_locale}
+    defaults:  { _controller: LughWebAppBundle:Home:index, _locale: es }
+    requirements:
+        _locale:  es|en|ca|gl
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    options:
+        expose: true
+
+fos_user_security_login_app:
+    path: /home
+    defaults: { _controller: FOSUserBundle:Security:login }
+    
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+admin_login:
+    pattern:  /user/login
+    defaults: { _controller: LughWebAppBundle:Security:login }
+    
+admin_login_user:
+    pattern:  /user
+    defaults: { _controller: LughWebAppBundle:Security:login }
+
+admin_check:
+    pattern:  /user/login_check
+
+home_check:
+    pattern:  /login_check
+
+admin_logout:
+    pattern:  /user/logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"  
+    
+    
+    
+    
+    
+Accionistas:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AccionistaController
+    prefix: /rest/v1
+
+Items:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\ItemController
+    prefix: /rest/v1
+
+Public:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\PublicController
+    prefix: /rest/v1
+    
+Offers:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\OfferController
+    prefix: /rest/v1
+
+Initiatives:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\InitiativeController
+    prefix: /rest/v1
+    
+Requests:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\RequestController
+    prefix: /rest/v1
+    
+Proposals:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\ProposalController
+    prefix: /rest/v1
+
+Adhesions:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AdhesionController
+    prefix: /rest/v1
+
+AdhesionOffers:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AdhesionOfferController
+    prefix: /rest/v1
+
+AdhesionInitiatives:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AdhesionInitiativeController
+    prefix: /rest/v1
+
+AdhesionProposals:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AdhesionProposalController
+    prefix: /rest/v1
+    
+AdhesionRequests:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AdhesionRequestController
+    prefix: /rest/v1
+    
+Threads:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\ThreadController
+    prefix: /rest/v1
+
+Questions:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\QuestionController
+    prefix: /rest/v1
+    
+Desertions:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\DesertionController
+    prefix: /rest/v1
+    
+Puntos:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\PuntoController
+    prefix: /rest/v1
+
+OpcionesVoto:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\OpcionesvotoController
+    prefix: /rest/v1
+
+Votos:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\VotoController
+    prefix: /rest/v1
+
+Acciones:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AccionController
+    prefix: /rest/v1
+    
+Delegaciones:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\DelegacionController
+    prefix: /rest/v1
+
+Delegados:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\DelegadoController
+    prefix: /rest/v1
+
+Anulaciones:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AnulacionController
+    prefix: /rest/v1
+
+AnulacionesAv:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AnulacionAvController
+    prefix: /rest/v1
+    
+AccionesRechazadas:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AccionRechazadaController
+    prefix: /rest/v1
+
+Documents:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\DocumentController
+    prefix: /rest/v1
+
+Parametros:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\ParametroController
+    prefix: /rest/v1
+    
+Communique:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\CommuniqueController
+    prefix: /rest/v1
+
+Logmail:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\LogmailController
+    prefix: /rest/v1
+
+Mail:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\MailController
+    prefix: /rest/v1
+
+Messages:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\MessageController
+    prefix: /rest/v1
+
+Ussers:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\UserController
+    prefix: /rest/v1
+
+TipoVotos:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\TipovotoController
+    prefix: /rest/v1
+    
+AbsAdicional:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AbsAdicionalController
+    prefix: /rest/v1
+    
+Avs:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AvController
+    prefix: /rest/v1
+    
+Junta:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\JuntaController
+    prefix: /rest/v1
+    
+Registro:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\RegistroController
+    prefix: /rest/v1
+    
+Accesos:
+    type:     rest
+    resource: Lugh\WebAppBundle\Controller\ApiRestV1\AccesoController
+    prefix: /rest/v1

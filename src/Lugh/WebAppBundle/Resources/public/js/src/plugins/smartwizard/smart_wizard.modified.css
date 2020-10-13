@@ -1,0 +1,291 @@
+/*   
+  SmartWizard 2.0 plugin 
+  jQuery Wizard control Plugin
+  by Dipu
+  
+  http://www.techlaboratory.net
+  http://tech-laboratory.blogspot.com
+*/
+.swMain {
+    position:relative;
+    display:block;
+    margin:0;
+    padding:0;
+    overflow:visible;
+    float:left;
+    width:100%;
+}
+.swMain .stepContainer {
+    display:block;
+    position: relative;
+    margin: 0;
+    padding:0;
+    overflow:hidden;
+    clear:both;
+    margin-bottom: 20px;
+}
+
+.swMain .stepContainer div.content {
+    display:block;
+    border:none;
+    background-image:none;
+    position: absolute;
+    float:left;
+    margin: 0;
+    padding:0;
+    text-align:left;
+    overflow:visible;
+    width:100%;
+    clear:both;
+}
+
+.swMain div.actionBar {
+    display:block;
+    position: relative; 
+    clear:both;
+    margin:             20px 0 20px 0;   
+    border-top:         /*1px dotted #CCC;*/
+    padding:            20px 0px;    
+    color:              #5A5655;   
+    min-height:50px;
+    text-align:left;
+    overflow:auto;    
+    z-index:88; 
+    left:0;
+}
+
+
+
+
+.swMain .buttonNext {
+    display:block;
+    float:right;
+    margin:5px 20px 0 3px;
+
+    width:100px;   
+}
+.swMain .buttonDisabled {
+    opacity: .4;
+    cursor:text;    
+}
+.swMain .buttonPrevious {
+    display:block;
+    float:right;
+    margin:5px 3px 0 5px;
+
+    width:100px;   
+}
+.swMain .buttonFinish {
+    display:block;
+    float:right;
+    margin:5px 0px 0 10px;
+    width:100px;   
+}
+
+/* Form Styles */
+
+.txtBox {
+    border:1px solid #CCCCCC;
+    color:#5A5655;
+    font:13px Verdana,Arial,Helvetica,sans-serif;
+    padding:2px;
+    width:430px;
+}
+.txtBox:focus {
+    border:1px solid #EA8511;
+}
+
+.swMain .loader {
+    position:relative;  
+    display:none;
+    float:left;  
+    margin: 2px 0 0 2px;
+    padding:8px 10px 8px 40px;
+    border: 1px solid #FFD700; 
+
+    color:#5A5655;       
+   /* background: #FFF url(../../images/loader.gif) no-repeat 5px;  */
+    -moz-border-radius  : 5px;
+    -webkit-border-radius: 5px;
+    z-index:998;
+}
+.swMain .msgBox {
+    position:relative;  
+    display:none;
+    float:left;
+    margin: 4px 0 0 5px;
+    padding:5px;
+    border: 1px solid #FFD700; 
+    background-color: #FFFFDD;  
+    font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
+    color:#5A5655;         
+    -moz-border-radius  : 5px;
+    -webkit-border-radius: 5px;
+    z-index:999;
+    min-width:200px;  
+}
+.swMain .msgBox .content {
+    font: normal 12px Verdana,Arial,Helvetica,sans-serif;
+    padding: 0px;
+    float:left;
+}
+.swMain .msgBox .close {
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    color: #CCC;
+    display: block;
+    float: right;
+    margin: 0 0 0 5px;
+    outline-style: none;
+    padding: 0 2px 0 2px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+.swMain .msgBox .close:hover{
+    color: #EA8511;
+    border: 1px solid #EA8511;  
+}
+
+
+
+
+
+.wizard-steps {
+    display: table;
+
+    padding: 0 0 1.25em;
+    margin: 0 0 2.75em;
+
+    width: 100%;
+
+
+    border-bottom: 1px dotted #BBB;
+
+}
+
+.wizard-steps li {
+    display: table-cell;
+    list-style: none;
+}
+
+
+
+.wizard-steps .wizard-step-bar {
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+
+
+    width: 100%;
+    height: 3px;
+
+    background: #CCC;
+}
+
+.wizard-steps a {
+    position: relative;
+    z-index: 10;
+
+    display: block;
+
+    color: #777;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+
+
+    /*background: url(connector.png) repeat-x 0 20px;*/
+}
+
+.wizard-steps a:hover {
+    text-decoration: none;
+}
+
+
+
+.wizard-steps .wizard-step-number {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    margin-bottom: 5px;
+    width: 22px;
+    height: 22px;
+    color: #444;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 20px;
+    background: #D9D9D9;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+
+.wizard-steps .wizard-step-number {
+    -moz-border-radius: 0\3;
+    -webkit-border-radius: 0\3;
+    border-radius: 0\3;
+}
+
+
+
+.wizard-steps a.done {
+   /* background-image: url(connector-done.png);		*/					
+}
+
+.wizard-steps a.selected {
+   /* background-image: url(connector-active.png);	*/						
+}
+
+
+.wizard-steps a.done .wizard-step-number,
+.wizard-steps a.done .wizard-step-bar {
+    color: #FFF;
+    background-color: #242633; 
+
+}
+
+.wizard-steps a.selected .wizard-step-number,
+.wizard-steps a.selected .wizard-step-bar {
+    color: #FFF;
+    background: #31C0BE; 
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wizard-steps a {
+        background-position: 0 13px;
+    }
+
+    .wizard-steps .wizard-step-number {
+        width: 30px;
+        height: 30px;
+
+        font-size: 13px;
+        line-height: 30px;
+    }
+
+    .wizard-steps .wizard-step-label {
+        padding: 0 10px;
+        font-size: 11px;
+    }
+
+}
+
+/**/
+
+
+.wizard-steps ul > li {
+    display: inline-block;
+    padding: 0;
+}
+
+ul.wizard-steps   {
+    padding: 0 0 1.25em;
+    margin: 0 0 2.75em;
+}

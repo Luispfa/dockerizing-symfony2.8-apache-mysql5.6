@@ -1,0 +1,58 @@
+{% verbatim %}
+<div class="page" ng-controller="newThreadCtrl">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00146_app:derecho:new-thread">Crear solicitud</span></strong></div>
+        <div class="panel-body">
+
+
+            <form class="form-horizontal" role="form">
+
+
+                <fieldset>
+                    <legend i18n="id00146_app:derecho:new-thread">Nueva solicitud</legend>
+
+                    <div class="form-group">
+                        <label for="subject" class="col-sm-3 control-label" i18n="id00147_app:derecho:new-thread:subject">Asunto</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="subject" placeholder="Asunto" entities-decode ng-model="thread.subject">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="correoc" class="col-sm-3 control-label" i18n="id00148_app:derecho:new-thread:body">Texto de la solicitud</label>
+                        <div class="col-sm-5">
+                            <textarea name="" id="texto-cuerpo" class="form-control" rows="4" entities-decode ng-model="thread.body"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend i18n="id00127_app:privacy-policy">Política de privacidad</legend>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ng-model="acceptTerms"><span i18n="id00149_app:privacy-policy:admin">Acepto que mis datos de contacto sean enviados al administrador.</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-success" ng-disabled="!isValid()" ng-click="confirm(thread)" i18n="id00150_app:derecho:new-thread:confirm">Guardar</button> <button type="submit" class="btn btn-success" ng-click="clear()" i18n="id00129_app:foro:item:clean-data">Limpiar datos</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </form> 
+
+        </div>
+    </section>
+
+
+</div>
+
+
+{% endverbatim %}

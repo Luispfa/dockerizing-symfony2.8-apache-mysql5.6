@@ -1,0 +1,30 @@
+{% verbatim %}
+<div>
+	<h1><span class="titulo-menu sharesTitle" i18n="id00302_app:voto:shares:title">Acciones</span></h1>
+	<div>
+		<div class="panel panel-default sharesContent">
+			<div class="panel-heading">
+				<h3 class="panel-title" i18n="id00302_app:voto:shares:title">Acciones</h3>
+			</div>
+			<div class="panel-body">
+				<span i18n="id00300_app:voto:shares:body"></span>
+				<hr />  
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="numeroAcciones" class="col-sm-6 control-label" i18n="id00015_home:app:registro:shares-num"></label>
+						<div class="col-sm-3">
+							<input dotted-number type="text" ng-disabled="blockShares" class="form-control" id="numeroAcciones" ng-model="data.accionista.shares_num" dotted-min="{{data.accionista.shares_min}}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="numeroMinimo" class="col-sm-6 control-label" i18n="id00301_app:voto:shares:num"></label>
+						<div class="col-sm-3">
+							<input dotted-number type="text" class="form-control" id="numeroMinimo" ng-model="data.accionista.shares_min" disabled> 
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endverbatim %}

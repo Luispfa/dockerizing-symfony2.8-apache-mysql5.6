@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row" id="main_row">
+
+        <div class="span4" id="left_div">
+
+            <div class="widget widget-form" id="left_top_div">
+
+                <div class="widget-header">
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parametro
+                    </h3>
+
+                    <div class="widget-actions">
+                        <a class="btn btn-small accordion-toggle" onclick="AddParam('{{ path('_configplatform_add_parameter', {'platform_id' : platform.id} ) }}',$('#form_parameters_time :input'), 'time','{{ path( '_configplatform_edit_parameters_time', {'platform_id' : platform.id}) }}','content'); return false;">
+                            <i class="icon-plus"></i> Add Parameter
+                        </a>
+                    </div> <!-- /.widget-actions -->
+                </div> <!-- /.widget-header -->
+
+
+                <div class="widget-content">
+                    <form id="form_parameters_time" class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="clase">Clase</label>
+                                <div class="controls">
+                                    {{ form_widget(form_time.clase.clase, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Clase de objeto</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="action">Action</label>
+                                <div class="controls">
+                                   {{ form_widget(form_time.action.action, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Acción permitida</p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="from">From</label>
+                                <div class="controls">
+                                    {{ form_widget(form_time.from_date.from_date, { 'attr': {'class': 'input-medium'}}) }}
+                                    {{ form_widget(form_time.from_time.from_time, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Activate {{ form_widget(form_time.from_activate.fromactivate) }}</p>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="to">to</label>
+                                <div class="controls">
+                                    {{ form_widget(form_time.to_date.to_date, { 'attr': {'class': 'input-medium'}}) }}
+                                    {{ form_widget(form_time.to_time.to_time, { 'attr': {'class': 'input-medium'}}) }}
+                                    <p class="help-block">Activate {{ form_widget(form_time.to_activate.toactivate) }}</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>	
+                </div>
+
+            </div>
+
+
+        </div> <!-- /.span4 -->
+
+        <div class="span8" id="main_div">
+
+            <div class="widget widget-table" id="main_down_div">
+
+                <div class="widget-header">
+
+                    <h3>
+                        <i class="icon-bar-chart"></i>
+                        Parameters Time
+
+                    </h3>
+                </div>
+
+                <div class="widget-content">
+
+                    <table id="crontab_file" class="table table-striped table-bordered responsive">
+                        <thead>
+                            <tr>
+                                <th>Clase</th>
+                                <th>Action</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for parameter_time in parameters_time %}
+                                <tr class ="gradeA">
+                                    <td>
+                                        {{ parameter_time.clase }}
+                                    </td>
+                                    <td>
+                                        {{ parameter_time.action }}
+                                    </td>
+                                    <td>
+                                        {{ parameter_time.from }}
+                                    </td>
+                                    <td>
+                                        {{ parameter_time.to }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeParameter('{{parameter_time.param_id}}','{{ path( '_configplatform_remove_parameter') }}','{{ path( '_configplatform_edit_parameters_time', {'platform_id' : platform.id}) }}','content');return false;">Delete</button>
+                                    </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+
+                    </table>
+
+                </div> <!-- /.widget-content -->
+
+            </div> <!-- /.widget -->
+
+
+        </div> <!-- /.span8 -->
+
+    </div> <!-- /.row -->
+</div>

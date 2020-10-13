@@ -1,0 +1,28 @@
+{% verbatim %}
+<div class="page page-dashboard" data-ng-controller="AvLogCtrl">
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<div class="panel panel-profile">
+				<div class="panel-heading text-center bg-av">
+					<h2 i18n="id00428_app:av">Asistencia Virtual</h2>
+					<h1><i class="fa fa-laptop"></i></h1>
+				</div>
+				<div class="panel-body">
+					<h2><span i18n="id00503_app:av:dashboard:title" parameters-i18n="{'nombre' : main.name}"></span></h2>
+					<h3 i18n="id00504_app:av:dashboard:subtitle" parameters-i18n="{'empresa' : main.brand}"></h3>
+					<span i18n="id00505_app:av:dashboard:body"></span>
+                    <div class="row space-lg">
+                        <div class="col-md-6 col-md-offset-3">
+                            <a href="javascript:;" class="btn btn-block bg-av" acreditacion-button ng-hide="isHide">
+                                <span data-i18n="id00449_app:av:acreditation">Acreditación</span>
+                            </a>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endverbatim %}

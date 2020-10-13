@@ -1,0 +1,48 @@
+{% verbatim %}
+
+    <div class="page page-dashboard" data-ng-controller="MailsSwitch">
+        <div class="full-width">
+            <div class="contenido-container">
+                <div class="container-full">
+                    <div class="row">
+                        <div class="col-xsm-12">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <section class="panel panel-default mail-categories">
+                                        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span i18n="id00380_app:mail:mail">Mail</span></strong></div>
+                                        <ul class="list-group" data-highlight-active-scope>
+                                            <li class="list-group-item" data-ng-controller="MailsCtrl">
+                                                <a href="javascript:;" template = "inbox" ng-click="loadTemplateMail('inbox')">
+                                                    <i class="fa fa-inbox"></i><span i18n="id00376_app:mail:inbox">Inbox</span>
+                                                    <span class="badge badge-info pull-right" data-ng-hide="notMails()">{{mails_in.length}}</span>
+                                                </a></li>
+                                            <li class="list-group-item active" data-ng-controller="MailsOutCtrl">
+                                                <a href="javascript:;" template = "outbox" ng-click="loadTemplateMail('outbox')">
+                                                    <i class="fa fa-send"></i><span i18n="id00378_app:mail:outbox">Outbox</span>
+                                                    <span class="badge badge-info pull-right" data-ng-hide="notMailsOut()">{{mails_out.length}}</span>
+                                                </a></li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:;" template = "compose" ng-click="loadTemplateMail('compose', 'admin')">
+                                                    <i class="fa fa-envelope-o"></i><span i18n="id00169_app:mail:admin-contact">Contactar con el administrador</span>
+                                                </a></li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:;" template = "error" ng-click="loadTemplateMail('error', 'super')">
+                                                    <i class="fa fa-star"></i><span i18n="id00379_app:mail:error">Notificar error</span>
+                                                </a></li>
+                                        </ul>
+                                    </section>
+                                </div>
+                                <div class="col-sm-9">
+                                    
+                                <div class="animate-fade-up" ng-include="template"></div> 
+ 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endverbatim %}

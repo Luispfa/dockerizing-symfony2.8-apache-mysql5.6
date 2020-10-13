@@ -1,0 +1,147 @@
+ <table id="crontab_file" class="table table-striped table-bordered responsive">
+     <thead>
+         <tr>
+            <th>Host</th>
+            <th>DBName</th>
+            <th>Style</th>
+            <th>Voto</th>
+            <th>Foro</th>
+            <th>Derecho</th>
+            <th>AV</th>
+            <th>Active</th>
+            <th>Producción</th>
+        </tr>
+     </thead>
+
+     <tbody>
+         {% for platform in platforms %} 
+            <tr class ="gradeA">
+                <td>
+                    <div class="input-append">
+                        <input class="span2" id="appendedInputButton_{{ platform.id }}_host" size="16" type="text" 
+                               value="{{ platform.host }}"
+                         >
+                        <button class="btn" type="button" onclick="SetParam('{{ path('_platform_setParam', {'platform_id' : platform.id, 'platform':'host'} ) }}',$('#appendedInputButton_{{ platform.id }}_host').val()); return false;">
+                            Save
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-append">
+                        <input class="span2" id="appendedInputButton_{{ platform.id }}_dbname" size="16" type="text" 
+                               value="{{ platform.dbname }}"
+                         >
+                        <button class="btn" type="button" onclick="SetParam('{{ path('_platform_setParam', {'platform_id' : platform.id, 'platform':'dbname'} ) }}',$('#appendedInputButton_{{ platform.id }}_dbname').val()); return false;">
+                            Save
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-append">
+                        <select class="span2" id="select_{{ platform.id }}_style">
+                            {% for template in templates %} 
+                                <option value="{{ template.id }}" {% 
+                                    if platform.template.id == template.id %}   
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ template.name }}
+                                </option>
+                            {% endfor%}    
+                        </select>
+                    <button class="btn" type="button" onclick="SetParam('{{ path('_platform_setParam', {'platform_id' : platform.id, 'platform':'style'} ) }}',$('#select_{{ platform.id }}_style').val()); return false;">
+                            Save
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div class="onoffswitchdual">
+                        <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_{{ platform.id }}_voto"
+                               onclick = "SetActive('{{ path('_platform_setActive',{'platform_id' : platform.id, 'platform':'voto'} ) }}',$('#myonoffswitch_{{ platform.id }}_voto').attr('checked'));"
+                        {% if platform.voto %}   
+                               checked
+                        {% endif %}
+                        >
+                        <label class="onoffswitchdual-label" for="myonoffswitch_{{ platform.id }}_voto">
+                            <div class="onoffswitchdual-inner"></div>
+                            <div class="onoffswitchdual-switch"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="onoffswitchdual">
+                        <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_{{ platform.id }}_foro"
+                               onclick = "SetActive('{{ path('_platform_setActive',{'platform_id' : platform.id, 'platform':'foro'} ) }}',$('#myonoffswitch_{{ platform.id }}_foro').attr('checked'));"
+                        {% if platform.foro %}   
+                               checked
+                        {% endif %}
+                        >
+                        <label class="onoffswitchdual-label" for="myonoffswitch_{{ platform.id }}_foro">
+                            <div class="onoffswitchdual-inner"></div>
+                            <div class="onoffswitchdual-switch"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="onoffswitchdual">
+                        <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_{{ platform.id }}_derecho"
+                               onclick = "SetActive('{{ path('_platform_setActive',{'platform_id' : platform.id, 'platform':'derecho'} ) }}',$('#myonoffswitch_{{ platform.id }}_derecho').attr('checked'));" 
+                        {% if platform.derecho %}   
+                               checked
+                        {% endif %}
+                        >
+                        <label class="onoffswitchdual-label" for="myonoffswitch_{{ platform.id }}_derecho">
+                            <div class="onoffswitchdual-inner"></div>
+                            <div class="onoffswitchdual-switch"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="onoffswitchdual">
+                        <input type="checkbox" name="onoffswitchdual" class="onoffswitchdual-checkbox" id="myonoffswitch_{{ platform.id }}_av"
+                               onclick = "SetActive('{{ path('_platform_setActive',{'platform_id' : platform.id, 'platform':'av'} ) }}',$('#myonoffswitch_{{ platform.id }}_av').attr('checked'));" 
+                        {% if platform.av %}   
+                               checked
+                        {% endif %}
+                        >
+                        <label class="onoffswitchdual-label" for="myonoffswitch_{{ platform.id }}_av">
+                            <div class="onoffswitchdual-inner"></div>
+                            <div class="onoffswitchdual-switch"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch_{{ platform.id }}_active"
+                               onclick = "SetActive('{{ path('_platform_setActive',{'platform_id' : platform.id, 'platform':'active'} ) }}',$('#myonoffswitch_{{ platform.id }}_active').attr('checked'));" 
+                        {% if platform.active %}   
+                               checked
+                        {% endif %}
+                        >
+                        <label class="onoffswitch-label" for="myonoffswitch_{{ platform.id }}_active">
+                            <div class="onoffswitch-inner"></div>
+                            <div class="onoffswitch-switch"></div>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="onoffswitchdual">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitchdual-checkbox" id="myonoffswitch_{{ platform.id }}_onProductionDates"
+                               onclick = "SetActive('{{ path('_platform_setActive',{'platform_id' : platform.id, 'platform':'onProductionDates'} ) }}',$('#myonoffswitch_{{ platform.id }}_onProductionDates').attr('checked'));"
+                        {% if platform.onProductionDates %}   
+                               checked
+                        {% endif %}
+                        >
+                        <label class="onoffswitchdual-label" for="myonoffswitch_{{ platform.id }}_onProductionDates">
+                            <div class="onoffswitchdual-inner"></div>
+                            <div class="onoffswitchdual-switch"></div>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        {% endfor%} 
+     </tbody>
+
+</table>
+
+ 
