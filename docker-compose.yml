@@ -6,7 +6,7 @@ services:
         volumes:
             # Montamos nuestra web desde fuera en el directorio web del contenedor
             - .docker/config/vhosts:/etc/apache2/sites-enabled
-            - .:/home/wwwroot/sf28
+            - .:/var/www/html/sf28
         expose:
             - 80
         ports:
