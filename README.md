@@ -5,7 +5,7 @@ Clonar el repositorio
 
 luego, desde la raiz del proyecto por consola hacer: 
 
-composer instal -n
+composer install -n
 
 
 
