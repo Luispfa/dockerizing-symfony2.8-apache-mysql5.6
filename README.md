@@ -7,9 +7,9 @@ luego, desde la raiz del proyecto por consola hacer:
 
 composer instal -n
 
-entrar a /app/AppKernel.php y añadir el constructor
 
-<?php     
+
+Entrar a /app/AppKernel.php y añadir el constructor
 
 class AppKernel extends Kernel
 {
@@ -29,7 +29,8 @@ class AppKernel extends Kernel
 
 
 
-//Si da este error cuando quieras instalar dependecias dentro del contenedor, si no, no usar
-memory limit error to run composer into container
+Si da este error cuando quieras instalar dependecias dentro del contenedor, si no, no usar
+
+Memory limit error to run composer into container
 
 php -d memory_limit=-1 /usr/local/bin/composer install -n 
