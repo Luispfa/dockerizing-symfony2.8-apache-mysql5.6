@@ -3,14 +3,17 @@ services:
     apache:
         build: .docker/apache
         container_name: sf28_apache
-        ports:
-          - 8005:80
         volumes:
-          - .docker/config/vhosts:/etc/apache2/sites-enabled
-          - .:/home/wwwroot/sf28
-        depends_on:
-          - php
-          
+            # Montamos nuestra web desde fuera en el directorio web del contenedor
+            - .docker/config/vhosts:/etc/apache2/sites-enabled
+            - .:/home/wwwroot/sf28
+        expose:
+            - 80
+        ports:
+            - 8005:80
+        links: 
+            - mysql
+
     mysql:
         image: mysql:5.6
         container_name: sf28_mysql
@@ -22,33 +25,6 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: sf28
-            MYSQL_USER: sf28
-            MYSQL_PASSWORD: sf28
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
 
-    php:
-        build: .docker/php
-        container_name: sf28_php
-        volumes:
-          - .:/home/wwwroot/sf28
-#        environment:
-#          - maildev_host=sf28_maildev
-        depends_on:
-#          - maildev
-          - mysql
-
-#    phpmyadmin:
-#        image: phpmyadmin/phpmyadmin
-#        container_name: sf28_phpmyadmin
-#        environment:
-#          PMA_HOST: mysql
-#          PMA_PORT: 3306
-#        ports:
-#            - 8080:80
-#        links:
-#            - mysql
-
-#    maildev:
-#        image: djfarrelly/maildev
-#        container_name: sf28_maildev
-#        ports:
-#          - 8001:80
