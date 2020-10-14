@@ -16,18 +16,25 @@
         "php": ">=5.4.0",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/orm": "^2.4.8",
+        "friendsofsymfony/rest-bundle": "1.3.1",
+        "friendsofsymfony/user-bundle": "^2.1",
         "incenteev/composer-parameter-handler": "~2.0",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
+        "symfony/assetic-bundle": "^2.8",
         "symfony/monolog-bundle": "^3.0.2",
         "symfony/swiftmailer-bundle": "~2.3,>=2.3.10",
         "symfony/symfony": "2.8.*",
         "twig/extensions": "^1.5",
-        "twig/twig": "^1.0||^2.0"
-    },
-    "require-dev": {
-        "sensio/generator-bundle": "~3.0",
-        "symfony/phpunit-bridge": "~2.7"
+        "twig/twig": "^1.0||^2.0",
+        "friendsofsymfony/jsrouting-bundle": "@stable",
+        "jms/serializer-bundle" : "~0.9",
+        "appventus/assetic-injector-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "symfony/event-dispatcher" : "2.*",
+        "gedmo/doctrine-extensions":      "^2.4",
+        "liuggio/excelbundle": "~2.0",
+        "oyejorge/less.php": "~1.5"
     },
     "scripts": {
         "symfony-scripts": [

@@ -27,6 +27,8 @@ class AppKernel extends Kernel
 }
 
 
+apt-get update
+apt-get install git
 
 
 Si da este error cuando quieras instalar dependecias dentro del contenedor, si no, no usar
@@ -34,3 +36,9 @@ Si da este error cuando quieras instalar dependecias dentro del contenedor, si n
 Memory limit error to run composer into container
 
 php -d memory_limit=-1 /usr/local/bin/composer install -n 
+COMPOSER_MEMORY_LIMIT=-1 composer require symfony/assetic-bundle --prefer-dist 
+
+
+permisos a cache y logs
+
+chmod 777 -R app/cache/ app/logs/ 
