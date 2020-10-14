@@ -12,3 +12,10 @@
 /composer.phar
 /nbproject/
 /.docker/data/
+/.docker/mysql/mysql/
+/.docker/mysql/performance_schema/
+/.docker/mysql/auto.cnf
+/.docker/mysql/ib_logfile0
+/.docker/mysql/ib_logfile1
+/.docker/mysql/ibdata1
+/.docker/mysql/lugh.juntadeaccionistas.es-ssl.conf

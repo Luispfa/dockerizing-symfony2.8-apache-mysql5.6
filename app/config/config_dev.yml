@@ -15,19 +15,19 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
-#monolog:
-#    handlers:
-#        main:
-#            type:   stream
-#            path:   "%kernel.logs_dir%/%kernel.environment%.log"
-#            level:  debug
-#            formatter: monolog.formatter.session_request
-#        console:
-#            type:   console
-#            bubble: false
+monolog:
+    handlers:
+        main:
+            type:   stream
+            path:   "%kernel.logs_dir%/%kernel.environment%.log"
+            level:  debug
+            formatter: monolog.formatter.session_request
+        console:
+            type:   console
+            bubble: false
 
-#assetic:
-#    use_controller: true
+assetic:
+    use_controller: true
 
 doctrine:
     orm:

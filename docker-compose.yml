@@ -5,26 +5,40 @@ services:
         container_name: sf28_apache
         volumes:
             # Montamos nuestra web desde fuera en el directorio web del contenedor
-            - .docker/config/vhosts:/etc/apache2/sites-enabled
+#            - .docker/config/vhosts:/etc/apache2/sites-enabled
             - .:/var/www/html/sf28
         expose:
             - 80
+            - 443
         ports:
-            - 8005:80
-        links: 
-            - mysql
+            - 80:80
+            - 443:443
+#        links: 
+#            - mysql
+        networks:
+            - backend
 
     mysql:
-        image: mysql:5.6
+        image: mysql:5.7
         container_name: sf28_mysql
         volumes:
-            - .docker/data/db:/var/lib/mysql
+#            - .docker/data/db:/var/lib/mysql
+            - .docker/mysql:/docker-entrypoint-initdb.d
         command:
-            - "--default-authentication-plugin=mysql_native_password"
+#            - "--default-authentication-plugin=mysql_native_password"
             - "--lower_case_table_names=1"        
+        ports:
+            - 3306:3306
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: sf28
-            MYSQL_USER: root
-            MYSQL_PASSWORD: root
+#            MYSQL_DATABASE: lugh_dbconnection
+#            MYSQL_USER: root
+#            MYSQL_PASSWORD: root
+        
+        networks:
+            - backend
 
+
+networks:
+    backend:
+        driver: bridge
