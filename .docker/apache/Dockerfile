@@ -59,11 +59,6 @@ FROM php:5.6-apache
 #
 #WORKDIR /var/www/html/
 
-
-#RUN groupadd -r apache && adduser apache
-USER apache
-
-
 RUN apt-get update
 RUN apt-get install -y net-tools git acl
 RUN docker-php-ext-install pdo pdo_mysql
@@ -81,6 +76,12 @@ COPY vhosts/000-default.conf /etc/apache2/sites-enabled/
 COPY vhosts/default-ssl.conf /etc/apache2/sites-enabled/
 COPY vhosts/apache2.conf /etc/apache2/
 #ADD www-server/ www-server/
+
+#RUN apt-get update \
+#    && apt-get install -y git 
+#    && apt-get php5-gd php5-mysql
+
+#RUN docker-php-ext-install pdo pdo_mysql
 
 RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
    mv composer.phar /usr/local/bin/composer

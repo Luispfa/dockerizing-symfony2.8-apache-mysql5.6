@@ -157,11 +157,9 @@ fos_user:
     service:
         user_manager: lugh.user_manager.db_connection
         mailer: resseting.lugh.mailer
-        
     from_email:
         address: "noreply@header.net"
-        sender_name: "Test App"
-            
+        sender_name: "No Reply"
 
 fos_rest:
     routing_loader:
