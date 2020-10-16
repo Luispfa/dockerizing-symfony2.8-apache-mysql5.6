@@ -13,8 +13,6 @@ services:
         ports:
             - 80:80
             - 443:443
-#        links: 
-#            - mysql
         networks:
             - backend
 
@@ -31,13 +29,9 @@ services:
             - 3306:3306
         environment:
             MYSQL_ROOT_PASSWORD: root
-#            MYSQL_DATABASE: lugh_dbconnection
-#            MYSQL_USER: root
-#            MYSQL_PASSWORD: root
         
         networks:
             - backend
-
 
 networks:
     backend:

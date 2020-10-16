@@ -4,9 +4,7 @@ namespace Lugh\DbConnectionBundle\Service;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Doctrine\Bundle\DoctrineBundle\Registry as RegistryInterface;
-//use FOS\UserBundle\Entity\UserManager as BaseUserManager;
-use FOS\UserBundle\Doctrine\UserManager as BaseUserManager;
-
+use FOS\UserBundle\Entity\UserManager as BaseUserManager;
 
 class UserManager extends BaseUserManager {
 
