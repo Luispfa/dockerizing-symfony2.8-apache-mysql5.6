@@ -2,11 +2,19 @@ version: '3'
 services:
     apache:
         build: .docker/apache
-        container_name: sf28_apache
+        container_name: sf_apache
         volumes:
             # Montamos nuestra web desde fuera en el directorio web del contenedor
-#            - .docker/config/vhosts:/etc/apache2/sites-enabled
-            - .:/var/www/html/sf28
+            - .:/var/www/html/
+            - .docker/apache/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+        extra_hosts:
+            - 'admin-local.juntadeaccionistas.es:127.0.0.1 '
+            - 'local.juntadeaccionistas.es:127.0.0.1 '
+            - 'local2.juntadeaccionistas.es:127.0.0.1 '
+            - 'local3.juntadeaccionistas.es:127.0.0.1 '
+            - 'local4.juntadeaccionistas.es:127.0.0.1 '
+            - 'local5.juntadeaccionistas.es:127.0.0.1 '
+
         expose:
             - 80
             - 443
@@ -17,14 +25,18 @@ services:
             - backend
 
     mysql:
-        image: mysql:5.7
-        container_name: sf28_mysql
+        image: mysql:5.6
+        container_name: sf_mysql
         volumes:
-#            - .docker/data/db:/var/lib/mysql
-            - .docker/mysql:/docker-entrypoint-initdb.d
+            - .docker/mysql/config/custom.cnf:/etc/mysql/conf.d/custom.cnf
+#            - /var/lib/mysql:/var/lib/mysql
+            - .docker/mysql/databases:/docker-entrypoint-initdb.d
+#            - .docker/mysql/data:/var/lib/mysql            
+
         command:
 #            - "--default-authentication-plugin=mysql_native_password"
-            - "--lower_case_table_names=1"        
+            - "--lower_case_table_names=1"
+
         ports:
             - 3306:3306
         environment:
@@ -32,7 +44,22 @@ services:
         
         networks:
             - backend
-
+            
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: sf_phpmyadmin
+        environment:
+            - PMA_ARBITRARY=1
+            - MYSQL_ROOT_PASSWORD=root
+            - PMA_HOST=mysql
+            - PMA_USER=root
+            - PMA_PASSWORD=root
+        restart: always
+        ports:
+            - 8080:80
+        networks:
+            - backend
+    
 networks:
     backend:
         driver: bridge
